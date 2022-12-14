@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:kumparan_clone/l10n/l10n.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/common/themes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
+import 'package:kumparan_clone/src/utilities/route_generator.dart';
+import 'injection.dart' as di;
+
+void main() {
+  di.init();
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
+      ],
+      child: MaterialApp(
+        title: 'Kumparan',
+        debugShowCheckedModeBanner: false,
+        theme: themeLight(context),
+        darkTheme: themeDark(context),
+        themeMode: ThemeMode.light,
+        supportedLocales: L10n.all,
+        localizationsDelegates: const [
+          AppLocalizations.delegate,
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        initialRoute: SPLASH,
+        onGenerateRoute: RouteGenerator.generateRoute,
+      ),
+    );
+  }
+}
