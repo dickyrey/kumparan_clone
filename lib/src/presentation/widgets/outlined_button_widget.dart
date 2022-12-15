@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 
 class OutlinedButtonWidget extends StatelessWidget {
@@ -27,7 +26,6 @@ class OutlinedButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final lang = AppLocalizations.of(context)!;
 
     return Container(
       width: double.infinity,
