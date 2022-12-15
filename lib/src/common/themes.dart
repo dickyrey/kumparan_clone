@@ -2,10 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 
-
 ThemeData themeLight(BuildContext context) {
   return ThemeData(
     brightness: Brightness.light,
+    primaryIconTheme: const IconThemeData(
+      color: ColorLight.fontTitle,
+      size: 20,
+    ),
     backgroundColor: ColorLight.background,
     cardColor: ColorLight.card,
     disabledColor: ColorLight.disabledButton,
@@ -13,9 +16,7 @@ ThemeData themeLight(BuildContext context) {
     // highlightColor: ColorLight.fontTitle,
     hintColor: ColorLight.fontSubtitle,
     indicatorColor: ColorLight.primary,
-    iconTheme: const IconThemeData(
-      color: ColorLight.fontTitle,
-    ),
+    iconTheme: const IconThemeData(color: ColorLight.fontTitle),
     primaryColor: ColorLight.primary,
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: ColorLight.primary,
@@ -83,6 +84,10 @@ ThemeData themeLight(BuildContext context) {
 ThemeData themeDark(BuildContext context) {
   return ThemeData(
     brightness: Brightness.light,
+    primaryIconTheme: const IconThemeData(
+      color: ColorDark.fontTitle,
+      size: 20,
+    ),
     backgroundColor: ColorDark.background,
     cardColor: ColorDark.card,
     disabledColor: ColorDark.disabledButton,
@@ -90,9 +95,7 @@ ThemeData themeDark(BuildContext context) {
     // highlightColor: ColorDark.fontTitle,
     hintColor: ColorDark.fontSubtitle,
     indicatorColor: ColorDark.primary,
-    iconTheme: const IconThemeData(
-      color: ColorDark.fontTitle,
-    ),
+    iconTheme: const IconThemeData(color: ColorDark.fontTitle),
     primaryColor: ColorDark.primary,
     textSelectionTheme: const TextSelectionThemeData(
       cursorColor: ColorDark.primary,

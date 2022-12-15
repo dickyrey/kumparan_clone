@@ -3,17 +3,6 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
-  final Widget? child;
-  final String? label;
-  final String? labelLoading;
-  final Color? color;
-  final void Function()? onTap;
-  final bool isLoading;
-  final double width;
-  final double height;
-  final double? labelSize;
-  final EdgeInsetsGeometry? margin;
-
   const ElevatedButtonWidget({
     super.key,
     this.label,
@@ -27,6 +16,17 @@ class ElevatedButtonWidget extends StatelessWidget {
     this.labelSize,
     this.margin,
   });
+
+  final Widget? child;
+  final String? label;
+  final String? labelLoading;
+  final Color? color;
+  final void Function()? onTap;
+  final bool isLoading;
+  final double width;
+  final double height;
+  final double? labelSize;
+  final EdgeInsetsGeometry? margin;
 
   @override
   Widget build(BuildContext context) {

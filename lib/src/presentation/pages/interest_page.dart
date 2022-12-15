@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
@@ -114,7 +115,11 @@ class _InterestPageState extends State<InterestPage> {
                   var totalOfTrue = findTrueElement.length;
 
                   return ElevatedButtonWidget(
-                    onTap: totalOfTrue < 3 ? null : () {},
+                    onTap: totalOfTrue < 3
+                        ? null
+                        : () {
+                            Navigator.pushNamed(context, ON_BOARDING);
+                          },
                     label: totalOfTrue < 3
                         ? lang.choose_at_least_3_topics
                         : lang.next,

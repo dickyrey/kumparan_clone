@@ -1,0 +1,30 @@
+{
+    "code": 200,
+    "message": "",
+    "data": [
+        {
+            "id": 1,
+            "title": "Always Update the Latest News",
+            "subtitle": "Get the latest news timeline from the Recent menu",
+            "image": "assets/onboarding_1.png"
+        },
+        {
+            "id": 2,
+            "title": "KumparanPLUS",
+            "subtitle": "A collection of complete and in-depth news from one topic with a cool cover",
+            "image": "assets/onboarding_2.png"
+        },
+        {
+            "id": 3,
+            "title": "Comfortable In The Dark",
+            "subtitle": "Activate dark mode for a more comfortable reading experience",
+            "image": "assets/onboarding_3.png"
+        },
+        {
+            "id": 4,
+            "title": "Create an Account for a Maximum Experience",
+            "subtitle": "",
+            "image": "assets/onboarding_4.png"
+        }
+    ]
+}

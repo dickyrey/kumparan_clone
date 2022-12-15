@@ -1,6 +1,9 @@
 {
+  "already_have_an_account": "Already have an Account",
   "choose_at_least_3_topics": "Choose at least 3 topics",
+  "create_an_account": "Create an Account",
   "let_us_know_what_your_preference": "Let us know what your preference",
   "next": "Next",
+  "skip": "Skip",
   "your_favorite_topic": "Your Favorite Topic"
 }

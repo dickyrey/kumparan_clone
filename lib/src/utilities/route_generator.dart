@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
 
 class RouteGenerator {
@@ -12,10 +13,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const SplashPage(),
         );
-      // case ON_BOARDING:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const OnBoardingPage(),
-      //   );
+      case ON_BOARDING:
+        return MaterialPageRoute(
+          builder: (_) => const OnBoardingPage(),
+        );
       case INTEREST:
         return MaterialPageRoute(
           builder: (_) => const InterestPage(),
