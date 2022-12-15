@@ -3,8 +3,6 @@ import 'dart:convert';
 import 'package:flutter/services.dart' as root;
 import 'package:kumparan_clone/src/data/models/boarding_model.dart';
 import 'package:kumparan_clone/src/data/models/boarding_response.dart';
-import 'package:kumparan_clone/src/data/models/category_model.dart';
-import 'package:kumparan_clone/src/data/models/category_response.dart';
 
 // ignore: one_member_abstracts
 abstract class BoardingRemoteDataSource {
