@@ -39,58 +39,73 @@ class _InterestPageState extends State<InterestPage> {
       ),
       body: Column(
         children: [
-          const SizedBox(height: SPACE25),
-          Text(
-            lang.your_favorite_topic,
-            style: theme.textTheme.headline2,
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            lang.let_us_know_what_your_preference,
-            style: theme.textTheme.bodyText2,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: SPACE25),
-          Divider(
-            color: theme.dividerColor,
-            thickness: 1,
-          ),
           BlocBuilder<InterestFormBloc, InterestFormState>(
             builder: (context, state) {
               return Expanded(
-                child: ListView.separated(
-                  itemCount: state.categories.length,
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
-                  separatorBuilder: (context, index) {
-                    return Divider(
-                      color: theme.dividerColor,
-                      thickness: 1,
-                    );
-                  },
-                  itemBuilder: (context, index) {
-                    final category = state.selectedCategory[index];
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            category.category.name,
-                            style: theme.textTheme.headline3,
-                          ),
-                          Switch(
-                            value: category.value,
-                            activeColor: theme.primaryColor,
-                            onChanged: (v) {
-                              setState(() {
-                                category.value = v;
-                              });
-                            },
-                          ),
-                        ],
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      const SizedBox(height: SPACE25),
+                      Text(
+                        lang.your_favorite_topic,
+                        style: theme.textTheme.headline2,
+                        textAlign: TextAlign.center,
                       ),
-                    );
-                  },
+                      Text(
+                        lang.let_us_know_what_your_preference,
+                        style: theme.textTheme.bodyText2,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: SPACE25),
+                      Divider(
+                        color: theme.dividerColor,
+                        thickness: 1,
+                      ),
+                      ListView.separated(
+                        itemCount: state.categories.length,
+                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        shrinkWrap: true,
+                        physics: const ScrollPhysics(),
+                        separatorBuilder: (context, index) {
+                          return Divider(
+                            color: theme.dividerColor,
+                            thickness: 1,
+                          );
+                        },
+                        itemBuilder: (context, index) {
+                          final category = state.selectedCategory[index];
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 8.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  category.category.name,
+                                  style: theme.textTheme.headline3,
+                                ),
+                                Switch(
+                                  value: category.value,
+                                  activeColor: theme.primaryColor,
+                                  onChanged: (v) {
+                                    setState(() {
+                                      category.value = v;
+                                    });
+                                  },
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      ),
+                      const SizedBox(height: SPACE25),
+                      Text(
+                        lang.you_can_reset_it_on_the_notification_settings_page,
+                        style: theme.textTheme.subtitle1,
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: SPACE25),
+                    ],
+                  ),
                 ),
               );
             },

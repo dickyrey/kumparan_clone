@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/domain/entities/boarding.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
@@ -139,9 +140,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 Expanded(flex: 3, child: Container()),
                 _selectedIndex == 3
                     ? ElevatedButtonWidget(
-                        onTap: () {
-                          // TODO(dickyrey) : Navigate to Create Account Page
-                        },
+                        onTap: () => Navigator.pushNamed(context, REGISTER),
                         label: lang.create_an_account,
                         color: theme.primaryColor,
                       )
@@ -152,7 +151,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                         onTap: () {
                           // TODO(dickyrey) : Navigate to Register Account
                         },
-                        label: lang.already_have_an_account,
+                        label: lang.have_an_account,
                       )
                     : OutlinedButtonWidget(
                         onTap: () {
@@ -181,9 +180,9 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
   AppBar _appBar(ThemeData theme, AppLocalizations lang) {
     return AppBar(
       backgroundColor: theme.backgroundColor,
-      elevation: 2,
+      elevation: .5,
       leading: IconButton(
-        onPressed: () {},
+        onPressed: () => Navigator.pop(context),
         icon: Icon(
           FeatherIcons.arrowLeft,
           color: theme.iconTheme.color,
@@ -191,7 +190,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
       ),
       actions: [
         TextButton(
-          onPressed: () {},
+          onPressed: () => Navigator.pushNamed(context, REGISTER),
           child: Text(
             lang.skip,
             style: theme.textTheme.subtitle1,

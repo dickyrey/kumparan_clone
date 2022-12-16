@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
 
 class RouteGenerator {
@@ -20,6 +21,10 @@ class RouteGenerator {
       case INTEREST:
         return MaterialPageRoute(
           builder: (_) => const InterestPage(),
+        );
+      case REGISTER:
+        return MaterialPageRoute(
+          builder: (_) => const RegisterPage(),
         );
       // case SIGN_IN:
       //   return MaterialPageRoute(

@@ -7,6 +7,11 @@ const double SPACE50 = 50.0;
 const double RADIUS = 8.0;
 const double MARGIN = 18.0;
 
+class CustomIcons {
+  static const String facebook = 'assets/facebook.svg';
+  static const String google = 'assets/google.svg';
+}
+
 class ExceptionMessage {
   static const String internetNotConnected = 'internet-not-connected';
 }

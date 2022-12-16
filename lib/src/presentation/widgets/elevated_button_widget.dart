@@ -15,6 +15,7 @@ class ElevatedButtonWidget extends StatelessWidget {
     this.height = 47,
     this.labelSize,
     this.margin,
+    this.elevation,
   });
 
   final Widget? child;
@@ -26,6 +27,7 @@ class ElevatedButtonWidget extends StatelessWidget {
   final double width;
   final double height;
   final double? labelSize;
+  final double? elevation;
   final EdgeInsetsGeometry? margin;
 
   @override
@@ -42,6 +44,7 @@ class ElevatedButtonWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(RADIUS),
           ),
+          elevation: elevation,
         ),
         child: (isLoading == true)
             ? Row(

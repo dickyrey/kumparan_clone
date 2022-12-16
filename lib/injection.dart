@@ -10,6 +10,7 @@ import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -61,5 +62,10 @@ void init() {
   final interestFormBloc = InterestFormBloc(locator());
   locator.registerLazySingleton(
     () => interestFormBloc,
+  );
+
+  final registerFormBloc = RegisterFormBloc();
+  locator.registerLazySingleton(
+    () => registerFormBloc,
   );
 }
