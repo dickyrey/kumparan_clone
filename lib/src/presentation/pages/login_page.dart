@@ -27,165 +27,175 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: _appBar(context),
-      body: BlocListener<LoginFormBloc, LoginFormState>(
+      body: BlocConsumer<LoginFormBloc, LoginFormState>(
         listener: (context, state) {
-          
+          // TODO: implement listener
         },
-        child: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            autovalidateMode: AutovalidateMode.onUserInteraction,
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: MARGIN,
-                    vertical: SPACE15,
-                  ),
-                  child: Text(  
-                    lang.login_first_so_you_can_comment_create_content_subscribe_to_kumparanplus_and_set_notifications_for_your_favorite_content_come_on,
-                    style: theme.textTheme.bodyText2,
-                    textAlign: TextAlign.center,
-                  ),
-                ),
-                const SizedBox(height: SPACE25),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
-                  child: TextFormFieldWidget(
-                    hintText: lang.email,
-                    textFieldType: TextFieldType.email,
-                    onChanged: (v) {
-                      context
-                          .read<LoginFormBloc>()
-                          .add(LoginFormEvent.emailOnChanged(v));
-                    },
-                  ),
-                ),
-                const SizedBox(height: SPACE12),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
-                  child: TextFormFieldWidget(
-                    hintText: lang.password,
-                    textFieldType: TextFieldType.password,
-                    onChanged: (v) {
-                      context
-                          .read<LoginFormBloc>()
-                          .add(LoginFormEvent.passwordOnChanged(v));
-                    },
-                  ),
-                ),
-                const SizedBox(height: SPACE25),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
-                  child: BlocBuilder<LoginFormBloc, LoginFormState>(
-                    builder: (context, state) {
-                      return ElevatedButtonWidget(
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            context
-                                .read<LoginFormBloc>()
-                                .add(const LoginFormEvent.signInPressed());
-                          }
-                        },
-                        label: lang.login,
-                        isLoading: state.isSubmitting == true ? true : false,
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: SPACE25),
-                Text(
-                  lang.or_use,
-                  style: theme.textTheme.subtitle1,
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: SPACE25),
-                registerOptionButton(
-                  context,
-                  label: lang.google,
-                  customIcon: CustomIcons.google,
-                  onTap: () {
-                    // TODO(dickyrey): Google Sign In
-                  },
-                ),
-                const SizedBox(height: SPACE15),
-                registerOptionButton(
-                  context,
-                  label: lang.facebook,
-                  customIcon: CustomIcons.facebook,
-                  onTap: () {
-                    // TODO(dickyrey): Facebook Sign In (optional)
-                  },
-                ),
-                const SizedBox(height: SPACE15),
-                registerOptionButton(
-                  context,
-                  label: lang.phone_number,
-                  icon: FeatherIcons.smartphone,
-                  onTap: () {
-                    // TODO(dickyrey): Sign in with Phone Number
-                  },
-                ),
-                const SizedBox(height: SPACE15),
-                TextButton(
-                  onPressed: () {
-                    // TODO(dickyrey): Navigate to Sign In Page
-                  },
-                  style: TextButton.styleFrom(
-                    foregroundColor: theme.disabledColor,
-                  ),
-                  child: RichText(
-                    text: TextSpan(
-                      children: [
-                        TextSpan(
-                          text: '${lang.dont_have_an_account_yet} ',
-                          style: theme.textTheme.subtitle1,
-                        ),
-                        TextSpan(
-                          text: lang.register_now,
-                          style: theme.textTheme.subtitle1?.copyWith(
-                            color: theme.primaryColor,
-                          ),
-                        ),
-                      ],
+        builder: (context, state) {
+          return SingleChildScrollView(
+            child: Form(
+              key: _formKey,
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: MARGIN,
+                      vertical: SPACE15,
+                    ),
+                    child: Text(
+                      lang.login_first_so_you_can_comment_create_content_subscribe_to_kumparanplus_and_set_notifications_for_your_favorite_content_come_on,
+                      style: theme.textTheme.bodyText2,
+                      textAlign: TextAlign.center,
                     ),
                   ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(MARGIN),
-                  child: RichText(
-                    textAlign: TextAlign.center,
-                    text: TextSpan(
-                      style: theme.textTheme.bodyText2?.copyWith(
-                        fontSize: 12,
+                  const SizedBox(height: SPACE25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    child: TextFormFieldWidget(
+                      hintText: lang.email,
+                      textFieldType: TextFieldType.email,
+                      onChanged: (v) {
+                        context
+                            .read<LoginFormBloc>()
+                            .add(LoginFormEvent.emailOnChanged(v));
+                      },
+                    ),
+                  ),
+                  const SizedBox(height: SPACE12),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    child: TextFormFieldWidget(
+                      hintText: lang.password,
+                      obscureText: state.obscureText,
+                      textFieldType: TextFieldType.password,
+                      suffixIcon: IconButton(
+                        onPressed: () => context
+                            .read<LoginFormBloc>()
+                            .add(const LoginFormEvent.obscureTextPressed()),
+                        icon: Icon(
+                          state.obscureText == true
+                              ? FeatherIcons.eyeOff
+                              : FeatherIcons.eye,
+                        ),
                       ),
-                      children: [
-                        TextSpan(
-                          text:
-                              '${lang.by_registering_logging_into_kumparan_you_agree_to_that} ',
-                        ),
-                        TextSpan(
-                          text: '${lang.terms_and_privacy_policy} ',
-                          style: theme.textTheme.subtitle1?.copyWith(
-                            color: theme.primaryColor,
-                            fontSize: 12,
-                          ),
-                          recognizer: TapGestureRecognizer()..onTap = () {
-                            //TODO(dickyrey): Navigate to Privacy Policy Page
-                          },
-                        ),
-                        TextSpan(
-                          text: lang.applies_to_you,
-                        ),
-                      ],
+                      onChanged: (v) {
+                        context
+                            .read<LoginFormBloc>()
+                            .add(LoginFormEvent.passwordOnChanged(v));
+                      },
                     ),
                   ),
-                ),
-                const SizedBox(height: SPACE25),
-              ],
+                  const SizedBox(height: SPACE25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    child: ElevatedButtonWidget(
+                      onTap: () {
+                        if (_formKey.currentState!.validate()) {
+                          context
+                              .read<LoginFormBloc>()
+                              .add(const LoginFormEvent.signInPressed());
+                        }
+                      },
+                      label: lang.login,
+                      isLoading: state.isSubmitting == true ? true : false,
+                    ),
+                  ),
+                  const SizedBox(height: SPACE25),
+                  Text(
+                    lang.or_use,
+                    style: theme.textTheme.subtitle1,
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: SPACE25),
+                  registerOptionButton(
+                    context,
+                    label: lang.google,
+                    customIcon: CustomIcons.google,
+                    onTap: () {
+                      // TODO(dickyrey): Google Sign In
+                    },
+                  ),
+                  const SizedBox(height: SPACE15),
+                  registerOptionButton(
+                    context,
+                    label: lang.facebook,
+                    customIcon: CustomIcons.facebook,
+                    onTap: () {
+                      // TODO(dickyrey): Facebook Sign In (optional)
+                    },
+                  ),
+                  const SizedBox(height: SPACE15),
+                  registerOptionButton(
+                    context,
+                    label: lang.phone_number,
+                    icon: FeatherIcons.smartphone,
+                    onTap: () {
+                      // TODO(dickyrey): Sign in with Phone Number
+                    },
+                  ),
+                  const SizedBox(height: SPACE15),
+                  TextButton(
+                    onPressed: () {
+                      // TODO(dickyrey): Navigate to Sign In Page
+                    },
+                    style: TextButton.styleFrom(
+                      foregroundColor: theme.disabledColor,
+                    ),
+                    child: RichText(
+                      text: TextSpan(
+                        children: [
+                          TextSpan(
+                            text: '${lang.dont_have_an_account_yet} ',
+                            style: theme.textTheme.subtitle1,
+                          ),
+                          TextSpan(
+                            text: lang.register_now,
+                            style: theme.textTheme.subtitle1?.copyWith(
+                              color: theme.primaryColor,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(MARGIN),
+                    child: RichText(
+                      textAlign: TextAlign.center,
+                      text: TextSpan(
+                        style: theme.textTheme.bodyText2?.copyWith(
+                          fontSize: 12,
+                        ),
+                        children: [
+                          TextSpan(
+                            text:
+                                '${lang.by_registering_logging_into_kumparan_you_agree_to_that} ',
+                          ),
+                          TextSpan(
+                            text: '${lang.terms_and_privacy_policy} ',
+                            style: theme.textTheme.subtitle1?.copyWith(
+                              color: theme.primaryColor,
+                              fontSize: 12,
+                            ),
+                            recognizer: TapGestureRecognizer()
+                              ..onTap = () {
+                                //TODO(dickyrey): Navigate to Privacy Policy Page
+                              },
+                          ),
+                          TextSpan(
+                            text: lang.applies_to_you,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: SPACE25),
+                ],
+              ),
             ),
-          ),
-        ),
+          );
+        },
       ),
     );
   }

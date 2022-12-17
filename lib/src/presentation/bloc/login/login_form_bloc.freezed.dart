@@ -19,6 +19,7 @@ mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() obscureTextPressed,
     required TResult Function() signInPressed,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
@@ -27,6 +28,7 @@ mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? obscureTextPressed,
     TResult? Function()? signInPressed,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
@@ -35,6 +37,7 @@ mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? obscureTextPressed,
     TResult Function()? signInPressed,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
@@ -44,6 +47,7 @@ mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
     required TResult Function(_SignInPressed value) signInPressed,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
@@ -52,6 +56,7 @@ mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult? Function(_SignInPressed value)? signInPressed,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -60,6 +65,7 @@ mixin _$LoginFormEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult Function(_SignInPressed value)? signInPressed,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -124,6 +130,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() obscureTextPressed,
     required TResult Function() signInPressed,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
@@ -135,6 +142,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? obscureTextPressed,
     TResult? Function()? signInPressed,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
@@ -146,6 +154,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? obscureTextPressed,
     TResult Function()? signInPressed,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
@@ -161,6 +170,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
     required TResult Function(_SignInPressed value) signInPressed,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
@@ -172,6 +182,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult? Function(_SignInPressed value)? signInPressed,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -183,6 +194,7 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult Function(_SignInPressed value)? signInPressed,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -197,6 +209,126 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements LoginFormEvent {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_ObscureTextPressedCopyWith<$Res> {
+  factory _$$_ObscureTextPressedCopyWith(_$_ObscureTextPressed value,
+          $Res Function(_$_ObscureTextPressed) then) =
+      __$$_ObscureTextPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ObscureTextPressedCopyWithImpl<$Res>
+    extends _$LoginFormEventCopyWithImpl<$Res, _$_ObscureTextPressed>
+    implements _$$_ObscureTextPressedCopyWith<$Res> {
+  __$$_ObscureTextPressedCopyWithImpl(
+      _$_ObscureTextPressed _value, $Res Function(_$_ObscureTextPressed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ObscureTextPressed implements _ObscureTextPressed {
+  const _$_ObscureTextPressed();
+
+  @override
+  String toString() {
+    return 'LoginFormEvent.obscureTextPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObscureTextPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function() obscureTextPressed,
+    required TResult Function() signInPressed,
+    required TResult Function(String email) emailOnChanged,
+    required TResult Function(String password) passwordOnChanged,
+  }) {
+    return obscureTextPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function()? obscureTextPressed,
+    TResult? Function()? signInPressed,
+    TResult? Function(String email)? emailOnChanged,
+    TResult? Function(String password)? passwordOnChanged,
+  }) {
+    return obscureTextPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function()? obscureTextPressed,
+    TResult Function()? signInPressed,
+    TResult Function(String email)? emailOnChanged,
+    TResult Function(String password)? passwordOnChanged,
+    required TResult orElse(),
+  }) {
+    if (obscureTextPressed != null) {
+      return obscureTextPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
+    required TResult Function(_SignInPressed value) signInPressed,
+    required TResult Function(_EmailOnChanged value) emailOnChanged,
+    required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+  }) {
+    return obscureTextPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
+    TResult? Function(_SignInPressed value)? signInPressed,
+    TResult? Function(_EmailOnChanged value)? emailOnChanged,
+    TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+  }) {
+    return obscureTextPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
+    TResult Function(_SignInPressed value)? signInPressed,
+    TResult Function(_EmailOnChanged value)? emailOnChanged,
+    TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    required TResult orElse(),
+  }) {
+    if (obscureTextPressed != null) {
+      return obscureTextPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ObscureTextPressed implements LoginFormEvent {
+  const factory _ObscureTextPressed() = _$_ObscureTextPressed;
 }
 
 /// @nodoc
@@ -238,6 +370,7 @@ class _$_SignInPressed implements _SignInPressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() obscureTextPressed,
     required TResult Function() signInPressed,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
@@ -249,6 +382,7 @@ class _$_SignInPressed implements _SignInPressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? obscureTextPressed,
     TResult? Function()? signInPressed,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
@@ -260,6 +394,7 @@ class _$_SignInPressed implements _SignInPressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? obscureTextPressed,
     TResult Function()? signInPressed,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
@@ -275,6 +410,7 @@ class _$_SignInPressed implements _SignInPressed {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
     required TResult Function(_SignInPressed value) signInPressed,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
@@ -286,6 +422,7 @@ class _$_SignInPressed implements _SignInPressed {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult? Function(_SignInPressed value)? signInPressed,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -297,6 +434,7 @@ class _$_SignInPressed implements _SignInPressed {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult Function(_SignInPressed value)? signInPressed,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -378,6 +516,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() obscureTextPressed,
     required TResult Function() signInPressed,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
@@ -389,6 +528,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? obscureTextPressed,
     TResult? Function()? signInPressed,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
@@ -400,6 +540,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? obscureTextPressed,
     TResult Function()? signInPressed,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
@@ -415,6 +556,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
     required TResult Function(_SignInPressed value) signInPressed,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
@@ -426,6 +568,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult? Function(_SignInPressed value)? signInPressed,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -437,6 +580,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult Function(_SignInPressed value)? signInPressed,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -525,6 +669,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function() obscureTextPressed,
     required TResult Function() signInPressed,
     required TResult Function(String email) emailOnChanged,
     required TResult Function(String password) passwordOnChanged,
@@ -536,6 +681,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function()? obscureTextPressed,
     TResult? Function()? signInPressed,
     TResult? Function(String email)? emailOnChanged,
     TResult? Function(String password)? passwordOnChanged,
@@ -547,6 +693,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function()? obscureTextPressed,
     TResult Function()? signInPressed,
     TResult Function(String email)? emailOnChanged,
     TResult Function(String password)? passwordOnChanged,
@@ -562,6 +709,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
     required TResult Function(_SignInPressed value) signInPressed,
     required TResult Function(_EmailOnChanged value) emailOnChanged,
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
@@ -573,6 +721,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult? Function(_SignInPressed value)? signInPressed,
     TResult? Function(_EmailOnChanged value)? emailOnChanged,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -584,6 +733,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     TResult Function(_SignInPressed value)? signInPressed,
     TResult Function(_EmailOnChanged value)? emailOnChanged,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
@@ -613,6 +763,7 @@ mixin _$LoginFormState {
   String get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get isShowErrorMessages => throw _privateConstructorUsedError;
+  bool get obscureText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $LoginFormStateCopyWith<LoginFormState> get copyWith =>
@@ -630,7 +781,8 @@ abstract class $LoginFormStateCopyWith<$Res> {
       String email,
       String password,
       bool isSubmitting,
-      bool isShowErrorMessages});
+      bool isShowErrorMessages,
+      bool obscureText});
 }
 
 /// @nodoc
@@ -651,6 +803,7 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
     Object? password = null,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
+    Object? obscureText = null,
   }) {
     return _then(_value.copyWith(
       result: null == result
@@ -673,6 +826,10 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
           ? _value.isShowErrorMessages
           : isShowErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
+      obscureText: null == obscureText
+          ? _value.obscureText
+          : obscureText // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -690,7 +847,8 @@ abstract class _$$_LoginFormStateCopyWith<$Res>
       String email,
       String password,
       bool isSubmitting,
-      bool isShowErrorMessages});
+      bool isShowErrorMessages,
+      bool obscureText});
 }
 
 /// @nodoc
@@ -709,6 +867,7 @@ class __$$_LoginFormStateCopyWithImpl<$Res>
     Object? password = null,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
+    Object? obscureText = null,
   }) {
     return _then(_$_LoginFormState(
       result: null == result
@@ -731,6 +890,10 @@ class __$$_LoginFormStateCopyWithImpl<$Res>
           ? _value.isShowErrorMessages
           : isShowErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
+      obscureText: null == obscureText
+          ? _value.obscureText
+          : obscureText // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -743,7 +906,8 @@ class _$_LoginFormState implements _LoginFormState {
       required this.email,
       required this.password,
       required this.isSubmitting,
-      required this.isShowErrorMessages});
+      required this.isShowErrorMessages,
+      required this.obscureText});
 
   @override
   final RequestState result;
@@ -755,10 +919,12 @@ class _$_LoginFormState implements _LoginFormState {
   final bool isSubmitting;
   @override
   final bool isShowErrorMessages;
+  @override
+  final bool obscureText;
 
   @override
   String toString() {
-    return 'LoginFormState(result: $result, email: $email, password: $password, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
+    return 'LoginFormState(result: $result, email: $email, password: $password, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages, obscureText: $obscureText)';
   }
 
   @override
@@ -773,12 +939,14 @@ class _$_LoginFormState implements _LoginFormState {
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isShowErrorMessages, isShowErrorMessages) ||
-                other.isShowErrorMessages == isShowErrorMessages));
+                other.isShowErrorMessages == isShowErrorMessages) &&
+            (identical(other.obscureText, obscureText) ||
+                other.obscureText == obscureText));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, result, email, password, isSubmitting, isShowErrorMessages);
+  int get hashCode => Object.hash(runtimeType, result, email, password,
+      isSubmitting, isShowErrorMessages, obscureText);
 
   @JsonKey(ignore: true)
   @override
@@ -793,7 +961,8 @@ abstract class _LoginFormState implements LoginFormState {
       required final String email,
       required final String password,
       required final bool isSubmitting,
-      required final bool isShowErrorMessages}) = _$_LoginFormState;
+      required final bool isShowErrorMessages,
+      required final bool obscureText}) = _$_LoginFormState;
 
   @override
   RequestState get result;
@@ -805,6 +974,8 @@ abstract class _LoginFormState implements LoginFormState {
   bool get isSubmitting;
   @override
   bool get isShowErrorMessages;
+  @override
+  bool get obscureText;
   @override
   @JsonKey(ignore: true)
   _$$_LoginFormStateCopyWith<_$_LoginFormState> get copyWith =>

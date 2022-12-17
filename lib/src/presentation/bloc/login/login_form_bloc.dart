@@ -9,7 +9,7 @@ part 'login_form_bloc.freezed.dart';
 class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
   LoginFormBloc() : super(LoginFormState.initial()) {
     on<LoginFormEvent>((event, emit) async {
-      await event.map(
+      event.map(
         initial: (_) {
           emit(
             state.copyWith(
@@ -18,6 +18,13 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
               isShowErrorMessages: false,
               isSubmitting: false,
               result: RequestState.empty,
+            ),
+          );
+        },
+        obscureTextPressed: (_) {
+          emit(
+            state.copyWith(
+              obscureText: (state.obscureText == true) ? false : true,
             ),
           );
         },
@@ -38,7 +45,7 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
           );
         },
         signInPressed: (_) {
-          // Future.delayed
+          Future.delayed(const Duration(seconds: 0), () {});
         },
       );
     });

@@ -8,6 +8,7 @@ class LoginFormState with _$LoginFormState {
     required String password,
     required bool isSubmitting,
     required bool isShowErrorMessages,
+    required bool obscureText,
   }) = _LoginFormState;
 
   factory LoginFormState.initial() => const LoginFormState(
@@ -16,5 +17,6 @@ class LoginFormState with _$LoginFormState {
         password: '',
         isSubmitting: false,
         isShowErrorMessages: false,
+        obscureText: false,
       );
 }
