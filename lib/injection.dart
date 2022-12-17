@@ -10,6 +10,7 @@ import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
@@ -61,6 +62,16 @@ void init() {
     () => categoryWatcherBloc,
   );
 
+  final emailVerificationBloc = EmailVerificationBloc();
+  locator.registerLazySingleton(
+    () => emailVerificationBloc,
+  );
+
+  final forgotPasswordBloc = ForgotPasswordFormBloc();
+  locator.registerLazySingleton(
+    () => forgotPasswordBloc,
+  );
+
   final interestFormBloc = InterestFormBloc(locator());
   locator.registerLazySingleton(
     () => interestFormBloc,
@@ -76,8 +87,4 @@ void init() {
     () => registerFormBloc,
   );
 
-  final emailVerificationBloc = EmailVerificationBloc();
-  locator.registerLazySingleton(
-    () => emailVerificationBloc,
-  );
 }

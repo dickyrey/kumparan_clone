@@ -11,18 +11,12 @@ import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart'
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
-class LoginPage extends StatefulWidget {
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
-  final _formKey = GlobalKey<FormState>();
-
-  @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
@@ -42,7 +36,7 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, state) {
           return SingleChildScrollView(
             child: Form(
-              key: _formKey,
+              key: formKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
@@ -94,12 +88,30 @@ class _LoginPageState extends State<LoginPage> {
                       },
                     ),
                   ),
-                  const SizedBox(height: SPACE25),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    child: Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () => Navigator.pushNamed(
+                          context,
+                          FORGOT_PASSWORD,
+                        ),
+                        child: Text(
+                          lang.forgot_password,
+                          style: theme.textTheme.headline4?.copyWith(
+                            color: theme.primaryColor,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: SPACE15),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: MARGIN),
                     child: ElevatedButtonWidget(
                       onTap: () {
-                        if (_formKey.currentState!.validate()) {
+                        if (formKey.currentState!.validate()) {
                           context
                               .read<LoginFormBloc>()
                               .add(const LoginFormEvent.signInPressed());
@@ -144,9 +156,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   const SizedBox(height: SPACE15),
                   TextButton(
-                    onPressed: () {
-                      // TODO(dickyrey): Navigate to Sign In Page
-                    },
+                    onPressed: () => Navigator.pushNamed(context, REGISTER),
                     style: TextButton.styleFrom(
                       foregroundColor: theme.disabledColor,
                     ),

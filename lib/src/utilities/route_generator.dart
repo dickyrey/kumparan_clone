@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/pages/email_verification_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/forgot_password_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
@@ -32,6 +33,10 @@ class RouteGenerator {
       case EMAIL_VERIFICATION:
         return MaterialPageRoute(
           builder: (_) => const EmailVerificationPage(),
+        );
+      case FORGOT_PASSWORD:
+        return MaterialPageRoute(
+          builder: (_) => const ForgotPasswordPage(),
         );
       case LOGIN:
         return MaterialPageRoute(

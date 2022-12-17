@@ -11,18 +11,12 @@ import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
-class RegisterPage extends StatefulWidget {
+class RegisterPage extends StatelessWidget {
   const RegisterPage({super.key});
 
   @override
-  State<RegisterPage> createState() => _RegisterPageState();
-}
-
-class _RegisterPageState extends State<RegisterPage> {
-  final _formKey = GlobalKey<FormState>();
-
-  @override
   Widget build(BuildContext context) {
+    final formKey = GlobalKey<FormState>();
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
@@ -51,7 +45,7 @@ class _RegisterPageState extends State<RegisterPage> {
         },
         child: SingleChildScrollView(
           child: Form(
-            key: _formKey,
+            key: formKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
               children: [
@@ -86,7 +80,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     builder: (context, state) {
                       return ElevatedButtonWidget(
                         onTap: () {
-                          if (_formKey.currentState!.validate()) {
+                          if (formKey.currentState!.validate()) {
                             context
                                 .read<RegisterFormBloc>()
                                 .add(const RegisterFormEvent.signInPressed());
@@ -173,9 +167,10 @@ class _RegisterPageState extends State<RegisterPage> {
                             color: theme.primaryColor,
                             fontSize: 12,
                           ),
-                          recognizer: TapGestureRecognizer()..onTap = () {
-                            //TODO(dickyrey): Navigate to Privacy Policy Page
-                          },
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () {
+                              //TODO(dickyrey): Navigate to Privacy Policy Page
+                            },
                         ),
                         TextSpan(
                           text: lang.applies_to_you,
