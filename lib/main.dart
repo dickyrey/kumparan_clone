@@ -9,6 +9,7 @@ import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_b
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/utilities/route_generator.dart';
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
+        BlocProvider(create: (context) => di.locator<LoginFormBloc>()),
         BlocProvider(create: (context) => di.locator<RegisterFormBloc>()),
         BlocProvider(create: (context) => di.locator<EmailVerificationBloc>()),
       ],

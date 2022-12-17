@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/pages/email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
@@ -31,10 +32,10 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const EmailVerificationPage(),
         );
-      // case SIGN_UP:
-      //   return MaterialPageRoute(
-      //     builder: (_) => const SignUpPage(),
-      //   );
+      case LOGIN:
+        return MaterialPageRoute(
+          builder: (_) => const LoginPage(),
+        );
       default:
         return _errorRoute();
     }
