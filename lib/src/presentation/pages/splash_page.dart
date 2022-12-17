@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
       const Duration(seconds: 2),
       () => Navigator.pushNamedAndRemoveUntil(
         context,
-        INTEREST,
+        EMAIL_VERIFICATION,
         (Route<dynamic> route) => false,
       ),
     );
