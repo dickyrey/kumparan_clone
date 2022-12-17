@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
@@ -249,6 +250,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 height: 35,
                 onTap: () {
                   Navigator.pop(context);
+                  Navigator.pushNamed(context, EMAIL_VERIFICATION);
                   context
                       .read<RegisterFormBloc>()
                       .add(const RegisterFormEvent.initial());

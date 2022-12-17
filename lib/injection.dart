@@ -9,9 +9,9 @@ import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/verification_email/verification_email_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -70,8 +70,8 @@ void init() {
     () => registerFormBloc,
   );
 
-  final verificationEmailBloc = VerificationEmailBloc();
+  final emailVerificationBloc = EmailVerificationBloc();
   locator.registerLazySingleton(
-    () => verificationEmailBloc,
+    () => emailVerificationBloc,
   );
 }

@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
-import 'package:kumparan_clone/src/presentation/bloc/verification_email/verification_email_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
@@ -35,13 +35,13 @@ class EmailVerificationPage extends StatelessWidget {
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: SPACE25),
-            BlocBuilder<VerificationEmailBloc, VerificationEmailState>(
+            BlocBuilder<EmailVerificationBloc, EmailVerificationState>(
               builder: (context, state) {
                 return ElevatedButtonWidget(
                   onTap: () {
                     if (state.isTimeoutDone == true) {
-                      context.read<VerificationEmailBloc>().add(
-                            VerificationEmailEvent.startTimeOut(
+                      context.read<EmailVerificationBloc>().add(
+                            EmailVerificationEvent.startTimeOut(
                               controllerCountdown,
                             ),
                           );
@@ -72,8 +72,8 @@ class EmailVerificationPage extends StatelessWidget {
                           );
                         },
                         onFinished: () => context
-                            .read<VerificationEmailBloc>()
-                            .add(const VerificationEmailEvent.onFinished()),
+                            .read<EmailVerificationBloc>()
+                            .add(const EmailVerificationEvent.onFinished()),
                       )
                     ],
                   ),

@@ -36,7 +36,7 @@ class RegisterFormBloc extends Bloc<RegisterFormEvent, RegisterFormState> {
             ),
           );
           await Future.delayed(
-            const Duration(seconds: 0),
+            const Duration(seconds: 3),
             () {
               emit(
                 state.copyWith(
