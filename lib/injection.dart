@@ -11,6 +11,7 @@ import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_b
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/verification_email/verification_email_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -67,5 +68,10 @@ void init() {
   final registerFormBloc = RegisterFormBloc();
   locator.registerLazySingleton(
     () => registerFormBloc,
+  );
+
+  final verificationEmailBloc = VerificationEmailBloc();
+  locator.registerLazySingleton(
+    () => verificationEmailBloc,
   );
 }

@@ -1,14 +1,21 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/presentation/bloc/verification_email/verification_email_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
+import 'package:timer_count_down/timer_controller.dart';
+import 'package:timer_count_down/timer_count_down.dart';
 
 class EmailVerificationPage extends StatelessWidget {
   const EmailVerificationPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final controllerCountdown = CountdownController(autoStart: true);
+    const countdownTime = 59;
+
     var mockEmail = 'handsome.troyard@byneet.co.id';
     var mockDate = '13 Januari 2023';
 
@@ -28,12 +35,50 @@ class EmailVerificationPage extends StatelessWidget {
               style: theme.textTheme.subtitle1,
             ),
             const SizedBox(height: SPACE25),
-            ElevatedButtonWidget(
-              onTap: () {
-                //TODO(dickyrey): Resend Email Verification Link
+            BlocBuilder<VerificationEmailBloc, VerificationEmailState>(
+              builder: (context, state) {
+                return ElevatedButtonWidget(
+                  onTap: () {
+                    if (state.isTimeoutDone == true) {
+                      context.read<VerificationEmailBloc>().add(
+                            VerificationEmailEvent.startTimeOut(
+                              controllerCountdown,
+                            ),
+                          );
+                    } else {}
+                  },
+                  color: (state.isTimeoutDone == false)
+                      ? theme.primaryColor.withOpacity(.5)
+                      : theme.primaryColor,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        (state.isTimeoutDone)
+                            ? lang.resend_the_verification_link
+                            : '${lang.resend_in} ',
+                        style: theme.textTheme.button,
+                      ),
+                      Countdown(
+                        seconds: countdownTime,
+                        controller: controllerCountdown,
+                        build: (_, timer) {
+                          return Text(
+                            (state.isTimeoutDone == true)
+                                ? ''
+                                : '0:${timer.toInt().toString()}',
+                            style: theme.textTheme.button,
+                          );
+                        },
+                        onFinished: () => context
+                            .read<VerificationEmailBloc>()
+                            .add(const VerificationEmailEvent.onFinished()),
+                      )
+                    ],
+                  ),
+                );
               },
-              // TODO(dickyrey): create a expired timer
-              label: '${lang.resend_in} 04:00',
             ),
             const SizedBox(height: SPACE50),
             Text(
