@@ -5,6 +5,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
@@ -29,7 +30,14 @@ class _LoginPageState extends State<LoginPage> {
       appBar: _appBar(context),
       body: BlocConsumer<LoginFormBloc, LoginFormState>(
         listener: (context, state) {
-          // TODO: implement listener
+          if (state.result == RequestState.loaded) {
+            context.read<LoginFormBloc>().add(const LoginFormEvent.initial());
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              HOME,
+              (route) => false,
+            );
+          }
         },
         builder: (context, state) {
           return SingleChildScrollView(

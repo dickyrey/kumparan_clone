@@ -6,6 +6,7 @@ import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
+import 'package:kumparan_clone/src/presentation/widgets/bottom_nav_bar_widget.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -35,6 +36,10 @@ class RouteGenerator {
       case LOGIN:
         return MaterialPageRoute(
           builder: (_) => const LoginPage(),
+        );
+      case HOME:
+        return MaterialPageRoute(
+          builder: (_) => const ButtonNavBarWidget(),
         );
       default:
         return _errorRoute();
