@@ -94,7 +94,7 @@ class ArticleCardWidget extends StatelessWidget {
                 const Expanded(child: SizedBox()),
                 InkWell(
                   onTap: () {
-                    //TODO(dickyrey): Open bottom sheet to share article to sosmed
+                    // TODO(dickyrey): Open bottom sheet to share article to sosmed
                   },
                   child: Icon(
                     FeatherIcons.moreVertical,
@@ -179,7 +179,7 @@ class ArticleCardWidget extends StatelessWidget {
                       const Expanded(child: SizedBox()),
                       InkWell(
                         onTap: () {
-                          //TODO(dickyrey): Open bottom sheet to share article to sosmed
+                          // TODO(dickyrey): Open bottom sheet to share article to sosmed
                         },
                         child: Icon(
                           FeatherIcons.moreVertical,

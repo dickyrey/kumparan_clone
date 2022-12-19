@@ -169,7 +169,7 @@ class RegisterPage extends StatelessWidget {
                           ),
                           recognizer: TapGestureRecognizer()
                             ..onTap = () {
-                              //TODO(dickyrey): Navigate to Privacy Policy Page
+                              // TODO(dickyrey): Navigate to Privacy Policy Page
                             },
                         ),
                         TextSpan(
