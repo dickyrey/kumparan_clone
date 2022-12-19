@@ -17,9 +17,11 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => context
-        .read<NewArticleWatcherBloc>()
-        .add(const NewArticleWatcherEvent.fetchNewArticle()));
+    Future.microtask(
+      () => context
+          .read<NewArticleWatcherBloc>()
+          .add(const NewArticleWatcherEvent.fetchNewArticle()),
+    );
   }
 
   @override
@@ -41,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                 return Container();
               },
               loaded: (state) {
-                return Container(
+                return SizedBox(
                   width: double.infinity,
                   height: 275,
                   child: ListView.builder(
