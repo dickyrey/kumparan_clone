@@ -5,6 +5,7 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:kumparan_clone/l10n/l10n.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/common/themes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
@@ -28,6 +29,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => di.locator<NewArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<EmailVerificationBloc>()),

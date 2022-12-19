@@ -1,0 +1,67 @@
+// ignore_for_file: unnecessary_lambdas
+
+import 'dart:convert';
+import 'package:equatable/equatable.dart';
+import 'package:kumparan_clone/src/domain/entities/article.dart';
+
+class ArticleModel extends Equatable {
+  const ArticleModel({
+    required this.id,
+    required this.title,
+    required this.profilePicture,
+    required this.creatorName,
+    required this.thumbnail,
+    required this.isVerified,
+    required this.createdAt,
+  });
+
+  factory ArticleModel.fromJson(Map<String, dynamic> json) {
+    return ArticleModel(
+      id: json['id'] as int,
+      title: json['title'] as String,
+      profilePicture: json['profile_picture'] as String,
+      creatorName: json['creator_name'] as String,
+      thumbnail: json['thumbnail'] as String,
+      isVerified: json['is_verified'] as bool,
+      createdAt: DateTime.parse(json['created_at'] as String),
+    );
+  }
+
+  final int id;
+  final String title;
+  final String profilePicture;
+  final String creatorName;
+  final String thumbnail;
+  final bool isVerified;
+  final DateTime createdAt;
+
+  Article toEntity() {
+    return Article(
+      id: id,
+      title: title,
+      profilePicture: profilePicture,
+      creatorName: creatorName,
+      thumbnail: thumbnail,
+      isVerified: isVerified,
+      createdAt: createdAt,
+    );
+  }
+
+  @override
+  List<Object?> get props => [
+        id,
+        title,
+        profilePicture,
+        creatorName,
+        thumbnail,
+        isVerified,
+        createdAt,
+      ];
+}
+
+List<ArticleModel> articleModelFromJson(String str) {
+  return List<ArticleModel>.from(
+    (json.decode(str) as Iterable<dynamic>)
+        .map((x) => ArticleModel.fromJson(x as Map<String, dynamic>)),
+  );
+}

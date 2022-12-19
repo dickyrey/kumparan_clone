@@ -148,9 +148,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 Expanded(flex: 2, child: Container()),
                 _selectedIndex == 3
                     ? OutlinedButtonWidget(
-                        onTap: () {
-                          // TODO(dickyrey) : Navigate to Register Account
-                        },
+                        onTap: () => Navigator.pushNamed(context, LOGIN),
                         label: lang.have_an_account,
                       )
                     : OutlinedButtonWidget(

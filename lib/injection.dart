@@ -1,12 +1,17 @@
 import 'package:get_it/get_it.dart';
+import 'package:kumparan_clone/src/data/datasources/article_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/boarding_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/boarding_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/category_repository_impl.dart';
+import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
+import 'package:kumparan_clone/src/domain/usecases/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
@@ -19,6 +24,11 @@ final locator = GetIt.instance;
 
 void init() {
   // Datasources
+  final articleRemoteDataSource = ArticleRemoteDataSourceImpl();
+  locator.registerLazySingleton<ArticleRemoteDataSource>(
+    () => articleRemoteDataSource,
+  );
+
   final boardingRemoteDataSource = BoardingRemoteDataSourceImpl();
   locator.registerLazySingleton<BoardingRemoteDataSource>(
     () => boardingRemoteDataSource,
@@ -30,6 +40,11 @@ void init() {
   );
 
   // Repositories
+  final articleRepository = ArticleRepositoryImpl(dataSource: locator());
+  locator.registerLazySingleton<ArticleRepository>(
+    () => articleRepository,
+  );
+
   final boardingRepository = BoardingRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<BoardingRepository>(
     () => boardingRepository,
@@ -41,6 +56,11 @@ void init() {
   );
 
   // Usecases
+  final getArticleListUseCase = GetArticleList(locator());
+  locator.registerLazySingleton(
+    () => getArticleListUseCase,
+  );
+
   final getBoardingUseCase = GetBoardingList(locator());
   locator.registerLazySingleton(
     () => getBoardingUseCase,
@@ -52,6 +72,11 @@ void init() {
   );
 
   // BLoCs
+  final newArticleWatcherBloc = NewArticleWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => newArticleWatcherBloc,
+  );
+
   final boardingWatcherBloc = BoardingWatcherBloc(locator());
   locator.registerLazySingleton(
     () => boardingWatcherBloc,
@@ -86,5 +111,4 @@ void init() {
   locator.registerLazySingleton(
     () => registerFormBloc,
   );
-
 }

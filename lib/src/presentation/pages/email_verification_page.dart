@@ -33,6 +33,7 @@ class EmailVerificationPage extends StatelessWidget {
             Text(
               '${lang.a_verification_link_will_be_sent_to} $mockEmail, ${lang.immediately_activate_the_account_before} $mockDate',
               style: theme.textTheme.subtitle1,
+              textAlign: TextAlign.center,
             ),
             const SizedBox(height: SPACE25),
             BlocBuilder<EmailVerificationBloc, EmailVerificationState>(
@@ -84,6 +85,7 @@ class EmailVerificationPage extends StatelessWidget {
             Text(
               lang.havent_received_the_verification_email_yet,
               style: theme.textTheme.subtitle1,
+              textAlign: TextAlign.center,
             ),
             TextButton(
               onPressed: () {

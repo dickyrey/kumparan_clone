@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kumparan_clone/src/presentation/pages/home_page.dart';
 
 class ButtonNavBarWidget extends StatefulWidget {
   const ButtonNavBarWidget({
@@ -25,7 +26,7 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
   }
 
   final List<Widget> _tabView = [
-    const Center(child: Text('HOME')),
+    const HomePage(),
     const Center(child: Text('LATEST')),
     const Center(child: Text('PLUS')),
     const Center(child: Text('NOTIFICATIONS')),

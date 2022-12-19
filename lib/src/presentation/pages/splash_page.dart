@@ -13,10 +13,10 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     Future.delayed(
-      const Duration(seconds: 2),
+      const Duration(seconds: 1),
       () => Navigator.pushNamedAndRemoveUntil(
         context,
-        INTEREST,
+        HOME,
         (Route<dynamic> route) => false,
       ),
     );
