@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
@@ -54,6 +55,7 @@ class _HomePageState extends State<HomePage> {
 
   Widget _forYouTab(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
 
     return SingleChildScrollView(
       child: Column(
@@ -111,21 +113,21 @@ class _HomePageState extends State<HomePage> {
               children: [
                 FeatureCard(
                   onTap: () {},
-                  label: 'Trending',
+                  label: lang.trending,
                   backgroundColor: const Color(0xFFEB4768),
                   icon: FeatherIcons.barChart2,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCard(
                   onTap: () {},
-                  label: 'Award',
+                  label: lang.membership,
                   backgroundColor: const Color(0xFF00B5B4),
                   icon: FeatherIcons.award,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCard(
                   onTap: () {},
-                  label: 'Opini & Cerita',
+                  label: lang.opinions_and_stories,
                   backgroundColor: const Color(0xFF33A4DA),
                   icon: FeatherIcons.edit3,
                 ),
@@ -141,21 +143,21 @@ class _HomePageState extends State<HomePage> {
               children: [
                 FeatureCard(
                   onTap: () {},
-                  label: 'Galeri Foto',
+                  label: lang.photo_gallery,
                   backgroundColor: const Color(0xFF0071A7),
                   icon: FeatherIcons.camera,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCard(
                   onTap: () {},
-                  label: 'Video',
+                  label: lang.video,
                   backgroundColor: const Color(0xFFFA8B48),
                   icon: FeatherIcons.film,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCard(
                   onTap: () {},
-                  label: 'Pusat Informasi Vaksin',
+                  label: lang.vaccine_information_center,
                   backgroundColor: const Color(0xFFE51E44),
                   icon: FeatherIcons.thermometer,
                 ),
@@ -173,7 +175,7 @@ class _HomePageState extends State<HomePage> {
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
           /// First heading is `Trending News/Article`
           HeadingTileWidget(
-            label: 'Trending',
+            label: lang.trending,
             onTap: () {},
           ),
 
@@ -224,7 +226,7 @@ class _HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Text(
-                                'Lihat lebih banyak',
+                                lang.see_more,
                                 style: theme.textTheme.bodyText1?.copyWith(
                                   color: theme.primaryColor,
                                 ),
@@ -259,6 +261,7 @@ class _HomePageState extends State<HomePage> {
 
   AppBar _appBar(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
 
     return AppBar(
       backgroundColor: theme.backgroundColor,
@@ -273,7 +276,7 @@ class _HomePageState extends State<HomePage> {
             color: theme.disabledColor.withOpacity(.2),
           ),
           child: TextFormFieldWidget(
-            hintText: 'Cari di sini...',
+            hintText: lang.search_here,
             enabled: false,
             prefixIcon: Icon(
               FeatherIcons.search,
