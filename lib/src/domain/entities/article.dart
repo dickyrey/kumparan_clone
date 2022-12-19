@@ -8,6 +8,8 @@ class Article extends Equatable {
     required this.creatorName,
     required this.thumbnail,
     required this.isVerified,
+    required this.likes,
+    required this.comments,
     required this.createdAt,
   });
 
@@ -17,6 +19,8 @@ class Article extends Equatable {
   final String creatorName;
   final String thumbnail;
   final bool isVerified;
+  final int likes;
+  final int comments;
   final DateTime createdAt;
 
   @override
@@ -27,6 +31,8 @@ class Article extends Equatable {
         creatorName,
         thumbnail,
         isVerified,
+        likes,
+        comments,
         createdAt,
       ];
 }

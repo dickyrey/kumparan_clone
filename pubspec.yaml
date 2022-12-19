@@ -30,6 +30,7 @@ dependencies:
   http: ^0.13.5
   octo_image: ^1.0.2
   shared_preferences: ^2.0.15
+  timeago: ^3.3.0
   timer_count_down: ^2.2.1
   very_good_analysis: ^3.1.0
 

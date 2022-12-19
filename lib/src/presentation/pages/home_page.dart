@@ -1,10 +1,15 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
-import 'package:octo_image/octo_image.dart';
+import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
+import 'package:kumparan_clone/src/presentation/widgets/feature_card_widget.dart';
+import 'package:kumparan_clone/src/presentation/widgets/heading_tile_widget.dart';
+import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -26,119 +31,270 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    return DefaultTabController(
+      length: 5,
+      child: Scaffold(
+        appBar: _appBar(context),
+        body: TabBarView(
+          children: [
+
+            /// Main [Tab] of Application
+            /// Contains Horizontal [ArticleCardWidget], [FeatureCard] and [HeadingTileWidget]
+            _forYouTab(context),
+
+            const Center(child: Text('Entertaiment')),
+            const Center(child: Text('News')),
+            const Center(child: Text('Mom')),
+            const Center(child: Text('Food & Drink')),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _forYouTab(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-        appBar: AppBar(),
-        body: BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
-          builder: (context, state) {
-            return state.map(
-              initial: (_) {
-                return Container();
-              },
-              loading: (_) {
-                return Container();
-              },
-              error: (_) {
-                return Container();
-              },
-              loaded: (state) {
-                return SizedBox(
-                  width: double.infinity,
-                  height: 275,
-                  child: ListView.builder(
-                    itemCount: state.articleList.length,
-                    scrollDirection: Axis.horizontal,
-                    physics: const BouncingScrollPhysics(),
-                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
-                    itemBuilder: (context, index) {
-                      final data = state.articleList[index];
-                      return Container(
-                        width: 280,
-                        margin: const EdgeInsets.only(right: SPACE12),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(RADIUS),
-                              child: OctoImage(
-                                fit: BoxFit.cover,
-                                image:
-                                    CachedNetworkImageProvider(data.thumbnail),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const SizedBox(height: SPACE15),
+
+          /// Horizontal Scrollable [ArticleCardWidget]
+          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) {
+                  return Container();
+                },
+                loading: (_) {
+                  return Container();
+                },
+                error: (_) {
+                  return Container();
+                },
+                loaded: (state) {
+                  return SizedBox(
+                    width: double.infinity,
+                    height: 290,
+                    child: ListView.builder(
+                      itemCount: state.articleList.length,
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                      itemBuilder: (context, index) {
+                        final data = state.articleList[index];
+                        return ArticleCardWidget(
+                          article: data,
+                          cardAlignment: CardAlignment.horizontal,
+                        );
+                      },
+                    ),
+                  );
+                },
+              );
+            },
+          ),
+
+          // Main content separator
+          Container(
+            color: theme.disabledColor.withOpacity(.3),
+            height: SPACE8,
+          ),
+
+          const SizedBox(height: SPACE12),
+
+          /// Top Row [FeatureCard] allow users to choose unique feature
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+            child: Row(
+              children: [
+                FeatureCard(
+                  onTap: () {},
+                  label: 'Trending',
+                  backgroundColor: const Color(0xFFEB4768),
+                  icon: FeatherIcons.barChart2,
+                ),
+                const SizedBox(width: SPACE12),
+                FeatureCard(
+                  onTap: () {},
+                  label: 'Award',
+                  backgroundColor: const Color(0xFF00B5B4),
+                  icon: FeatherIcons.award,
+                ),
+                const SizedBox(width: SPACE12),
+                FeatureCard(
+                  onTap: () {},
+                  label: 'Opini & Cerita',
+                  backgroundColor: const Color(0xFF33A4DA),
+                  icon: FeatherIcons.edit3,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: SPACE8),
+
+          /// Second Row [FeatureCard] allow users to choose unique feature
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+            child: Row(
+              children: [
+                FeatureCard(
+                  onTap: () {},
+                  label: 'Galeri Foto',
+                  backgroundColor: const Color(0xFF0071A7),
+                  icon: FeatherIcons.camera,
+                ),
+                const SizedBox(width: SPACE12),
+                FeatureCard(
+                  onTap: () {},
+                  label: 'Video',
+                  backgroundColor: const Color(0xFFFA8B48),
+                  icon: FeatherIcons.film,
+                ),
+                const SizedBox(width: SPACE12),
+                FeatureCard(
+                  onTap: () {},
+                  label: 'Pusat Informasi Vaksin',
+                  backgroundColor: const Color(0xFFE51E44),
+                  icon: FeatherIcons.thermometer,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: SPACE12),
+
+          // / Main content `separator`
+          Container(
+            color: theme.disabledColor.withOpacity(.3),
+            height: SPACE8,
+          ),
+
+          /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
+          /// First heading is `Trending News/Article`
+          HeadingTileWidget(
+            label: 'Trending',
+            onTap: () {},
+          ),
+
+          /// List of `Trending Article`
+          /// Allow users to explore more trending article
+          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) {
+                  return Container();
+                },
+                loading: (_) {
+                  return Container();
+                },
+                error: (_) {
+                  return Container();
+                },
+                loaded: (state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ListView.separated(
+                        itemCount: state.articleList.take(5).length,
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                            child: Divider(),
+                          );
+                        },
+                        itemBuilder: (context, index) {
+                          return ArticleCardWidget(
+                            article: state.articleList[index],
+                            cardAlignment: CardAlignment.vertical,
+                          );
+                        },
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                        child: Divider(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                'Lihat lebih banyak',
+                                style: theme.textTheme.bodyText1?.copyWith(
+                                  color: theme.primaryColor,
+                                ),
                               ),
-                            ),
-                            const SizedBox(height: SPACE12),
-                            Text(
-                              data.title,
-                              style: theme.textTheme.headline3,
-                              maxLines: 2,
-                            ),
-                            const SizedBox(height: SPACE8),
-                            Row(
-                              children: [
-                                OctoImage(
-                                  width: 20,
-                                  height: 20,
-                                  fit: BoxFit.contain,
-                                  image: CachedNetworkImageProvider(
-                                    data.profilePicture,
-                                  ),
-                                ),
-                                Text(
-                                  data.creatorName,
-                                  style: theme.textTheme.subtitle2,
-                                  maxLines: 1,
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: SPACE8),
-                            Row(
-                              children: [
-                                Icon(
-                                  FeatherIcons.heart,
-                                  size: 15,
-                                  color: theme.disabledColor,
-                                ),
-                                const SizedBox(width: SPACE8),
-                                Text(
-                                  '1212',
-                                  style: theme.textTheme.subtitle2,
-                                  maxLines: 1,
-                                ),
-                                const SizedBox(width: SPACE15),
-                                Icon(
-                                  FeatherIcons.messageCircle,
-                                  size: 15,
-                                  color: theme.disabledColor,
-                                ),
-                                const SizedBox(width: SPACE8),
-                                Text(
-                                  '1212',
-                                  style: theme.textTheme.subtitle2,
-                                  maxLines: 1,
-                                ),
-                                const Expanded(child: SizedBox()),
-                                InkWell(
-                                  onTap: () {
-                                    //TODO(dickyrey): Open bottom sheet to share article to sosmed
-                                  },
-                                  child: Icon(
-                                    FeatherIcons.moreVertical,
-                                    size: 20,
-                                    color: theme.disabledColor,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
+                              const SizedBox(width: SPACE12),
+                              Icon(
+                                FeatherIcons.arrowRight,
+                                size: 16,
+                                color: theme.primaryColor,
+                              ),
+                            ],
+                          ),
                         ),
-                      );
-                    },
-                  ),
-                );
-              },
-            );
-          },
-        ));
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+          Container(
+            color: theme.disabledColor.withOpacity(.3),
+            height: SPACE8,
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// [AppBar] of [HomePage]
+  /// Contains `Logo` and `Search` [TextFormFieldWidget]
+
+  AppBar _appBar(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return AppBar(
+      backgroundColor: theme.backgroundColor,
+      leading: SvgPicture.asset(CustomIcons.duolingo),
+      title: InkWell(
+        onTap: () {},
+        borderRadius: BorderRadius.circular(RADIUS),
+        child: Container(
+          height: 37,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(RADIUS),
+            color: theme.disabledColor.withOpacity(.2),
+          ),
+          child: TextFormFieldWidget(
+            hintText: 'Cari di sini...',
+            enabled: false,
+            prefixIcon: Icon(
+              FeatherIcons.search,
+              color: theme.dividerColor.withOpacity(.5),
+            ),
+          ),
+        ),
+      ),
+      bottom: TabBar(
+        labelStyle: theme.textTheme.headline4,
+        labelColor: ColorLight.fontTitle,
+        unselectedLabelColor: ColorLight.fontTitle,
+        isScrollable: true,
+        tabs: const [
+          Tab(text: 'For You'),
+          Tab(text: 'Entertaiment'),
+          Tab(text: 'News'),
+          Tab(text: 'Mom'),
+          Tab(text: 'Food & Drink'),
+        ],
+      ),
+    );
   }
 }

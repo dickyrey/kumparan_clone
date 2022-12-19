@@ -12,8 +12,20 @@ class ArticleModel extends Equatable {
     required this.creatorName,
     required this.thumbnail,
     required this.isVerified,
+    required this.likes,
+    required this.comments,
     required this.createdAt,
   });
+
+  final int id;
+  final String title;
+  final String profilePicture;
+  final String creatorName;
+  final String thumbnail;
+  final bool isVerified;
+  final int likes;
+  final int comments;
+  final DateTime createdAt;
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
@@ -23,17 +35,11 @@ class ArticleModel extends Equatable {
       creatorName: json['creator_name'] as String,
       thumbnail: json['thumbnail'] as String,
       isVerified: json['is_verified'] as bool,
+      likes: json['likes'] as int,
+      comments: json['comments'] as int,
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
-
-  final int id;
-  final String title;
-  final String profilePicture;
-  final String creatorName;
-  final String thumbnail;
-  final bool isVerified;
-  final DateTime createdAt;
 
   Article toEntity() {
     return Article(
@@ -43,6 +49,8 @@ class ArticleModel extends Equatable {
       creatorName: creatorName,
       thumbnail: thumbnail,
       isVerified: isVerified,
+      likes: likes,
+      comments: comments,
       createdAt: createdAt,
     );
   }

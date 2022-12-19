@@ -13,6 +13,7 @@ class TextFormFieldWidget extends StatelessWidget {
   final String? labelText;
   final String? helperText;
   final String? errorText;
+  final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool? obscureText;
   final int? maxLines;
@@ -35,6 +36,7 @@ class TextFormFieldWidget extends StatelessWidget {
     this.onChanged,
     this.maxLength,
     this.labelText,
+    this.prefixIcon,
     this.suffixIcon,
     this.obscureText = false,
     this.maxLines = 1,
@@ -175,6 +177,7 @@ class TextFormFieldWidget extends StatelessWidget {
         labelText: labelText,
         labelStyle: theme.textTheme.subtitle1,
         suffixIcon: suffixIcon,
+        prefixIcon: prefixIcon,
         helperMaxLines: helperMaxLines,
         helperText: helperText,
         helperStyle: theme.textTheme.subtitle2?.copyWith(fontSize: 10),

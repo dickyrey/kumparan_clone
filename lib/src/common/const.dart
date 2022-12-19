@@ -8,6 +8,7 @@ const double MARGIN = 18.0;
 
 class CustomIcons {
   // SVG Assets
+  static const String duolingo = 'assets/duolingo.svg';
   static const String facebook = 'assets/facebook.svg';
   static const String google = 'assets/google.svg';
 
