@@ -36,24 +36,74 @@ class _HomePageState extends State<HomePage> {
       length: 5,
       child: Scaffold(
         appBar: _appBar(context),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
-
-            /// Main [Tab] of Application
-            /// Contains Horizontal [ArticleCardWidget], [FeatureCard] and [HeadingTileWidget]
-            _forYouTab(context),
-
-            const Center(child: Text('Entertaiment')),
-            const Center(child: Text('News')),
-            const Center(child: Text('Mom')),
-            const Center(child: Text('Food & Drink')),
+            /// Main [Tab] of Application.
+            /// Contains Horizontal [ArticleCardWidget], [FeatureCardWidget] and [HeadingTileWidget]
+            ForYouTab(),
+            CategoryTab(),
+            CategoryTab(),
+            CategoryTab(),
+            CategoryTab(),
           ],
         ),
       ),
     );
   }
 
-  Widget _forYouTab(BuildContext context) {
+  /// [AppBar] of [HomePage]
+  /// Contains `Logo` and `Search` [TextFormFieldWidget]
+
+  AppBar _appBar(BuildContext context) {
+    final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
+    return AppBar(
+      backgroundColor: theme.backgroundColor,
+      leading: SvgPicture.asset(CustomIcons.duolingo),
+      title: InkWell(
+        onTap: () {},
+        borderRadius: BorderRadius.circular(RADIUS),
+        child: Container(
+          height: 37,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(RADIUS),
+            color: theme.disabledColor.withOpacity(.2),
+          ),
+          child: TextFormFieldWidget(
+            hintText: lang.search_here,
+            enabled: false,
+            prefixIcon: Icon(
+              FeatherIcons.search,
+              color: theme.dividerColor.withOpacity(.5),
+            ),
+          ),
+        ),
+      ),
+      bottom: TabBar(
+        labelStyle: theme.textTheme.headline4,
+        labelColor: ColorLight.fontTitle,
+        unselectedLabelColor: ColorLight.fontTitle,
+        isScrollable: true,
+        tabs: const [
+          Tab(text: 'For You'),
+          Tab(text: 'Entertaiment'),
+          Tab(text: 'News'),
+          Tab(text: 'Mom'),
+          Tab(text: 'Food & Drink'),
+        ],
+      ),
+    );
+  }
+}
+
+class ForYouTab extends StatelessWidget {
+  /// Creates view for [TabBarView]
+  /// This [Widget] contains [ArticleCardWidget], [FeatureCardWidget]
+  const ForYouTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
@@ -106,26 +156,26 @@ class _HomePageState extends State<HomePage> {
 
           const SizedBox(height: SPACE12),
 
-          /// Top Row [FeatureCard] allow users to choose unique feature
+          /// Top Row [FeatureCardWidget] allow users to choose unique feature
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: MARGIN),
             child: Row(
               children: [
-                FeatureCard(
+                FeatureCardWidget(
                   onTap: () {},
                   label: lang.trending,
                   backgroundColor: const Color(0xFFEB4768),
                   icon: FeatherIcons.barChart2,
                 ),
                 const SizedBox(width: SPACE12),
-                FeatureCard(
+                FeatureCardWidget(
                   onTap: () {},
                   label: lang.membership,
                   backgroundColor: const Color(0xFF00B5B4),
                   icon: FeatherIcons.award,
                 ),
                 const SizedBox(width: SPACE12),
-                FeatureCard(
+                FeatureCardWidget(
                   onTap: () {},
                   label: lang.opinions_and_stories,
                   backgroundColor: const Color(0xFF33A4DA),
@@ -136,26 +186,26 @@ class _HomePageState extends State<HomePage> {
           ),
           const SizedBox(height: SPACE8),
 
-          /// Second Row [FeatureCard] allow users to choose unique feature
+          /// Second Row [FeatureCardWidget] allow users to choose unique feature
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: MARGIN),
             child: Row(
               children: [
-                FeatureCard(
+                FeatureCardWidget(
                   onTap: () {},
                   label: lang.photo_gallery,
                   backgroundColor: const Color(0xFF0071A7),
                   icon: FeatherIcons.camera,
                 ),
                 const SizedBox(width: SPACE12),
-                FeatureCard(
+                FeatureCardWidget(
                   onTap: () {},
                   label: lang.video,
                   backgroundColor: const Color(0xFFFA8B48),
                   icon: FeatherIcons.film,
                 ),
                 const SizedBox(width: SPACE12),
-                FeatureCard(
+                FeatureCardWidget(
                   onTap: () {},
                   label: lang.vaccine_information_center,
                   backgroundColor: const Color(0xFFE51E44),
@@ -255,47 +305,215 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
 
-  /// [AppBar] of [HomePage]
-  /// Contains `Logo` and `Search` [TextFormFieldWidget]
+class CategoryTab extends StatelessWidget {
+  const CategoryTab({super.key});
 
-  AppBar _appBar(BuildContext context) {
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          const SizedBox(height: SPACE15),
 
-    return AppBar(
-      backgroundColor: theme.backgroundColor,
-      leading: SvgPicture.asset(CustomIcons.duolingo),
-      title: InkWell(
-        onTap: () {},
-        borderRadius: BorderRadius.circular(RADIUS),
-        child: Container(
-          height: 37,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RADIUS),
-            color: theme.disabledColor.withOpacity(.2),
+          /// Horizontal Scrollable [ArticleCardWidget]
+          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) {
+                  return Container();
+                },
+                loading: (_) {
+                  return Container();
+                },
+                error: (_) {
+                  return Container();
+                },
+                loaded: (state) {
+                  return SizedBox(
+                    width: double.infinity,
+                    height: 290,
+                    child: ListView.builder(
+                      itemCount: state.articleList.length,
+                      scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
+                      padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                      itemBuilder: (context, index) {
+                        final data = state.articleList[index];
+                        return ArticleCardWidget(
+                          article: data,
+                          cardAlignment: CardAlignment.horizontal,
+                        );
+                      },
+                    ),
+                  );
+                },
+              );
+            },
           ),
-          child: TextFormFieldWidget(
-            hintText: lang.search_here,
-            enabled: false,
-            prefixIcon: Icon(
-              FeatherIcons.search,
-              color: theme.dividerColor.withOpacity(.5),
-            ),
+
+          /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
+          /// First heading is `Trending News/Article`
+          HeadingTileWidget(
+            label: lang.trending,
+            onTap: () {},
           ),
-        ),
-      ),
-      bottom: TabBar(
-        labelStyle: theme.textTheme.headline4,
-        labelColor: ColorLight.fontTitle,
-        unselectedLabelColor: ColorLight.fontTitle,
-        isScrollable: true,
-        tabs: const [
-          Tab(text: 'For You'),
-          Tab(text: 'Entertaiment'),
-          Tab(text: 'News'),
-          Tab(text: 'Mom'),
-          Tab(text: 'Food & Drink'),
+
+          /// List of `Trending Article`
+          /// Allow users to explore more trending article
+          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) {
+                  return Container();
+                },
+                loading: (_) {
+                  return Container();
+                },
+                error: (_) {
+                  return Container();
+                },
+                loaded: (state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ListView.separated(
+                        itemCount: state.articleList.take(5).length,
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                            child: Divider(),
+                          );
+                        },
+                        itemBuilder: (context, index) {
+                          return ArticleCardWidget(
+                            article: state.articleList[index],
+                            cardAlignment: CardAlignment.vertical,
+                          );
+                        },
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                        child: Divider(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                lang.see_more,
+                                style: theme.textTheme.bodyText1?.copyWith(
+                                  color: theme.primaryColor,
+                                ),
+                              ),
+                              const SizedBox(width: SPACE12),
+                              Icon(
+                                FeatherIcons.arrowRight,
+                                size: 16,
+                                color: theme.primaryColor,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
+
+          // Main content separator
+          Container(
+            color: theme.disabledColor.withOpacity(.3),
+            height: SPACE8,
+          ),
+          const SizedBox(height: SPACE15),
+
+          /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
+          /// First heading is `Trending News/Article`
+          HeadingTileWidget(
+            label: lang.feed,
+            type: HeadingTileType.dropdown,
+            onTap: () {},
+          ),
+
+          /// List of `Trending Article`
+          /// Allow users to explore more trending article
+          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) {
+                  return Container();
+                },
+                loading: (_) {
+                  return Container();
+                },
+                error: (_) {
+                  return Container();
+                },
+                loaded: (state) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ListView.separated(
+                        itemCount: state.articleList.take(5).length,
+                        physics: const ScrollPhysics(),
+                        shrinkWrap: true,
+                        separatorBuilder: (context, index) {
+                          return const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                            child: Divider(),
+                          );
+                        },
+                        itemBuilder: (context, index) {
+                          return ArticleCardWidget(
+                            article: state.articleList[index],
+                            cardAlignment: CardAlignment.vertical,
+                          );
+                        },
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                        child: Divider(),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        child: TextButton(
+                          onPressed: () {},
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                lang.see_more,
+                                style: theme.textTheme.bodyText1?.copyWith(
+                                  color: theme.primaryColor,
+                                ),
+                              ),
+                              const SizedBox(width: SPACE12),
+                              Icon(
+                                FeatherIcons.arrowRight,
+                                size: 16,
+                                color: theme.primaryColor,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ],
+                  );
+                },
+              );
+            },
+          ),
         ],
       ),
     );

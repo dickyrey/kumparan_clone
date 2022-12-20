@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 
-class FeatureCard extends StatelessWidget {
-  const FeatureCard({
+class FeatureCardWidget extends StatelessWidget {
+  const FeatureCardWidget({
     super.key,
     required this.label,
     required this.onTap,
