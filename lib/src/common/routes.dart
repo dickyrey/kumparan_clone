@@ -2,6 +2,7 @@
 
 const String SPLASH = '/';
 const String INTEREST = '/interest';
+const String INTEREST_SETTING = '/interest_setting';
 const String ON_BOARDING = '/on_boarding';
 const String REGISTER = '/register';
 const String EMAIL_VERIFICATION = '/email_verification';

@@ -3,6 +3,7 @@ import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/pages/email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/forgot_password_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/interest_setting_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
@@ -25,6 +26,10 @@ class RouteGenerator {
       case INTEREST:
         return MaterialPageRoute(
           builder: (_) => const InterestPage(),
+        );
+      case INTEREST_SETTING:
+        return MaterialPageRoute(
+          builder: (_) => const InterestSettingPage(),
         );
       case REGISTER:
         return MaterialPageRoute(

@@ -5,6 +5,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -121,7 +122,7 @@ class _NoticePageState extends State<NoticePage> {
       ),
       actions: [
         IconButton(
-          onPressed: () {},
+          onPressed: () => Navigator.pushNamed(context, INTEREST_SETTING),
           icon: const Icon(
             FeatherIcons.settings,
             color: ColorLight.fontTitle,
