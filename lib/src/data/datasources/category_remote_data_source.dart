@@ -13,7 +13,8 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
   @override
   Future<List<CategoryModel>> getCategories() async {
     // Load the JSON data from the mock_json/categories.json file
-    final jsonData = await root.rootBundle.loadString('mock_json/categories.json');
+    final jsonData =
+        await root.rootBundle.loadString('mock_json/categories.json');
 
     // Decode the JSON data and convert it to a CategoryResponse object
     final response = CategoryResponse.fromJson(

@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/presentation/pages/home_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/latest_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/notice_page.dart';
 
 class ButtonNavBarWidget extends StatefulWidget {
   const ButtonNavBarWidget({
@@ -29,8 +30,7 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
   final List<Widget> _tabView = [
     const HomePage(),
     const LatestPage(),
-    const Center(child: Text('PLUS')),
-    const Center(child: Text('NOTIFICATIONS')),
+    const NoticePage(),
     const Center(child: Text('MENU')),
   ];
 
@@ -72,10 +72,6 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
           BottomNavigationBarItem(
             icon: const Icon(FeatherIcons.clock),
             label: lang.latest,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(FeatherIcons.plusCircle),
-            label: lang.upgrade,
           ),
           BottomNavigationBarItem(
             icon: const Icon(FeatherIcons.bell),

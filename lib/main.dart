@@ -12,6 +12,7 @@ import 'package:kumparan_clone/src/presentation/bloc/email_verification/verifica
 import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/utilities/route_generator.dart';
 
@@ -36,6 +37,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<ForgotPasswordFormBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
         BlocProvider(create: (context) => di.locator<LoginFormBloc>()),
+        BlocProvider(create: (context) => di.locator<NoticeWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<RegisterFormBloc>()),
       ],
       child: MaterialApp(

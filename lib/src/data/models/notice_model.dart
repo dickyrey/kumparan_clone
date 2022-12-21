@@ -8,12 +8,14 @@ class NoticeModel extends Equatable {
   const NoticeModel({
     required this.id,
     required this.title,
+    required this.creatorName,
     required this.thumbnail,
     required this.createdAt,
   });
 
   final int id;
   final String title;
+  final String creatorName;
   final String thumbnail;
   final DateTime createdAt;
 
@@ -21,6 +23,7 @@ class NoticeModel extends Equatable {
     return NoticeModel(
       id: json['id'] as int,
       title: json['title'] as String,
+      creatorName: json['creator_name'] as String,
       thumbnail: json['thumbnail'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
     );
@@ -30,6 +33,7 @@ class NoticeModel extends Equatable {
     return Notice(
       id: id,
       title: title,
+      creatorName: creatorName,
       thumbnail: thumbnail,
       createdAt: createdAt,
     );
@@ -39,6 +43,7 @@ class NoticeModel extends Equatable {
   List<Object?> get props => [
         id,
         title,
+        creatorName,
         thumbnail,
         createdAt,
       ];

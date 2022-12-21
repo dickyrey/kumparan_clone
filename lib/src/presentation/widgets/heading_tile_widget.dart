@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
@@ -28,7 +27,6 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final lang = AppLocalizations.of(context)!;
 
     return Column(
       children: [
