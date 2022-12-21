@@ -392,37 +392,11 @@ class CategoryTab extends StatelessWidget {
                         },
                         itemBuilder: (context, index) {
                           return ArticleCardWidget(
+                            index: index,
                             article: state.articleList[index],
                             cardAlignment: CardAlignment.vertical,
                           );
                         },
-                      ),
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MARGIN),
-                        child: Divider(),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
-                        child: TextButton(
-                          onPressed: () {},
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                lang.see_more,
-                                style: theme.textTheme.bodyText1?.copyWith(
-                                  color: theme.primaryColor,
-                                ),
-                              ),
-                              const SizedBox(width: SPACE12),
-                              Icon(
-                                FeatherIcons.arrowRight,
-                                size: 16,
-                                color: theme.primaryColor,
-                              ),
-                            ],
-                          ),
-                        ),
                       ),
                     ],
                   );
@@ -431,12 +405,7 @@ class CategoryTab extends StatelessWidget {
             },
           ),
 
-          // Main content separator
-          Container(
-            color: theme.disabledColor.withOpacity(.3),
-            height: SPACE8,
-          ),
-          const SizedBox(height: SPACE15),
+          const SizedBox(height: SPACE25),
 
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
           /// First heading is `Trending News/Article`

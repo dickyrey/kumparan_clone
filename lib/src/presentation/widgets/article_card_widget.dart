@@ -12,10 +12,14 @@ class ArticleCardWidget extends StatelessWidget {
     super.key,
     required this.article,
     required this.cardAlignment,
+    this.index = 0,
+    this.useRank = false,
   });
 
   final Article article;
   final CardAlignment cardAlignment;
+  final int index;
+  final bool useRank;
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +120,17 @@ class ArticleCardWidget extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            useRank == true
+                ? Text(
+                    '${index + 1}.',
+                    style: theme.textTheme.headline3?.copyWith(
+                      color: theme.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 1,
+                  )
+                : const SizedBox(),
+            useRank == true ? const SizedBox(width: SPACE12) : const SizedBox(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
