@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
-import 'package:kumparan_clone/src/common/routes.dart';
-import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 
 class InterestSettingPage extends StatefulWidget {
   const InterestSettingPage({super.key});

@@ -117,7 +117,7 @@ class _NoticePageState extends State<NoticePage> {
       backgroundColor: theme.backgroundColor,
       elevation: .5,
       title: Text(
-        lang.latest,
+        lang.notification,
         style: theme.textTheme.headline3,
       ),
       actions: [

@@ -3,6 +3,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/presentation/pages/home_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/latest_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/menu_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/notice_page.dart';
 
 class ButtonNavBarWidget extends StatefulWidget {
@@ -31,7 +32,7 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
     const HomePage(),
     const LatestPage(),
     const NoticePage(),
-    const Center(child: Text('MENU')),
+    const MenuPage(),
   ];
 
   @override
