@@ -6,6 +6,7 @@ import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_setting_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/profile_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
 import 'package:kumparan_clone/src/presentation/widgets/bottom_nav_bar_widget.dart';
@@ -50,6 +51,10 @@ class RouteGenerator {
       case HOME:
         return MaterialPageRoute(
           builder: (_) => const ButtonNavBarWidget(),
+        );
+      case PROFILE:
+        return MaterialPageRoute(
+          builder: (_) => const ProfilePage(),
         );
       default:
         return _errorRoute();
