@@ -5,6 +5,7 @@ import 'package:kumparan_clone/src/presentation/pages/forgot_password_page.dart'
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_setting_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/my_content_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/profile_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
@@ -13,7 +14,7 @@ import 'package:kumparan_clone/src/presentation/widgets/bottom_nav_bar_widget.da
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final args = settings.arguments;
+    // final args = settings.arguments;
 
     switch (settings.name) {
       case SPLASH:
@@ -55,6 +56,10 @@ class RouteGenerator {
       case PROFILE:
         return MaterialPageRoute(
           builder: (_) => const ProfilePage(),
+        );
+      case MY_CONTENT:
+        return MaterialPageRoute(
+          builder: (_) => const MyContentPage(),
         );
       default:
         return _errorRoute();

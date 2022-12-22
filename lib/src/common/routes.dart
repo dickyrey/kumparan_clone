@@ -10,3 +10,4 @@ const String FORGOT_PASSWORD = '/forgot_password';
 const String LOGIN = '/login';
 const String HOME = '/home';
 const String PROFILE = '/profile';
+const String MY_CONTENT = '/my_content';

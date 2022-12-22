@@ -103,11 +103,11 @@ class _ProfilePageState extends State<ProfilePage>
                   label: lang.there_is_no_content_yet,
                 ),
                 EmptyDataWidget(
-                  illustration: CustomIcons.content,
+                  illustration: CustomIcons.comments,
                   label: lang.no_comments_yet,
                 ),
                 EmptyDataWidget(
-                  illustration: CustomIcons.content,
+                  illustration: CustomIcons.likes,
                   label: lang.nothing_to_like_yet,
                 ),
               ][_tabController.index],

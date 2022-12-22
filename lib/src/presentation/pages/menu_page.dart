@@ -87,7 +87,9 @@ class MenuPage extends StatelessWidget {
             _MenuListTile(
               icon: FeatherIcons.fileText,
               label: lang.my_content,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, MY_CONTENT);
+              },
             ),
             const SizedBox(height: SPACE25),
             _MenuListTile(
