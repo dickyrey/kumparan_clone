@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/presentation/widgets/empty_data_widget.dart';
 import 'package:octo_image/octo_image.dart';
@@ -80,7 +81,9 @@ class _ProfilePageState extends State<ProfilePage>
             ),
             const SizedBox(height: SPACE15),
             TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, CHANGE_PROFILE);
+              },
               child: Text(
                 lang.change_profile,
                 style: theme.textTheme.headline3,

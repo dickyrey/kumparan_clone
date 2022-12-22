@@ -6,6 +6,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
+import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -50,7 +51,9 @@ class MenuPage extends StatelessWidget {
                           maxLines: 1,
                         ),
                         InkWell(
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(context, CHANGE_PROFILE);
+                          },
                           child: Text(
                             lang.change_profile,
                             style: theme.textTheme.subtitle1?.copyWith(
@@ -84,131 +87,133 @@ class MenuPage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: SPACE15),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.fileText,
-              label: lang.my_content,
+              title: lang.my_content,
               onTap: () {
                 Navigator.pushNamed(context, MY_CONTENT);
               },
             ),
             const SizedBox(height: SPACE25),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.user,
-              label: lang.profile_page,
+              title: lang.profile_page,
               onTap: () {
                 Navigator.pushNamed(context, PROFILE);
               },
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.settings,
-              label: lang.settings_and_privacy,
-              onTap: () {},
+              title: lang.settings_and_privacy,
+              onTap: () {
+                Navigator.pushNamed(context, SETTINGS_AND_PRIVACY);
+              },
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.clock,
-              label: lang.read_history,
+              title: lang.read_history,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.slack,
-              label: lang.subscription,
+              title: lang.subscription,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.repeat,
-              label: lang.subscription_history,
+              title: lang.subscription_history,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.creditCard,
-              label: lang.manage_subscription,
+              title: lang.manage_subscription,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.moon,
-              label: lang.dark_mode,
+              title: lang.dark_mode,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.mail,
-              label: lang.cooperation_information,
+              title: lang.cooperation_information,
               onTap: () {},
             ),
             const Divider(),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.trendingUp,
-              label: lang.trending,
+              title: lang.trending,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.mapPin,
-              label: lang.regional_news,
+              title: lang.regional_news,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.camera,
-              label: lang.photo_gallery,
+              title: lang.photo_gallery,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.video,
-              label: lang.video,
+              title: lang.video,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.edit3,
-              label: lang.opinions_and_stories,
+              title: lang.opinions_and_stories,
               onTap: () {},
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.barChart2,
-              label: lang.author_ranking,
+              title: lang.author_ranking,
               onTap: () {},
             ),
             const Divider(),
-            _MenuListTile(
-              label: lang.news,
+            ListTileWidget(
+              title: lang.news,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: 'Entertaiment',
+            ListTileWidget(
+              title: lang.entertaiment,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: 'Mom',
+            ListTileWidget(
+              title: lang.mom,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.food_and_travel,
+            ListTileWidget(
+              title: lang.food_and_travel,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.tech_and_science,
+            ListTileWidget(
+              title: lang.tech_and_science,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.automotive,
+            ListTileWidget(
+              title: lang.automotive,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.woman,
+            ListTileWidget(
+              title: lang.woman,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.sports,
+            ListTileWidget(
+              title: lang.sports,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.business,
+            ListTileWidget(
+              title: lang.business,
               onTap: () {},
             ),
-            _MenuListTile(
-              label: lang.buzz,
+            ListTileWidget(
+              title: lang.buzz,
               onTap: () {},
             ),
             const Divider(),
-            _MenuListTile(
-              label: lang.how_to_write_in_kumparan,
+            ListTileWidget(
+              title: lang.how_to_write_in_kumparan,
               onTap: () {},
             ),
             ExpansionTile(
@@ -217,46 +222,46 @@ class MenuPage extends StatelessWidget {
                 style: theme.textTheme.bodyText2,
               ),
               children: [
-                _MenuListTile(
-                  label: lang.life_at_kumparan,
+                ListTileWidget(
+                  title: lang.life_at_kumparan,
                   fontSize: 12,
                   onTap: () {},
                 ),
-                _MenuListTile(
-                  label: lang.help,
+                ListTileWidget(
+                  title: lang.help,
                   fontSize: 12,
                   onTap: () {},
                 ),
-                _MenuListTile(
-                  label: lang.terms_and_privacy_policy,
+                ListTileWidget(
+                  title: lang.terms_and_privacy_policy,
                   fontSize: 12,
                   onTap: () {},
                 ),
-                _MenuListTile(
-                  label: lang.kumparan_community_guide,
+                ListTileWidget(
+                  title: lang.kumparan_community_guide,
                   fontSize: 12,
                   onTap: () {},
                 ),
-                _MenuListTile(
-                  label: lang.cyber_media_guide,
+                ListTileWidget(
+                  title: lang.cyber_media_guide,
                   fontSize: 12,
                   onTap: () {},
                 ),
-                _MenuListTile(
-                  label: lang.advertisement,
+                ListTileWidget(
+                  title: lang.advertisement,
                   fontSize: 12,
                   onTap: () {},
                 ),
-                _MenuListTile(
-                  label: lang.career,
+                ListTileWidget(
+                  title: lang.career,
                   fontSize: 12,
                   onTap: () {},
                 ),
               ],
             ),
-            _MenuListTile(
+            ListTileWidget(
               icon: FeatherIcons.logOut,
-              label: lang.exit,
+              title: lang.exit,
               onTap: () {},
             ),
           ],
@@ -274,49 +279,6 @@ class MenuPage extends StatelessWidget {
       title: Text(
         lang.menu,
         style: theme.textTheme.headline3,
-      ),
-    );
-  }
-}
-
-class _MenuListTile extends StatelessWidget {
-  const _MenuListTile({
-    required this.label,
-    required this.onTap,
-    this.icon,
-    this.fontSize,
-  });
-
-  final String label;
-  final VoidCallback onTap;
-  final IconData? icon;
-  final double? fontSize;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
-    return InkWell(
-      onTap: onTap,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(
-          horizontal: MARGIN,
-          vertical: SPACE12,
-        ),
-        child: Row(
-          children: [
-            (icon != null)
-                ? Icon(icon, color: ColorLight.fontTitle)
-                : const SizedBox(),
-            (icon != null) ? const SizedBox(width: SPACE15) : const SizedBox(),
-            Text(
-              label,
-              style: theme.textTheme.bodyText2?.copyWith(
-                fontSize: fontSize,
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }

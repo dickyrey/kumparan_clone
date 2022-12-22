@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/presentation/pages/change_profile_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/forgot_password_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
@@ -9,6 +10,7 @@ import 'package:kumparan_clone/src/presentation/pages/my_content_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/profile_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/settings_and_privacy_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
 import 'package:kumparan_clone/src/presentation/widgets/bottom_nav_bar_widget.dart';
 
@@ -60,6 +62,14 @@ class RouteGenerator {
       case MY_CONTENT:
         return MaterialPageRoute(
           builder: (_) => const MyContentPage(),
+        );
+      case SETTINGS_AND_PRIVACY:
+        return MaterialPageRoute(
+          builder: (_) => const SettingsAndPrivacyPage(),
+        );
+      case CHANGE_PROFILE:
+        return MaterialPageRoute(
+          builder: (_) => const ChangeProfilePage(),
         );
       default:
         return _errorRoute();
