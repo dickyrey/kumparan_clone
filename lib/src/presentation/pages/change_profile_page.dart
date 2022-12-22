@@ -194,6 +194,7 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
     required String image,
     required String header,
   }) {
+    final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
     return SizedBox(
@@ -219,7 +220,57 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
               child: ElevatedButtonWidget(
                 width: 250,
                 height: 40,
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(RADIUS),
+                        ),
+                        content: Container(
+                          width: 300,
+                          height: 200,
+                          alignment: Alignment.center,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    lang.upload_image,
+                                    style: theme.textTheme.headline1,
+                                  ),
+                                  IconButton(
+                                    onPressed: () => Navigator.pop(context),
+                                    icon: const Icon(FeatherIcons.x),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: SPACE15),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  '${lang.take_photo}...',
+                                  style: theme.textTheme.bodyText2,
+                                ),
+                              ),
+                              TextButton(
+                                onPressed: () {},
+                                child: Text(
+                                  '${lang.choose_from_library}...',
+                                  style: theme.textTheme.bodyText2,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  );
+                },
                 label: lang.upload_a_cover_image,
               ),
             ),
