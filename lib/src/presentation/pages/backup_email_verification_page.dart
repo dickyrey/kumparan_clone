@@ -3,21 +3,21 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email/verification_email_form/verification_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:timer_count_down/timer_controller.dart';
 import 'package:timer_count_down/timer_count_down.dart';
 
-class EmailVerificationPage extends StatelessWidget {
-  const EmailVerificationPage({super.key});
+class BackupEmailVerificationPage extends StatelessWidget {
+  const BackupEmailVerificationPage({super.key, required this.email});
+
+  final String email;
 
   @override
   Widget build(BuildContext context) {
     final controllerCountdown = CountdownController(autoStart: true);
     const countdownTime = 59;
-
-    var mockEmail = 'handsome.troyard@byneet.co.id';
-    var mockDate = '13 Januari 2023';
 
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
@@ -28,11 +28,17 @@ class EmailVerificationPage extends StatelessWidget {
         padding: const EdgeInsets.all(MARGIN),
         child: Column(
           children: [
-            Expanded(flex: 8, child: Image.asset(CustomIcons.mail)),
+            Expanded(flex: 6, child: Image.asset(CustomIcons.email_send)),
             const SizedBox(height: SPACE25),
             Text(
-              '${lang.a_verification_link_will_be_sent_to} $mockEmail, ${lang.immediately_activate_the_account_before} $mockDate',
-              style: theme.textTheme.subtitle1,
+              lang.email_verification,
+              style: theme.textTheme.headline3,
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(height: SPACE12),
+            Text(
+              '${lang.please_click_the_verification_link_that_was_sent_to} $email',
+              style: theme.textTheme.bodyText2,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: SPACE25),
@@ -81,24 +87,7 @@ class EmailVerificationPage extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: SPACE50),
-            Text(
-              lang.havent_received_the_verification_email_yet,
-              style: theme.textTheme.subtitle1,
-              textAlign: TextAlign.center,
-            ),
-            TextButton(
-              onPressed: () {
-                // TODO(dickyrey): Navigate to Call Center
-              },
-              child: Text(
-                lang.contact_us,
-                style: theme.textTheme.headline4?.copyWith(
-                  color: theme.primaryColor,
-                ),
-              ),
-            ),
-            const Expanded(flex: 2, child: SizedBox()),
+            const Expanded(flex: 4, child: SizedBox()),
           ],
         ),
       ),
@@ -113,14 +102,18 @@ class EmailVerificationPage extends StatelessWidget {
       backgroundColor: theme.backgroundColor,
       elevation: .5,
       leading: IconButton(
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => Navigator.pushNamedAndRemoveUntil(
+          context,
+          MENU,
+          (route) => false,
+        ),
         icon: Icon(
           FeatherIcons.arrowLeft,
           color: theme.iconTheme.color,
         ),
       ),
       title: Text(
-        lang.verification,
+        lang.add_email,
         style: theme.textTheme.headline3,
       ),
     );

@@ -28,7 +28,9 @@ class SettingsAndPrivacyPage extends StatelessWidget {
               title: lang.email,
               subtitle: 'vg.troyard@gmail.com',
               icon: FeatherIcons.mail,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, ADD_SECOND_EMAIL);
+              },
             ),
             ListTileWidget(
               title: lang.phone_number,

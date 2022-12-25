@@ -8,7 +8,8 @@ import 'package:kumparan_clone/src/common/themes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/email_verification/verification_email_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/email/backup_email_form/backup_email_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/email/verification_email_form/verification_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
@@ -33,7 +34,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<NewArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
-        BlocProvider(create: (context) => di.locator<EmailVerificationBloc>()),
+        BlocProvider(create: (context) => di.locator<BackupEmailFormBloc>()),
+        BlocProvider(create: (context) => di.locator<VerificationEmailFormBloc>()),
         BlocProvider(create: (context) => di.locator<ForgotPasswordFormBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
         BlocProvider(create: (context) => di.locator<LoginFormBloc>()),

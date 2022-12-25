@@ -28,8 +28,8 @@ class OutlinedButtonWidget extends StatelessWidget {
     final theme = Theme.of(context);
 
     return Container(
-      width: double.infinity,
-      height: 47,
+      width: width,
+      height: height,
       margin: margin,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(

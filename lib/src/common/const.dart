@@ -15,6 +15,7 @@ class CustomIcons {
   // PNG Assets
   static const String comments = 'assets/comments.png';
   static const String content = 'assets/content.png';
+  static const String email_send = 'assets/email_send.png';
   static const String mail = 'assets/mail.png';
   static const String likes = 'assets/likes.png';
 }

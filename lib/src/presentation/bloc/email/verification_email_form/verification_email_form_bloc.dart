@@ -2,15 +2,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:timer_count_down/timer_controller.dart';
 
-part 'verification_email_event.dart';
-part 'verification_email_state.dart';
-part 'verification_email_bloc.freezed.dart';
+part 'verification_email_form_event.dart';
+part 'verification_email_form_state.dart';
+part 'verification_email_form_bloc.freezed.dart';
 
-class EmailVerificationBloc
-    extends Bloc<EmailVerificationEvent, EmailVerificationState> {
-  EmailVerificationBloc() : super(EmailVerificationState.initial()) {
-    on<EmailVerificationEvent>((event, emit) async {
-      event.map(
+class VerificationEmailFormBloc extends Bloc<VerificationEmailFormEvent, VerificationEmailFormState> {
+  VerificationEmailFormBloc() : super(VerificationEmailFormState.initial()) {
+    on<VerificationEmailFormEvent>((event, emit) {
+       event.map(
         onFinished: (_) {
           emit(
             state.copyWith(

@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'verification_email_bloc.dart';
+part of 'verification_email_form_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$EmailVerificationEvent {
+mixin _$VerificationEmailFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() onFinished,
@@ -57,17 +57,18 @@ mixin _$EmailVerificationEvent {
 }
 
 /// @nodoc
-abstract class $EmailVerificationEventCopyWith<$Res> {
-  factory $EmailVerificationEventCopyWith(EmailVerificationEvent value,
-          $Res Function(EmailVerificationEvent) then) =
-      _$EmailVerificationEventCopyWithImpl<$Res, EmailVerificationEvent>;
+abstract class $VerificationEmailFormEventCopyWith<$Res> {
+  factory $VerificationEmailFormEventCopyWith(VerificationEmailFormEvent value,
+          $Res Function(VerificationEmailFormEvent) then) =
+      _$VerificationEmailFormEventCopyWithImpl<$Res,
+          VerificationEmailFormEvent>;
 }
 
 /// @nodoc
-class _$EmailVerificationEventCopyWithImpl<$Res,
-        $Val extends EmailVerificationEvent>
-    implements $EmailVerificationEventCopyWith<$Res> {
-  _$EmailVerificationEventCopyWithImpl(this._value, this._then);
+class _$VerificationEmailFormEventCopyWithImpl<$Res,
+        $Val extends VerificationEmailFormEvent>
+    implements $VerificationEmailFormEventCopyWith<$Res> {
+  _$VerificationEmailFormEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -84,7 +85,7 @@ abstract class _$$_OnFinishedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_OnFinishedCopyWithImpl<$Res>
-    extends _$EmailVerificationEventCopyWithImpl<$Res, _$_OnFinished>
+    extends _$VerificationEmailFormEventCopyWithImpl<$Res, _$_OnFinished>
     implements _$$_OnFinishedCopyWith<$Res> {
   __$$_OnFinishedCopyWithImpl(
       _$_OnFinished _value, $Res Function(_$_OnFinished) _then)
@@ -98,7 +99,7 @@ class _$_OnFinished implements _OnFinished {
 
   @override
   String toString() {
-    return 'EmailVerificationEvent.onFinished()';
+    return 'VerificationEmailFormEvent.onFinished()';
   }
 
   @override
@@ -173,7 +174,7 @@ class _$_OnFinished implements _OnFinished {
   }
 }
 
-abstract class _OnFinished implements EmailVerificationEvent {
+abstract class _OnFinished implements VerificationEmailFormEvent {
   const factory _OnFinished() = _$_OnFinished;
 }
 
@@ -188,7 +189,7 @@ abstract class _$$_StartTimeOutCopyWith<$Res> {
 
 /// @nodoc
 class __$$_StartTimeOutCopyWithImpl<$Res>
-    extends _$EmailVerificationEventCopyWithImpl<$Res, _$_StartTimeOut>
+    extends _$VerificationEmailFormEventCopyWithImpl<$Res, _$_StartTimeOut>
     implements _$$_StartTimeOutCopyWith<$Res> {
   __$$_StartTimeOutCopyWithImpl(
       _$_StartTimeOut _value, $Res Function(_$_StartTimeOut) _then)
@@ -218,7 +219,7 @@ class _$_StartTimeOut implements _StartTimeOut {
 
   @override
   String toString() {
-    return 'EmailVerificationEvent.startTimeOut(controller: $controller)';
+    return 'VerificationEmailFormEvent.startTimeOut(controller: $controller)';
   }
 
   @override
@@ -302,7 +303,7 @@ class _$_StartTimeOut implements _StartTimeOut {
   }
 }
 
-abstract class _StartTimeOut implements EmailVerificationEvent {
+abstract class _StartTimeOut implements VerificationEmailFormEvent {
   const factory _StartTimeOut(final CountdownController controller) =
       _$_StartTimeOut;
 
@@ -313,28 +314,29 @@ abstract class _StartTimeOut implements EmailVerificationEvent {
 }
 
 /// @nodoc
-mixin _$EmailVerificationState {
+mixin _$VerificationEmailFormState {
   bool get isTimeoutDone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EmailVerificationStateCopyWith<EmailVerificationState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $VerificationEmailFormStateCopyWith<VerificationEmailFormState>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EmailVerificationStateCopyWith<$Res> {
-  factory $EmailVerificationStateCopyWith(EmailVerificationState value,
-          $Res Function(EmailVerificationState) then) =
-      _$EmailVerificationStateCopyWithImpl<$Res, EmailVerificationState>;
+abstract class $VerificationEmailFormStateCopyWith<$Res> {
+  factory $VerificationEmailFormStateCopyWith(VerificationEmailFormState value,
+          $Res Function(VerificationEmailFormState) then) =
+      _$VerificationEmailFormStateCopyWithImpl<$Res,
+          VerificationEmailFormState>;
   @useResult
   $Res call({bool isTimeoutDone});
 }
 
 /// @nodoc
-class _$EmailVerificationStateCopyWithImpl<$Res,
-        $Val extends EmailVerificationState>
-    implements $EmailVerificationStateCopyWith<$Res> {
-  _$EmailVerificationStateCopyWithImpl(this._value, this._then);
+class _$VerificationEmailFormStateCopyWithImpl<$Res,
+        $Val extends VerificationEmailFormState>
+    implements $VerificationEmailFormStateCopyWith<$Res> {
+  _$VerificationEmailFormStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -356,23 +358,25 @@ class _$EmailVerificationStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_EmailVerificationStateCopyWith<$Res>
-    implements $EmailVerificationStateCopyWith<$Res> {
-  factory _$$_EmailVerificationStateCopyWith(_$_EmailVerificationState value,
-          $Res Function(_$_EmailVerificationState) then) =
-      __$$_EmailVerificationStateCopyWithImpl<$Res>;
+abstract class _$$_VerificationEmailFormStateCopyWith<$Res>
+    implements $VerificationEmailFormStateCopyWith<$Res> {
+  factory _$$_VerificationEmailFormStateCopyWith(
+          _$_VerificationEmailFormState value,
+          $Res Function(_$_VerificationEmailFormState) then) =
+      __$$_VerificationEmailFormStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({bool isTimeoutDone});
 }
 
 /// @nodoc
-class __$$_EmailVerificationStateCopyWithImpl<$Res>
-    extends _$EmailVerificationStateCopyWithImpl<$Res,
-        _$_EmailVerificationState>
-    implements _$$_EmailVerificationStateCopyWith<$Res> {
-  __$$_EmailVerificationStateCopyWithImpl(_$_EmailVerificationState _value,
-      $Res Function(_$_EmailVerificationState) _then)
+class __$$_VerificationEmailFormStateCopyWithImpl<$Res>
+    extends _$VerificationEmailFormStateCopyWithImpl<$Res,
+        _$_VerificationEmailFormState>
+    implements _$$_VerificationEmailFormStateCopyWith<$Res> {
+  __$$_VerificationEmailFormStateCopyWithImpl(
+      _$_VerificationEmailFormState _value,
+      $Res Function(_$_VerificationEmailFormState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -380,7 +384,7 @@ class __$$_EmailVerificationStateCopyWithImpl<$Res>
   $Res call({
     Object? isTimeoutDone = null,
   }) {
-    return _then(_$_EmailVerificationState(
+    return _then(_$_VerificationEmailFormState(
       isTimeoutDone: null == isTimeoutDone
           ? _value.isTimeoutDone
           : isTimeoutDone // ignore: cast_nullable_to_non_nullable
@@ -391,22 +395,22 @@ class __$$_EmailVerificationStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_EmailVerificationState implements _EmailVerificationState {
-  const _$_EmailVerificationState({required this.isTimeoutDone});
+class _$_VerificationEmailFormState implements _VerificationEmailFormState {
+  const _$_VerificationEmailFormState({required this.isTimeoutDone});
 
   @override
   final bool isTimeoutDone;
 
   @override
   String toString() {
-    return 'EmailVerificationState(isTimeoutDone: $isTimeoutDone)';
+    return 'VerificationEmailFormState(isTimeoutDone: $isTimeoutDone)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_EmailVerificationState &&
+            other is _$_VerificationEmailFormState &&
             (identical(other.isTimeoutDone, isTimeoutDone) ||
                 other.isTimeoutDone == isTimeoutDone));
   }
@@ -417,19 +421,20 @@ class _$_EmailVerificationState implements _EmailVerificationState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_EmailVerificationStateCopyWith<_$_EmailVerificationState> get copyWith =>
-      __$$_EmailVerificationStateCopyWithImpl<_$_EmailVerificationState>(
-          this, _$identity);
+  _$$_VerificationEmailFormStateCopyWith<_$_VerificationEmailFormState>
+      get copyWith => __$$_VerificationEmailFormStateCopyWithImpl<
+          _$_VerificationEmailFormState>(this, _$identity);
 }
 
-abstract class _EmailVerificationState implements EmailVerificationState {
-  const factory _EmailVerificationState({required final bool isTimeoutDone}) =
-      _$_EmailVerificationState;
+abstract class _VerificationEmailFormState
+    implements VerificationEmailFormState {
+  const factory _VerificationEmailFormState(
+      {required final bool isTimeoutDone}) = _$_VerificationEmailFormState;
 
   @override
   bool get isTimeoutDone;
   @override
   @JsonKey(ignore: true)
-  _$$_EmailVerificationStateCopyWith<_$_EmailVerificationState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_VerificationEmailFormStateCopyWith<_$_VerificationEmailFormState>
+      get copyWith => throw _privateConstructorUsedError;
 }
