@@ -16,3 +16,4 @@ const String MY_CONTENT = '/my_content';
 const String SETTINGS_AND_PRIVACY = '/settings_and_privacy';
 const String CHANGE_PROFILE = '/change_profile';
 const String ADD_SECOND_EMAIL = '/add_second_email';
+const String READ_ARTICLE = '/read_article';

@@ -147,7 +147,7 @@ class ForYouTab extends StatelessWidget {
               );
             },
           ),
-
+          const SizedBox(height: SPACE15),
           // Main content separator
           Container(
             color: theme.disabledColor.withOpacity(.3),

@@ -14,6 +14,7 @@ class ArticleModel extends Equatable {
     required this.isVerified,
     required this.likes,
     required this.comments,
+    required this.contentHtml,
     required this.createdAt,
   });
 
@@ -25,6 +26,7 @@ class ArticleModel extends Equatable {
   final bool isVerified;
   final int likes;
   final int comments;
+  final String contentHtml;
   final DateTime createdAt;
 
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
@@ -37,6 +39,7 @@ class ArticleModel extends Equatable {
       isVerified: json['is_verified'] as bool,
       likes: json['likes'] as int,
       comments: json['comments'] as int,
+      contentHtml: json['content_html'] as String,
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
@@ -51,6 +54,7 @@ class ArticleModel extends Equatable {
       isVerified: isVerified,
       likes: likes,
       comments: comments,
+      contentHtml: contentHtml,
       createdAt: createdAt,
     );
   }
@@ -63,6 +67,7 @@ class ArticleModel extends Equatable {
         creatorName,
         thumbnail,
         isVerified,
+        contentHtml,
         createdAt,
       ];
 }

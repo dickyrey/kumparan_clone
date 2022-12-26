@@ -10,6 +10,7 @@ class Article extends Equatable {
     required this.isVerified,
     required this.likes,
     required this.comments,
+    required this.contentHtml,
     required this.createdAt,
   });
 
@@ -21,6 +22,7 @@ class Article extends Equatable {
   final bool isVerified;
   final int likes;
   final int comments;
+  final String contentHtml;
   final DateTime createdAt;
 
   @override
@@ -33,6 +35,7 @@ class Article extends Equatable {
         isVerified,
         likes,
         comments,
+        contentHtml,
         createdAt,
       ];
 }

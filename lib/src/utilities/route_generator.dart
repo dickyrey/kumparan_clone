@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/pages/add_second_email_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/backup_email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/change_profile_page.dart';
@@ -11,6 +12,7 @@ import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/my_content_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/profile_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/read_article_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/settings_and_privacy_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
@@ -88,6 +90,13 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const AddSecondEmailPage(),
         );
+      case READ_ARTICLE:
+        if (args is Article) {
+          return MaterialPageRoute(
+            builder: (_) => ReadArticlePage(article: args),
+          );
+        }
+        return _errorRoute();
       default:
         return _errorRoute();
     }
