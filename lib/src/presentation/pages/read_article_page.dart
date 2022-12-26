@@ -2,16 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:intl/intl.dart';
+import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
+import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
-class ReadArticlePage extends StatelessWidget {
+class ReadArticlePage extends StatefulWidget {
   const ReadArticlePage({super.key, required this.article});
 
   final Article article;
+
+  @override
+  State<ReadArticlePage> createState() => _ReadArticlePageState();
+}
+
+class _ReadArticlePageState extends State<ReadArticlePage> {
+  bool _isLiked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +29,7 @@ class ReadArticlePage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: _appBar(context, article: article),
+      appBar: _appBar(context, article: widget.article),
       body: Column(
         children: [
           Expanded(
@@ -36,22 +46,22 @@ class ReadArticlePage extends StatelessWidget {
                   ),
                   const SizedBox(height: SPACE8),
                   Text(
-                    article.title,
+                    widget.article.title,
                     style: theme.textTheme.headline1,
                   ),
                   const SizedBox(height: SPACE15),
                   Text(
-                    article.creatorName,
+                    widget.article.creatorName,
                     style: theme.textTheme.headline4,
                   ),
                   const SizedBox(height: SPACE12),
                   Text(
-                    '${DateFormat.yMMMMEEEEd().format(article.createdAt)} - waktu baca 2 menit',
+                    '${DateFormat.yMMMMEEEEd().format(widget.article.createdAt)} - waktu baca 2 menit',
                     style: theme.textTheme.subtitle2,
                   ),
                   const SizedBox(height: SPACE15),
                   Html(
-                    data: article.contentHtml,
+                    data: widget.article.contentHtml,
                   ),
                 ],
               ),
@@ -75,21 +85,32 @@ class ReadArticlePage extends StatelessWidget {
                   const SizedBox(width: SPACE12),
                   GestureDetector(
                     onTap: () {
-                      // TODO(dickyrey): Do some action
+                      setState(() {
+                        _isLiked = !_isLiked;
+                      });
                     },
-                    child: const Icon(FeatherIcons.heart),
+                    child: Icon(
+                      (_isLiked == true) ? Icons.favorite : FeatherIcons.heart,
+                      color: (_isLiked == true)
+                          ? Colors.red
+                          : ColorLight.fontTitle,
+                    ),
                   ),
                   const SizedBox(width: SPACE15),
                   GestureDetector(
                     onTap: () {
-                      // TODO(dickyrey): Do some action
+                      _showCommentDialog(context);
                     },
                     child: const Icon(FeatherIcons.messageCircle),
                   ),
                   const SizedBox(width: SPACE15),
                   GestureDetector(
-                    onTap: () {
-                      // TODO(dickyrey): Do some action
+                    onTap: () async {
+                      await FlutterShare.share(
+                        title: 'Share message',
+                        linkUrl: 'https://google.com',
+                        chooserTitle: 'Example Chooser Title',
+                      );
                     },
                     child: const Icon(FeatherIcons.share2),
                   ),
@@ -99,6 +120,91 @@ class ReadArticlePage extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Future<dynamic> _showCommentDialog(BuildContext context) {
+    final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
+    return showModalBottomSheet<dynamic>(
+      context: context,
+      isScrollControlled: true,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(RADIUS),
+      ),
+      builder: (BuildContext context) {
+        return SizedBox(
+          height: Screens.heigth(context) - 100,
+          child: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: MARGIN,
+                  vertical: SPACE12,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      lang.comments,
+                      style: theme.textTheme.headline4,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(FeatherIcons.x),
+                    )
+                  ],
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: 5,
+                  shrinkWrap: true,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: MARGIN,
+                    vertical: SPACE12,
+                  ),
+                  physics: const ScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return const CommentCardWidget();
+                  },
+                ),
+              ),
+              Card(
+                elevation: 7,
+                margin: EdgeInsets.zero,
+                child: Container(
+                  width: Screens.width(context),
+                  height: 70,
+                  color: theme.backgroundColor,
+                  padding: const EdgeInsets.only(left: MARGIN),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextFormFieldWidget(
+                          hintText: lang.write_comment,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          // TODO(dickyrey): Send comment
+                        },
+                        icon: Icon(
+                          Icons.send,
+                          color: theme.primaryColor,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              )
+            ],
+          ),
+        );
+      },
     );
   }
 
