@@ -39,7 +39,6 @@ class AddPhoneNumberPage extends StatelessWidget {
                   ),
                   const SizedBox(height: SPACE50),
                   Row(
-                    
                     children: [
                       SvgPicture.asset(
                         CustomIcons.indonesia_flag,
@@ -72,8 +71,10 @@ class AddPhoneNumberPage extends StatelessWidget {
                     onTap: () {
                       if (!formKey.currentState!.validate()) {
                       } else {
-                        _showAlertDialog(context,
-                            phoneNumber: state.phoneNumber);
+                        _showAlertDialog(
+                          context,
+                          phoneNumber: state.phoneNumber,
+                        );
                       }
                     },
                     label: lang.save,
