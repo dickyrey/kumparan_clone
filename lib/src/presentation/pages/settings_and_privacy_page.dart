@@ -34,31 +34,40 @@ class SettingsAndPrivacyPage extends StatelessWidget {
             ),
             ListTileWidget(
               title: lang.phone_number,
-              subtitle: 'belum ditambahkan',
+              subtitle: lang.not_yet_added,
               icon: FeatherIcons.smartphone,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, ADD_PHONE_NUMBER);
+              },
             ),
             ListTileWidget(
               title: lang.password,
-              subtitle: 'belum ditambahkan',
+              subtitle: lang.not_yet_added,
               icon: FeatherIcons.lock,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, PASSWORD);
+              },
             ),
             ListTileWidget(
               title: lang.notification,
               icon: FeatherIcons.bell,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, INTEREST_SETTING);
+              },
             ),
             ListTileWidget(
               title: lang.dark_mode,
+              subtitle: 'Coming soon',
               icon: FeatherIcons.moon,
               onTap: () {},
             ),
             ListTileWidget(
               title: lang.delete_account,
-              subtitle: 'Akun dan data kamu akan dihapus secara permanen.',
+              subtitle: lang.your_account_and_data_will_be_permanently_deleted,
               icon: FeatherIcons.trash2,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, DELETE_ACCOUNT);
+              },
             ),
           ],
         ),

@@ -24,6 +24,8 @@ import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_pass
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 
 final locator = GetIt.instance;
@@ -136,6 +138,16 @@ void init() {
   final noticeWatcherBloc = NoticeWatcherBloc(locator());
   locator.registerLazySingleton(
     () => noticeWatcherBloc,
+  );
+
+  final passwordFormBloc = PasswordFormBloc();
+  locator.registerLazySingleton(
+    () => passwordFormBloc,
+  );
+  
+  final phoneNumberFormBloc = PhoneNumberFormBloc();
+  locator.registerLazySingleton(
+    () => phoneNumberFormBloc,
   );
 
   final registerFormBloc = RegisterFormBloc();

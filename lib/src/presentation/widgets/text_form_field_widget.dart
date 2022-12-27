@@ -121,9 +121,9 @@ class TextFormFieldWidget extends StatelessWidget {
                   AppLocalizations.of(context)!.please_enter_your_password,
             ),
             MinLengthValidator(
-              6,
+              8,
               errorText:
-                  AppLocalizations.of(context)!.must_be_more_than_6_characters,
+                  AppLocalizations.of(context)!.must_be_more_than_8_characters,
             )
           ]);
         case TextFieldType.phoneNumber:

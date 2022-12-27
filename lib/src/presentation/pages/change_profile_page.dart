@@ -118,7 +118,7 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
                   const SizedBox(height: SPACE8),
                   Row(
                     children: [
-                      Radio(
+                      Radio (
                         value: 0,
                         groupValue: _selectedRadio,
                         onChanged: _handleRadioValueChanged,

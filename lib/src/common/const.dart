@@ -11,6 +11,7 @@ class CustomIcons {
   static const String duolingo = 'assets/duolingo.svg';
   static const String facebook = 'assets/facebook.svg';
   static const String google = 'assets/google.svg';
+  static const String indonesia_flag = 'assets/indonesia_flag.svg';
 
   // PNG Assets
   static const String comments = 'assets/comments.png';

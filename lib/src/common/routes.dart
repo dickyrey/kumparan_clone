@@ -17,3 +17,6 @@ const String SETTINGS_AND_PRIVACY = '/settings_and_privacy';
 const String CHANGE_PROFILE = '/change_profile';
 const String ADD_SECOND_EMAIL = '/add_second_email';
 const String READ_ARTICLE = '/read_article';
+const String ADD_PHONE_NUMBER = '/add_phone_number';
+const String PASSWORD = '/password';
+const String DELETE_ACCOUNT = '/delete_account';
