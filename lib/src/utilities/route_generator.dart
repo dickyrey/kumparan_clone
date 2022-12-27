@@ -16,6 +16,7 @@ import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/password_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/profile_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/read_article_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/read_history_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/register_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/settings_and_privacy_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/splash_page.dart';
@@ -104,6 +105,10 @@ class RouteGenerator {
       case DELETE_ACCOUNT:
         return MaterialPageRoute(
           builder: (_) => const DeleteAccountPage(),
+        );
+      case READ_HISTORY:
+        return MaterialPageRoute(
+          builder: (_) => const ReadHistoryPage(),
         );
       case READ_ARTICLE:
         if (args is Article) {

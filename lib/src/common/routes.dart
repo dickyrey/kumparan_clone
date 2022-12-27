@@ -20,3 +20,4 @@ const String READ_ARTICLE = '/read_article';
 const String ADD_PHONE_NUMBER = '/add_phone_number';
 const String PASSWORD = '/password';
 const String DELETE_ACCOUNT = '/delete_account';
+const String READ_HISTORY = '/read_history';

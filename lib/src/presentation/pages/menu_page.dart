@@ -111,7 +111,9 @@ class MenuPage extends StatelessWidget {
             ListTileWidget(
               icon: FeatherIcons.clock,
               title: lang.read_history,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, READ_HISTORY);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.slack,
