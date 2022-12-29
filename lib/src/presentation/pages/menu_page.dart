@@ -144,12 +144,16 @@ class MenuPage extends StatelessWidget {
             ListTileWidget(
               icon: FeatherIcons.trendingUp,
               title: lang.trending,
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, TRENDING_ARTICLE);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.mapPin,
-              title: lang.regional_news,
-              onTap: () {},
+              title: lang.local_news,
+              onTap: () {
+                Navigator.pushNamed(context, LOCAL_NEWS);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.camera,

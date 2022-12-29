@@ -21,3 +21,5 @@ const String ADD_PHONE_NUMBER = '/add_phone_number';
 const String PASSWORD = '/password';
 const String DELETE_ACCOUNT = '/delete_account';
 const String READ_HISTORY = '/read_history';
+const String TRENDING_ARTICLE = '/trending_article';
+const String LOCAL_NEWS = '/local_news';

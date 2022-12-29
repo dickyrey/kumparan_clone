@@ -11,6 +11,7 @@ class OutlinedButtonWidget extends StatelessWidget {
     required this.onTap,
     this.borderColor,
     this.labelColor,
+    this.backgroundColor,
     required this.label,
   });
 
@@ -21,6 +22,7 @@ class OutlinedButtonWidget extends StatelessWidget {
   final bool isLoading;
   final Color? borderColor;
   final Color? labelColor;
+  final Color? backgroundColor;
   final String label;
 
   @override
@@ -33,6 +35,7 @@ class OutlinedButtonWidget extends StatelessWidget {
       margin: margin,
       child: OutlinedButton(
         style: OutlinedButton.styleFrom(
+          backgroundColor: backgroundColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(RADIUS),
           ),

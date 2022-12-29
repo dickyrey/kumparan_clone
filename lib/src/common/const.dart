@@ -19,6 +19,7 @@ class CustomIcons {
   static const String email_send = 'assets/email_send.png';
   static const String mail = 'assets/mail.png';
   static const String likes = 'assets/likes.png';
+  static const String local_news = 'assets/local_news.png';
 }
 
 class ExceptionMessage {
