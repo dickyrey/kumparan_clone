@@ -6,6 +6,7 @@ import 'package:geolocator/geolocator.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
@@ -49,7 +50,7 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
         body: TabBarView(
           children: [
             (_isGPSActivate == true)
-                ? Text('NICE JOB')
+                ? const _NearbyContentTabView()
                 : EmptyDataWidget(
                     illustration: CustomIcons.local_news,
                     label: lang
@@ -59,7 +60,6 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
                     margin: MARGIN,
                     onTap: () {
                       Geolocator.requestPermission().then((status) {
-                        print(status);
                         if (status == LocationPermission.always) {
                           setState(() {
                             _isGPSActivate = true;
@@ -111,7 +111,7 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
 }
 
 class _NearbyContentTabView extends StatelessWidget {
-  const _NearbyContentTabView({super.key});
+  const _NearbyContentTabView();
 
   @override
   Widget build(BuildContext context) {
@@ -173,11 +173,8 @@ class _OtherLocalNewsTabView extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(MARGIN),
               child: TextFormFieldWidget(
-                hintText: 'Cari Provinsi',
-                suffixIcon: IconButton(
-                  icon: const Icon(FeatherIcons.search),
-                  onPressed: () {},
-                ),
+                hintText: lang.search_province,
+                suffixIcon: const Icon(FeatherIcons.search),
                 onChanged: (value) {
                   context
                       .read<SearchProvinceFormBloc>()
@@ -220,7 +217,13 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                             : state.searchResultList[index];
 
                         return TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(
+                              context,
+                              PROVINCE_NEWS,
+                              arguments: data,
+                            );
+                          },
                           child: Align(
                             alignment: Alignment.centerLeft,
                             child: Text(

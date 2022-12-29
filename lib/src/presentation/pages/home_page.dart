@@ -6,11 +6,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/feature_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/heading_tile_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
+import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -62,7 +64,9 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: theme.backgroundColor,
       leading: SvgPicture.asset(CustomIcons.duolingo),
       title: InkWell(
-        onTap: () {},
+        onTap: () {
+          // TODO(dickyrey): Search all Article
+        },
         borderRadius: BorderRadius.circular(RADIUS),
         child: Container(
           height: 37,
@@ -128,7 +132,7 @@ class ForYouTab extends StatelessWidget {
                 loaded: (state) {
                   return SizedBox(
                     width: double.infinity,
-                    height: 290,
+                    height: 305,
                     child: ListView.builder(
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,
@@ -162,21 +166,27 @@ class ForYouTab extends StatelessWidget {
             child: Row(
               children: [
                 FeatureCardWidget(
-                  onTap: () {},
+                  onTap: () {
+                    Navigator.pushNamed(context, TRENDING_ARTICLE);
+                  },
                   label: lang.trending,
                   backgroundColor: const Color(0xFFEB4768),
                   icon: FeatherIcons.barChart2,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCardWidget(
-                  onTap: () {},
+                  onTap: () {
+                    showToast(msg: lang.feature_not_available_yet);
+                  },
                   label: lang.membership,
                   backgroundColor: const Color(0xFF00B5B4),
                   icon: FeatherIcons.award,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCardWidget(
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): Opinions and Stories
+                  },
                   label: lang.opinions_and_stories,
                   backgroundColor: const Color(0xFF33A4DA),
                   icon: FeatherIcons.edit3,
@@ -192,21 +202,27 @@ class ForYouTab extends StatelessWidget {
             child: Row(
               children: [
                 FeatureCardWidget(
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): List of Article contains only photo
+                  },
                   label: lang.photo_gallery,
                   backgroundColor: const Color(0xFF0071A7),
                   icon: FeatherIcons.camera,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCardWidget(
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): List of articles contains video
+                  },
                   label: lang.video,
                   backgroundColor: const Color(0xFFFA8B48),
                   icon: FeatherIcons.film,
                 ),
                 const SizedBox(width: SPACE12),
                 FeatureCardWidget(
-                  onTap: () {},
+                  onTap: () {
+                    showToast(msg: lang.feature_not_available_yet);
+                  },
                   label: lang.vaccine_information_center,
                   backgroundColor: const Color(0xFFE51E44),
                   icon: FeatherIcons.thermometer,
@@ -226,7 +242,9 @@ class ForYouTab extends StatelessWidget {
           /// First heading is `Trending News/Article`
           HeadingTileWidget(
             label: lang.trending,
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, TRENDING_ARTICLE);
+            },
           ),
 
           /// List of `Trending Article`
@@ -271,7 +289,9 @@ class ForYouTab extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: MARGIN),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, TRENDING_ARTICLE);
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -335,7 +355,7 @@ class CategoryTab extends StatelessWidget {
                 loaded: (state) {
                   return SizedBox(
                     width: double.infinity,
-                    height: 290,
+                    height: 305,
                     child: ListView.builder(
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,
@@ -355,11 +375,15 @@ class CategoryTab extends StatelessWidget {
             },
           ),
 
+          const SizedBox(height: SPACE25),
+          
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
           /// First heading is `Trending News/Article`
           HeadingTileWidget(
             label: lang.trending,
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, TRENDING_ARTICLE);
+            },
           ),
 
           /// List of `Trending Article`
@@ -412,10 +436,9 @@ class CategoryTab extends StatelessWidget {
           HeadingTileWidget(
             label: lang.feed,
             type: HeadingTileType.dropdown,
-            onTap: () {},
           ),
 
-          /// List of `Trending Article`
+          /// List of `Newest or Recommended Article`
           /// Allow users to explore more trending article
           BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
             builder: (context, state) {
@@ -457,7 +480,9 @@ class CategoryTab extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: MARGIN),
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, TRENDING_ARTICLE);
+                          },
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [

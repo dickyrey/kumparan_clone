@@ -4,6 +4,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
+import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class SettingsAndPrivacyPage extends StatelessWidget {
   const SettingsAndPrivacyPage({super.key});
@@ -59,7 +60,9 @@ class SettingsAndPrivacyPage extends StatelessWidget {
               title: lang.dark_mode,
               subtitle: 'Coming soon',
               icon: FeatherIcons.moon,
-              onTap: () {},
+              onTap: () {
+                showToast(msg: lang.feature_not_available_yet);
+              },
             ),
             ListTileWidget(
               title: lang.delete_account,

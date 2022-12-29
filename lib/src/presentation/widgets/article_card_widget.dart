@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_share/flutter_share.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
@@ -41,7 +42,8 @@ class ArticleCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(RADIUS),
                 child: OctoImage(
                   fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(article.thumbnail),
+                  width: 280,
+                image: CachedNetworkImageProvider(article.thumbnail),
                 ),
               ),
               const SizedBox(height: SPACE12),
@@ -103,8 +105,12 @@ class ArticleCardWidget extends StatelessWidget {
                   ),
                   const Expanded(child: SizedBox()),
                   InkWell(
-                    onTap: () {
-                      // TODO(dickyrey): Open bottom sheet to share article to sosmed
+                    onTap: () async {
+                      await FlutterShare.share(
+                        title: 'Share message',
+                        linkUrl: 'https://google.com',
+                        chooserTitle: 'Example Chooser Title',
+                      );
                     },
                     child: Icon(
                       FeatherIcons.moreVertical,
@@ -124,109 +130,120 @@ class ArticleCardWidget extends StatelessWidget {
           horizontal: MARGIN,
           vertical: SPACE12,
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            useRank == true
-                ? Text(
-                    '${index + 1}.',
-                    style: theme.textTheme.headline3?.copyWith(
-                      color: theme.primaryColor,
-                      fontWeight: FontWeight.bold,
+        child: InkWell(
+          onTap: () {
+            Navigator.pushNamed(context, READ_ARTICLE, arguments: article);
+          },
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              useRank == true
+                  ? Text(
+                      '${index + 1}.',
+                      style: theme.textTheme.headline3?.copyWith(
+                        color: theme.primaryColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                      maxLines: 1,
+                    )
+                  : const SizedBox(),
+              useRank == true
+                  ? const SizedBox(width: SPACE12)
+                  : const SizedBox(),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      article.title,
+                      style: theme.textTheme.headline3,
+                      maxLines: 3,
                     ),
-                    maxLines: 1,
-                  )
-                : const SizedBox(),
-            useRank == true ? const SizedBox(width: SPACE12) : const SizedBox(),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    article.title,
-                    style: theme.textTheme.headline3,
-                    maxLines: 3,
-                  ),
-                  const SizedBox(height: SPACE8),
-                  Row(
-                    children: [
-                      OctoImage(
-                        width: 20,
-                        height: 20,
-                        fit: BoxFit.contain,
-                        image: CachedNetworkImageProvider(
-                          article.profilePicture,
+                    const SizedBox(height: SPACE8),
+                    Row(
+                      children: [
+                        OctoImage(
+                          width: 20,
+                          height: 20,
+                          fit: BoxFit.contain,
+                          image: CachedNetworkImageProvider(
+                            article.profilePicture,
+                          ),
                         ),
-                      ),
-                      const SizedBox(width: SPACE12),
-                      Text(
-                        article.creatorName,
-                        style: theme.textTheme.subtitle2,
-                        maxLines: 1,
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: SPACE8),
-                  Row(
-                    children: [
-                      Icon(
-                        FeatherIcons.heart,
-                        size: 15,
-                        color: theme.disabledColor,
-                      ),
-                      const SizedBox(width: SPACE8),
-                      Text(
-                        article.likes.toString(),
-                        style: theme.textTheme.subtitle2,
-                        maxLines: 1,
-                      ),
-                      const SizedBox(width: SPACE15),
-                      Icon(
-                        FeatherIcons.messageCircle,
-                        size: 15,
-                        color: theme.disabledColor,
-                      ),
-                      const SizedBox(width: SPACE8),
-                      Text(
-                        article.comments.toString(),
-                        style: theme.textTheme.subtitle2,
-                        maxLines: 1,
-                      ),
-                      const SizedBox(width: SPACE15),
-                      Text(
-                        timeago.format(article.createdAt),
-                        style: theme.textTheme.subtitle2,
-                        maxLines: 1,
-                      ),
-                      const Expanded(child: SizedBox()),
-                      InkWell(
-                        onTap: () {
-                          // TODO(dickyrey): Open bottom sheet to share article to sosmed
-                        },
-                        child: Icon(
-                          FeatherIcons.moreVertical,
-                          size: 20,
+                        const SizedBox(width: SPACE12),
+                        Text(
+                          article.creatorName,
+                          style: theme.textTheme.subtitle2,
+                          maxLines: 1,
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: SPACE8),
+                    Row(
+                      children: [
+                        Icon(
+                          FeatherIcons.heart,
+                          size: 15,
                           color: theme.disabledColor,
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: SPACE15),
-            SizedBox(
-              height: 80,
-              width: 80,
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(RADIUS),
-                child: OctoImage(
-                  fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(article.thumbnail),
+                        const SizedBox(width: SPACE8),
+                        Text(
+                          article.likes.toString(),
+                          style: theme.textTheme.subtitle2,
+                          maxLines: 1,
+                        ),
+                        const SizedBox(width: SPACE15),
+                        Icon(
+                          FeatherIcons.messageCircle,
+                          size: 15,
+                          color: theme.disabledColor,
+                        ),
+                        const SizedBox(width: SPACE8),
+                        Text(
+                          article.comments.toString(),
+                          style: theme.textTheme.subtitle2,
+                          maxLines: 1,
+                        ),
+                        const SizedBox(width: SPACE15),
+                        Text(
+                          timeago.format(article.createdAt),
+                          style: theme.textTheme.subtitle2,
+                          maxLines: 1,
+                        ),
+                        const Expanded(child: SizedBox()),
+                        InkWell(
+                          onTap: () async {
+                            await FlutterShare.share(
+                              title: 'Share message',
+                              linkUrl: 'https://google.com',
+                              chooserTitle: 'Example Chooser Title',
+                            );
+                          },
+                          child: Icon(
+                            FeatherIcons.moreVertical,
+                            size: 20,
+                            color: theme.disabledColor,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-            ),
-          ],
+              const SizedBox(width: SPACE15),
+              SizedBox(
+                height: 80,
+                width: 80,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(RADIUS),
+                  child: OctoImage(
+                    fit: BoxFit.cover,
+                    image: CachedNetworkImageProvider(article.thumbnail),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       );
     }

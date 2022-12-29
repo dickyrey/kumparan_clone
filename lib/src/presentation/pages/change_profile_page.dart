@@ -64,7 +64,9 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
             ElevatedButtonWidget(
               width: 200,
               height: 35,
-              onTap: () {},
+              onTap: () {
+                _openUploadImageDialog(context);
+              },
               label: lang.upload_profile_photo,
             ),
             const SizedBox(height: SPACE15),
@@ -118,7 +120,7 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
                   const SizedBox(height: SPACE8),
                   Row(
                     children: [
-                      Radio (
+                      Radio(
                         value: 0,
                         groupValue: _selectedRadio,
                         onChanged: _handleRadioValueChanged,
@@ -176,7 +178,9 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
                   ),
                   const SizedBox(height: SPACE25),
                   ElevatedButtonWidget(
-                    onTap: () {},
+                    onTap: () {
+                      // TODO(dickyrey): Save changes
+                    },
                     label: lang.save_changes,
                   ),
                   const SizedBox(height: SPACE25),
@@ -194,7 +198,6 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
     required String image,
     required String header,
   }) {
-    final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
     return SizedBox(
@@ -221,55 +224,7 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
                 width: 250,
                 height: 40,
                 onTap: () {
-                  showDialog<dynamic>(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(RADIUS),
-                        ),
-                        content: Container(
-                          width: 300,
-                          height: 200,
-                          alignment: Alignment.center,
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text(
-                                    lang.upload_image,
-                                    style: theme.textTheme.headline1,
-                                  ),
-                                  IconButton(
-                                    onPressed: () => Navigator.pop(context),
-                                    icon: const Icon(FeatherIcons.x),
-                                  ),
-                                ],
-                              ),
-                              const SizedBox(height: SPACE15),
-                              TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  '${lang.take_photo}...',
-                                  style: theme.textTheme.bodyText2,
-                                ),
-                              ),
-                              TextButton(
-                                onPressed: () {},
-                                child: Text(
-                                  '${lang.choose_from_library}...',
-                                  style: theme.textTheme.bodyText2,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
-                    },
-                  );
+                  _openUploadImageDialog(context);
                 },
                 label: lang.upload_a_cover_image,
               ),
@@ -294,6 +249,64 @@ class _ChangeProfilePageState extends State<ChangeProfilePage> {
           ),
         ],
       ),
+    );
+  }
+
+  Future<dynamic> _openUploadImageDialog(BuildContext context) {
+    final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
+    return showDialog<dynamic>(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(RADIUS),
+          ),
+          content: Container(
+            width: 300,
+            height: 200,
+            alignment: Alignment.center,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      lang.upload_image,
+                      style: theme.textTheme.headline1,
+                    ),
+                    IconButton(
+                      onPressed: () => Navigator.pop(context),
+                      icon: const Icon(FeatherIcons.x),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: SPACE15),
+                TextButton(
+                  onPressed: () {
+                    // TODO(dickyrey): Open Camera
+                  },
+                  child: Text(
+                    '${lang.take_photo}...',
+                    style: theme.textTheme.bodyText2,
+                  ),
+                ),
+                TextButton(
+                  onPressed: () {
+                    // TODO(dickyrey): Open Gallery
+                  },
+                  child: Text(
+                    '${lang.choose_from_library}...',
+                    style: theme.textTheme.bodyText2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 

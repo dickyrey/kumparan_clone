@@ -8,12 +8,12 @@ class HeadingTileWidget extends StatefulWidget {
   const HeadingTileWidget({
     super.key,
     required this.label,
-    required this.onTap,
+    this.onTap,
     this.type = HeadingTileType.normal,
   });
 
   final String label;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final HeadingTileType type;
 
   @override

@@ -228,7 +228,7 @@ class LoginPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return ElevatedButtonWidget(
-      onTap: () {},
+      onTap: onTap,
       color: theme.backgroundColor,
       margin: const EdgeInsets.symmetric(horizontal: MARGIN),
       elevation: 1,

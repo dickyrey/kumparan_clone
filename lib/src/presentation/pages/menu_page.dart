@@ -6,6 +6,7 @@ import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
+import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class MenuPage extends StatelessWidget {
   const MenuPage({super.key});
@@ -118,27 +119,33 @@ class MenuPage extends StatelessWidget {
             ListTileWidget(
               icon: FeatherIcons.slack,
               title: lang.subscription,
-              onTap: () {},
+              onTap: () {
+                showToast(msg: lang.feature_not_available_yet);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.repeat,
               title: lang.subscription_history,
-              onTap: () {},
+              onTap: () {
+                showToast(msg: lang.feature_not_available_yet);},
             ),
             ListTileWidget(
               icon: FeatherIcons.creditCard,
               title: lang.manage_subscription,
-              onTap: () {},
+              onTap: () {
+                showToast(msg: lang.feature_not_available_yet);},
             ),
             ListTileWidget(
               icon: FeatherIcons.moon,
               title: lang.dark_mode,
-              onTap: () {},
+              onTap: () {
+                showToast(msg: lang.feature_not_available_yet);},
             ),
             ListTileWidget(
               icon: FeatherIcons.mail,
               title: lang.cooperation_information,
-              onTap: () {},
+              onTap: () {
+                showToast(msg: lang.feature_not_available_yet);},
             ),
             const Divider(),
             ListTileWidget(
@@ -158,68 +165,98 @@ class MenuPage extends StatelessWidget {
             ListTileWidget(
               icon: FeatherIcons.camera,
               title: lang.photo_gallery,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article contains photos
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.video,
               title: lang.video,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article contains videos
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.edit3,
               title: lang.opinions_and_stories,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of opinions and story
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.barChart2,
               title: lang.author_ranking,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of author rank
+              },
             ),
             const Divider(),
             ListTileWidget(
               title: lang.news,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category NEWS
+              },
             ),
             ListTileWidget(
               title: lang.entertaiment,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category entertaiment
+              },
             ),
             ListTileWidget(
               title: lang.mom,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category mom
+              },
             ),
             ListTileWidget(
               title: lang.food_and_travel,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category food and travel
+              },
             ),
             ListTileWidget(
               title: lang.tech_and_science,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category tech and science
+              },
             ),
             ListTileWidget(
               title: lang.automotive,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category automtovive
+              },
             ),
             ListTileWidget(
               title: lang.woman,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category woman
+              },
             ),
             ListTileWidget(
               title: lang.sports,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category sports
+              },
             ),
             ListTileWidget(
               title: lang.business,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category business
+              },
             ),
             ListTileWidget(
               title: lang.buzz,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): List of Article category buzz
+              },
             ),
             const Divider(),
             ListTileWidget(
               title: lang.how_to_write_in_kumparan,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): Tutorial how to write
+              },
             ),
             ExpansionTile(
               title: Text(
@@ -230,44 +267,60 @@ class MenuPage extends StatelessWidget {
                 ListTileWidget(
                   title: lang.life_at_kumparan,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): life_at_kumparan
+                  },
                 ),
                 ListTileWidget(
                   title: lang.help,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): call center
+                  },
                 ),
                 ListTileWidget(
                   title: lang.terms_and_privacy_policy,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): terms_and_privacy_policy
+                  },
                 ),
                 ListTileWidget(
                   title: lang.kumparan_community_guide,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): kumparan_community_guide
+                  },
                 ),
                 ListTileWidget(
                   title: lang.cyber_media_guide,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): cyber_media_guide
+                  },
                 ),
                 ListTileWidget(
                   title: lang.advertisement,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): advertisement
+                  },
                 ),
                 ListTileWidget(
                   title: lang.career,
                   fontSize: 12,
-                  onTap: () {},
+                  onTap: () {
+                    // TODO(dickyrey): career
+                  },
                 ),
               ],
             ),
             ListTileWidget(
               icon: FeatherIcons.logOut,
               title: lang.exit,
-              onTap: () {},
+              onTap: () {
+                // TODO(dickyrey): logout
+              },
             ),
           ],
         ),

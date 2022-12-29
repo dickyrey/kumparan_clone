@@ -38,8 +38,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BackupEmailFormBloc>()),
-        BlocProvider(
-            create: (context) => di.locator<VerificationEmailFormBloc>()),
+        BlocProvider(create: (context) => di.locator<VerificationEmailFormBloc>()),
         BlocProvider(create: (context) => di.locator<ForgotPasswordFormBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
         BlocProvider(create: (context) => di.locator<LoginFormBloc>()),
