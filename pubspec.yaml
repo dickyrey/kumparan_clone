@@ -31,6 +31,8 @@ dependencies:
   get_it: ^7.2.0
   google_fonts: ^3.0.1
   http: ^0.13.5
+  image_cropper: ^3.0.1
+  image_picker: ^0.8.6
   intl: ^0.17.0
   octo_image: ^1.0.2
   shared_preferences: ^2.0.15
