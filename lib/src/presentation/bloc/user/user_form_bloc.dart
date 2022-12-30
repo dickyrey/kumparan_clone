@@ -68,13 +68,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
           }
         },
         saveChanges: (_) {
-          print(state.photoHeaderFile?.path ?? 'header null');
-          print(state.photoProfileFile?.path ?? 'photo null');
-          print(state.name);
-          print('${state.bio} bio null');
-          print(state.web);
-          print(state.gender);
-          print(state.birthdate);
+          // TODO(dickyrey): Store to Database
         },
       );
     });
