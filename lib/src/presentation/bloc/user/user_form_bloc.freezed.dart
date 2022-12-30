@@ -24,7 +24,9 @@ mixin _$UserFormEvent {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -35,7 +37,9 @@ mixin _$UserFormEvent {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,7 +50,9 @@ mixin _$UserFormEvent {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -58,7 +64,9 @@ mixin _$UserFormEvent {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,7 +77,9 @@ mixin _$UserFormEvent {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -80,7 +90,9 @@ mixin _$UserFormEvent {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -147,7 +159,9 @@ class _$_Initial implements _Initial {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
     return initial();
   }
@@ -161,7 +175,9 @@ class _$_Initial implements _Initial {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
     return initial?.call();
   }
@@ -175,7 +191,9 @@ class _$_Initial implements _Initial {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -193,7 +211,9 @@ class _$_Initial implements _Initial {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return initial(this);
   }
@@ -207,7 +227,9 @@ class _$_Initial implements _Initial {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return initial?.call(this);
   }
@@ -221,7 +243,9 @@ class _$_Initial implements _Initial {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -305,7 +329,9 @@ class _$_NameOnChanged implements _NameOnChanged {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
     return nameOnChanged(name);
   }
@@ -319,7 +345,9 @@ class _$_NameOnChanged implements _NameOnChanged {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
     return nameOnChanged?.call(name);
   }
@@ -333,7 +361,9 @@ class _$_NameOnChanged implements _NameOnChanged {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
     if (nameOnChanged != null) {
@@ -351,7 +381,9 @@ class _$_NameOnChanged implements _NameOnChanged {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return nameOnChanged(this);
   }
@@ -365,7 +397,9 @@ class _$_NameOnChanged implements _NameOnChanged {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return nameOnChanged?.call(this);
   }
@@ -379,7 +413,9 @@ class _$_NameOnChanged implements _NameOnChanged {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
     if (nameOnChanged != null) {
@@ -468,7 +504,9 @@ class _$_BioOnChanged implements _BioOnChanged {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
     return bioOnChanged(bio);
   }
@@ -482,7 +520,9 @@ class _$_BioOnChanged implements _BioOnChanged {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
     return bioOnChanged?.call(bio);
   }
@@ -496,7 +536,9 @@ class _$_BioOnChanged implements _BioOnChanged {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
     if (bioOnChanged != null) {
@@ -514,7 +556,9 @@ class _$_BioOnChanged implements _BioOnChanged {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return bioOnChanged(this);
   }
@@ -528,7 +572,9 @@ class _$_BioOnChanged implements _BioOnChanged {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return bioOnChanged?.call(this);
   }
@@ -542,7 +588,9 @@ class _$_BioOnChanged implements _BioOnChanged {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
     if (bioOnChanged != null) {
@@ -631,7 +679,9 @@ class _$_WebOnChanged implements _WebOnChanged {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
     return webOnChanged(web);
   }
@@ -645,7 +695,9 @@ class _$_WebOnChanged implements _WebOnChanged {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
     return webOnChanged?.call(web);
   }
@@ -659,7 +711,9 @@ class _$_WebOnChanged implements _WebOnChanged {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
     if (webOnChanged != null) {
@@ -677,7 +731,9 @@ class _$_WebOnChanged implements _WebOnChanged {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return webOnChanged(this);
   }
@@ -691,7 +747,9 @@ class _$_WebOnChanged implements _WebOnChanged {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return webOnChanged?.call(this);
   }
@@ -705,7 +763,9 @@ class _$_WebOnChanged implements _WebOnChanged {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
     if (webOnChanged != null) {
@@ -795,7 +855,9 @@ class _$_BirthdateOnChanged implements _BirthdateOnChanged {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
     return birthdateOnChanged(context);
   }
@@ -809,7 +871,9 @@ class _$_BirthdateOnChanged implements _BirthdateOnChanged {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
     return birthdateOnChanged?.call(context);
   }
@@ -823,7 +887,9 @@ class _$_BirthdateOnChanged implements _BirthdateOnChanged {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
     if (birthdateOnChanged != null) {
@@ -841,7 +907,9 @@ class _$_BirthdateOnChanged implements _BirthdateOnChanged {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return birthdateOnChanged(this);
   }
@@ -855,7 +923,9 @@ class _$_BirthdateOnChanged implements _BirthdateOnChanged {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return birthdateOnChanged?.call(this);
   }
@@ -869,7 +939,9 @@ class _$_BirthdateOnChanged implements _BirthdateOnChanged {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
     if (birthdateOnChanged != null) {
@@ -960,7 +1032,9 @@ class _$_GenderOnChanged implements _GenderOnChanged {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
     return genderOnChanged(genderId);
   }
@@ -974,7 +1048,9 @@ class _$_GenderOnChanged implements _GenderOnChanged {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
     return genderOnChanged?.call(genderId);
   }
@@ -988,7 +1064,9 @@ class _$_GenderOnChanged implements _GenderOnChanged {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
     if (genderOnChanged != null) {
@@ -1006,7 +1084,9 @@ class _$_GenderOnChanged implements _GenderOnChanged {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return genderOnChanged(this);
   }
@@ -1020,7 +1100,9 @@ class _$_GenderOnChanged implements _GenderOnChanged {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return genderOnChanged?.call(this);
   }
@@ -1034,7 +1116,9 @@ class _$_GenderOnChanged implements _GenderOnChanged {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
     if (genderOnChanged != null) {
@@ -1054,20 +1138,20 @@ abstract class _GenderOnChanged implements UserFormEvent {
 }
 
 /// @nodoc
-abstract class _$$_PickImageCopyWith<$Res> {
-  factory _$$_PickImageCopyWith(
-          _$_PickImage value, $Res Function(_$_PickImage) then) =
-      __$$_PickImageCopyWithImpl<$Res>;
+abstract class _$$_PickPhotoProfileCopyWith<$Res> {
+  factory _$$_PickPhotoProfileCopyWith(
+          _$_PickPhotoProfile value, $Res Function(_$_PickPhotoProfile) then) =
+      __$$_PickPhotoProfileCopyWithImpl<$Res>;
   @useResult
   $Res call({ImageSource source});
 }
 
 /// @nodoc
-class __$$_PickImageCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_PickImage>
-    implements _$$_PickImageCopyWith<$Res> {
-  __$$_PickImageCopyWithImpl(
-      _$_PickImage _value, $Res Function(_$_PickImage) _then)
+class __$$_PickPhotoProfileCopyWithImpl<$Res>
+    extends _$UserFormEventCopyWithImpl<$Res, _$_PickPhotoProfile>
+    implements _$$_PickPhotoProfileCopyWith<$Res> {
+  __$$_PickPhotoProfileCopyWithImpl(
+      _$_PickPhotoProfile _value, $Res Function(_$_PickPhotoProfile) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1075,7 +1159,7 @@ class __$$_PickImageCopyWithImpl<$Res>
   $Res call({
     Object? source = null,
   }) {
-    return _then(_$_PickImage(
+    return _then(_$_PickPhotoProfile(
       null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -1086,22 +1170,22 @@ class __$$_PickImageCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PickImage implements _PickImage {
-  const _$_PickImage(this.source);
+class _$_PickPhotoProfile implements _PickPhotoProfile {
+  const _$_PickPhotoProfile(this.source);
 
   @override
   final ImageSource source;
 
   @override
   String toString() {
-    return 'UserFormEvent.pickImage(source: $source)';
+    return 'UserFormEvent.pickPhotoProfile(source: $source)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PickImage &&
+            other is _$_PickPhotoProfile &&
             (identical(other.source, source) || other.source == source));
   }
 
@@ -1111,8 +1195,8 @@ class _$_PickImage implements _PickImage {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PickImageCopyWith<_$_PickImage> get copyWith =>
-      __$$_PickImageCopyWithImpl<_$_PickImage>(this, _$identity);
+  _$$_PickPhotoProfileCopyWith<_$_PickPhotoProfile> get copyWith =>
+      __$$_PickPhotoProfileCopyWithImpl<_$_PickPhotoProfile>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -1123,9 +1207,11 @@ class _$_PickImage implements _PickImage {
     required TResult Function(String web) webOnChanged,
     required TResult Function(BuildContext context) birthdateOnChanged,
     required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickImage,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
   }) {
-    return pickImage(source);
+    return pickPhotoProfile(source);
   }
 
   @override
@@ -1137,9 +1223,11 @@ class _$_PickImage implements _PickImage {
     TResult? Function(String web)? webOnChanged,
     TResult? Function(BuildContext context)? birthdateOnChanged,
     TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
   }) {
-    return pickImage?.call(source);
+    return pickPhotoProfile?.call(source);
   }
 
   @override
@@ -1151,11 +1239,13 @@ class _$_PickImage implements _PickImage {
     TResult Function(String web)? webOnChanged,
     TResult Function(BuildContext context)? birthdateOnChanged,
     TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickImage,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
-    if (pickImage != null) {
-      return pickImage(source);
+    if (pickPhotoProfile != null) {
+      return pickPhotoProfile(source);
     }
     return orElse();
   }
@@ -1169,9 +1259,11 @@ class _$_PickImage implements _PickImage {
     required TResult Function(_WebOnChanged value) webOnChanged,
     required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
     required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
   }) {
-    return pickImage(this);
+    return pickPhotoProfile(this);
   }
 
   @override
@@ -1183,9 +1275,11 @@ class _$_PickImage implements _PickImage {
     TResult? Function(_WebOnChanged value)? webOnChanged,
     TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
   }) {
-    return pickImage?.call(this);
+    return pickPhotoProfile?.call(this);
   }
 
   @override
@@ -1197,23 +1291,345 @@ class _$_PickImage implements _PickImage {
     TResult Function(_WebOnChanged value)? webOnChanged,
     TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
     TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
-    if (pickImage != null) {
-      return pickImage(this);
+    if (pickPhotoProfile != null) {
+      return pickPhotoProfile(this);
     }
     return orElse();
   }
 }
 
-abstract class _PickImage implements UserFormEvent {
-  const factory _PickImage(final ImageSource source) = _$_PickImage;
+abstract class _PickPhotoProfile implements UserFormEvent {
+  const factory _PickPhotoProfile(final ImageSource source) =
+      _$_PickPhotoProfile;
 
   ImageSource get source;
   @JsonKey(ignore: true)
-  _$$_PickImageCopyWith<_$_PickImage> get copyWith =>
+  _$$_PickPhotoProfileCopyWith<_$_PickPhotoProfile> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_PickPhotoHeaderCopyWith<$Res> {
+  factory _$$_PickPhotoHeaderCopyWith(
+          _$_PickPhotoHeader value, $Res Function(_$_PickPhotoHeader) then) =
+      __$$_PickPhotoHeaderCopyWithImpl<$Res>;
+  @useResult
+  $Res call({ImageSource source});
+}
+
+/// @nodoc
+class __$$_PickPhotoHeaderCopyWithImpl<$Res>
+    extends _$UserFormEventCopyWithImpl<$Res, _$_PickPhotoHeader>
+    implements _$$_PickPhotoHeaderCopyWith<$Res> {
+  __$$_PickPhotoHeaderCopyWithImpl(
+      _$_PickPhotoHeader _value, $Res Function(_$_PickPhotoHeader) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? source = null,
+  }) {
+    return _then(_$_PickPhotoHeader(
+      null == source
+          ? _value.source
+          : source // ignore: cast_nullable_to_non_nullable
+              as ImageSource,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_PickPhotoHeader implements _PickPhotoHeader {
+  const _$_PickPhotoHeader(this.source);
+
+  @override
+  final ImageSource source;
+
+  @override
+  String toString() {
+    return 'UserFormEvent.pickPhotoHeader(source: $source)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_PickPhotoHeader &&
+            (identical(other.source, source) || other.source == source));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, source);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_PickPhotoHeaderCopyWith<_$_PickPhotoHeader> get copyWith =>
+      __$$_PickPhotoHeaderCopyWithImpl<_$_PickPhotoHeader>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String name) nameOnChanged,
+    required TResult Function(String bio) bioOnChanged,
+    required TResult Function(String web) webOnChanged,
+    required TResult Function(BuildContext context) birthdateOnChanged,
+    required TResult Function(int genderId) genderOnChanged,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
+  }) {
+    return pickPhotoHeader(source);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String name)? nameOnChanged,
+    TResult? Function(String bio)? bioOnChanged,
+    TResult? Function(String web)? webOnChanged,
+    TResult? Function(BuildContext context)? birthdateOnChanged,
+    TResult? Function(int genderId)? genderOnChanged,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
+  }) {
+    return pickPhotoHeader?.call(source);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String name)? nameOnChanged,
+    TResult Function(String bio)? bioOnChanged,
+    TResult Function(String web)? webOnChanged,
+    TResult Function(BuildContext context)? birthdateOnChanged,
+    TResult Function(int genderId)? genderOnChanged,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
+    required TResult orElse(),
+  }) {
+    if (pickPhotoHeader != null) {
+      return pickPhotoHeader(source);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
+    required TResult Function(_BioOnChanged value) bioOnChanged,
+    required TResult Function(_WebOnChanged value) webOnChanged,
+    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
+    required TResult Function(_GenderOnChanged value) genderOnChanged,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
+  }) {
+    return pickPhotoHeader(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
+    TResult? Function(_BioOnChanged value)? bioOnChanged,
+    TResult? Function(_WebOnChanged value)? webOnChanged,
+    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
+    TResult? Function(_GenderOnChanged value)? genderOnChanged,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
+  }) {
+    return pickPhotoHeader?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
+    TResult Function(_BioOnChanged value)? bioOnChanged,
+    TResult Function(_WebOnChanged value)? webOnChanged,
+    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
+    TResult Function(_GenderOnChanged value)? genderOnChanged,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
+    required TResult orElse(),
+  }) {
+    if (pickPhotoHeader != null) {
+      return pickPhotoHeader(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _PickPhotoHeader implements UserFormEvent {
+  const factory _PickPhotoHeader(final ImageSource source) = _$_PickPhotoHeader;
+
+  ImageSource get source;
+  @JsonKey(ignore: true)
+  _$$_PickPhotoHeaderCopyWith<_$_PickPhotoHeader> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_SaveChangesCopyWith<$Res> {
+  factory _$$_SaveChangesCopyWith(
+          _$_SaveChanges value, $Res Function(_$_SaveChanges) then) =
+      __$$_SaveChangesCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_SaveChangesCopyWithImpl<$Res>
+    extends _$UserFormEventCopyWithImpl<$Res, _$_SaveChanges>
+    implements _$$_SaveChangesCopyWith<$Res> {
+  __$$_SaveChangesCopyWithImpl(
+      _$_SaveChanges _value, $Res Function(_$_SaveChanges) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_SaveChanges implements _SaveChanges {
+  const _$_SaveChanges();
+
+  @override
+  String toString() {
+    return 'UserFormEvent.saveChanges()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_SaveChanges);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String name) nameOnChanged,
+    required TResult Function(String bio) bioOnChanged,
+    required TResult Function(String web) webOnChanged,
+    required TResult Function(BuildContext context) birthdateOnChanged,
+    required TResult Function(int genderId) genderOnChanged,
+    required TResult Function(ImageSource source) pickPhotoProfile,
+    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function() saveChanges,
+  }) {
+    return saveChanges();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String name)? nameOnChanged,
+    TResult? Function(String bio)? bioOnChanged,
+    TResult? Function(String web)? webOnChanged,
+    TResult? Function(BuildContext context)? birthdateOnChanged,
+    TResult? Function(int genderId)? genderOnChanged,
+    TResult? Function(ImageSource source)? pickPhotoProfile,
+    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function()? saveChanges,
+  }) {
+    return saveChanges?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String name)? nameOnChanged,
+    TResult Function(String bio)? bioOnChanged,
+    TResult Function(String web)? webOnChanged,
+    TResult Function(BuildContext context)? birthdateOnChanged,
+    TResult Function(int genderId)? genderOnChanged,
+    TResult Function(ImageSource source)? pickPhotoProfile,
+    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function()? saveChanges,
+    required TResult orElse(),
+  }) {
+    if (saveChanges != null) {
+      return saveChanges();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
+    required TResult Function(_BioOnChanged value) bioOnChanged,
+    required TResult Function(_WebOnChanged value) webOnChanged,
+    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
+    required TResult Function(_GenderOnChanged value) genderOnChanged,
+    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
+    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_SaveChanges value) saveChanges,
+  }) {
+    return saveChanges(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
+    TResult? Function(_BioOnChanged value)? bioOnChanged,
+    TResult? Function(_WebOnChanged value)? webOnChanged,
+    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
+    TResult? Function(_GenderOnChanged value)? genderOnChanged,
+    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_SaveChanges value)? saveChanges,
+  }) {
+    return saveChanges?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
+    TResult Function(_BioOnChanged value)? bioOnChanged,
+    TResult Function(_WebOnChanged value)? webOnChanged,
+    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
+    TResult Function(_GenderOnChanged value)? genderOnChanged,
+    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
+    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_SaveChanges value)? saveChanges,
+    required TResult orElse(),
+  }) {
+    if (saveChanges != null) {
+      return saveChanges(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _SaveChanges implements UserFormEvent {
+  const factory _SaveChanges() = _$_SaveChanges;
 }
 
 /// @nodoc
@@ -1224,7 +1640,8 @@ mixin _$UserFormState {
   String get web => throw _privateConstructorUsedError;
   String get birthdate => throw _privateConstructorUsedError;
   int get gender => throw _privateConstructorUsedError;
-  File? get imageFile => throw _privateConstructorUsedError;
+  File? get photoProfileFile => throw _privateConstructorUsedError;
+  File? get photoHeaderFile => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get isShowErrorMessages => throw _privateConstructorUsedError;
 
@@ -1246,7 +1663,8 @@ abstract class $UserFormStateCopyWith<$Res> {
       String web,
       String birthdate,
       int gender,
-      File? imageFile,
+      File? photoProfileFile,
+      File? photoHeaderFile,
       bool isSubmitting,
       bool isShowErrorMessages});
 }
@@ -1270,7 +1688,8 @@ class _$UserFormStateCopyWithImpl<$Res, $Val extends UserFormState>
     Object? web = null,
     Object? birthdate = null,
     Object? gender = null,
-    Object? imageFile = freezed,
+    Object? photoProfileFile = freezed,
+    Object? photoHeaderFile = freezed,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
   }) {
@@ -1299,9 +1718,13 @@ class _$UserFormStateCopyWithImpl<$Res, $Val extends UserFormState>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as int,
-      imageFile: freezed == imageFile
-          ? _value.imageFile
-          : imageFile // ignore: cast_nullable_to_non_nullable
+      photoProfileFile: freezed == photoProfileFile
+          ? _value.photoProfileFile
+          : photoProfileFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      photoHeaderFile: freezed == photoHeaderFile
+          ? _value.photoHeaderFile
+          : photoHeaderFile // ignore: cast_nullable_to_non_nullable
               as File?,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -1330,7 +1753,8 @@ abstract class _$$_UserFormStateCopyWith<$Res>
       String web,
       String birthdate,
       int gender,
-      File? imageFile,
+      File? photoProfileFile,
+      File? photoHeaderFile,
       bool isSubmitting,
       bool isShowErrorMessages});
 }
@@ -1352,7 +1776,8 @@ class __$$_UserFormStateCopyWithImpl<$Res>
     Object? web = null,
     Object? birthdate = null,
     Object? gender = null,
-    Object? imageFile = freezed,
+    Object? photoProfileFile = freezed,
+    Object? photoHeaderFile = freezed,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
   }) {
@@ -1381,9 +1806,13 @@ class __$$_UserFormStateCopyWithImpl<$Res>
           ? _value.gender
           : gender // ignore: cast_nullable_to_non_nullable
               as int,
-      imageFile: freezed == imageFile
-          ? _value.imageFile
-          : imageFile // ignore: cast_nullable_to_non_nullable
+      photoProfileFile: freezed == photoProfileFile
+          ? _value.photoProfileFile
+          : photoProfileFile // ignore: cast_nullable_to_non_nullable
+              as File?,
+      photoHeaderFile: freezed == photoHeaderFile
+          ? _value.photoHeaderFile
+          : photoHeaderFile // ignore: cast_nullable_to_non_nullable
               as File?,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -1407,7 +1836,8 @@ class _$_UserFormState implements _UserFormState {
       required this.web,
       required this.birthdate,
       required this.gender,
-      required this.imageFile,
+      required this.photoProfileFile,
+      required this.photoHeaderFile,
       required this.isSubmitting,
       required this.isShowErrorMessages});
 
@@ -1424,7 +1854,9 @@ class _$_UserFormState implements _UserFormState {
   @override
   final int gender;
   @override
-  final File? imageFile;
+  final File? photoProfileFile;
+  @override
+  final File? photoHeaderFile;
   @override
   final bool isSubmitting;
   @override
@@ -1432,7 +1864,7 @@ class _$_UserFormState implements _UserFormState {
 
   @override
   String toString() {
-    return 'UserFormState(result: $result, name: $name, bio: $bio, web: $web, birthdate: $birthdate, gender: $gender, imageFile: $imageFile, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
+    return 'UserFormState(result: $result, name: $name, bio: $bio, web: $web, birthdate: $birthdate, gender: $gender, photoProfileFile: $photoProfileFile, photoHeaderFile: $photoHeaderFile, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
   }
 
   @override
@@ -1447,8 +1879,10 @@ class _$_UserFormState implements _UserFormState {
             (identical(other.birthdate, birthdate) ||
                 other.birthdate == birthdate) &&
             (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.imageFile, imageFile) ||
-                other.imageFile == imageFile) &&
+            (identical(other.photoProfileFile, photoProfileFile) ||
+                other.photoProfileFile == photoProfileFile) &&
+            (identical(other.photoHeaderFile, photoHeaderFile) ||
+                other.photoHeaderFile == photoHeaderFile) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isShowErrorMessages, isShowErrorMessages) ||
@@ -1456,8 +1890,18 @@ class _$_UserFormState implements _UserFormState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result, name, bio, web,
-      birthdate, gender, imageFile, isSubmitting, isShowErrorMessages);
+  int get hashCode => Object.hash(
+      runtimeType,
+      result,
+      name,
+      bio,
+      web,
+      birthdate,
+      gender,
+      photoProfileFile,
+      photoHeaderFile,
+      isSubmitting,
+      isShowErrorMessages);
 
   @JsonKey(ignore: true)
   @override
@@ -1474,7 +1918,8 @@ abstract class _UserFormState implements UserFormState {
       required final String web,
       required final String birthdate,
       required final int gender,
-      required final File? imageFile,
+      required final File? photoProfileFile,
+      required final File? photoHeaderFile,
       required final bool isSubmitting,
       required final bool isShowErrorMessages}) = _$_UserFormState;
 
@@ -1491,7 +1936,9 @@ abstract class _UserFormState implements UserFormState {
   @override
   int get gender;
   @override
-  File? get imageFile;
+  File? get photoProfileFile;
+  @override
+  File? get photoHeaderFile;
   @override
   bool get isSubmitting;
   @override

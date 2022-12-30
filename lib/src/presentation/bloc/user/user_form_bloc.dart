@@ -1,32 +1,32 @@
 import 'dart:io';
 
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/utilities/image_cropper_utils.dart';
 
+part 'user_form_bloc.freezed.dart';
 part 'user_form_event.dart';
 part 'user_form_state.dart';
-part 'user_form_bloc.freezed.dart';
 
 class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
   UserFormBloc() : super(UserFormState.initial()) {
     on<UserFormEvent>((event, emit) async {
       await event.map(
-        initial: (e) {
+        initial: (_) {
           emit(UserFormState.initial());
         },
         nameOnChanged: (e) {
           emit(state.copyWith(name: e.name));
         },
         bioOnChanged: (e) {
-          emit(state.copyWith(name: e.bio));
+          emit(state.copyWith(bio: e.bio));
         },
         webOnChanged: (e) {
-          emit(state.copyWith(name: e.web));
+          emit(state.copyWith(web: e.web));
         },
         birthdateOnChanged: (e) async {
           final picked = await showDatePicker(
@@ -36,14 +36,14 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
             lastDate: DateTime.now(),
           );
           if (picked != null) {
-            final dateFormat = DateFormat('MMM dd, yyyy').format(picked);
+            final dateFormat = DateFormat('dd MMMM yyyy').format(picked);
             emit(state.copyWith(birthdate: dateFormat));
           }
         },
         genderOnChanged: (e) {
           emit(state.copyWith(gender: e.genderId));
         },
-        pickImage: (e) async {
+        pickPhotoProfile: (e) async {
           var pickedImage = await ImagePicker().pickImage(
             source: e.source,
           );
@@ -51,9 +51,30 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
             final croppedImage =
                 await ImageCropperUtils.cropImage(pickedImage.path);
             if (croppedImage != null) {
-              emit(state.copyWith(imageFile: File(croppedImage.path)));
+              emit(state.copyWith(photoProfileFile: File(croppedImage.path)));
             }
           }
+        },
+        pickPhotoHeader: (e) async {
+          var pickedImage = await ImagePicker().pickImage(
+            source: e.source,
+          );
+          if (pickedImage != null) {
+            final croppedImage =
+                await ImageCropperUtils.cropImage(pickedImage.path);
+            if (croppedImage != null) {
+              emit(state.copyWith(photoHeaderFile: File(croppedImage.path)));
+            }
+          }
+        },
+        saveChanges: (_) {
+          print(state.photoHeaderFile?.path ?? 'header null');
+          print(state.photoProfileFile?.path ?? 'photo null');
+          print(state.name);
+          print('${state.bio} bio null');
+          print(state.web);
+          print(state.gender);
+          print(state.birthdate);
         },
       );
     });

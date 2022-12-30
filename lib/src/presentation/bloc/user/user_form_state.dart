@@ -9,7 +9,8 @@ class UserFormState with _$UserFormState {
     required String web,
     required String birthdate,
     required int gender,
-    required File? imageFile,
+    required File? photoProfileFile,
+    required File? photoHeaderFile,
     required bool isSubmitting,
     required bool isShowErrorMessages,
   }) = _UserFormState;
@@ -21,7 +22,8 @@ class UserFormState with _$UserFormState {
         web: '',
         birthdate: '',
         gender: 0,
-        imageFile: null,
+        photoProfileFile: null,
+        photoHeaderFile: null,
         isSubmitting: false,
         isShowErrorMessages: false,
       );
