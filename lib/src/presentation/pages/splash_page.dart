@@ -16,7 +16,7 @@ class _SplashPageState extends State<SplashPage> {
       const Duration(seconds: 1),
       () => Navigator.pushNamedAndRemoveUntil(
         context,
-        HOME,
+        INTEREST,
         (Route<dynamic> route) => false,
       ),
     );
