@@ -31,10 +31,14 @@ class ListTileWidget extends StatelessWidget {
         ),
         child: Row(
           children: [
-            (icon != null)
-                ? Icon(icon, color: ColorLight.fontTitle)
-                : const SizedBox(),
-            (icon != null) ? const SizedBox(width: Const.space15) : const SizedBox(),
+            if (icon != null)
+              Icon(icon, color: ColorLight.fontTitle)
+            else
+              const SizedBox(),
+            if (icon != null)
+              const SizedBox(width: Const.space15)
+            else
+              const SizedBox(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -47,9 +51,10 @@ class ListTileWidget extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 5),
-                  (subtitle != null)
-                      ? Text(subtitle!, style: theme.textTheme.subtitle2)
-                      : const SizedBox(),
+                  if (subtitle != null)
+                    Text(subtitle!, style: theme.textTheme.subtitle2)
+                  else
+                    const SizedBox(),
                 ],
               ),
             ),

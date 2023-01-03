@@ -53,7 +53,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: Const.space25),
                   Padding(
-                    padding:  const EdgeInsets.symmetric(horizontal: Const.margin),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: TextFormFieldWidget(
                       hintText: lang.email,
                       textFieldType: TextFieldType.email,
@@ -66,7 +67,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: Const.space12),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: TextFormFieldWidget(
                       hintText: lang.password,
                       obscureText: state.obscureText,
@@ -89,7 +91,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -108,7 +111,8 @@ class LoginPage extends StatelessWidget {
                   ),
                   const SizedBox(height: Const.space15),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: ElevatedButtonWidget(
                       onTap: () {
                         if (formKey.currentState!.validate()) {
@@ -235,16 +239,17 @@ class LoginPage extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          (icon != null)
-              ? Icon(
-                  icon,
-                  size: 25,
-                  color: theme.primaryColor,
-                )
-              : SvgPicture.asset(
-                  customIcon!,
-                  width: 20,
-                ),
+          if (icon != null)
+            Icon(
+              icon,
+              size: 25,
+              color: theme.primaryColor,
+            )
+          else
+            SvgPicture.asset(
+              customIcon!,
+              width: 20,
+            ),
           const SizedBox(width: Const.space15),
           Text(
             label,

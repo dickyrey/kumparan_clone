@@ -7,11 +7,8 @@ part 'boarding_watcher_event.dart';
 part 'boarding_watcher_state.dart';
 part 'boarding_watcher_bloc.freezed.dart';
 
-class BoardingWatcherBloc
-    extends Bloc<BoardingWatcherEvent, BoardingWatcherState> {
-  final GetBoardingList _getBoardingList;
-  BoardingWatcherBloc(this._getBoardingList)
-      : super(const BoardingWatcherState.initial()) {
+class BoardingWatcherBloc extends Bloc<BoardingWatcherEvent, BoardingWatcherState> {
+  BoardingWatcherBloc(this._getBoardingList) : super(const BoardingWatcherState.initial()) {
     on<BoardingWatcherEvent>(
       (event, emit) async {
         await event.map(
@@ -29,4 +26,7 @@ class BoardingWatcherBloc
       },
     );
   }
+
+  final GetBoardingList _getBoardingList;
+
 }

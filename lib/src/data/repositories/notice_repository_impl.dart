@@ -9,9 +9,11 @@ import 'package:kumparan_clone/src/domain/entities/notice.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 
 class NoticeRepositoryImpl extends NoticeRepository {
-  final NoticeRemoteDataSource dataSource;
 
   NoticeRepositoryImpl({required this.dataSource});
+
+  final NoticeRemoteDataSource dataSource;
+  
   @override
   Future<Either<Failure, List<Notice>>> getNoticeList() async {
     try {

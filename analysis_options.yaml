@@ -6,20 +6,6 @@ analyzer:
 linter:
   rules:
     public_member_api_docs: false
-    sort_constructors_first: false
-    only_throw_errors: false
-    avoid_dynamic_calls: false
     lines_longer_than_80_chars: false
-    avoid_relative_lib_imports: false
-    prefer_int_literals: false
-    always_use_package_imports: false
-    avoid_void_async: false
+    sort_constructors_first: false
     avoid_bool_literals_in_conditional_expressions: false
-    avoid_redundant_argument_values: false
-    prefer_if_elements_to_conditional_expressions: false
-    prefer_final_locals: false
-    use_build_context_synchronously: false
-    unnecessary_await_in_return: false
-    use_named_constants: false
-    unnecessary_null_checks: false
-    type_annotate_public_apis: false

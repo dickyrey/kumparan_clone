@@ -9,9 +9,11 @@ import 'package:kumparan_clone/src/domain/entities/boarding.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
 
 class BoardingRepositoryImpl extends BoardingRepository {
+  
+  BoardingRepositoryImpl({required this.dataSource});
+
   final BoardingRemoteDataSource dataSource;
 
-  BoardingRepositoryImpl({required this.dataSource});
   @override
   Future<Either<Failure, List<Boarding>>> getBoardingList() async {
     try {

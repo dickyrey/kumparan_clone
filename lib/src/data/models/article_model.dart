@@ -16,17 +16,6 @@ class ArticleModel extends Equatable {
     required this.createdAt,
   });
 
-  final int id;
-  final String title;
-  final String profilePicture;
-  final String creatorName;
-  final String thumbnail;
-  final bool isVerified;
-  final int likes;
-  final int comments;
-  final String contentHtml;
-  final DateTime createdAt;
-
   factory ArticleModel.fromJson(Map<String, dynamic> json) {
     return ArticleModel(
       id: json['id'] as int,
@@ -41,6 +30,17 @@ class ArticleModel extends Equatable {
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
+
+  final int id;
+  final String title;
+  final String profilePicture;
+  final String creatorName;
+  final String thumbnail;
+  final bool isVerified;
+  final int likes;
+  final int comments;
+  final String contentHtml;
+  final DateTime createdAt;
 
   Article toEntity() {
     return Article(

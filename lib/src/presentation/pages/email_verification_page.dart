@@ -16,8 +16,8 @@ class EmailVerificationPage extends StatelessWidget {
     final controllerCountdown = CountdownController(autoStart: true);
     const countdownTime = 59;
 
-    var mockEmail = 'handsome.troyard@byneet.co.id';
-    var mockDate = '13 Januari 2023';
+    const mockEmail = 'handsome.troyard@byneet.co.id';
+    const mockDate = '13 Januari 2023';
 
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;

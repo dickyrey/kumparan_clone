@@ -17,6 +17,6 @@ class LoginFormState with _$LoginFormState {
         password: '',
         isSubmitting: false,
         isShowErrorMessages: false,
-        obscureText: false,
+        obscureText: true,
       );
 }

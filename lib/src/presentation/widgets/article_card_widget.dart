@@ -43,7 +43,7 @@ class ArticleCardWidget extends StatelessWidget {
                 child: OctoImage(
                   fit: BoxFit.cover,
                   width: 280,
-                image: CachedNetworkImageProvider(article.thumbnail),
+                  image: CachedNetworkImageProvider(article.thumbnail),
                 ),
               ),
               const SizedBox(height: Const.space12),
@@ -137,19 +137,21 @@ class ArticleCardWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              useRank == true
-                  ? Text(
-                      '${index + 1}.',
-                      style: theme.textTheme.headline3?.copyWith(
-                        color: theme.primaryColor,
-                        fontWeight: FontWeight.bold,
-                      ),
-                      maxLines: 1,
-                    )
-                  : const SizedBox(),
-              useRank == true
-                  ? const SizedBox(width: Const.space12)
-                  : const SizedBox(),
+              if (useRank == true)
+                Text(
+                  '${index + 1}.',
+                  style: theme.textTheme.headline3?.copyWith(
+                    color: theme.primaryColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  maxLines: 1,
+                )
+              else
+                const SizedBox(),
+              if (useRank == true)
+                const SizedBox(width: Const.space12)
+              else
+                const SizedBox(),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

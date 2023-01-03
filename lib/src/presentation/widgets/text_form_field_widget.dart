@@ -161,7 +161,6 @@ class TextFormFieldWidget extends StatelessWidget {
       controller: controller,
       maxLines: maxLines,
       maxLength: maxLength,
-      autofocus: false,
       enabled: enabled,
       onChanged: onChanged,
       textAlign: textAlign ?? TextAlign.left,

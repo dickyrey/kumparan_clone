@@ -6,7 +6,7 @@ class ImageCropperUtils {
     String filePath, {
     CropStyle cropStyle = CropStyle.rectangle,
   }) async {
-    var croppedImage = await ImageCropper().cropImage(
+    final croppedImage = await ImageCropper().cropImage(
       sourcePath: filePath,
       aspectRatio: const CropAspectRatio(ratioX: 5, ratioY: 4),
       cropStyle: cropStyle,

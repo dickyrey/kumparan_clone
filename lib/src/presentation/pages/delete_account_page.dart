@@ -115,16 +115,17 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
             const SizedBox(height: Const.space8),
             _radioButton(context, value: 6, label: 'Alasan lainnya'),
             const SizedBox(height: Const.space8),
-            (_selectedRadio == 6)
-                ? const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Const.margin),
-                    child: TextFormFieldWidget(
-                      hintText: 'Tulis alasan anda',
-                      maxLength: 160,
-                      maxLines: 5,
-                    ),
-                  )
-                : const SizedBox(),
+            if (_selectedRadio == 6)
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: Const.margin),
+                child: TextFormFieldWidget(
+                  hintText: 'Tulis alasan anda',
+                  maxLength: 160,
+                  maxLines: 5,
+                ),
+              )
+            else
+              const SizedBox(),
             const SizedBox(height: Const.space25),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: Const.margin),

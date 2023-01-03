@@ -11,12 +11,6 @@ class NoticeModel extends Equatable {
     required this.createdAt,
   });
 
-  final int id;
-  final String title;
-  final String creatorName;
-  final String thumbnail;
-  final DateTime createdAt;
-
   factory NoticeModel.fromJson(Map<String, dynamic> json) {
     return NoticeModel(
       id: json['id'] as int,
@@ -26,6 +20,12 @@ class NoticeModel extends Equatable {
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
+
+  final int id;
+  final String title;
+  final String creatorName;
+  final String thumbnail;
+  final DateTime createdAt;
 
   Notice toEntity() {
     return Notice(

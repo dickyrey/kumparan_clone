@@ -83,9 +83,10 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
                     },
                   ),
                 ),
-              (widget.type == HeadingTileType.normal)
-                  ? const SizedBox()
-                  : const SizedBox(width: Const.margin),
+              if (widget.type == HeadingTileType.normal)
+                const SizedBox()
+              else
+                const SizedBox(width: Const.margin),
             ],
           ),
         ),

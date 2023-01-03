@@ -75,7 +75,7 @@ class _InterestPageState extends State<InterestPage> {
                         itemBuilder: (context, index) {
                           final category = state.selectedCategory[index];
                           return Padding(
-                            padding: const EdgeInsets.only(bottom: 8.0),
+                            padding: const EdgeInsets.only(bottom: Const.space8),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -121,13 +121,13 @@ class _InterestPageState extends State<InterestPage> {
               child: BlocBuilder<InterestFormBloc, InterestFormState>(
                 builder: (context, state) {
                   // Get the list of selected category values
-                  var categoryMap =
+                  final categoryMap =
                       state.selectedCategory.map((e) => e.value).toList();
                   // Filter the list to get only the true values
-                  var findTrueElement =
+                  final findTrueElement =
                       categoryMap.where((element) => element == true);
                   // Get the length of the true values list
-                  var totalOfTrue = findTrueElement.length;
+                  final totalOfTrue = findTrueElement.length;
 
                   return ElevatedButtonWidget(
                     onTap: totalOfTrue < 3

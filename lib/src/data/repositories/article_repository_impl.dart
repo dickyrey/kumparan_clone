@@ -9,9 +9,11 @@ import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 
 class ArticleRepositoryImpl extends ArticleRepository {
+  
+  ArticleRepositoryImpl({required this.dataSource});
+
   final ArticleRemoteDataSource dataSource;
 
-  ArticleRepositoryImpl({required this.dataSource});
   @override
   Future<Either<Failure, List<Article>>> getArticleList() async {
     try {

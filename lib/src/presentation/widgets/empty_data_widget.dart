@@ -29,9 +29,10 @@ class EmptyDataWidget extends StatelessWidget {
     return Center(
       child: Column(
         children: [
-          (isExpanded == true)
-              ? const Expanded(child: SizedBox())
-              : const SizedBox(),
+          if (isExpanded == true)
+            const Expanded(child: SizedBox())
+          else
+            const SizedBox(),
           Image.asset(
             illustration,
             width: 200,
@@ -43,18 +44,20 @@ class EmptyDataWidget extends StatelessWidget {
             style: theme.textTheme.headline3,
           ),
           const SizedBox(height: Const.space25),
-          (useButton == true)
-              ? Padding(
-                  padding: EdgeInsets.all(margin),
-                  child: ElevatedButtonWidget(
-                    onTap: onTap,
-                    label: buttonLabel,
-                  ),
-                )
-              : const SizedBox(),
-          (isExpanded == true)
-              ? const Expanded(child: SizedBox())
-              : const SizedBox(),
+          if (useButton == true)
+            Padding(
+              padding: EdgeInsets.all(margin),
+              child: ElevatedButtonWidget(
+                onTap: onTap,
+                label: buttonLabel,
+              ),
+            )
+          else
+            const SizedBox(),
+          if (isExpanded == true)
+            const Expanded(child: SizedBox())
+          else
+            const SizedBox(),
         ],
       ),
     );

@@ -51,8 +51,7 @@ class ForgotPasswordPage extends StatelessWidget {
               const SizedBox(height: Const.space25),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: Const.margin),
-                child: BlocBuilder<ForgotPasswordFormBloc,
-                    ForgotPasswordFormState>(
+                child: BlocBuilder<ForgotPasswordFormBloc, ForgotPasswordFormState>(
                   builder: (context, state) {
                     return ElevatedButtonWidget(
                       onTap: () {
@@ -63,7 +62,7 @@ class ForgotPasswordPage extends StatelessWidget {
                         }
                       },
                       label: lang.send,
-                      isLoading: state.isSubmitting == true ? true : false,
+                      isLoading: (state.isSubmitting == true) ? true : false,
                     );
                   },
                 ),
@@ -103,7 +102,6 @@ class ForgotPasswordPage extends StatelessWidget {
     return showDialog<dynamic>(
       context: context,
       barrierDismissible: false,
-      useSafeArea: true,
       builder: (context) {
         return AlertDialog(
           actions: [

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:kumparan_clone/injection.dart' as di;
 import 'package:kumparan_clone/l10n/l10n.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/common/themes.dart';
@@ -20,8 +21,6 @@ import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form_bloc.dart';
 import 'package:kumparan_clone/src/utilities/route_generator.dart';
-
-import 'injection.dart' as di;
 
 void main() {
   di.init();

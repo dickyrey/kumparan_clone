@@ -1,11 +1,11 @@
 class Const {
-  static const double space8 = 8.0;
-  static const double space12 = 12.0;
-  static const double space15 = 15.0;
-  static const double space25 = 25.0;
-  static const double space50 = 50.0;
-  static const double radius = 8.0;
-  static const double margin = 18.0;
+  static const double space8 = 8;
+  static const double space12 = 12;
+  static const double space15 = 15;
+  static const double space25 = 25;
+  static const double space50 = 50;
+  static const double radius = 8;
+  static const double margin = 18;
 }
 
 class CustomIcons {

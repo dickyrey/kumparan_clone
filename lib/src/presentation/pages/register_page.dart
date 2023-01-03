@@ -205,16 +205,17 @@ class RegisterPage extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          (icon != null)
-              ? Icon(
-                  icon,
-                  size: 25,
-                  color: theme.primaryColor,
-                )
-              : SvgPicture.asset(
-                  customIcon!,
-                  width: 20,
-                ),
+          if (icon != null)
+            Icon(
+              icon,
+              size: 25,
+              color: theme.primaryColor,
+            )
+          else
+            SvgPicture.asset(
+              customIcon!,
+              width: 20,
+            ),
           const SizedBox(width: Const.space15),
           Text(
             label,
@@ -232,7 +233,6 @@ class RegisterPage extends StatelessWidget {
     return showDialog<dynamic>(
       context: context,
       barrierDismissible: false,
-      useSafeArea: true,
       builder: (context) {
         return AlertDialog(
           actions: [

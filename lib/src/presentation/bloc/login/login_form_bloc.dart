@@ -22,11 +22,11 @@ class LoginFormBloc extends Bloc<LoginFormEvent, LoginFormState> {
           );
         },
         obscureTextPressed: (_) {
-          emit(
-            state.copyWith(
-              obscureText: (state.obscureText == true) ? false : true,
-            ),
-          );
+          if (state.obscureText == true) {
+            emit(state.copyWith(obscureText: false));
+          } else {
+            emit(state.copyWith(obscureText: true));
+          }
         },
         emailOnChanged: (e) {
           emit(

@@ -18,7 +18,7 @@ class OnBoardingPage extends StatefulWidget {
 }
 
 class _OnBoardingPageState extends State<OnBoardingPage> {
-  final _controller = PageController(initialPage: 0);
+  final _controller = PageController();
   int _selectedIndex = 0;
 
   @override
@@ -80,7 +80,6 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           child: PageView.builder(
             controller: _controller,
             itemCount: boarding.length,
-            scrollDirection: Axis.horizontal,
             onPageChanged: (v) {
               setState(() {
                 _selectedIndex = v;
@@ -106,7 +105,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       textAlign: TextAlign.center,
                       style: theme.textTheme.headline1,
                     ),
-                    const Expanded(flex: 1, child: SizedBox()),
+                    const Expanded(child: SizedBox()),
                     Text(
                       data.subtitle,
                       style: theme.textTheme.bodyText1,
@@ -118,7 +117,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             },
           ),
         ),
-        const Expanded(flex: 1, child: SizedBox()),
+        const Expanded(child: SizedBox()),
 
         // Child on this Expanded contains
         // DotsIndicator, Next Page Button, Register and Login Button
@@ -137,34 +136,42 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     activeColor: theme.primaryColor,
                   ),
                 ),
-                Expanded(flex: 3, child: Container()),
-                _selectedIndex == 3
-                    ? ElevatedButtonWidget(
-                        onTap: () => Navigator.pushNamed(context, REGISTER),
-                        label: lang.create_an_account,
-                        color: theme.primaryColor,
-                      )
-                    : const SizedBox(),
-                Expanded(flex: 2, child: Container()),
-                _selectedIndex == 3
-                    ? OutlinedButtonWidget(
-                        onTap: () => Navigator.pushNamed(context, LOGIN),
-                        label: lang.have_an_account,
-                      )
-                    : OutlinedButtonWidget(
-                        onTap: () {
-                          // This method Will navigate to next page
-                          // when OutlinedButton pressed
 
-                          _controller.animateToPage(
-                            _selectedIndex + 1,
-                            duration: const Duration(milliseconds: 500),
-                            curve: Curves.easeOut,
-                          );
-                        },
-                        label: lang.next,
-                      ),
+                Expanded(flex: 3, child: Container()),
+                
+                if (_selectedIndex == 3)
+                  ElevatedButtonWidget(
+                    onTap: () => Navigator.pushNamed(context, REGISTER),
+                    label: lang.create_an_account,
+                    color: theme.primaryColor,
+                  )
+                else
+                  const SizedBox(),
+
                 Expanded(flex: 2, child: Container()),
+
+                if (_selectedIndex == 3)
+                  OutlinedButtonWidget(
+                    onTap: () => Navigator.pushNamed(context, LOGIN),
+                    label: lang.have_an_account,
+                  )
+                else
+                  OutlinedButtonWidget(
+                    onTap: () {
+                      // This method Will navigate to next page
+                      // when OutlinedButton pressed
+
+                      _controller.animateToPage(
+                        _selectedIndex + 1,
+                        duration: const Duration(milliseconds: 500),
+                        curve: Curves.easeOut,
+                      );
+                    },
+                    label: lang.next,
+                  ),
+
+                Expanded(flex: 2, child: Container()),
+                
               ],
             ),
           ),

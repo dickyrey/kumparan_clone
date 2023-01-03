@@ -57,8 +57,9 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
                   },
                   itemBuilder: (context, index) {
                     final category = state.selectedCategory[index];
+                    
                     return Padding(
-                      padding: const EdgeInsets.only(bottom: 8.0),
+                      padding: const EdgeInsets.only(bottom: Const.space8),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

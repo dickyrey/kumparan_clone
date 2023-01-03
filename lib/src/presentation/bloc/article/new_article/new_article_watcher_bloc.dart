@@ -7,9 +7,7 @@ part 'new_article_watcher_event.dart';
 part 'new_article_watcher_state.dart';
 part 'new_article_watcher_bloc.freezed.dart';
 
-class NewArticleWatcherBloc
-    extends Bloc<NewArticleWatcherEvent, NewArticleWatcherState> {
-  final GetArticleList _getArticleList;
+class NewArticleWatcherBloc extends Bloc<NewArticleWatcherEvent, NewArticleWatcherState> {
   NewArticleWatcherBloc(this._getArticleList) : super(const NewArticleWatcherState.initial()) {
     on<NewArticleWatcherEvent>((event, emit) async {
       await event.map(
@@ -26,4 +24,7 @@ class NewArticleWatcherBloc
       );
     });
   }
+
+  final GetArticleList _getArticleList;
+  
 }

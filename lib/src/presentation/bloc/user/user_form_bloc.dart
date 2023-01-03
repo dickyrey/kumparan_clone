@@ -44,7 +44,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
           emit(state.copyWith(gender: e.genderId));
         },
         pickPhotoProfile: (e) async {
-          var pickedImage = await ImagePicker().pickImage(
+          final pickedImage = await ImagePicker().pickImage(
             source: e.source,
           );
           if (pickedImage != null) {
@@ -56,7 +56,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
           }
         },
         pickPhotoHeader: (e) async {
-          var pickedImage = await ImagePicker().pickImage(
+          final pickedImage = await ImagePicker().pickImage(
             source: e.source,
           );
           if (pickedImage != null) {

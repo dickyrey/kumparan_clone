@@ -83,7 +83,6 @@ class _ContentList extends StatelessWidget {
           },
           loaded: (state) {
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ListView.separated(
                   itemCount: state.articleList.take(5).length,

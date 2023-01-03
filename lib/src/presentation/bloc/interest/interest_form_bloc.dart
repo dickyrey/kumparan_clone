@@ -10,8 +10,6 @@ part 'interest_form_state.dart';
 part 'interest_form_bloc.freezed.dart';
 
 class InterestFormBloc extends Bloc<InterestFormEvent, InterestFormState> {
-  final GetCategories _getCategories;
-
   InterestFormBloc(this._getCategories) : super(InterestFormState.initial()) {
     on<InterestFormEvent>(
       (event, emit) async {
@@ -48,4 +46,7 @@ class InterestFormBloc extends Bloc<InterestFormEvent, InterestFormState> {
       },
     );
   }
+
+  final GetCategories _getCategories;
+
 }

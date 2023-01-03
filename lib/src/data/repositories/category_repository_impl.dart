@@ -9,9 +9,11 @@ import 'package:kumparan_clone/src/domain/entities/category.dart';
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
 
 class CategoryRepositoryImpl extends CategoryRepository {
+  
+  CategoryRepositoryImpl({required this.dataSource});
+
   final CategoryRemoteDataSource dataSource;
 
-  CategoryRepositoryImpl({required this.dataSource});
   @override
   Future<Either<Failure, List<Category>>> getCategories() async {
     try {

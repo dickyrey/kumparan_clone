@@ -8,9 +8,7 @@ part 'notice_watcher_state.dart';
 part 'notice_watcher_bloc.freezed.dart';
 
 class NoticeWatcherBloc extends Bloc<NoticeWatcherEvent, NoticeWatcherState> {
-  final GetNoticeList _getNoticeList;
-  NoticeWatcherBloc(this._getNoticeList)
-      : super(const NoticeWatcherState.initial()) {
+  NoticeWatcherBloc(this._getNoticeList) : super(const NoticeWatcherState.initial()) {
     on<NoticeWatcherEvent>((event, emit) async {
       emit(const NoticeWatcherState.loading());
 
@@ -22,4 +20,7 @@ class NoticeWatcherBloc extends Bloc<NoticeWatcherEvent, NoticeWatcherState> {
       );
     });
   }
+  
+  final GetNoticeList _getNoticeList;
+
 }

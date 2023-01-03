@@ -49,29 +49,30 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
         appBar: _appBar(context),
         body: TabBarView(
           children: [
-            (_isGPSActivate == true)
-                ? const _NearbyContentTabView()
-                : EmptyDataWidget(
-                    illustration: CustomIcons.localNews,
-                    label: lang
-                        .activate_gps_and_find_interesting_information_around_you,
-                    useButton: true,
-                    buttonLabel: lang.activate_gps,
-                    margin: Const.margin,
-                    onTap: () {
-                      Geolocator.requestPermission().then((status) {
-                        if (status == LocationPermission.always) {
-                          setState(() {
-                            _isGPSActivate = true;
-                          });
-                        } else {
-                          setState(() {
-                            _isGPSActivate = false;
-                          });
-                        }
+            if (_isGPSActivate == true)
+              const _NearbyContentTabView()
+            else
+              EmptyDataWidget(
+                illustration: CustomIcons.localNews,
+                label: lang
+                    .activate_gps_and_find_interesting_information_around_you,
+                useButton: true,
+                buttonLabel: lang.activate_gps,
+                margin: Const.margin,
+                onTap: () {
+                  Geolocator.requestPermission().then((status) {
+                    if (status == LocationPermission.always) {
+                      setState(() {
+                        _isGPSActivate = true;
                       });
-                    },
-                  ),
+                    } else {
+                      setState(() {
+                        _isGPSActivate = false;
+                      });
+                    }
+                  });
+                },
+              ),
             const _OtherLocalNewsTabView(),
           ],
         ),
@@ -129,7 +130,6 @@ class _NearbyContentTabView extends StatelessWidget {
           },
           loaded: (state) {
             return Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ListView.separated(
                   itemCount: state.articleList.take(5).length,
@@ -187,7 +187,8 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: Const.margin),
                       child: Row(
                         children: [
                           Container(
@@ -208,7 +209,8 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                       itemCount: (state.searchResultList.isEmpty)
                           ? state.provinceList.length
                           : state.searchResultList.length,
-                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: Const.margin),
                       physics: const ScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {
