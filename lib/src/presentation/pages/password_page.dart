@@ -27,19 +27,19 @@ class _PasswordPageState extends State<PasswordPage> {
     return Scaffold(
       appBar: _appBar(context),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
         child: Form(
           key: formKey,
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
-              const SizedBox(height: SPACE25),
+              const SizedBox(height: Const.space25),
               Text(
                 lang.password_must_be_at_least_8_characters_long_and_must_be_a_combination_of_uppercase_letters_and_numbers,
                 style: theme.textTheme.bodyText1,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: SPACE50),
+              const SizedBox(height: Const.space50),
               TextFormFieldWidget(
                 obscureText: _obscureText,
                 hintText: lang.enter_new_password,
@@ -62,7 +62,7 @@ class _PasswordPageState extends State<PasswordPage> {
                       .add(PasswordFormEvent.passwordOnChanged(value));
                 },
               ),
-              const SizedBox(height: SPACE15),
+              const SizedBox(height: Const.space15),
               TextFormFieldWidget(
                 obscureText: _obscureText,
                 hintText: lang.enter_the_same_password,
@@ -85,7 +85,7 @@ class _PasswordPageState extends State<PasswordPage> {
                       .add(PasswordFormEvent.repeatPasswordOnChanged(value));
                 },
               ),
-              const SizedBox(height: SPACE25),
+              const SizedBox(height: Const.space25),
               ElevatedButtonWidget(
                 onTap: () {
                   if (!formKey.currentState!.validate()) {

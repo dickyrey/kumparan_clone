@@ -61,12 +61,12 @@ class _ProfilePageState extends State<ProfilePage>
               header:
                   'https://i.pinimg.com/564x/9a/84/7c/9a847c55b9f72027d97ea310d662e253.jpg',
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             Text(
               'Troyard Esport',
               style: theme.textTheme.headline3,
             ),
-            const SizedBox(height: SPACE15),
+            const SizedBox(height: Const.space15),
             RichText(
               text: TextSpan(
                 style: theme.textTheme.bodyText2,
@@ -79,7 +79,7 @@ class _ProfilePageState extends State<ProfilePage>
                 ],
               ),
             ),
-            const SizedBox(height: SPACE15),
+            const SizedBox(height: Const.space15),
             TextButton(
               onPressed: () {
                 Navigator.pushNamed(context, CHANGE_PROFILE);
@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage>
                 style: theme.textTheme.headline3,
               ),
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             TabBar(
               controller: _tabController,
               indicatorColor: theme.primaryColor,
@@ -98,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage>
               indicatorSize: TabBarIndicatorSize.tab,
               tabs: _tabViewList(context),
             ),
-            const SizedBox(height: SPACE15),
+            const SizedBox(height: Const.space15),
             Center(
               child: [
                 EmptyDataWidget(
@@ -115,7 +115,7 @@ class _ProfilePageState extends State<ProfilePage>
                 ),
               ][_tabController.index],
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
           ],
         ),
       ),
@@ -191,7 +191,7 @@ class _ProfilePageState extends State<ProfilePage>
               'https://i.pinimg.com/564x/2b/54/5a/2b545ae586764da77f5717d8406d0910.jpg',
             ),
           ),
-          const SizedBox(width: SPACE12),
+          const SizedBox(width: Const.space12),
           Text(
             lang.notification,
             style: theme.textTheme.headline3,

@@ -24,4 +24,3 @@ linter:
     unnecessary_null_checks: false
     type_annotate_public_apis: false
     library_private_types_in_public_api: false
-    constant_identifier_names: false

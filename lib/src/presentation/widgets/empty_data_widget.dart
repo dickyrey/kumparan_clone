@@ -36,13 +36,13 @@ class EmptyDataWidget extends StatelessWidget {
             illustration,
             width: 200,
           ),
-          const SizedBox(height: SPACE15),
+          const SizedBox(height: Const.space15),
           Text(
             label,
             textAlign: TextAlign.center,
             style: theme.textTheme.headline3,
           ),
-          const SizedBox(height: SPACE25),
+          const SizedBox(height: Const.space25),
           (useButton == true)
               ? Padding(
                   padding: EdgeInsets.all(margin),

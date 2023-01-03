@@ -181,25 +181,25 @@ class TextFormFieldWidget extends StatelessWidget {
         helperMaxLines: helperMaxLines,
         helperText: helperText,
         helperStyle: theme.textTheme.subtitle2?.copyWith(fontSize: 10),
-        contentPadding: const EdgeInsets.symmetric(horizontal: SPACE12),
+        contentPadding: const EdgeInsets.symmetric(horizontal: Const.space12),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(RADIUS),
+          borderRadius: BorderRadius.circular(Const.radius),
           borderSide: BorderSide(color: theme.disabledColor),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(RADIUS),
+          borderRadius: BorderRadius.circular(Const.radius),
           borderSide: BorderSide(color: theme.primaryColor),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(RADIUS),
+          borderRadius: BorderRadius.circular(Const.radius),
           borderSide: BorderSide(color: theme.errorColor),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(RADIUS),
+          borderRadius: BorderRadius.circular(Const.radius),
           borderSide: BorderSide(color: theme.errorColor),
         ),
         disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(RADIUS),
+          borderRadius: BorderRadius.circular(Const.radius),
           borderSide: BorderSide(color: theme.disabledColor),
         ),
       ),

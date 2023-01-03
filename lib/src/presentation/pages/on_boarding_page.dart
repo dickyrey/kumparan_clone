@@ -90,7 +90,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               final data = boarding[index];
               return Container(
                 margin: const EdgeInsets.symmetric(
-                  horizontal: MARGIN,
+                  horizontal: Const.margin,
                 ),
                 child: Column(
                   children: [
@@ -126,7 +126,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           flex: 6,
           child: Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: MARGIN,
+              horizontal: Const.margin,
             ),
             child: Column(
               children: [

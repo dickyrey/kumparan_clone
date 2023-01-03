@@ -25,32 +25,32 @@ class AddPhoneNumberPage extends StatelessWidget {
       body: BlocBuilder<PhoneNumberFormBloc, PhoneNumberFormState>(
         builder: (context, state) {
           return SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+            padding: const EdgeInsets.symmetric(horizontal: Const.margin),
             child: Form(
               key: formKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   Text(
                     lang.add_and_verify_your_phone_number_to_be_able_to_log_in_with_your_phone_number,
                     style: theme.textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: SPACE50),
+                  const SizedBox(height: Const.space50),
                   Row(
                     children: [
                       SvgPicture.asset(
-                        CustomIcons.indonesia_flag,
+                        CustomIcons.indonesiaFlag,
                         width: 30,
                         height: 30,
                       ),
-                      const SizedBox(width: SPACE8),
+                      const SizedBox(width: Const.space8),
                       Text(
                         '+62',
                         style: theme.textTheme.bodyText1,
                       ),
-                      const SizedBox(width: SPACE15),
+                      const SizedBox(width: Const.space15),
                       Expanded(
                         child: TextFormFieldWidget(
                           hintText: lang.phone_number,
@@ -66,7 +66,7 @@ class AddPhoneNumberPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   ElevatedButtonWidget(
                     onTap: () {
                       if (!formKey.currentState!.validate()) {
@@ -100,7 +100,7 @@ class AddPhoneNumberPage extends StatelessWidget {
       builder: (context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(RADIUS),
+            borderRadius: BorderRadius.circular(Const.radius),
           ),
           content: Container(
             width: 300,
@@ -122,7 +122,7 @@ class AddPhoneNumberPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 RichText(
                   text: TextSpan(
                     children: [

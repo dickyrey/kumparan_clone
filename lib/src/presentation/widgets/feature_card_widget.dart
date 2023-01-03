@@ -22,14 +22,14 @@ class FeatureCardWidget extends StatelessWidget {
     return Expanded(
       child: InkWell(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(RADIUS),
+        borderRadius: BorderRadius.circular(Const.radius),
         child: Container(
           height: 50,
           decoration: BoxDecoration(
             color: backgroundColor,
-            borderRadius: BorderRadius.circular(RADIUS),
+            borderRadius: BorderRadius.circular(Const.radius),
           ),
-          padding: const EdgeInsets.all(SPACE8),
+          padding: const EdgeInsets.all(Const.space8),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +38,7 @@ class FeatureCardWidget extends StatelessWidget {
                 icon,
                 color: Colors.white,
               ),
-              const SizedBox(width: SPACE8),
+              const SizedBox(width: Const.space8),
               Expanded(
                 child: Text(
                   label,

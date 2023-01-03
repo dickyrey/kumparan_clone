@@ -21,9 +21,9 @@ class MenuPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: SPACE15),
+            const SizedBox(height: Const.space15),
             Container(
-              margin: const EdgeInsets.symmetric(horizontal: MARGIN),
+              margin: const EdgeInsets.symmetric(horizontal: Const.margin),
               height: 90,
               child: Row(
                 children: [
@@ -34,7 +34,7 @@ class MenuPage extends StatelessWidget {
                       'https://i.pinimg.com/564x/2b/54/5a/2b545ae586764da77f5717d8406d0910.jpg',
                     ),
                   ),
-                  const SizedBox(width: SPACE15),
+                  const SizedBox(width: Const.space15),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,10 +67,10 @@ class MenuPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             ElevatedButtonWidget(
               onTap: () {},
-              margin: const EdgeInsets.symmetric(horizontal: MARGIN),
+              margin: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -78,7 +78,7 @@ class MenuPage extends StatelessWidget {
                     FeatherIcons.edit3,
                     color: Colors.white,
                   ),
-                  const SizedBox(width: SPACE12),
+                  const SizedBox(width: Const.space12),
                   Text(
                     lang.write_an_article,
                     style: theme.textTheme.button,
@@ -86,7 +86,7 @@ class MenuPage extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: SPACE15),
+            const SizedBox(height: Const.space15),
             ListTileWidget(
               icon: FeatherIcons.fileText,
               title: lang.my_content,
@@ -94,7 +94,7 @@ class MenuPage extends StatelessWidget {
                 Navigator.pushNamed(context, MY_CONTENT);
               },
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             ListTileWidget(
               icon: FeatherIcons.user,
               title: lang.profile_page,

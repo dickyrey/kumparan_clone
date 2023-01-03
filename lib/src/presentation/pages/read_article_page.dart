@@ -34,32 +34,32 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
         children: [
           Expanded(
             child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+              padding: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   Text(
                     'NEWS',
                     style: theme.textTheme.headline4
                         ?.copyWith(color: theme.primaryColor),
                   ),
-                  const SizedBox(height: SPACE8),
+                  const SizedBox(height: Const.space8),
                   Text(
                     widget.article.title,
                     style: theme.textTheme.headline1,
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   Text(
                     widget.article.creatorName,
                     style: theme.textTheme.headline4,
                   ),
-                  const SizedBox(height: SPACE12),
+                  const SizedBox(height: Const.space12),
                   Text(
                     '${DateFormat.yMMMMEEEEd().format(widget.article.createdAt)} - waktu baca 2 menit',
                     style: theme.textTheme.subtitle2,
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   Html(
                     data: widget.article.contentHtml,
                   ),
@@ -74,7 +74,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
               width: Screens.width(context),
               height: 70,
               color: theme.backgroundColor,
-              padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+              padding: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Row(
                 children: [
                   Expanded(
@@ -82,7 +82,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                       hintText: lang.write_comment,
                     ),
                   ),
-                  const SizedBox(width: SPACE12),
+                  const SizedBox(width: Const.space12),
                   GestureDetector(
                     onTap: () {
                       setState(() {
@@ -96,14 +96,14 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                           : ColorLight.fontTitle,
                     ),
                   ),
-                  const SizedBox(width: SPACE15),
+                  const SizedBox(width: Const.space15),
                   GestureDetector(
                     onTap: () {
                       _showCommentDialog(context);
                     },
                     child: const Icon(FeatherIcons.messageCircle),
                   ),
-                  const SizedBox(width: SPACE15),
+                  const SizedBox(width: Const.space15),
                   GestureDetector(
                     onTap: () async {
                       await FlutterShare.share(
@@ -131,7 +131,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
       context: context,
       isScrollControlled: true,
       shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(RADIUS),
+        borderRadius: BorderRadius.circular(Const.radius),
       ),
       builder: (BuildContext context) {
         return SizedBox(
@@ -140,8 +140,8 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
             children: [
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: MARGIN,
-                  vertical: SPACE12,
+                  horizontal: Const.margin,
+                  vertical: Const.space12,
                 ),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -164,8 +164,8 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                   itemCount: 5,
                   shrinkWrap: true,
                   padding: const EdgeInsets.symmetric(
-                    horizontal: MARGIN,
-                    vertical: SPACE12,
+                    horizontal: Const.margin,
+                    vertical: Const.space12,
                   ),
                   physics: const ScrollPhysics(),
                   itemBuilder: (context, index) {
@@ -180,7 +180,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                   width: Screens.width(context),
                   height: 70,
                   color: theme.backgroundColor,
-                  padding: const EdgeInsets.only(left: MARGIN),
+                  padding: const EdgeInsets.only(left: Const.margin),
                   child: Row(
                     children: [
                       Expanded(

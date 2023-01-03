@@ -37,16 +37,16 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
           return SingleChildScrollView(
             child: Column(
               children: [
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
                 Text(
                   lang.set_notifications_to_get_content_from_your_favorite_channels,
                   style: theme.textTheme.bodyText1,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
                 ListView.separated(
                   itemCount: state.categories.length,
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                  padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                   shrinkWrap: true,
                   physics: const ScrollPhysics(),
                   separatorBuilder: (context, index) {
@@ -80,7 +80,7 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
                     );
                   },
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
               ],
             ),
           );

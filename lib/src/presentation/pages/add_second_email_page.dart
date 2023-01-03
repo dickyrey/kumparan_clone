@@ -24,28 +24,28 @@ class AddSecondEmailPage extends StatelessWidget {
       body: BlocBuilder<BackupEmailFormBloc, BackupEmailFormState>(
         builder: (context, state) {
           return SingleChildScrollView(
-            padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+            padding: const EdgeInsets.symmetric(horizontal: Const.margin),
             child: Form(
               key: formKey,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               child: Column(
                 children: [
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   Text(
                     lang.add_and_verify_email_to_be_able_to_login_with_email,
                     style: theme.textTheme.bodyText1,
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: SPACE50),
+                  const SizedBox(height: Const.space50),
                   Container(
                     width: Screens.width(context),
                     height: 45,
                     alignment: Alignment.centerLeft,
-                    padding: const EdgeInsets.symmetric(horizontal: SPACE8),
+                    padding: const EdgeInsets.symmetric(horizontal: Const.space8),
                     decoration: BoxDecoration(
                       color: theme.disabledColor.withOpacity(.2),
                       border: Border.all(color: theme.disabledColor),
-                      borderRadius: BorderRadius.circular(RADIUS),
+                      borderRadius: BorderRadius.circular(Const.radius),
                     ),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -61,7 +61,7 @@ class AddSecondEmailPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   TextFormFieldWidget(
                     hintText: lang.enter_a_backup_email,
                     onChanged: (value) {
@@ -70,7 +70,7 @@ class AddSecondEmailPage extends StatelessWidget {
                           .add(BackupEmailFormEvent.emailOnChanged(value));
                     },
                   ),
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   ElevatedButtonWidget(
                     label: lang.save,
                     onTap: () {
@@ -101,7 +101,7 @@ class AddSecondEmailPage extends StatelessWidget {
       builder: (context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(RADIUS),
+            borderRadius: BorderRadius.circular(Const.radius),
           ),
           content: Container(
             width: 300,
@@ -123,7 +123,7 @@ class AddSecondEmailPage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 RichText(
                   text: TextSpan(
                     children: [

@@ -56,14 +56,14 @@ class _NoticePageState extends State<NoticePage> {
                   final data = state.noticeList[index];
                   return Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: MARGIN,
-                      vertical: SPACE12,
+                      horizontal: Const.margin,
+                      vertical: Const.space12,
                     ),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         ClipRRect(
-                          borderRadius: BorderRadius.circular(RADIUS),
+                          borderRadius: BorderRadius.circular(Const.radius),
                           child: OctoImage(
                             width: 80,
                             height: 80,
@@ -71,7 +71,7 @@ class _NoticePageState extends State<NoticePage> {
                             image: CachedNetworkImageProvider(data.thumbnail),
                           ),
                         ),
-                        const SizedBox(width: SPACE15),
+                        const SizedBox(width: Const.space15),
                         Expanded(
                           child: RichText(
                             text: TextSpan(

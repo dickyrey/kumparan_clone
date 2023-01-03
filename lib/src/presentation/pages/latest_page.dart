@@ -32,7 +32,7 @@ class LatestPage extends StatelessWidget {
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                    padding: EdgeInsets.symmetric(horizontal: Const.margin),
                     child: Divider(),
                   );
                 },

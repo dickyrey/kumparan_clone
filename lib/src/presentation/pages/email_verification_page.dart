@@ -25,17 +25,17 @@ class EmailVerificationPage extends StatelessWidget {
     return Scaffold(
       appBar: _appBar(context),
       body: Padding(
-        padding: const EdgeInsets.all(MARGIN),
+        padding: const EdgeInsets.all(Const.margin),
         child: Column(
           children: [
             Expanded(flex: 8, child: Image.asset(CustomIcons.mail)),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             Text(
               '${lang.a_verification_link_will_be_sent_to} $mockEmail, ${lang.immediately_activate_the_account_before} $mockDate',
               style: theme.textTheme.subtitle1,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             BlocBuilder<VerificationEmailFormBloc, VerificationEmailFormState>(
               builder: (context, state) {
                 return ElevatedButtonWidget(
@@ -81,7 +81,7 @@ class EmailVerificationPage extends StatelessWidget {
                 );
               },
             ),
-            const SizedBox(height: SPACE50),
+            const SizedBox(height: Const.space50),
             Text(
               lang.havent_received_the_verification_email_yet,
               style: theme.textTheme.subtitle1,

@@ -26,15 +26,15 @@ class ListTileWidget extends StatelessWidget {
       onTap: onTap,
       child: Padding(
         padding: const EdgeInsets.symmetric(
-          horizontal: MARGIN,
-          vertical: SPACE12,
+          horizontal: Const.margin,
+          vertical: Const.space12,
         ),
         child: Row(
           children: [
             (icon != null)
                 ? Icon(icon, color: ColorLight.fontTitle)
                 : const SizedBox(),
-            (icon != null) ? const SizedBox(width: SPACE15) : const SizedBox(),
+            (icon != null) ? const SizedBox(width: Const.space15) : const SizedBox(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

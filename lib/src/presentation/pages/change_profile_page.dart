@@ -38,7 +38,7 @@ class ChangeProfilePage extends StatelessWidget {
                   header:
                       'https://i.pinimg.com/564x/9a/84/7c/9a847c55b9f72027d97ea310d662e253.jpg',
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 ElevatedButtonWidget(
                   width: 200,
                   height: 35,
@@ -50,9 +50,9 @@ class ChangeProfilePage extends StatelessWidget {
                   },
                   label: lang.upload_profile_photo,
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                  padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -60,7 +60,7 @@ class ChangeProfilePage extends StatelessWidget {
                         lang.name,
                         style: theme.textTheme.headline3,
                       ),
-                      const SizedBox(height: SPACE8),
+                      const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
                         hintText: lang.name,
                         maxLength: 60,
@@ -70,12 +70,12 @@ class ChangeProfilePage extends StatelessWidget {
                               .add(UserFormEvent.nameOnChanged(value));
                         },
                       ),
-                      const SizedBox(height: SPACE12),
+                      const SizedBox(height: Const.space12),
                       Text(
                         lang.biography,
                         style: theme.textTheme.headline3,
                       ),
-                      const SizedBox(height: SPACE8),
+                      const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
                         hintText: lang
                             .please_fill_in_according_to_your_current_activities_and_profession,
@@ -87,12 +87,12 @@ class ChangeProfilePage extends StatelessWidget {
                               .add(UserFormEvent.bioOnChanged(value));
                         },
                       ),
-                      const SizedBox(height: SPACE12),
+                      const SizedBox(height: Const.space12),
                       Text(
                         lang.website_or_social_media,
                         style: theme.textTheme.headline3,
                       ),
-                      const SizedBox(height: SPACE8),
+                      const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
                         hintText: lang.example_kumparan_dot_com,
                         onChanged: (value) {
@@ -101,7 +101,7 @@ class ChangeProfilePage extends StatelessWidget {
                               .add(UserFormEvent.webOnChanged(value));
                         },
                       ),
-                      const SizedBox(height: SPACE12),
+                      const SizedBox(height: Const.space12),
                       Text(
                         lang.gender,
                         style: theme.textTheme.headline3,
@@ -110,7 +110,7 @@ class ChangeProfilePage extends StatelessWidget {
                         lang.not_shown_on_your_profile,
                         style: theme.textTheme.subtitle2,
                       ),
-                      const SizedBox(height: SPACE8),
+                      const SizedBox(height: Const.space8),
                       Row(
                         children: [
                           Radio(
@@ -122,12 +122,12 @@ class ChangeProfilePage extends StatelessWidget {
                                   .add(UserFormEvent.genderOnChanged(e!));
                             },
                           ),
-                          const SizedBox(width: SPACE12),
+                          const SizedBox(width: Const.space12),
                           Text(
                             lang.male,
                             style: theme.textTheme.bodyText2,
                           ),
-                          const SizedBox(width: SPACE15),
+                          const SizedBox(width: Const.space15),
                           Radio(
                             value: 1,
                             groupValue: state.gender,
@@ -137,14 +137,14 @@ class ChangeProfilePage extends StatelessWidget {
                                   .add(UserFormEvent.genderOnChanged(e!));
                             },
                           ),
-                          const SizedBox(width: SPACE12),
+                          const SizedBox(width: Const.space12),
                           Text(
                             lang.female,
                             style: theme.textTheme.bodyText2,
                           ),
                         ],
                       ),
-                      const SizedBox(height: SPACE12),
+                      const SizedBox(height: Const.space12),
                       Text(
                         lang.date_of_birth,
                         style: theme.textTheme.headline3,
@@ -153,7 +153,7 @@ class ChangeProfilePage extends StatelessWidget {
                         lang.not_shown_on_your_profile,
                         style: theme.textTheme.subtitle2,
                       ),
-                      const SizedBox(height: SPACE8),
+                      const SizedBox(height: Const.space8),
                       InkWell(
                         onTap: () {
                           context
@@ -165,10 +165,10 @@ class ChangeProfilePage extends StatelessWidget {
                           height: 45,
                           alignment: Alignment.centerLeft,
                           padding:
-                              const EdgeInsets.symmetric(horizontal: SPACE12),
+                              const EdgeInsets.symmetric(horizontal: Const.space12),
                           decoration: BoxDecoration(
                             border: Border.all(color: theme.disabledColor),
-                            borderRadius: BorderRadius.circular(RADIUS),
+                            borderRadius: BorderRadius.circular(Const.radius),
                           ),
                           child: Text(
                             (state.birthdate.isNotEmpty)
@@ -182,7 +182,7 @@ class ChangeProfilePage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: Const.space25),
                       ElevatedButtonWidget(
                         onTap: () {
                           context
@@ -191,7 +191,7 @@ class ChangeProfilePage extends StatelessWidget {
                         },
                         label: lang.save_changes,
                       ),
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: Const.space25),
                     ],
                   ),
                 )
@@ -287,7 +287,7 @@ class ChangeProfilePage extends StatelessWidget {
       builder: (context) {
         return AlertDialog(
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(RADIUS),
+            borderRadius: BorderRadius.circular(Const.radius),
           ),
           content: Container(
             width: 300,
@@ -309,7 +309,7 @@ class ChangeProfilePage extends StatelessWidget {
                     ),
                   ],
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);

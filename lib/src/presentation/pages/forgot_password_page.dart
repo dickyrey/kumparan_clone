@@ -30,14 +30,14 @@ class ForgotPasswordPage extends StatelessWidget {
           autovalidateMode: AutovalidateMode.onUserInteraction,
           child: Column(
             children: [
-              const SizedBox(height: SPACE25),
+              const SizedBox(height: Const.space25),
               Text(
                 lang.enter_your_email_to_change_the_password,
                 style: theme.textTheme.bodyText2,
               ),
-              const SizedBox(height: SPACE25),
+              const SizedBox(height: Const.space25),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                 child: TextFormFieldWidget(
                   hintText: AppLocalizations.of(context)!.email,
                   textFieldType: TextFieldType.email,
@@ -48,9 +48,9 @@ class ForgotPasswordPage extends StatelessWidget {
                   },
                 ),
               ),
-              const SizedBox(height: SPACE25),
+              const SizedBox(height: Const.space25),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                 child: BlocBuilder<ForgotPasswordFormBloc,
                     ForgotPasswordFormState>(
                   builder: (context, state) {

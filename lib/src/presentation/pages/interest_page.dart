@@ -45,7 +45,7 @@ class _InterestPageState extends State<InterestPage> {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: Const.space25),
                       Text(
                         lang.your_favorite_topic,
                         style: theme.textTheme.headline2,
@@ -56,14 +56,14 @@ class _InterestPageState extends State<InterestPage> {
                         style: theme.textTheme.bodyText2,
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: Const.space25),
                       Divider(
                         color: theme.dividerColor,
                         thickness: 1,
                       ),
                       ListView.separated(
                         itemCount: state.categories.length,
-                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                         shrinkWrap: true,
                         physics: const ScrollPhysics(),
                         separatorBuilder: (context, index) {
@@ -97,13 +97,13 @@ class _InterestPageState extends State<InterestPage> {
                           );
                         },
                       ),
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: Const.space25),
                       Text(
                         lang.you_can_reset_it_on_the_notification_settings_page,
                         style: theme.textTheme.subtitle1,
                         textAlign: TextAlign.center,
                       ),
-                      const SizedBox(height: SPACE25),
+                      const SizedBox(height: Const.space25),
                     ],
                   ),
                 ),
@@ -112,8 +112,8 @@ class _InterestPageState extends State<InterestPage> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(
-              horizontal: MARGIN,
-              vertical: SPACE12,
+              horizontal: Const.margin,
+              vertical: Const.space12,
             ),
             child: SizedBox(
               height: 50,

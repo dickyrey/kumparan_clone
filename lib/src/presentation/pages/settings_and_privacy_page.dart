@@ -17,7 +17,7 @@ class SettingsAndPrivacyPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            const SizedBox(height: SPACE12),
+            const SizedBox(height: Const.space12),
             ListTileWidget(
               title: lang.personal_data,
               icon: FeatherIcons.user,

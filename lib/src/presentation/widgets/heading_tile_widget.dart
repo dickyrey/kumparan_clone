@@ -31,7 +31,7 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(MARGIN, 0, 0, 0),
+          padding: const EdgeInsets.fromLTRB(Const.margin, 0, 0, 0),
           child: Row(
             children: [
               Container(
@@ -39,7 +39,7 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
                 height: 20,
                 color: const Color(0xFFEB4768),
               ),
-              const SizedBox(width: SPACE8),
+              const SizedBox(width: Const.space8),
               Text(widget.label, style: theme.textTheme.headline1),
               const Expanded(child: SizedBox()),
               if (widget.type == HeadingTileType.normal)
@@ -51,14 +51,14 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
               else
                 Container(
                   height: 35,
-                  padding: const EdgeInsets.symmetric(horizontal: SPACE8),
+                  padding: const EdgeInsets.symmetric(horizontal: Const.space8),
                   decoration: BoxDecoration(
                     border: Border.all(color: theme.disabledColor),
-                    borderRadius: BorderRadius.circular(RADIUS),
+                    borderRadius: BorderRadius.circular(Const.radius),
                   ),
                   child: DropdownButton<String>(
                     value: selectedValue,
-                    borderRadius: BorderRadius.circular(RADIUS),
+                    borderRadius: BorderRadius.circular(Const.radius),
                     underline: Container(),
                     icon: const Icon(
                       FeatherIcons.chevronDown,
@@ -85,12 +85,12 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
                 ),
               (widget.type == HeadingTileType.normal)
                   ? const SizedBox()
-                  : const SizedBox(width: MARGIN),
+                  : const SizedBox(width: Const.margin),
             ],
           ),
         ),
         const Padding(
-          padding: EdgeInsets.symmetric(horizontal: MARGIN),
+          padding: EdgeInsets.symmetric(horizontal: Const.margin),
           child: Divider(),
         ),
       ],

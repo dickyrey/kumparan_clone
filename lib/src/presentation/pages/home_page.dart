@@ -67,11 +67,11 @@ class _HomePageState extends State<HomePage> {
         onTap: () {
           // TODO(dickyrey): Search all Article
         },
-        borderRadius: BorderRadius.circular(RADIUS),
+        borderRadius: BorderRadius.circular(Const.radius),
         child: Container(
           height: 37,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(RADIUS),
+            borderRadius: BorderRadius.circular(Const.radius),
             color: theme.disabledColor.withOpacity(.2),
           ),
           child: TextFormFieldWidget(
@@ -114,7 +114,7 @@ class ForYouTab extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: SPACE15),
+          const SizedBox(height: Const.space15),
 
           /// Horizontal Scrollable [ArticleCardWidget]
           BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
@@ -137,7 +137,7 @@ class ForYouTab extends StatelessWidget {
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                       itemBuilder: (context, index) {
                         final data = state.articleList[index];
                         return ArticleCardWidget(
@@ -151,18 +151,18 @@ class ForYouTab extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: SPACE15),
+          const SizedBox(height: Const.space15),
           // Main content separator
           Container(
             color: theme.disabledColor.withOpacity(.3),
-            height: SPACE8,
+            height: Const.space8,
           ),
 
-          const SizedBox(height: SPACE12),
+          const SizedBox(height: Const.space12),
 
           /// Top Row [FeatureCardWidget] allow users to choose unique feature
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+            padding: const EdgeInsets.symmetric(horizontal: Const.margin),
             child: Row(
               children: [
                 FeatureCardWidget(
@@ -173,7 +173,7 @@ class ForYouTab extends StatelessWidget {
                   backgroundColor: const Color(0xFFEB4768),
                   icon: FeatherIcons.barChart2,
                 ),
-                const SizedBox(width: SPACE12),
+                const SizedBox(width: Const.space12),
                 FeatureCardWidget(
                   onTap: () {
                     showToast(msg: lang.feature_not_available_yet);
@@ -182,7 +182,7 @@ class ForYouTab extends StatelessWidget {
                   backgroundColor: const Color(0xFF00B5B4),
                   icon: FeatherIcons.award,
                 ),
-                const SizedBox(width: SPACE12),
+                const SizedBox(width: Const.space12),
                 FeatureCardWidget(
                   onTap: () {
                     // TODO(dickyrey): Opinions and Stories
@@ -194,11 +194,11 @@ class ForYouTab extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: SPACE8),
+          const SizedBox(height: Const.space8),
 
           /// Second Row [FeatureCardWidget] allow users to choose unique feature
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+            padding: const EdgeInsets.symmetric(horizontal: Const.margin),
             child: Row(
               children: [
                 FeatureCardWidget(
@@ -209,7 +209,7 @@ class ForYouTab extends StatelessWidget {
                   backgroundColor: const Color(0xFF0071A7),
                   icon: FeatherIcons.camera,
                 ),
-                const SizedBox(width: SPACE12),
+                const SizedBox(width: Const.space12),
                 FeatureCardWidget(
                   onTap: () {
                     // TODO(dickyrey): List of articles contains video
@@ -218,7 +218,7 @@ class ForYouTab extends StatelessWidget {
                   backgroundColor: const Color(0xFFFA8B48),
                   icon: FeatherIcons.film,
                 ),
-                const SizedBox(width: SPACE12),
+                const SizedBox(width: Const.space12),
                 FeatureCardWidget(
                   onTap: () {
                     showToast(msg: lang.feature_not_available_yet);
@@ -230,12 +230,12 @@ class ForYouTab extends StatelessWidget {
               ],
             ),
           ),
-          const SizedBox(height: SPACE12),
+          const SizedBox(height: Const.space12),
 
           // / Main content `separator`
           Container(
             color: theme.disabledColor.withOpacity(.3),
-            height: SPACE8,
+            height: Const.space8,
           ),
 
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
@@ -271,7 +271,7 @@ class ForYouTab extends StatelessWidget {
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                            padding: EdgeInsets.symmetric(horizontal: Const.margin),
                             child: Divider(),
                           );
                         },
@@ -283,11 +283,11 @@ class ForYouTab extends StatelessWidget {
                         },
                       ),
                       const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                        padding: EdgeInsets.symmetric(horizontal: Const.margin),
                         child: Divider(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                         child: TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, TRENDING_ARTICLE);
@@ -301,7 +301,7 @@ class ForYouTab extends StatelessWidget {
                                   color: theme.primaryColor,
                                 ),
                               ),
-                              const SizedBox(width: SPACE12),
+                              const SizedBox(width: Const.space12),
                               Icon(
                                 FeatherIcons.arrowRight,
                                 size: 16,
@@ -319,7 +319,7 @@ class ForYouTab extends StatelessWidget {
           ),
           Container(
             color: theme.disabledColor.withOpacity(.3),
-            height: SPACE8,
+            height: Const.space8,
           ),
         ],
       ),
@@ -337,7 +337,7 @@ class CategoryTab extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          const SizedBox(height: SPACE15),
+          const SizedBox(height: Const.space15),
 
           /// Horizontal Scrollable [ArticleCardWidget]
           BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
@@ -360,7 +360,7 @@ class CategoryTab extends StatelessWidget {
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                       itemBuilder: (context, index) {
                         final data = state.articleList[index];
                         return ArticleCardWidget(
@@ -375,7 +375,7 @@ class CategoryTab extends StatelessWidget {
             },
           ),
 
-          const SizedBox(height: SPACE25),
+          const SizedBox(height: Const.space25),
           
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
           /// First heading is `Trending News/Article`
@@ -410,7 +410,7 @@ class CategoryTab extends StatelessWidget {
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                            padding: EdgeInsets.symmetric(horizontal: Const.margin),
                             child: Divider(),
                           );
                         },
@@ -429,7 +429,7 @@ class CategoryTab extends StatelessWidget {
             },
           ),
 
-          const SizedBox(height: SPACE25),
+          const SizedBox(height: Const.space25),
 
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
           /// First heading is `Trending News/Article`
@@ -462,7 +462,7 @@ class CategoryTab extends StatelessWidget {
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                            padding: EdgeInsets.symmetric(horizontal: Const.margin),
                             child: Divider(),
                           );
                         },
@@ -474,11 +474,11 @@ class CategoryTab extends StatelessWidget {
                         },
                       ),
                       const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                        padding: EdgeInsets.symmetric(horizontal: Const.margin),
                         child: Divider(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                         child: TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, TRENDING_ARTICLE);
@@ -492,7 +492,7 @@ class CategoryTab extends StatelessWidget {
                                   color: theme.primaryColor,
                                 ),
                               ),
-                              const SizedBox(width: SPACE12),
+                              const SizedBox(width: Const.space12),
                               Icon(
                                 FeatherIcons.arrowRight,
                                 size: 16,

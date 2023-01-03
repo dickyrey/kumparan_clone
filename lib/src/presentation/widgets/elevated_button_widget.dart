@@ -42,7 +42,7 @@ class ElevatedButtonWidget extends StatelessWidget {
         style: ElevatedButton.styleFrom(
           backgroundColor: color ?? theme.primaryColor,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(RADIUS),
+            borderRadius: BorderRadius.circular(Const.radius),
           ),
           elevation: elevation,
         ),

@@ -42,8 +42,8 @@ class LoginPage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                      horizontal: MARGIN,
-                      vertical: SPACE15,
+                      horizontal: Const.margin,
+                      vertical: Const.space15,
                     ),
                     child: Text(
                       lang.login_first_so_you_can_comment_create_content_subscribe_to_kumparanplus_and_set_notifications_for_your_favorite_content_come_on,
@@ -51,9 +51,9 @@ class LoginPage extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    padding:  const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: TextFormFieldWidget(
                       hintText: lang.email,
                       textFieldType: TextFieldType.email,
@@ -64,9 +64,9 @@ class LoginPage extends StatelessWidget {
                       },
                     ),
                   ),
-                  const SizedBox(height: SPACE12),
+                  const SizedBox(height: Const.space12),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: TextFormFieldWidget(
                       hintText: lang.password,
                       obscureText: state.obscureText,
@@ -89,7 +89,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -106,9 +106,9 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                    padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                     child: ElevatedButtonWidget(
                       onTap: () {
                         if (formKey.currentState!.validate()) {
@@ -121,13 +121,13 @@ class LoginPage extends StatelessWidget {
                       isLoading: state.isSubmitting == true ? true : false,
                     ),
                   ),
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   Text(
                     lang.or_use,
                     style: theme.textTheme.subtitle1,
                     textAlign: TextAlign.center,
                   ),
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                   registerOptionButton(
                     context,
                     label: lang.google,
@@ -136,7 +136,7 @@ class LoginPage extends StatelessWidget {
                       // TODO(dickyrey): Google Sign In
                     },
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   registerOptionButton(
                     context,
                     label: lang.facebook,
@@ -145,7 +145,7 @@ class LoginPage extends StatelessWidget {
                       // TODO(dickyrey): Facebook Sign In (optional)
                     },
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   registerOptionButton(
                     context,
                     label: lang.phone_number,
@@ -154,7 +154,7 @@ class LoginPage extends StatelessWidget {
                       // TODO(dickyrey): Sign in with Phone Number
                     },
                   ),
-                  const SizedBox(height: SPACE15),
+                  const SizedBox(height: Const.space15),
                   TextButton(
                     onPressed: () => Navigator.pushNamed(context, REGISTER),
                     style: TextButton.styleFrom(
@@ -178,7 +178,7 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(MARGIN),
+                    padding: const EdgeInsets.all(Const.margin),
                     child: RichText(
                       textAlign: TextAlign.center,
                       text: TextSpan(
@@ -208,7 +208,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const SizedBox(height: SPACE25),
+                  const SizedBox(height: Const.space25),
                 ],
               ),
             ),
@@ -230,7 +230,7 @@ class LoginPage extends StatelessWidget {
     return ElevatedButtonWidget(
       onTap: onTap,
       color: theme.backgroundColor,
-      margin: const EdgeInsets.symmetric(horizontal: MARGIN),
+      margin: const EdgeInsets.symmetric(horizontal: Const.margin),
       elevation: 1,
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -245,7 +245,7 @@ class LoginPage extends StatelessWidget {
                   customIcon!,
                   width: 20,
                 ),
-          const SizedBox(width: SPACE15),
+          const SizedBox(width: Const.space15),
           Text(
             label,
             style: theme.textTheme.headline3,

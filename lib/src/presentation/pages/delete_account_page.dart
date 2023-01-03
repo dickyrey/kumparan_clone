@@ -35,7 +35,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.all(MARGIN),
+              padding: const EdgeInsets.all(Const.margin),
               child: RichText(
                 text: TextSpan(
                   children: [
@@ -67,57 +67,57 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
               ),
             ),
             const Divider(),
-            const SizedBox(height: MARGIN),
+            const SizedBox(height: Const.margin),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+              padding: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Text(
                 'Alasan menghapus akun',
                 style: theme.textTheme.headline3,
                 textAlign: TextAlign.left,
               ),
             ),
-            const SizedBox(height: SPACE15),
+            const SizedBox(height: Const.space15),
             _radioButton(
               context,
               value: 0,
               label: 'Saya memiliki akun lain di Kumparan',
             ),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             _radioButton(
               context,
               value: 1,
               label: 'Saya tidak mengerti bagaimana menggunakan Kumparan',
             ),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             _radioButton(
               context,
               value: 2,
               label: 'Saya tidak merasa aman di Kumparan',
             ),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             _radioButton(
               context,
               value: 3,
               label: 'Saya tidak ingin ada jejak digital di Kumparan',
             ),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             _radioButton(
               context,
               value: 4,
               label: 'Saya mendapatkan banyak email dan undangan',
             ),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             _radioButton(
               context,
               value: 5,
               label: 'Saya menggunakan platform menulis yang lain',
             ),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             _radioButton(context, value: 6, label: 'Alasan lainnya'),
-            const SizedBox(height: SPACE8),
+            const SizedBox(height: Const.space8),
             (_selectedRadio == 6)
                 ? const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                    padding: EdgeInsets.symmetric(horizontal: Const.margin),
                     child: TextFormFieldWidget(
                       hintText: 'Tulis alasan anda',
                       maxLength: 160,
@@ -125,9 +125,9 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                     ),
                   )
                 : const SizedBox(),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+              padding: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Row(
                 children: [
                   Expanded(
@@ -138,7 +138,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                       label: lang.cancel,
                     ),
                   ),
-                  const SizedBox(width: SPACE25),
+                  const SizedBox(width: Const.space25),
                   Expanded(
                     child: ElevatedButtonWidget(
                       onTap: () {
@@ -154,7 +154,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                 ],
               ),
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
           ],
         ),
       ),
@@ -175,14 +175,14 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
           groupValue: _selectedRadio,
           onChanged: _handleRadioValueChanged,
         ),
-        const SizedBox(width: SPACE12),
+        const SizedBox(width: Const.space12),
         Expanded(
           child: Text(
             label,
             style: theme.textTheme.bodyText1,
           ),
         ),
-        const SizedBox(width: MARGIN),
+        const SizedBox(width: Const.margin),
       ],
     );
   }

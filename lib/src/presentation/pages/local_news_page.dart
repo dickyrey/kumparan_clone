@@ -52,12 +52,12 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
             (_isGPSActivate == true)
                 ? const _NearbyContentTabView()
                 : EmptyDataWidget(
-                    illustration: CustomIcons.local_news,
+                    illustration: CustomIcons.localNews,
                     label: lang
                         .activate_gps_and_find_interesting_information_around_you,
                     useButton: true,
                     buttonLabel: lang.activate_gps,
-                    margin: MARGIN,
+                    margin: Const.margin,
                     onTap: () {
                       Geolocator.requestPermission().then((status) {
                         if (status == LocationPermission.always) {
@@ -137,7 +137,7 @@ class _NearbyContentTabView extends StatelessWidget {
                   shrinkWrap: true,
                   separatorBuilder: (context, index) {
                     return const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: MARGIN),
+                      padding: EdgeInsets.symmetric(horizontal: Const.margin),
                       child: Divider(),
                     );
                   },
@@ -171,7 +171,7 @@ class _OtherLocalNewsTabView extends StatelessWidget {
         return Column(
           children: [
             Padding(
-              padding: const EdgeInsets.all(MARGIN),
+              padding: const EdgeInsets.all(Const.margin),
               child: TextFormFieldWidget(
                 hintText: lang.search_province,
                 suffixIcon: const Icon(FeatherIcons.search),
@@ -187,7 +187,7 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                       child: Row(
                         children: [
                           Container(
@@ -195,7 +195,7 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                             height: 35,
                             color: theme.primaryColor,
                           ),
-                          const SizedBox(width: SPACE12),
+                          const SizedBox(width: Const.space12),
                           Text(
                             lang.all_province,
                             style: theme.textTheme.headline1,
@@ -203,12 +203,12 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                         ],
                       ),
                     ),
-                    const SizedBox(height: SPACE25),
+                    const SizedBox(height: Const.space25),
                     ListView.builder(
                       itemCount: (state.searchResultList.isEmpty)
                           ? state.provinceList.length
                           : state.searchResultList.length,
-                      padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                       physics: const ScrollPhysics(),
                       shrinkWrap: true,
                       itemBuilder: (context, index) {

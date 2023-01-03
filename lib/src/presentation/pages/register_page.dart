@@ -51,8 +51,8 @@ class RegisterPage extends StatelessWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(
-                    horizontal: MARGIN,
-                    vertical: SPACE15,
+                    horizontal: Const.margin,
+                    vertical: Const.space15,
                   ),
                   child: Text(
                     lang.register_first_so_you_can_comment_create_content_subscribe_to_kumparanplus_and_set_notifications_for_your_favorite_content_come_on,
@@ -60,9 +60,9 @@ class RegisterPage extends StatelessWidget {
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                  padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                   child: TextFormFieldWidget(
                     hintText: AppLocalizations.of(context)!.email,
                     textFieldType: TextFieldType.email,
@@ -73,9 +73,9 @@ class RegisterPage extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: MARGIN),
+                  padding: const EdgeInsets.symmetric(horizontal: Const.margin),
                   child: BlocBuilder<RegisterFormBloc, RegisterFormState>(
                     builder: (context, state) {
                       return ElevatedButtonWidget(
@@ -92,13 +92,13 @@ class RegisterPage extends StatelessWidget {
                     },
                   ),
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
                 Text(
                   lang.or_use,
                   style: theme.textTheme.subtitle1,
                   textAlign: TextAlign.center,
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
                 registerOptionButton(
                   context,
                   label: lang.google,
@@ -107,7 +107,7 @@ class RegisterPage extends StatelessWidget {
                     // TODO(dickyrey): Google Sign In
                   },
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 registerOptionButton(
                   context,
                   label: lang.facebook,
@@ -116,7 +116,7 @@ class RegisterPage extends StatelessWidget {
                     // TODO(dickyrey): Facebook Sign In (optional)
                   },
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 registerOptionButton(
                   context,
                   label: lang.phone_number,
@@ -125,7 +125,7 @@ class RegisterPage extends StatelessWidget {
                     // TODO(dickyrey): Sign in with Phone Number
                   },
                 ),
-                const SizedBox(height: SPACE15),
+                const SizedBox(height: Const.space15),
                 TextButton(
                   onPressed: () => Navigator.pushNamed(context, LOGIN),
                   style: TextButton.styleFrom(
@@ -149,7 +149,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(MARGIN),
+                  padding: const EdgeInsets.all(Const.margin),
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
@@ -179,7 +179,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: SPACE25),
+                const SizedBox(height: Const.space25),
               ],
             ),
           ),
@@ -200,7 +200,7 @@ class RegisterPage extends StatelessWidget {
     return ElevatedButtonWidget(
       onTap: onTap,
       color: theme.backgroundColor,
-      margin: const EdgeInsets.symmetric(horizontal: MARGIN),
+      margin: const EdgeInsets.symmetric(horizontal: Const.margin),
       elevation: 1,
       child: Row(
         mainAxisSize: MainAxisSize.min,
@@ -215,7 +215,7 @@ class RegisterPage extends StatelessWidget {
                   customIcon!,
                   width: 20,
                 ),
-          const SizedBox(width: SPACE15),
+          const SizedBox(width: Const.space15),
           Text(
             label,
             style: theme.textTheme.headline3,

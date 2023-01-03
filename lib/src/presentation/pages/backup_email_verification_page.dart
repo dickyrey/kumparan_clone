@@ -25,23 +25,23 @@ class BackupEmailVerificationPage extends StatelessWidget {
     return Scaffold(
       appBar: _appBar(context),
       body: Padding(
-        padding: const EdgeInsets.all(MARGIN),
+        padding: const EdgeInsets.all(Const.margin),
         child: Column(
           children: [
-            Expanded(flex: 6, child: Image.asset(CustomIcons.email_send)),
-            const SizedBox(height: SPACE25),
+            Expanded(flex: 6, child: Image.asset(CustomIcons.emailSend)),
+            const SizedBox(height: Const.space25),
             Text(
               lang.email_verification,
               style: theme.textTheme.headline3,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: SPACE12),
+            const SizedBox(height: Const.space12),
             Text(
               '${lang.please_click_the_verification_link_that_was_sent_to} $email',
               style: theme.textTheme.bodyText2,
               textAlign: TextAlign.center,
             ),
-            const SizedBox(height: SPACE25),
+            const SizedBox(height: Const.space25),
             BlocBuilder<VerificationEmailFormBloc, VerificationEmailFormState>(
               builder: (context, state) {
                 return ElevatedButtonWidget(
