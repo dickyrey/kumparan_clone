@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, unnecessary_lambdas
-
 import 'package:equatable/equatable.dart';
 import 'package:kumparan_clone/src/data/models/category_model.dart';
 
@@ -13,7 +11,7 @@ class CategoryResponse extends Equatable {
       categoryList: List<CategoryModel>.from(
         (json['data'] as List)
             .map((e) => CategoryModel.fromJson(e as Map<String, dynamic>))
-            .where((element) => element.name != null),
+            .where((element) => element.name != ''),
       ),
     );
   }

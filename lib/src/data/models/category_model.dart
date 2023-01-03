@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_lambdas
-
 import 'dart:convert';
 import 'package:equatable/equatable.dart';
 import 'package:kumparan_clone/src/domain/entities/category.dart';

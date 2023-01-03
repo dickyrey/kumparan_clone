@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_null_comparison, unnecessary_lambdas
-
 import 'package:equatable/equatable.dart';
 import 'package:kumparan_clone/src/data/models/notice_model.dart';
 
@@ -13,7 +11,7 @@ class NoticeResponse extends Equatable {
       noticeList: List<NoticeModel>.from(
         (json['data'] as List)
             .map((e) => NoticeModel.fromJson(e as Map<String, dynamic>))
-            .where((element) => element.title != null),
+            .where((element) => element.title != ''),
       ),
     );
   }
