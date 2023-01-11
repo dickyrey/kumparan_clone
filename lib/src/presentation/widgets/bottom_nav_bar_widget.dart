@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/pages/home_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/latest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/menu_page.dart';
@@ -40,49 +43,66 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
-    return Scaffold(
-      body: PageView(
-        controller: _controller,
-        physics: const NeverScrollableScrollPhysics(),
-        onPageChanged: (v) => setState(() => _selectedIndex = v),
-        children: _tabView,
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedIndex,
-        onTap: (v) => setState(() {
-          _selectedIndex = v;
-          _controller.animateToPage(
-            v,
-            duration: const Duration(milliseconds: 200),
-            curve: Curves.easeIn,
-          );
-        }),
-        type: BottomNavigationBarType.fixed,
-        iconSize: 20,
-        selectedLabelStyle: theme.textTheme.bodyText2?.copyWith(
-          fontSize: 9,
+    return BlocListener<AuthWatcherBloc, AuthWatcherState>(
+      listener: (context, state) {
+        state.map(
+          initial: (_) {},
+          authInProgress: (_) {},
+          authInFailure: (_) {},
+          authenticated: (_) {},
+          notAuthenticated: (_) {
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              LOGIN,
+              (Route<dynamic> route) => false,
+            );
+          },
+        );
+      },
+      child: Scaffold(
+        body: PageView(
+          controller: _controller,
+          physics: const NeverScrollableScrollPhysics(),
+          onPageChanged: (v) => setState(() => _selectedIndex = v),
+          children: _tabView,
         ),
-        unselectedLabelStyle: theme.textTheme.subtitle2?.copyWith(
-          fontSize: 9,
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: _selectedIndex,
+          onTap: (v) => setState(() {
+            _selectedIndex = v;
+            _controller.animateToPage(
+              v,
+              duration: const Duration(milliseconds: 200),
+              curve: Curves.easeIn,
+            );
+          }),
+          type: BottomNavigationBarType.fixed,
+          iconSize: 20,
+          selectedLabelStyle: theme.textTheme.bodyText2?.copyWith(
+            fontSize: 9,
+          ),
+          unselectedLabelStyle: theme.textTheme.subtitle2?.copyWith(
+            fontSize: 9,
+          ),
+          items: [
+            BottomNavigationBarItem(
+              icon: const Icon(FeatherIcons.home),
+              label: lang.home,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(FeatherIcons.clock),
+              label: lang.latest,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(FeatherIcons.bell),
+              label: lang.notification,
+            ),
+            BottomNavigationBarItem(
+              icon: const Icon(FeatherIcons.menu),
+              label: lang.menu,
+            ),
+          ],
         ),
-        items: [
-          BottomNavigationBarItem(
-            icon: const Icon(FeatherIcons.home),
-            label: lang.home,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(FeatherIcons.clock),
-            label: lang.latest,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(FeatherIcons.bell),
-            label: lang.notification,
-          ),
-          BottomNavigationBarItem(
-            icon: const Icon(FeatherIcons.menu),
-            label: lang.menu,
-          ),
-        ],
       ),
     );
   }

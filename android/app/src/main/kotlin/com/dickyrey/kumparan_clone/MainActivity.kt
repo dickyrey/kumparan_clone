@@ -1,4 +1,4 @@
-package com.example.kumparan_clone
+package com.dickyrey.kumparan_clone
 
 import io.flutter.embedding.android.FlutterActivity
 

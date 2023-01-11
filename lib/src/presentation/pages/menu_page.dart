@@ -1,9 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -127,25 +129,29 @@ class MenuPage extends StatelessWidget {
               icon: FeatherIcons.repeat,
               title: lang.subscription_history,
               onTap: () {
-                showToast(msg: lang.feature_not_available_yet);},
+                showToast(msg: lang.feature_not_available_yet);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.creditCard,
               title: lang.manage_subscription,
               onTap: () {
-                showToast(msg: lang.feature_not_available_yet);},
+                showToast(msg: lang.feature_not_available_yet);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.moon,
               title: lang.dark_mode,
               onTap: () {
-                showToast(msg: lang.feature_not_available_yet);},
+                showToast(msg: lang.feature_not_available_yet);
+              },
             ),
             ListTileWidget(
               icon: FeatherIcons.mail,
               title: lang.cooperation_information,
               onTap: () {
-                showToast(msg: lang.feature_not_available_yet);},
+                showToast(msg: lang.feature_not_available_yet);
+              },
             ),
             const Divider(),
             ListTileWidget(
@@ -319,7 +325,9 @@ class MenuPage extends StatelessWidget {
               icon: FeatherIcons.logOut,
               title: lang.exit,
               onTap: () {
-                // TODO(dickyrey): logout
+                context
+                    .read<AuthWatcherBloc>()
+                    .add(const AuthWatcherEvent.signOut());
               },
             ),
           ],

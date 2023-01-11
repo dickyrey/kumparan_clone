@@ -1,21 +1,31 @@
 import 'package:get_it/get_it.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/data/datasources/article_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/auth_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/boarding_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dart';
+import 'package:kumparan_clone/src/data/repositories/auth_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/boarding_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/category_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/notice_repository_impl.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
+import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
+import 'package:kumparan_clone/src/domain/usecases/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/sign_in_with_google.dart';
+import 'package:kumparan_clone/src/domain/usecases/sign_out_with_google.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email/backup_email_form/backup_email_form_bloc.dart';
@@ -33,10 +43,29 @@ import 'package:kumparan_clone/src/presentation/bloc/user/user_form_bloc.dart';
 final locator = GetIt.instance;
 
 void init() {
+  //External
+  final httpPackage = http.Client();
+  locator.registerLazySingleton(
+    () => httpPackage,
+  );
+
+  final googleSignIn = GoogleSignIn();
+  locator.registerLazySingleton(
+    () => googleSignIn,
+  );
+
   // Datasources
   final articleRemoteDataSource = ArticleRemoteDataSourceImpl();
   locator.registerLazySingleton<ArticleRemoteDataSource>(
     () => articleRemoteDataSource,
+  );
+
+  final authRemoteDataSource = AuthRemoteDataSourceImpl(
+    client: locator(),
+    googleSignIn: locator(),
+  );
+  locator.registerLazySingleton<AuthRemoteDataSource>(
+    () => authRemoteDataSource,
   );
 
   final boardingRemoteDataSource = BoardingRemoteDataSourceImpl();
@@ -60,6 +89,11 @@ void init() {
     () => articleRepository,
   );
 
+  final authRepository = AuthRepositoryImpl(dataSource: locator());
+  locator.registerLazySingleton<AuthRepository>(
+    () => authRepository,
+  );
+
   final boardingRepository = BoardingRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<BoardingRepository>(
     () => boardingRepository,
@@ -76,6 +110,11 @@ void init() {
   );
 
   // Usecases
+  final checkGoogleAuthUseCase = CheckGoogleAuth(locator());
+  locator.registerLazySingleton(
+    () => checkGoogleAuthUseCase,
+  );
+
   final getArticleListUseCase = GetArticleList(locator());
   locator.registerLazySingleton(
     () => getArticleListUseCase,
@@ -96,10 +135,30 @@ void init() {
     () => getNoticeList,
   );
 
+  final signInWithGoogle = SignInWithGoogle(locator());
+  locator.registerLazySingleton(
+    () => signInWithGoogle,
+  );
+
+  final signOutWithGoogle = SignOutWithGoogle(locator());
+  locator.registerLazySingleton(
+    () => signOutWithGoogle,
+  );
+
   // BLoCs
   final newArticleWatcherBloc = NewArticleWatcherBloc(locator());
   locator.registerLazySingleton(
     () => newArticleWatcherBloc,
+  );
+
+  final authWatcherBloc = AuthWatcherBloc(locator(), locator());
+  locator.registerLazySingleton(
+    () => authWatcherBloc,
+  );
+
+  final signInWithGoogleActorBloc = SignInWithGoogleActorBloc(locator());
+  locator.registerLazySingleton(
+    () => signInWithGoogleActorBloc,
   );
 
   final boardingWatcherBloc = BoardingWatcherBloc(locator());

@@ -30,6 +30,7 @@ dependencies:
   geolocator: ^9.0.2
   get_it: ^7.2.0
   google_fonts: ^3.0.1
+  google_sign_in: ^5.4.3
   http: ^0.13.5
   image_cropper: ^3.0.1
   image_picker: ^0.8.6
