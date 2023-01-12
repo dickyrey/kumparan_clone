@@ -50,7 +50,6 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final response = await http.post(url, headers: header);
 
     if (response.statusCode == 200) {
-      print(response.body);
       final accessToken = TokenModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
       );
