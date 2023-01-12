@@ -11,13 +11,13 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
-  final http.Client client;
-  final GoogleSignIn googleSignIn;
-  
   AuthRemoteDataSourceImpl({
     required this.client,
     required this.googleSignIn,
   });
+  
+  final http.Client client;
+  final GoogleSignIn googleSignIn;
 
   @override
   Future<bool> checkGoogleAuth() async {

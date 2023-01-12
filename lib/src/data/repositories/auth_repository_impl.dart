@@ -8,9 +8,9 @@ import 'package:kumparan_clone/src/data/datasources/auth_remote_data_source.dart
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
-  final AuthRemoteDataSource dataSource;
-
   AuthRepositoryImpl({required this.dataSource});
+
+  final AuthRemoteDataSource dataSource;
 
   @override
   Future<Either<Failure, bool>> checkGoogleAuth() async {

@@ -7,26 +7,6 @@ import 'package:kumparan_clone/src/common/const.dart';
 enum TextFieldType { alphabet, email, text, password, phoneNumber, number }
 
 class TextFormFieldWidget extends StatelessWidget {
-  final TextEditingController? controller;
-  final TextFieldType textFieldType;
-  final String? hintText;
-  final String? labelText;
-  final String? helperText;
-  final String? errorText;
-  final Widget? prefixIcon;
-  final Widget? suffixIcon;
-  final bool? obscureText;
-  final int? maxLines;
-  final int? helperMaxLines;
-  final int? maxLength;
-  final TextAlign? textAlign;
-  final List<TextInputFormatter>? inputFormatters;
-  final bool enabled;
-  final ValueChanged<String>? onChanged;
-  final TextInputAction? textInputAction;
-  final TextInputType? textInputType;
-  final int minLength;
-
   const TextFormFieldWidget({
     super.key,
     this.controller,
@@ -49,6 +29,26 @@ class TextFormFieldWidget extends StatelessWidget {
     this.minLength = 1,
     this.errorText,
   });
+  
+  final TextEditingController? controller;
+  final TextFieldType textFieldType;
+  final String? hintText;
+  final String? labelText;
+  final String? helperText;
+  final String? errorText;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final bool? obscureText;
+  final int? maxLines;
+  final int? helperMaxLines;
+  final int? maxLength;
+  final TextAlign? textAlign;
+  final List<TextInputFormatter>? inputFormatters;
+  final bool enabled;
+  final ValueChanged<String>? onChanged;
+  final TextInputAction? textInputAction;
+  final TextInputType? textInputType;
+  final int minLength;
 
   @override
   Widget build(BuildContext context) {

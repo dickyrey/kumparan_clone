@@ -3,9 +3,9 @@ import 'package:kumparan_clone/src/common/failure.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 
 class SignInWithGoogle {
-  final AuthRepository repository;
-
   SignInWithGoogle(this.repository);
+  
+  final AuthRepository repository;
 
   Future<Either<Failure, void>> execute(String token) {
     return repository.signInWithGoogle(token);
