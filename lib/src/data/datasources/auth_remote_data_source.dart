@@ -25,7 +25,10 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
   @override
   Future<bool> checkGoogleAuth() async {
     final isSignedIn = await googleSignIn.isSignedIn();
-    if (isSignedIn) {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+
+    if (isSignedIn && token != null) {
       return true;
     } else {
       return false;
@@ -47,6 +50,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     final response = await http.post(url, headers: header);
 
     if (response.statusCode == 200) {
+      print(response.body);
       final accessToken = TokenModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
       );
@@ -63,9 +67,26 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
 
   @override
   Future<void> signOut() async {
-    // final prefs = await SharedPreferences.getInstance();
-    await googleSignIn.signOut();
-    print('LOGOOOOOOOOTTTT');
-    // await prefs.remove(ACCESS_TOKEN);
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.signOutPath,
+    );
+
+    final response = await http.post(url, headers: header);
+
+    if (response.statusCode == 200) {
+      await googleSignIn.signOut();
+      await prefs.remove(Const.token);
+      return;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
   }
 }

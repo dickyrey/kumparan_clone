@@ -11,6 +11,7 @@ class Const {
   static const String googleSignInPath = '/api/signin/google';
   static const String host = 'interpretasi.id';
   static const String scheme = 'https';
+  static const String signOutPath = 'api/signout';
 }
 
 class CustomIcons {

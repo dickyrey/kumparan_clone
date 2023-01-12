@@ -140,7 +140,7 @@ void init() {
     () => signInWithGoogle,
   );
 
-  final signOutWithGoogle = SignOutWithGoogle(locator());
+  final signOutWithGoogle = SignOut(locator());
   locator.registerLazySingleton(
     () => signOutWithGoogle,
   );

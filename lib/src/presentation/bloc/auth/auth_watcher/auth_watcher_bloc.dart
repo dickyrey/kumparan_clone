@@ -8,7 +8,7 @@ part 'auth_watcher_state.dart';
 part 'auth_watcher_bloc.freezed.dart';
 
 class AuthWatcherBloc extends Bloc<AuthWatcherEvent, AuthWatcherState> {
-  AuthWatcherBloc(this._checkGoogleAuth, this._signOutWithGoogle)
+  AuthWatcherBloc(this._checkGoogleAuth, this._signOut)
       : super(const AuthWatcherState.initial()) {
     on<AuthWatcherEvent>((event, emit) async {
       await event.map(
@@ -27,12 +27,12 @@ class AuthWatcherBloc extends Bloc<AuthWatcherEvent, AuthWatcherState> {
           );
         },
         signOut: (event) async {
-          final result = await _signOutWithGoogle.execute();
+          emit(const AuthWatcherState.authInProgress());
+          final result = await _signOut.execute();
           result.fold(
             (f) => emit(AuthWatcherState.authInFailure(f.message)),
             (_) {
               emit(const AuthWatcherState.notAuthenticated());
-              const AuthWatcherEvent.authCheckRequested();
             },
           );
         },
@@ -41,5 +41,5 @@ class AuthWatcherBloc extends Bloc<AuthWatcherEvent, AuthWatcherState> {
   }
 
   final CheckGoogleAuth _checkGoogleAuth;
-  final SignOutWithGoogle _signOutWithGoogle;
+  final SignOut _signOut;
 }
