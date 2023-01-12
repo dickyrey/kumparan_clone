@@ -7,6 +7,7 @@ class Const {
   static const double radius = 8;
   static const double margin = 18;
   
+  static const String token = 'access_token';
   static const String googleSignInPath = '/api/signin/google';
   static const String host = 'interpretasi.id';
   static const String scheme = 'https';

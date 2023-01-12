@@ -14,15 +14,6 @@ class AuthWatcherBloc extends Bloc<AuthWatcherEvent, AuthWatcherState> {
       await event.map(
         authCheckRequested: (event) async {
           emit(const AuthWatcherState.authInProgress());
-
-          //   final prefs = await SharedPreferences.getInstance();
-          //   final token = prefs.getString(ACCESS_TOKEN);
-          //   if (token == null) {
-          //     emit(const AuthWatcherState.notAuthenticated());
-          //   } else {
-          //     emit(const AuthWatcherState.authenticated());
-          //   }
-          // },
           final result = await _checkGoogleAuth.execute();
           result.fold(
             (data) => emit(const AuthWatcherState.authInFailure('')),
@@ -39,13 +30,16 @@ class AuthWatcherBloc extends Bloc<AuthWatcherEvent, AuthWatcherState> {
           final result = await _signOutWithGoogle.execute();
           result.fold(
             (f) => emit(AuthWatcherState.authInFailure(f.message)),
-            (_) => emit(const AuthWatcherState.notAuthenticated()),
+            (_) {
+              emit(const AuthWatcherState.notAuthenticated());
+              const AuthWatcherEvent.authCheckRequested();
+            },
           );
         },
       );
     });
   }
-  
+
   final CheckGoogleAuth _checkGoogleAuth;
   final SignOutWithGoogle _signOutWithGoogle;
 }

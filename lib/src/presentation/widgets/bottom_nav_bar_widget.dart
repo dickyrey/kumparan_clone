@@ -45,11 +45,8 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
 
     return BlocListener<AuthWatcherBloc, AuthWatcherState>(
       listener: (context, state) {
-        state.map(
-          initial: (_) {},
-          authInProgress: (_) {},
-          authInFailure: (_) {},
-          authenticated: (_) {},
+        state.maybeMap(
+          orElse:  () {},
           notAuthenticated: (_) {
             Navigator.pushNamedAndRemoveUntil(
               context,

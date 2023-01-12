@@ -24,27 +24,19 @@ class LoginPage extends StatelessWidget {
 
     return Scaffold(
       appBar: _appBar(context),
-      body: BlocListener<AuthWatcherBloc, AuthWatcherState>(
+      body: BlocListener<SignInWithGoogleActorBloc, SignInWithGoogleActorState>(
         listener: (context, state) {
-          state.map(
-            initial: (_){
-
-            },
-            authInProgress: (_){
-
-            },
-            authInFailure: (_){
-
-            },
-            authenticated: (_){
+          state.maybeMap(
+            orElse: () {},
+            signInSuccess: (_) {
+              context
+                  .read<AuthWatcherBloc>()
+                  .add(const AuthWatcherEvent.authCheckRequested());
               Navigator.pushNamedAndRemoveUntil(
                 context,
                 HOME,
                 (route) => false,
               );
-            },
-            notAuthenticated: (_){
-
             },
           );
         },
@@ -79,8 +71,9 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: Const.space25),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Const.margin,
+                      ),
                       child: TextFormFieldWidget(
                         hintText: lang.email,
                         textFieldType: TextFieldType.email,
@@ -93,8 +86,9 @@ class LoginPage extends StatelessWidget {
                     ),
                     const SizedBox(height: Const.space12),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Const.margin,
+                      ),
                       child: TextFormFieldWidget(
                         hintText: lang.password,
                         obscureText: state.obscureText,
@@ -117,8 +111,9 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: Const.margin,
+                      ),
                       child: Align(
                         alignment: Alignment.centerRight,
                         child: TextButton(
@@ -136,20 +131,41 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: Const.space15),
-                    Padding(
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: Const.margin),
-                      child: ElevatedButtonWidget(
-                        onTap: () {
-                          if (formKey.currentState!.validate()) {
-                            context
-                                .read<LoginFormBloc>()
-                                .add(const LoginFormEvent.signInPressed());
-                          }
-                        },
-                        label: lang.login,
-                        isLoading: state.isSubmitting == true ? true : false,
-                      ),
+                    BlocBuilder<SignInWithGoogleActorBloc,
+                        SignInWithGoogleActorState>(
+                      builder: (context, state) {
+                        return state.maybeMap(
+                          orElse: () {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: Const.margin,
+                              ),
+                              child: ElevatedButtonWidget(
+                                onTap: () {
+                                  if (formKey.currentState!.validate()) {
+                                    context.read<LoginFormBloc>().add(
+                                          const LoginFormEvent.signInPressed(),
+                                        );
+                                  }
+                                },
+                                label: lang.login,
+                              ),
+                            );
+                          },
+                          signInProgress: (value) {
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: Const.margin,
+                              ),
+                              child: ElevatedButtonWidget(
+                                onTap: null,
+                                label: lang.login,
+                                isLoading: true,
+                              ),
+                            );
+                          },
+                        );
+                      },
                     ),
                     const SizedBox(height: Const.space25),
                     Text(
@@ -167,25 +183,25 @@ class LoginPage extends StatelessWidget {
                             const SignInWithGoogleActorEvent.googleSignIn());
                       },
                     ),
+                    // const SizedBox(height: Const.space15),
+                    // registerOptionButton(
+                    //   context,
+                    //   label: lang.facebook,
+                    //   customIcon: CustomIcons.facebook,
+                    //   onTap: () {
+                    //     // TODO(dickyrey): Facebook Sign In (optional)
+                    //   },
+                    // ),
                     const SizedBox(height: Const.space15),
-                    registerOptionButton(
-                      context,
-                      label: lang.facebook,
-                      customIcon: CustomIcons.facebook,
-                      onTap: () {
-                        // TODO(dickyrey): Facebook Sign In (optional)
-                      },
-                    ),
-                    const SizedBox(height: Const.space15),
-                    registerOptionButton(
-                      context,
-                      label: lang.phone_number,
-                      icon: FeatherIcons.smartphone,
-                      onTap: () {
-                        // TODO(dickyrey): Sign in with Phone Number
-                      },
-                    ),
-                    const SizedBox(height: Const.space15),
+                    // registerOptionButton(
+                    //   context,
+                    //   label: lang.phone_number,
+                    //   icon: FeatherIcons.smartphone,
+                    //   onTap: () {
+                    //     // TODO(dickyrey): Sign in with Phone Number
+                    //   },
+                    // ),
+                    // const SizedBox(height: Const.space15),
                     TextButton(
                       onPressed: () => Navigator.pushNamed(context, REGISTER),
                       style: TextButton.styleFrom(
