@@ -2,6 +2,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthRemoteDataSource {
   Future<bool> checkGoogleAuth();
@@ -10,12 +11,13 @@ abstract class AuthRemoteDataSource {
 }
 
 class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
-  // static const BASE_URL = 'https://kayongku.com/kumparan/public/api';
-  // static const ACCESS_TOKEN = 'kk_access_token';
-
   final http.Client client;
   final GoogleSignIn googleSignIn;
-  AuthRemoteDataSourceImpl({required this.client, required this.googleSignIn});
+  
+  AuthRemoteDataSourceImpl({
+    required this.client,
+    required this.googleSignIn,
+  });
 
   @override
   Future<bool> checkGoogleAuth() async {
@@ -29,21 +31,20 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
 
   @override
   Future<void> signInWithGoogle(String token) async {
-    // final _prefs = await SharedPreferences.getInstance();
+    final _prefs = await SharedPreferences.getInstance();
     final user = await googleSignIn.signIn();
     // final _header = await _user?.authHeaders;
     // _header?['idToken'] = 'tt';
     // _header?['player_ids'] = playersId;
     // https://kayongku.com/kumparan/public/api/signin/google?email=herrymandala1@gmail.com&token={{token}}
-    final header = {
-      'Accept': 'application/json',
-    };
-    final url = Uri.parse('https://kayongku.com/kumparan/public/api/signin/google?email=${user?.email}&token=$token=');
-    // final url = Uri(
-    //   scheme: 'https',
-    //   host: 'www.kayongku.com',
-    //   path: '/kumparan/public/api/signin/google?email=${user?.email}&token=$token',
-    // );
+    final header = {'Accept': 'application/json'};
+    // final url = Uri.parse('https://interpretasi.id/api/signin/google?email=${user?.email}&token=$token=');
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.googleSignInPath,
+      queryParameters: {'email': user?.email, 'token': token},
+    );
 
     final response = await http.post(url, headers: header);
 
@@ -51,7 +52,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
     print(response.body);
     if (response.statusCode == 200) {
       print('success');
-      await googleSignIn.signOut();
+      // await googleSignIn.signOut();
       // var _token = jsonDecode(response.body)['data'];
       // await _prefs.setString(ACCESS_TOKEN, _token);
       return;
@@ -66,6 +67,7 @@ class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
       await googleSignIn.signOut();
       throw ServerException(ExceptionMessage.internetNotConnected);
     } else {
+      await googleSignIn.signOut();
       throw ServerException(ExceptionMessage.internetNotConnected);
     }
   }

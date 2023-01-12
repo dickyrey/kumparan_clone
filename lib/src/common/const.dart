@@ -6,6 +6,10 @@ class Const {
   static const double space50 = 50;
   static const double radius = 8;
   static const double margin = 18;
+  
+  static const String googleSignInPath = '/api/signin/google';
+  static const String host = 'interpretasi.id';
+  static const String scheme = 'https';
 }
 
 class CustomIcons {
