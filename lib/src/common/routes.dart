@@ -24,3 +24,4 @@ const String READ_HISTORY = '/read_history';
 const String TRENDING_ARTICLE = '/trending_article';
 const String LOCAL_NEWS = '/local_news';
 const String PROVINCE_NEWS = '/province_news';
+const String CREATE_CONTENT = '/create_content';

@@ -71,7 +71,9 @@ class MenuPage extends StatelessWidget {
             ),
             const SizedBox(height: Const.space25),
             ElevatedButtonWidget(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, CREATE_CONTENT);
+              },
               margin: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Row(
                 mainAxisSize: MainAxisSize.min,

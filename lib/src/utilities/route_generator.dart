@@ -5,6 +5,7 @@ import 'package:kumparan_clone/src/presentation/pages/add_phone_number_page.dart
 import 'package:kumparan_clone/src/presentation/pages/add_second_email_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/backup_email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/change_profile_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/create_content_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/delete_account_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/forgot_password_page.dart';
@@ -135,6 +136,10 @@ class RouteGenerator {
           );
         }
         return _errorRoute();
+      case CREATE_CONTENT:
+        return MaterialPageRoute(
+          builder: (_) => const CreateContentPage(),
+        );
       default:
         return _errorRoute();
     }

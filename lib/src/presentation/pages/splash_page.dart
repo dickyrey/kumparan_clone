@@ -28,17 +28,12 @@ class _SplashPageState extends State<SplashPage> {
     return Scaffold(
       body: BlocListener<AuthWatcherBloc, AuthWatcherState>(
         listener: (context, state) {
-          state.map(
-            initial: (_) {},
-            authInProgress: (_) {},
-            authInFailure: (_) {
+          state.maybeMap(
+            orElse: () {
               return goNextRoute(INTEREST);
             },
             authenticated: (_) {
               return goNextRoute(HOME);
-            },
-            notAuthenticated: (_) {
-              return goNextRoute(INTEREST);
             },
           );
         },
