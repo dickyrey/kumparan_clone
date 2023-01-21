@@ -10,6 +10,7 @@ import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
@@ -23,14 +24,17 @@ class ReadArticlePage extends StatefulWidget {
 }
 
 class _ReadArticlePageState extends State<ReadArticlePage> {
-  bool _isLiked = false;
-
   @override
   void initState() {
     super.initState();
     Future.microtask(() {
       context.read<ArticleDetailWatcherBloc>().add(
             ArticleDetailWatcherEvent.fetchArticleDetail(widget.article.url),
+          );
+      context.read<ArticleLikeWatcherBloc>().add(
+            ArticleLikeWatcherEvent.fetchLikeStatus(
+              widget.article.url.replaceFirst(Const.unusedPath, ''),
+            ),
           );
     });
   }
@@ -102,19 +106,61 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                     ),
                   ),
                   const SizedBox(width: Const.space12),
-                  GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isLiked = !_isLiked;
-                      });
+                  BlocBuilder<ArticleLikeWatcherBloc, ArticleLikeWatcherState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        orElse: () {
+                          return GestureDetector(
+                            onTap: () {
+                              context.read<ArticleLikeWatcherBloc>().add(
+                                    ArticleLikeWatcherEvent.likePressed(
+                                      widget.article.url.replaceFirst(
+                                        Const.unusedPath,
+                                        '',
+                                      ),
+                                    ),
+                                  );
+                            },
+                            child: const Icon(
+                              FeatherIcons.heart,
+                              color: ColorLight.fontTitle,
+                            ),
+                          );
+                        },
+                        liked: (_) {
+                          return GestureDetector(
+                            onTap: () {
+                              context.read<ArticleLikeWatcherBloc>().add(
+                                    ArticleLikeWatcherEvent.likePressed(
+                                      widget.article.url.replaceFirst(
+                                        Const.unusedPath,
+                                        '',
+                                      ),
+                                    ),
+                                  );
+                            },
+                            child: const Icon(
+                              Icons.favorite,
+                              color: ColorDark.error,
+                            ),
+                          );
+                        },
+                      );
                     },
-                    child: Icon(
-                      (_isLiked == true) ? Icons.favorite : FeatherIcons.heart,
-                      color: (_isLiked == true)
-                          ? Colors.red
-                          : ColorLight.fontTitle,
-                    ),
                   ),
+                  // GestureDetector(
+                  //   onTap: () {
+                  //     setState(() {
+                  //       _isLiked = !_isLiked;
+                  //     });
+                  //   },
+                  //   child: Icon(
+                  //     (_isLiked == true) ? Icons.favorite : FeatherIcons.heart,
+                  //     color: (_isLiked == true)
+                  //         ? Colors.red
+                  //         : ColorLight.fontTitle,
+                  //   ),
+                  // ),
                   const SizedBox(width: Const.space15),
                   GestureDetector(
                     onTap: () {

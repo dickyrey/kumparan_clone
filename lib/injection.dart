@@ -19,8 +19,10 @@ import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart'
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/check_like_status.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/like_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
@@ -29,6 +31,7 @@ import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
@@ -138,6 +141,11 @@ void init() {
 
   //* Filter by [Article] folder
   //*
+  final checkLikeStatusUseCase = CheckLikeStatus(locator());
+  locator.registerLazySingleton(
+    () => checkLikeStatusUseCase,
+  );
+
   final getArticleDetailUseCase = GetArticleDetail(locator());
   locator.registerLazySingleton(
     () => getArticleDetailUseCase,
@@ -146,6 +154,11 @@ void init() {
   final getArticleListUseCase = GetArticleList(locator());
   locator.registerLazySingleton(
     () => getArticleListUseCase,
+  );
+
+  final likeArticleUseCase = LikeArticle(locator());
+  locator.registerLazySingleton(
+    () => likeArticleUseCase,
   );
 
   //* Filter by [Auth] folder
@@ -198,6 +211,11 @@ void init() {
   final articleDetailWatcherBloc = ArticleDetailWatcherBloc(locator());
   locator.registerLazySingleton(
     () => articleDetailWatcherBloc,
+  );
+
+  final articleLikeWatcherBloc = ArticleLikeWatcherBloc(locator(), locator());
+  locator.registerLazySingleton(
+    () => articleLikeWatcherBloc,
   );
 
   final newArticleWatcherBloc = NewArticleWatcherBloc(locator());

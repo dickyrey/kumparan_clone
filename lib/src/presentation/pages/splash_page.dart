@@ -33,8 +33,11 @@ class _SplashPageState extends State<SplashPage> {
             authenticated: (_) {
               return goNextRoute(HOME);
             },
-            authInFailure: (value) {
-              return goNextRoute(INTEREST);
+            authInFailure: (_) {
+              return goNextRoute(LOGIN);
+            },
+            notAuthenticated: (value) {
+              return goNextRoute(LOGIN);
             },
           );
         },

@@ -8,12 +8,13 @@ class Const {
   static const double margin = 18;
   
   static const String token = 'access_token';
-  static const String googleSignInPath = '/api/signin/google';
   static const String host = 'interpretasi.id';
   static const String scheme = 'https';
-  static const String articlePath = 'api/article';
-  static const String signOutPath = 'api/signout';
-  static const String userPath = 'api/user';
+  static const String googleSignInPath = '/api/signin/google/';
+  static const String articlePath = '/api/article/';
+  static const String signOutPath = '/api/signout/';
+  static const String userPath = '/api/user/';
+  static const String unusedPath = 'https://interpretasi.id/api/article/';
   static const String photo = 'https://i.pinimg.com/564x/f3/19/10/f31910b49320f572516355d748a617f3.jpg';
 }
 
