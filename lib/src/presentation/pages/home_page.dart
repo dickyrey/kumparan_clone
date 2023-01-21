@@ -119,15 +119,10 @@ class ForYouTab extends StatelessWidget {
           /// Horizontal Scrollable [ArticleCardWidget]
           BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
             builder: (context, state) {
-              return state.map(
-                initial: (_) {
-                  return Container();
-                },
-                loading: (_) {
-                  return Container();
-                },
-                error: (_) {
-                  return Container();
+              return state.maybeMap(
+                orElse: () {
+                  // TODO(dickyrey): add Shimmer Loading
+                  return const Center(child: CircularProgressIndicator());
                 },
                 loaded: (state) {
                   return SizedBox(
@@ -137,7 +132,8 @@ class ForYouTab extends StatelessWidget {
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: Const.margin),
                       itemBuilder: (context, index) {
                         final data = state.articleList[index];
                         return ArticleCardWidget(
@@ -251,15 +247,10 @@ class ForYouTab extends StatelessWidget {
           /// Allow users to explore more trending article
           BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
             builder: (context, state) {
-              return state.map(
-                initial: (_) {
-                  return Container();
-                },
-                loading: (_) {
-                  return Container();
-                },
-                error: (_) {
-                  return Container();
+              return state.maybeMap(
+                orElse: () {
+                  // TODO(dickyrey): add Shimmer Loading
+                  return const Center(child: CircularProgressIndicator());
                 },
                 loaded: (state) {
                   return Column(
@@ -270,7 +261,9 @@ class ForYouTab extends StatelessWidget {
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: Const.margin),
+                            padding: EdgeInsets.symmetric(
+                              horizontal: Const.margin,
+                            ),
                             child: Divider(),
                           );
                         },
@@ -282,11 +275,15 @@ class ForYouTab extends StatelessWidget {
                         },
                       ),
                       const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: Const.margin),
+                        padding: EdgeInsets.symmetric(
+                          horizontal: Const.margin,
+                        ),
                         child: Divider(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Const.margin,
+                        ),
                         child: TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, TRENDING_ARTICLE);
@@ -359,7 +356,8 @@ class CategoryTab extends StatelessWidget {
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
-                      padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: Const.margin),
                       itemBuilder: (context, index) {
                         final data = state.articleList[index];
                         return ArticleCardWidget(
@@ -375,7 +373,7 @@ class CategoryTab extends StatelessWidget {
           ),
 
           const SizedBox(height: Const.space25),
-          
+
           /// [HeadingTileWidget] is a [Widget] to tell user what main topic is
           /// First heading is `Trending News/Article`
           HeadingTileWidget(
@@ -408,7 +406,8 @@ class CategoryTab extends StatelessWidget {
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: Const.margin),
+                            padding:
+                                EdgeInsets.symmetric(horizontal: Const.margin),
                             child: Divider(),
                           );
                         },
@@ -459,7 +458,8 @@ class CategoryTab extends StatelessWidget {
                         shrinkWrap: true,
                         separatorBuilder: (context, index) {
                           return const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: Const.margin),
+                            padding:
+                                EdgeInsets.symmetric(horizontal: Const.margin),
                             child: Divider(),
                           );
                         },
@@ -475,7 +475,9 @@ class CategoryTab extends StatelessWidget {
                         child: Divider(),
                       ),
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: Const.margin,
+                        ),
                         child: TextButton(
                           onPressed: () {
                             Navigator.pushNamed(context, TRENDING_ARTICLE);
