@@ -5,11 +5,11 @@ import 'package:kumparan_clone/src/data/models/article_model.dart';
 import 'package:kumparan_clone/src/data/models/article_response.dart';
 
 // ignore: one_member_abstracts
-abstract class ArticleRemoteDataSource {
+abstract class ArticleDataSource {
   Future<List<ArticleModel>> getArticleList();
 }
 
-class ArticleRemoteDataSourceImpl extends ArticleRemoteDataSource {
+class ArticleDataSourceImpl extends ArticleDataSource {
   @override
   Future<List<ArticleModel>> getArticleList() async {
     // Load the JSON data from the mock_json/new_article.json file
