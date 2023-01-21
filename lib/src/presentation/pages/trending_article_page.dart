@@ -82,27 +82,23 @@ class _ContentList extends StatelessWidget {
             return Container();
           },
           loaded: (state) {
-            return Column(
-              children: [
-                ListView.separated(
-                  itemCount: state.articleList.take(5).length,
-                  physics: const ScrollPhysics(),
-                  shrinkWrap: true,
-                  separatorBuilder: (context, index) {
-                    return const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: Const.margin),
-                      child: Divider(),
-                    );
-                  },
-                  itemBuilder: (context, index) {
-                    return ArticleCardWidget(
-                      index: index,
-                      article: state.articleList[index],
-                      cardAlignment: CardAlignment.vertical,
-                    );
-                  },
-                ),
-              ],
+            return ListView.separated(
+              itemCount: state.articleList.take(5).length,
+              physics: const ScrollPhysics(),
+              shrinkWrap: true,
+              separatorBuilder: (context, index) {
+                return const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: Const.margin),
+                  child: Divider(),
+                );
+              },
+              itemBuilder: (context, index) {
+                return ArticleCardWidget(
+                  index: index,
+                  article: state.articleList[index],
+                  cardAlignment: CardAlignment.vertical,
+                );
+              },
             );
           },
         );
