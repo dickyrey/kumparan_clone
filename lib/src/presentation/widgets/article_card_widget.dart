@@ -188,45 +188,31 @@ class ArticleCardWidget extends StatelessWidget {
                           size: 15,
                           color: theme.disabledColor,
                         ),
-                        const SizedBox(width: Const.space8),
+                        const SizedBox(width: Const.space8-3),
                         Text(
                           article.likes.toString(),
                           style: theme.textTheme.subtitle2,
                           maxLines: 1,
                         ),
-                        const SizedBox(width: Const.space15),
+                        const SizedBox(width: Const.space12),
                         Icon(
                           FeatherIcons.messageCircle,
                           size: 15,
                           color: theme.disabledColor,
                         ),
-                        const SizedBox(width: Const.space8),
+                        const SizedBox(width: Const.space8-3),
                         Text(
                           article.comments.toString(),
                           style: theme.textTheme.subtitle2,
                           maxLines: 1,
                         ),
-                        const SizedBox(width: Const.space15),
+                        const SizedBox(width: Const.space12),
                         Text(
                           timeago.format(article.createdAt),
                           style: theme.textTheme.subtitle2,
                           maxLines: 1,
                         ),
-                        const Expanded(child: SizedBox()),
-                        InkWell(
-                          onTap: () async {
-                            await FlutterShare.share(
-                              title: 'Share message',
-                              linkUrl: 'https://google.com',
-                              chooserTitle: 'Example Chooser Title',
-                            );
-                          },
-                          child: Icon(
-                            FeatherIcons.moreVertical,
-                            size: 20,
-                            color: theme.disabledColor,
-                          ),
-                        ),
+                        
                       ],
                     ),
                   ],
