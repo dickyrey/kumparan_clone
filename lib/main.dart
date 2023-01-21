@@ -21,7 +21,8 @@ import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/user/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/utilities/route_generator.dart';
 
 void main() {
@@ -52,6 +53,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<RegisterFormBloc>()),
         BlocProvider(create: (context) => di.locator<SearchProvinceFormBloc>()),
         BlocProvider(create: (context) => di.locator<UserFormBloc>()),
+        BlocProvider(create: (context) => di.locator<UserWatcherBloc>()),
       ],
       child: MaterialApp(
         title: 'Kumparan',

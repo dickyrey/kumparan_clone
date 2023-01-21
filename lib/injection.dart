@@ -6,23 +6,28 @@ import 'package:kumparan_clone/src/data/datasources/auth_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/boarding_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
 import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/auth_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/boarding_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/category_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/notice_repository_impl.dart';
+import 'package:kumparan_clone/src/data/repositories/profile_repository_impl.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
-import 'package:kumparan_clone/src/domain/usecases/check_google_auth.dart';
+import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
-import 'package:kumparan_clone/src/domain/usecases/sign_in_with_google.dart';
-import 'package:kumparan_clone/src/domain/usecases/sign_out_with_google.dart';
+import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
@@ -38,12 +43,15 @@ import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/user/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 
 final locator = GetIt.instance;
 
 void init() {
-  //External
+  /// List of [External Packages]
+  ///
+  ///
   final httpPackage = http.Client();
   locator.registerLazySingleton(
     () => httpPackage,
@@ -54,7 +62,9 @@ void init() {
     () => googleSignIn,
   );
 
-  // Datasources
+  /// List of [Remote Data Source]
+  ///
+  ///
   final articleDataSource = ArticleDataSourceImpl();
   locator.registerLazySingleton<ArticleDataSource>(
     () => articleDataSource,
@@ -83,7 +93,14 @@ void init() {
     () => noticeRemoteDataSource,
   );
 
-  // Repositories
+  final profileDataSource = ProfileDataSourceImpl(locator());
+  locator.registerLazySingleton<ProfileDataSource>(
+    () => profileDataSource,
+  );
+
+  /// List of [Repositories]
+  ///
+  ///
   final articleRepository = ArticleRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<ArticleRepository>(
     () => articleRepository,
@@ -109,12 +126,39 @@ void init() {
     () => noticeRepository,
   );
 
-  // Usecases
+  final profileRepository = ProfileRepositoryImpl(locator());
+  locator.registerLazySingleton<ProfileRepository>(
+    () => profileRepository,
+  );
+
+  /// List of [Usecases]
+  ///
+  ///
+  //* Filter by [Auth] folder
+  //*
   final checkGoogleAuthUseCase = CheckGoogleAuth(locator());
   locator.registerLazySingleton(
     () => checkGoogleAuthUseCase,
   );
 
+  final signInWithGoogle = SignInWithGoogle(locator());
+  locator.registerLazySingleton(
+    () => signInWithGoogle,
+  );
+
+  final signOutWithGoogle = SignOut(locator());
+  locator.registerLazySingleton(
+    () => signOutWithGoogle,
+  );
+
+  //* Filter by [Profile] folder
+  //*
+  final getProfileUseCase = GetProfile(locator());
+  locator.registerLazySingleton(
+    () => getProfileUseCase,
+  );
+
+  //! Part of [UI Kit] usecases
   final getArticleListUseCase = GetArticleList(locator());
   locator.registerLazySingleton(
     () => getArticleListUseCase,
@@ -135,22 +179,19 @@ void init() {
     () => getNoticeList,
   );
 
-  final signInWithGoogle = SignInWithGoogle(locator());
-  locator.registerLazySingleton(
-    () => signInWithGoogle,
-  );
+  /// List of [BLoCs]
+  ///
+  ///
 
-  final signOutWithGoogle = SignOut(locator());
-  locator.registerLazySingleton(
-    () => signOutWithGoogle,
-  );
-
-  // BLoCs
+  //* Article BLoC folder
+  //*
   final newArticleWatcherBloc = NewArticleWatcherBloc(locator());
   locator.registerLazySingleton(
     () => newArticleWatcherBloc,
   );
 
+  //* Auth BLoC folder
+  //*
   final authWatcherBloc = AuthWatcherBloc(locator(), locator());
   locator.registerLazySingleton(
     () => authWatcherBloc,
@@ -161,16 +202,22 @@ void init() {
     () => signInWithGoogleActorBloc,
   );
 
+  //* OnBoarding BLoC folder
+  //*
   final boardingWatcherBloc = BoardingWatcherBloc(locator());
   locator.registerLazySingleton(
     () => boardingWatcherBloc,
   );
 
+  //* Category BLoC folder
+  //*
   final categoryWatcherBloc = CategoryWatcherBloc(locator());
   locator.registerLazySingleton(
     () => categoryWatcherBloc,
   );
 
+  //* Backup Email BLoC folder
+  //*
   final backupEmailFormBloc = BackupEmailFormBloc();
   locator.registerLazySingleton(
     () => backupEmailFormBloc,
@@ -181,48 +228,71 @@ void init() {
     () => verificationEmailFormBloc,
   );
 
+  //* Forgot Password BLoC folder
+  //*
   final forgotPasswordBloc = ForgotPasswordFormBloc();
   locator.registerLazySingleton(
     () => forgotPasswordBloc,
   );
 
+  //* Interest BLoC folder
+  //*
   final interestFormBloc = InterestFormBloc(locator());
   locator.registerLazySingleton(
     () => interestFormBloc,
   );
 
+  //* Login/Sign in BLoC folder
+  //*
   final loginFormBloc = LoginFormBloc();
   locator.registerLazySingleton(
     () => loginFormBloc,
   );
 
+  //* Notice / Notification BLoC folder
+  //*
   final noticeWatcherBloc = NoticeWatcherBloc(locator());
   locator.registerLazySingleton(
     () => noticeWatcherBloc,
   );
 
+  //* Password4 BLoC folder
+  //*
   final passwordFormBloc = PasswordFormBloc();
   locator.registerLazySingleton(
     () => passwordFormBloc,
   );
 
+  //* Phone Number BLoC folder
+  //*
   final phoneNumberFormBloc = PhoneNumberFormBloc();
   locator.registerLazySingleton(
     () => phoneNumberFormBloc,
   );
 
+  //* Register / Sign Up BLoC folder
+  //*
   final registerFormBloc = RegisterFormBloc();
   locator.registerLazySingleton(
     () => registerFormBloc,
   );
 
+  //* Search Province BLoC folder
+  //*
   final searchProvinceFormBloc = SearchProvinceFormBloc();
   locator.registerLazySingleton(
     () => searchProvinceFormBloc,
   );
 
+  //* User BLoC folder
+  //*
   final userFormBloc = UserFormBloc();
   locator.registerLazySingleton(
     () => userFormBloc,
+  );
+
+  final userWatcherBloc = UserWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => userWatcherBloc,
   );
 }

@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -24,50 +25,68 @@ class MenuPage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: Const.space15),
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: Const.margin),
-              height: 90,
-              child: Row(
-                children: [
-                  const CircleAvatar(
-                    radius: 35,
-                    backgroundColor: Colors.black26,
-                    backgroundImage: CachedNetworkImageProvider(
-                      'https://i.pinimg.com/564x/2b/54/5a/2b545ae586764da77f5717d8406d0910.jpg',
-                    ),
-                  ),
-                  const SizedBox(width: Const.space15),
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          'Troyard esport',
-                          style: theme.textTheme.headline3,
-                          maxLines: 1,
-                        ),
-                        Text(
-                          'vg.troyard@gmail.com',
-                          style: theme.textTheme.subtitle1,
-                          maxLines: 1,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.pushNamed(context, CHANGE_PROFILE);
-                          },
-                          child: Text(
-                            lang.change_profile,
-                            style: theme.textTheme.subtitle1?.copyWith(
-                              color: theme.primaryColor,
+            BlocBuilder<UserWatcherBloc, UserWatcherState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  orElse: () {
+                    return const SizedBox();
+                  },
+                  loaded: (state) {
+                    return Container(
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: Const.margin,
+                      ),
+                      height: 90,
+                      child: Row(
+                        children: [
+                          CircleAvatar(
+                            radius: 35,
+                            backgroundColor: Colors.black26,
+                            backgroundImage: CachedNetworkImageProvider(
+                              state.user.photo.isEmpty
+                                  ? Const.photo
+                                  : state.user.photo,
                             ),
                           ),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                          const SizedBox(width: Const.space15),
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  state.user.name,
+                                  style: theme.textTheme.headline3,
+                                  maxLines: 1,
+                                ),
+                                Text(
+                                  state.user.email,
+                                  style: theme.textTheme.subtitle1,
+                                  maxLines: 1,
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    Navigator.pushNamed(
+                                      context,
+                                      CHANGE_PROFILE,
+                                    );
+                                  },
+                                  child: Text(
+                                    lang.change_profile,
+                                    style: theme.textTheme.subtitle1?.copyWith(
+                                      color: theme.primaryColor,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                );
+              },
             ),
             const SizedBox(height: Const.space25),
             ElevatedButtonWidget(

@@ -29,11 +29,12 @@ class _SplashPageState extends State<SplashPage> {
       body: BlocListener<AuthWatcherBloc, AuthWatcherState>(
         listener: (context, state) {
           state.maybeMap(
-            orElse: () {
-              return goNextRoute(INTEREST);
-            },
+            orElse: () {},
             authenticated: (_) {
               return goNextRoute(HOME);
+            },
+            authInFailure: (value) {
+              return goNextRoute(INTEREST);
             },
           );
         },

@@ -4,6 +4,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/pages/home_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/latest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/menu_page.dart';
@@ -29,6 +30,9 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
   void initState() {
     _controller = PageController(initialPage: widget.index);
     super.initState();
+    Future.microtask(() {
+      context.read<UserWatcherBloc>().add(const UserWatcherEvent.fetchUser());
+    });
   }
 
   final List<Widget> _tabView = [
@@ -46,7 +50,7 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
     return BlocListener<AuthWatcherBloc, AuthWatcherState>(
       listener: (context, state) {
         state.maybeMap(
-          orElse:  () {},
+          orElse: () {},
           notAuthenticated: (_) {
             Navigator.pushNamedAndRemoveUntil(
               context,

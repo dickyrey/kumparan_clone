@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:intl/intl.dart';
-import 'package:kumparan_clone/src/domain/usecases/sign_in_with_google.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 
 part 'sign_in_with_google_actor_bloc.freezed.dart';
 part 'sign_in_with_google_actor_event.dart';

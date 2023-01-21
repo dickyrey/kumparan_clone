@@ -9,7 +9,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
-import 'package:kumparan_clone/src/presentation/bloc/user/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:octo_image/octo_image.dart';
