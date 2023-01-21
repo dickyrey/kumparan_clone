@@ -160,7 +160,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                     onTap: () async {
                       await FlutterShare.share(
                         title: 'Share message',
-                        linkUrl: 'https://google.com',
+                        linkUrl: widget.article.url,
                         chooserTitle: 'Example Chooser Title',
                       );
                     },
