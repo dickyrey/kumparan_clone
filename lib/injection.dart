@@ -2,7 +2,7 @@ import 'package:get_it/get_it.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/data/datasources/article_data_source.dart';
-import 'package:kumparan_clone/src/data/datasources/auth_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/auth_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/boarding_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
@@ -60,12 +60,12 @@ void init() {
     () => articleDataSource,
   );
 
-  final authRemoteDataSource = AuthRemoteDataSourceImpl(
+  final authDataSource = AuthDataSourceImpl(
     client: locator(),
     googleSignIn: locator(),
   );
-  locator.registerLazySingleton<AuthRemoteDataSource>(
-    () => authRemoteDataSource,
+  locator.registerLazySingleton<AuthDataSource>(
+    () => authDataSource,
   );
 
   final boardingRemoteDataSource = BoardingRemoteDataSourceImpl();

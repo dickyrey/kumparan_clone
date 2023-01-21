@@ -4,13 +4,13 @@ import 'package:dartz/dartz.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/common/failure.dart';
-import 'package:kumparan_clone/src/data/datasources/auth_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/auth_data_source.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl({required this.dataSource});
 
-  final AuthRemoteDataSource dataSource;
+  final AuthDataSource dataSource;
 
   @override
   Future<Either<Failure, bool>> checkGoogleAuth() async {

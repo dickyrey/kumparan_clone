@@ -7,14 +7,14 @@ import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/data/models/token_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class AuthRemoteDataSource {
+abstract class AuthDataSource {
   Future<bool> checkGoogleAuth();
   Future<void> signInWithGoogle(String base64Date);
   Future<void> signOut();
 }
 
-class AuthRemoteDataSourceImpl extends AuthRemoteDataSource {
-  AuthRemoteDataSourceImpl({
+class AuthDataSourceImpl extends AuthDataSource {
+  AuthDataSourceImpl({
     required this.client,
     required this.googleSignIn,
   });
