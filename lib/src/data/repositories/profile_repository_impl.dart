@@ -15,7 +15,7 @@ class ProfileRepositoryImpl extends ProfileRepository {
 
   @override
   Future<Either<Failure, void>> changeProfile() {
-    // TODO: implement changeProfile
+    // TODO(dickyrey): implement changeProfile
     throw UnimplementedError();
   }
 

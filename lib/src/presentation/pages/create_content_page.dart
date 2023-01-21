@@ -1,4 +1,3 @@
-import 'package:delta_markdown/delta_markdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -98,10 +97,9 @@ class _CreateContentPageState extends State<CreateContentPage> {
           const Spacer(),
           ElevatedButtonWidget(
             onTap: () {
-              final content =
-                  _controller.document.toDelta().toJson().toString();
-              final result = deltaToMarkdown(content);
-              print(result);
+              // final content =
+              //     _controller.document.toDelta().toJson().toString();
+              // final result = deltaToMarkdown(content);
             },
             width: 80,
             height: 30,

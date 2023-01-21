@@ -22,8 +22,7 @@ class ArticleDetailModel extends Equatable {
       title: json['title'] as String,
       content: json['content'] as String,
       thumbnail: json['thumbnail'] as String,
-      categories: List<int>.from(
-          (json['categories'] as Iterable<dynamic>).map((x) => x)),
+      categories: List<int>.from((json['categories'] as Iterable<dynamic>).map((x) => x)),
       viewers: json['viewers'] as int,
       createdAt: DateTime.parse(json['created_at'] as String),
     );
