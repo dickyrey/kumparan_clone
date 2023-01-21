@@ -277,7 +277,7 @@ class ForYouTab extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.symmetric(
                           horizontal: Const.margin,
-                        ),
+                          ),
                         child: Divider(),
                       ),
                       Padding(

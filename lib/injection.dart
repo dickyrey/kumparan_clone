@@ -19,14 +19,16 @@ import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart'
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
-import 'package:kumparan_clone/src/domain/usecases/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
@@ -133,6 +135,19 @@ void init() {
   /// List of [Usecases]
   ///
   ///
+
+  //* Filter by [Article] folder
+  //*
+  final getArticleDetailUseCase = GetArticleDetail(locator());
+  locator.registerLazySingleton(
+    () => getArticleDetailUseCase,
+  );
+
+  final getArticleListUseCase = GetArticleList(locator());
+  locator.registerLazySingleton(
+    () => getArticleListUseCase,
+  );
+
   //* Filter by [Auth] folder
   //*
   final checkGoogleAuthUseCase = CheckGoogleAuth(locator());
@@ -158,10 +173,6 @@ void init() {
   );
 
   //! Part of [UI Kit] usecases
-  final getArticleListUseCase = GetArticleList(locator());
-  locator.registerLazySingleton(
-    () => getArticleListUseCase,
-  );
 
   final getBoardingUseCase = GetBoardingList(locator());
   locator.registerLazySingleton(
@@ -184,6 +195,11 @@ void init() {
 
   //* Article BLoC folder
   //*
+  final articleDetailWatcherBloc = ArticleDetailWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => articleDetailWatcherBloc,
+  );
+
   final newArticleWatcherBloc = NewArticleWatcherBloc(locator());
   locator.registerLazySingleton(
     () => newArticleWatcherBloc,

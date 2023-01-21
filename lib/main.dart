@@ -6,6 +6,7 @@ import 'package:kumparan_clone/injection.dart' as di;
 import 'package:kumparan_clone/l10n/l10n.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/common/themes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
@@ -37,6 +38,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => di.locator<ArticleDetailWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<NewArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<AuthWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SignInWithGoogleActorBloc>()),

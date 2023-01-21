@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
-import 'package:kumparan_clone/src/domain/usecases/get_article_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 
 part 'new_article_watcher_event.dart';
 part 'new_article_watcher_state.dart';

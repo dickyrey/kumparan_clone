@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -8,6 +9,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
@@ -22,6 +24,16 @@ class ReadArticlePage extends StatefulWidget {
 
 class _ReadArticlePageState extends State<ReadArticlePage> {
   bool _isLiked = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(() {
+      context.read<ArticleDetailWatcherBloc>().add(
+            ArticleDetailWatcherEvent.fetchArticleDetail(widget.article.url),
+          );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,20 +61,27 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                     widget.article.title,
                     style: theme.textTheme.headline1,
                   ),
-                  const SizedBox(height: Const.space15),
-                  Text(
-                    'LOREM',
-                    style: theme.textTheme.headline4,
-                  ),
                   const SizedBox(height: Const.space12),
                   Text(
                     '${DateFormat.yMMMMEEEEd().format(widget.article.createdAt)} - waktu baca 2 menit',
                     style: theme.textTheme.subtitle2,
                   ),
                   const SizedBox(height: Const.space15),
-                  // Html(
-                  //   data: 'widget.article.contentHtml',
-                  // ),
+                  BlocBuilder<ArticleDetailWatcherBloc,
+                      ArticleDetailWatcherState>(
+                    builder: (context, state) {
+                      return state.maybeMap(
+                        orElse: () {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        },
+                        loaded: (state) {
+                          return Html(data: state.articleDetail.content);
+                        },
+                      );
+                    },
+                  )
                 ],
               ),
             ),
@@ -220,10 +239,6 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
           FeatherIcons.arrowLeft,
           color: theme.iconTheme.color,
         ),
-      ),
-      title: Text(
-        'LOREM',
-        style: theme.textTheme.headline3,
       ),
     );
   }
