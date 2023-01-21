@@ -55,25 +55,18 @@ class ArticleCardWidget extends StatelessWidget {
               const SizedBox(height: Const.space8),
               Row(
                 children: [
-                  OctoImage(
-                    width: 20,
-                    height: 20,
-                    fit: BoxFit.contain,
-                    image: CachedNetworkImageProvider(
-                      article.profilePicture,
-                    ),
+                  Icon(
+                    FeatherIcons.eye,
+                    size: 15,
+                    color: theme.disabledColor,
                   ),
-                  const SizedBox(width: Const.space12),
+                  const SizedBox(width: Const.space8),
                   Text(
-                    article.creatorName,
+                    article.viewers.toString(),
                     style: theme.textTheme.subtitle2,
                     maxLines: 1,
                   ),
-                ],
-              ),
-              const SizedBox(height: Const.space8),
-              Row(
-                children: [
+                  const SizedBox(width: Const.space15),
                   Icon(
                     FeatherIcons.heart,
                     size: 15,
@@ -164,31 +157,12 @@ class ArticleCardWidget extends StatelessWidget {
                     const SizedBox(height: Const.space8),
                     Row(
                       children: [
-                        OctoImage(
-                          width: 20,
-                          height: 20,
-                          fit: BoxFit.contain,
-                          image: CachedNetworkImageProvider(
-                            article.profilePicture,
-                          ),
-                        ),
-                        const SizedBox(width: Const.space12),
-                        Text(
-                          article.creatorName,
-                          style: theme.textTheme.subtitle2,
-                          maxLines: 1,
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: Const.space8),
-                    Row(
-                      children: [
                         Icon(
                           FeatherIcons.heart,
                           size: 15,
                           color: theme.disabledColor,
                         ),
-                        const SizedBox(width: Const.space8-3),
+                        const SizedBox(width: Const.space8 - 3),
                         Text(
                           article.likes.toString(),
                           style: theme.textTheme.subtitle2,
@@ -200,7 +174,7 @@ class ArticleCardWidget extends StatelessWidget {
                           size: 15,
                           color: theme.disabledColor,
                         ),
-                        const SizedBox(width: Const.space8-3),
+                        const SizedBox(width: Const.space8 - 3),
                         Text(
                           article.comments.toString(),
                           style: theme.textTheme.subtitle2,
@@ -212,7 +186,6 @@ class ArticleCardWidget extends StatelessWidget {
                           style: theme.textTheme.subtitle2,
                           maxLines: 1,
                         ),
-                        
                       ],
                     ),
                   ],

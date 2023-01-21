@@ -51,7 +51,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                   ),
                   const SizedBox(height: Const.space15),
                   Text(
-                    widget.article.creatorName,
+                    'LOREM',
                     style: theme.textTheme.headline4,
                   ),
                   const SizedBox(height: Const.space12),
@@ -60,9 +60,9 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                     style: theme.textTheme.subtitle2,
                   ),
                   const SizedBox(height: Const.space15),
-                  Html(
-                    data: widget.article.contentHtml,
-                  ),
+                  // Html(
+                  //   data: 'widget.article.contentHtml',
+                  // ),
                 ],
               ),
             ),
@@ -222,7 +222,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
         ),
       ),
       title: Text(
-        article.creatorName,
+        'LOREM',
         style: theme.textTheme.headline3,
       ),
     );

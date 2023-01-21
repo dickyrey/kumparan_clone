@@ -1,8 +1,11 @@
 import 'dart:convert';
 
-import 'package:flutter/services.dart' as root;
+import 'package:http/http.dart' as http;
+import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/data/models/article_model.dart';
 import 'package:kumparan_clone/src/data/models/article_response.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 // ignore: one_member_abstracts
 abstract class ArticleDataSource {
@@ -12,16 +15,26 @@ abstract class ArticleDataSource {
 class ArticleDataSourceImpl extends ArticleDataSource {
   @override
   Future<List<ArticleModel>> getArticleList() async {
-    // Load the JSON data from the mock_json/new_article.json file
-    final jsonData =
-        await root.rootBundle.loadString('mock_json/new_article.json');
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
 
-    // Decode the JSON data and convert it to a ArticleResponse object
-    final response = ArticleResponse.fromJson(
-      json.decode(jsonData) as Map<String, dynamic>,
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.articlePath,
     );
 
-    // Return the list of categories from the response
-    return response.articleList;
+    final response = await http.get(url, headers: header);
+    if (response.statusCode == 200) {
+      return ArticleResponse.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      ).articleList;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
   }
 }
