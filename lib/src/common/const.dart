@@ -15,7 +15,7 @@ class Const {
   static const String signOutPath = '/api/signout/';
   static const String userPath = '/api/user/';
   static const String unusedPath = 'https://interpretasi.id/api/article/';
-  static const String photo = 'https://i.pinimg.com/564x/f3/19/10/f31910b49320f572516355d748a617f3.jpg';
+  static const String photo = 'https://i.pinimg.com/564x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg';
 }
 
 class CustomIcons {

@@ -7,6 +7,9 @@ import 'package:kumparan_clone/src/data/models/article_detail_model.dart';
 import 'package:kumparan_clone/src/data/models/article_detail_response.dart';
 import 'package:kumparan_clone/src/data/models/article_model.dart';
 import 'package:kumparan_clone/src/data/models/article_response.dart';
+import 'package:kumparan_clone/src/data/models/comment_model.dart';
+import 'package:kumparan_clone/src/data/models/comment_response.dart';
+import 'package:kumparan_clone/src/data/models/user_comment_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ArticleDataSource {
@@ -14,6 +17,7 @@ abstract class ArticleDataSource {
   Future<ArticleDetailModel> getArticleDetail(String url);
   Future<bool> checkLikeStatus(String id);
   Future<void> likeArticle(String id);
+  Future<List<CommentModel>> getCommentList(String id);
 }
 
 class ArticleDataSourceImpl extends ArticleDataSource {
@@ -112,6 +116,32 @@ class ArticleDataSourceImpl extends ArticleDataSource {
 
     if (response.statusCode == 200) {
       return;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+  
+  @override
+  Future<List<CommentModel>> getCommentList(String id) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.articlePath + id,
+      queryParameters: {'type': 'comments'},
+    );
+
+    final response = await http.get(url, headers: header);
+    if (response.statusCode == 200) {
+      return CommentResponse.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      ).commentList;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

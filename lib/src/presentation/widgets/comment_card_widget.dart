@@ -1,9 +1,13 @@
-
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/domain/entities/comment.dart';
+import 'package:timeago/timeago.dart' as timeago;
 
 class CommentCardWidget extends StatelessWidget {
-  const CommentCardWidget({super.key});
+  const CommentCardWidget({super.key, required this.comment});
+
+  final Comment comment;
 
   @override
   Widget build(BuildContext context) {
@@ -13,23 +17,30 @@ class CommentCardWidget extends StatelessWidget {
       padding: const EdgeInsets.only(bottom: Const.space15),
       child: Row(
         children: [
-          const CircleAvatar(
+          CircleAvatar(
             radius: 18,
-            backgroundColor: Colors.red,
+            backgroundColor: theme.disabledColor,
+            backgroundImage: CachedNetworkImageProvider(
+              comment.user.photo.isEmpty ? Const.photo : comment.user.photo,
+            ),
           ),
           const SizedBox(width: Const.space12),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('chrissyface', style: theme.textTheme.headline5),
+                Text(
+                  comment.user.name,
+                  style: theme.textTheme.headline5,
+                ),
                 const SizedBox(height: Const.space8 - 5),
                 Text(
-                  'good article easy to read ASDASJM ASMDASMDASM DSAMDS AMDSAD SMA',
+                  comment.body,
                   style: theme.textTheme.bodyText2,
                 ),
                 const SizedBox(height: Const.space8),
-                Text('1 moment ago', style: theme.textTheme.subtitle2),
+                Text(timeago.format(DateTime.now()),
+                    style: theme.textTheme.subtitle2),
               ],
             ),
           )

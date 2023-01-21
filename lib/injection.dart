@@ -22,6 +22,7 @@ import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/check_like_status.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/get_comment_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/like_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
@@ -30,6 +31,7 @@ import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
@@ -156,6 +158,11 @@ void init() {
     () => getArticleListUseCase,
   );
 
+  final getCommentListUseCase = GetCommentList(locator());
+  locator.registerLazySingleton(
+    () => getCommentListUseCase,
+  );
+
   final likeArticleUseCase = LikeArticle(locator());
   locator.registerLazySingleton(
     () => likeArticleUseCase,
@@ -208,6 +215,11 @@ void init() {
 
   //* Article BLoC folder
   //*
+  final articleCommentWatcherBloc = ArticleCommentWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => articleCommentWatcherBloc,
+  );
+
   final articleDetailWatcherBloc = ArticleDetailWatcherBloc(locator());
   locator.registerLazySingleton(
     () => articleDetailWatcherBloc,

@@ -9,6 +9,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
@@ -142,22 +143,14 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                       );
                     },
                   ),
-                  // GestureDetector(
-                  //   onTap: () {
-                  //     setState(() {
-                  //       _isLiked = !_isLiked;
-                  //     });
-                  //   },
-                  //   child: Icon(
-                  //     (_isLiked == true) ? Icons.favorite : FeatherIcons.heart,
-                  //     color: (_isLiked == true)
-                  //         ? Colors.red
-                  //         : ColorLight.fontTitle,
-                  //   ),
-                  // ),
                   const SizedBox(width: Const.space15),
                   GestureDetector(
                     onTap: () {
+                      context.read<ArticleCommentWatcherBloc>().add(
+                            ArticleCommentWatcherEvent.fetchComments(
+                              widget.article.url,
+                            ),
+                          );
                       _showCommentDialog(context);
                     },
                     child: const Icon(FeatherIcons.messageCircle),
@@ -219,16 +212,31 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                 ),
               ),
               Expanded(
-                child: ListView.builder(
-                  itemCount: 5,
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: Const.margin,
-                    vertical: Const.space12,
-                  ),
-                  physics: const ScrollPhysics(),
-                  itemBuilder: (context, index) {
-                    return const CommentCardWidget();
+                child: BlocBuilder<ArticleCommentWatcherBloc,
+                    ArticleCommentWatcherState>(
+                  builder: (context, state) {
+                    return state.maybeMap(
+                      orElse: () {
+                        return const Center(
+                          child: CircularProgressIndicator(),
+                        );
+                      },
+                      loaded: (state) {
+                        return ListView.builder(
+                          itemCount: state.comments.length,
+                          shrinkWrap: true,
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: Const.margin,
+                            vertical: Const.space12,
+                          ),
+                          physics: const ScrollPhysics(),
+                          itemBuilder: (context, index) {
+                            final comment = state.comments[index];
+                            return CommentCardWidget(comment: comment);
+                          },
+                        );
+                      },
+                    );
                   },
                 ),
               ),
