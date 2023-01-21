@@ -33,7 +33,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
           );
       context.read<ArticleLikeWatcherBloc>().add(
             ArticleLikeWatcherEvent.fetchLikeStatus(
-              widget.article.url.replaceFirst(Const.unusedPath, ''),
+              widget.article.url,
             ),
           );
     });
@@ -114,10 +114,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                             onTap: () {
                               context.read<ArticleLikeWatcherBloc>().add(
                                     ArticleLikeWatcherEvent.likePressed(
-                                      widget.article.url.replaceFirst(
-                                        Const.unusedPath,
-                                        '',
-                                      ),
+                                      widget.article.url,
                                     ),
                                   );
                             },
@@ -132,10 +129,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                             onTap: () {
                               context.read<ArticleLikeWatcherBloc>().add(
                                     ArticleLikeWatcherEvent.likePressed(
-                                      widget.article.url.replaceFirst(
-                                        Const.unusedPath,
-                                        '',
-                                      ),
+                                      widget.article.url,
                                     ),
                                   );
                             },
