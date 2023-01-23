@@ -6,7 +6,7 @@ class CommentModel extends Equatable {
   const CommentModel({
     required this.id,
     required this.body,
-    // required this.createdAt,
+    required this.createdAt,
     required this.user,
   });
 
@@ -14,21 +14,21 @@ class CommentModel extends Equatable {
     return CommentModel(
       id: json['id'] as int,
       body: json['body'] as String,
-      // createdAt: DateTime.parse(json['created_at'] as String),
+      createdAt: DateTime.parse(json['created_at'] as String),
       user: UserCommentModel.fromJson(json['user'] as Map<String, dynamic>),
     );
   }
 
   final int id;
   final String body;
-  // final DateTime createdAt;
+  final DateTime createdAt;
   final UserCommentModel user;
 
   Comment toEntity() {
     return Comment(
       id: id,
       body: body,
-      // createdAt: createdAt,
+      createdAt: createdAt,
       user: user.toEntity(),
     );
   }
@@ -36,7 +36,7 @@ class CommentModel extends Equatable {
   Map<String, dynamic> toJson() => {
         'id': id,
         'body': body,
-        // 'created_at': createdAt,
+        'created_at': createdAt,
         'user': user.toJson(),
       };
 
@@ -44,7 +44,7 @@ class CommentModel extends Equatable {
   List<Object?> get props => [
         id,
         body,
-        // createdAt,
+        createdAt,
         user,
       ];
 }

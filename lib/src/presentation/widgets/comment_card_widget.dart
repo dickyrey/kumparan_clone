@@ -52,7 +52,7 @@ class CommentCardWidget extends StatelessWidget {
                 ),
                 const SizedBox(height: Const.space8),
                 Text(
-                  timeago.format(DateTime.now()),
+                  timeago.format(comment.createdAt),
                   style: theme.textTheme.subtitle2,
                 ),
               ],
