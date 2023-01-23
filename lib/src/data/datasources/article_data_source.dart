@@ -199,7 +199,6 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     );
 
     final response = await http.delete(url, headers: header);
-    print(response.body);
     if (response.statusCode == 200) {
       return;
     } else {
