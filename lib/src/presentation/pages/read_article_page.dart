@@ -268,6 +268,9 @@ class _CommentDialogState extends State<CommentDialog> {
             state.maybeMap(
               orElse: () {},
               deleteInFailure: (_) {
+                context
+                    .read<DeleteCommentActorBloc>()
+                    .add(const DeleteCommentActorEvent.init());
                 showToast(
                   msg: lang.an_error_occurred_while_deleting_the_comment,
                 );

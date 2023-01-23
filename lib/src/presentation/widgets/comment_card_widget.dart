@@ -8,6 +8,7 @@ import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/domain/entities/comment.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class CommentCardWidget extends StatelessWidget {
@@ -58,47 +59,62 @@ class CommentCardWidget extends StatelessWidget {
               ],
             ),
           ),
-          IconButton(
-            icon: const Icon(FeatherIcons.moreVertical),
-            iconSize: 16,
-            onPressed: () {
-              showDialog<dynamic>(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text(
-                      lang.choose_an_action,
-                      style: theme.textTheme.headline3,
-                    ),
-                    content: SizedBox(
-                      height: 100,
-                      child: Column(
-                        children: [
-                          _listTileWidget(
-                            context,
-                            icon: FeatherIcons.trash,
-                            label: lang.delete,
-                            onTap: () {
-                              Navigator.pop(context);
-                              context.read<DeleteCommentActorBloc>().add(
-                                    DeleteCommentActorEvent.deletePressed(
-                                      id: article.url,
-                                      userId: comment.id,
-                                    ),
-                                  );
-                            },
-                          ),
-                          _listTileWidget(
-                            context,
-                            icon: FeatherIcons.alertCircle,
-                            label: lang.report,
-                            onTap: () {
-                              // TODO(dickyrey): Reports a comment
-                            },
-                          )
-                        ],
-                      ),
-                    ),
+          BlocBuilder<UserWatcherBloc, UserWatcherState>(
+            builder: (context, state) {
+              return state.maybeMap(
+                orElse: () {
+                  return const SizedBox();
+                },
+                loaded: (state) {
+                  return IconButton(
+                    icon: const Icon(FeatherIcons.moreVertical),
+                    iconSize: 16,
+                    onPressed: () {
+                      showDialog<dynamic>(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: Text(
+                              lang.choose_an_action,
+                              style: theme.textTheme.headline3,
+                            ),
+                            content: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                if (state.user.id != comment.user.id)
+                                  _listTileWidget(
+                                    context,
+                                    icon: FeatherIcons.trash,
+                                    label: lang.delete,
+                                    onTap: () {
+                                      Navigator.pop(context);
+                                      context
+                                          .read<DeleteCommentActorBloc>()
+                                          .add(
+                                            DeleteCommentActorEvent
+                                                .deletePressed(
+                                              id: article.url,
+                                              userId: comment.id,
+                                            ),
+                                          );
+                                    },
+                                  )
+                                else
+                                  const SizedBox(),
+                                _listTileWidget(
+                                  context,
+                                  icon: FeatherIcons.alertCircle,
+                                  label: lang.report,
+                                  onTap: () {
+                                    // TODO(dickyrey): Reports a comment
+                                  },
+                                )
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
                   );
                 },
               );
