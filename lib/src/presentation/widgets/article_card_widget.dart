@@ -158,6 +158,18 @@ class ArticleCardWidget extends StatelessWidget {
                     Row(
                       children: [
                         Icon(
+                          FeatherIcons.eye,
+                          size: 15,
+                          color: theme.disabledColor,
+                        ),
+                        const SizedBox(width: Const.space8 - 3),
+                        Text(
+                          article.viewers.toString(),
+                          style: theme.textTheme.subtitle2,
+                          maxLines: 1,
+                        ),
+                        const SizedBox(width: Const.space12),
+                        Icon(
                           FeatherIcons.heart,
                           size: 15,
                           color: theme.disabledColor,
