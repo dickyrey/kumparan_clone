@@ -5,7 +5,6 @@ import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/common/failure.dart';
 import 'package:kumparan_clone/src/data/datasources/article_data_source.dart';
-import 'package:kumparan_clone/src/data/models/comment_model.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
 import 'package:kumparan_clone/src/domain/entities/comment.dart';
@@ -90,6 +89,20 @@ class ArticleRepositoryImpl extends ArticleRepository {
   Future<Either<Failure, void>> sendComment({required String id, required String comment}) async {
     try {
       final result = await dataSource.sendComment(id: id, comment: comment);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+  
+  @override
+  Future<Either<Failure, void>> deleteComment({required String id, required int userId}) async {
+     try {
+      final result = await dataSource.deleteComment(id: id, userId: userId);
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));

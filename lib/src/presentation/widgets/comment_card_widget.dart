@@ -1,15 +1,23 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/domain/entities/comment.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
 class CommentCardWidget extends StatelessWidget {
-  const CommentCardWidget({super.key, required this.comment});
+  const CommentCardWidget({
+    super.key,
+    required this.article,
+    required this.comment,
+  });
 
+  final Article article;
   final Comment comment;
 
   @override
@@ -71,7 +79,13 @@ class CommentCardWidget extends StatelessWidget {
                             icon: FeatherIcons.trash,
                             label: lang.delete,
                             onTap: () {
-                              // TODO(dickyrey): delete a comment
+                              Navigator.pop(context);
+                              context.read<DeleteCommentActorBloc>().add(
+                                    DeleteCommentActorEvent.deletePressed(
+                                      id: article.url,
+                                      userId: comment.id,
+                                    ),
+                                  );
                             },
                           ),
                           _listTileWidget(

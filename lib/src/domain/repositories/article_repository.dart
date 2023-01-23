@@ -11,4 +11,5 @@ abstract class ArticleRepository {
   Future<Either<Failure, void>> likeArticle(String id);
   Future<Either<Failure, List<Comment>>> getCommentList(String id);
   Future<Either<Failure, void>> sendComment({required String id, required String comment});
+  Future<Either<Failure, void>> deleteComment({required String id, required int userId});
 }

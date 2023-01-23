@@ -18,6 +18,7 @@ abstract class ArticleDataSource {
   Future<void> likeArticle(String id);
   Future<List<CommentModel>> getCommentList(String id);
   Future<void> sendComment({required String id, required String comment});
+  Future<void> deleteComment({required String id, required int userId});
 }
 
 class ArticleDataSourceImpl extends ArticleDataSource {
@@ -148,7 +149,10 @@ class ArticleDataSourceImpl extends ArticleDataSource {
   }
 
   @override
-  Future<void> sendComment({required String id, required String comment}) async {
+  Future<void> sendComment({
+    required String id,
+    required String comment,
+  }) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Const.token);
     final header = {
@@ -165,7 +169,36 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       queryParameters: {'type': 'comments'},
     );
 
-    final response = await http.put(url, headers: header,body: body);
+    final response = await http.put(url, headers: header, body: body);
+    if (response.statusCode == 200) {
+      return;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
+  Future<void> deleteComment({
+    required String id,
+    required int userId,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.articlePath + id,
+      queryParameters: {
+        'type': 'comments',
+        'id': userId.toString(),
+      },
+    );
+
+    final response = await http.delete(url, headers: header);
     print(response.body);
     if (response.statusCode == 200) {
       return;

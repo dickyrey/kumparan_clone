@@ -4,6 +4,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_share/flutter_share.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:intl/intl.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
@@ -12,6 +13,7 @@ import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
@@ -231,31 +233,63 @@ class _CommentDialogState extends State<CommentDialog> {
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
-    return BlocListener<SendCommentActorBloc, SendCommentActorState>(
-      listener: (context, state) {
-        state.maybeMap(
-          orElse: () {},
-          sendFailure: (_) {
-            showToast(msg: lang.an_error_occurred_while_posting_the_comment);
-          },
-          sendSuccess: (value) {
-            _commentController.clear();
-            _scrollController.animateTo(
-              _scrollController.position.maxScrollExtent,
-              duration: const Duration(milliseconds: 500),
-              curve: Curves.easeOut,
-            );
-            context
-                .read<SendCommentActorBloc>()
-                .add(const SendCommentActorEvent.init());
-            context.read<ArticleCommentWatcherBloc>().add(
-                  ArticleCommentWatcherEvent.refreshComments(
-                    widget.article.url,
-                  ),
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<SendCommentActorBloc, SendCommentActorState>(
+          listener: (context, state) {
+            state.maybeMap(
+              orElse: () {},
+              sendFailure: (_) {
+                showToast(
+                  msg: lang.an_error_occurred_while_posting_the_comment,
                 );
+              },
+              sendSuccess: (_) {
+                _commentController.clear();
+                _scrollController.animateTo(
+                  _scrollController.position.maxScrollExtent,
+                  duration: const Duration(milliseconds: 500),
+                  curve: Curves.easeOut,
+                );
+                context
+                    .read<SendCommentActorBloc>()
+                    .add(const SendCommentActorEvent.init());
+                context.read<ArticleCommentWatcherBloc>().add(
+                      ArticleCommentWatcherEvent.refreshComments(
+                        widget.article.url,
+                      ),
+                    );
+              },
+            );
           },
-        );
-      },
+        ),
+        BlocListener<DeleteCommentActorBloc, DeleteCommentActorState>(
+          listener: (context, state) {
+            state.maybeMap(
+              orElse: () {},
+              deleteInFailure: (_) {
+                showToast(
+                  msg: lang.an_error_occurred_while_deleting_the_comment,
+                );
+              },
+              deleteInSuccess: (_) {
+                 showToast(
+                  msg: lang.comment_deleted,
+                  gravity: ToastGravity.BOTTOM,
+                );
+                context
+                    .read<DeleteCommentActorBloc>()
+                    .add(const DeleteCommentActorEvent.init());
+                context.read<ArticleCommentWatcherBloc>().add(
+                      ArticleCommentWatcherEvent.refreshComments(
+                        widget.article.url,
+                      ),
+                    );
+              },
+            );
+          },
+        ),
+      ],
       child: SizedBox(
         height: Screens.heigth(context) - 100,
         child: Column(
@@ -305,7 +339,10 @@ class _CommentDialogState extends State<CommentDialog> {
                         physics: const ScrollPhysics(),
                         itemBuilder: (context, index) {
                           final comment = state.comments[index];
-                          return CommentCardWidget(comment: comment);
+                          return CommentCardWidget(
+                            article: widget.article,
+                            comment: comment,
+                          );
                         },
                       );
                     },
