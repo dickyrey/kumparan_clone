@@ -1,5 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_feather_icons/flutter_feather_icons.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/domain/entities/comment.dart';
 import 'package:timeago/timeago.dart' as timeago;
@@ -12,6 +15,7 @@ class CommentCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
 
     return Padding(
       padding: const EdgeInsets.only(bottom: Const.space15),
@@ -39,12 +43,84 @@ class CommentCardWidget extends StatelessWidget {
                   style: theme.textTheme.bodyText2,
                 ),
                 const SizedBox(height: Const.space8),
-                Text(timeago.format(DateTime.now()),
-                    style: theme.textTheme.subtitle2),
+                Text(
+                  timeago.format(DateTime.now()),
+                  style: theme.textTheme.subtitle2,
+                ),
               ],
             ),
+          ),
+          IconButton(
+            icon: const Icon(FeatherIcons.moreVertical),
+            iconSize: 16,
+            onPressed: () {
+              showDialog<dynamic>(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text(
+                      lang.choose_an_action,
+                      style: theme.textTheme.headline3,
+                    ),
+                    content: SizedBox(
+                      height: 100,
+                      child: Column(
+                        children: [
+                          _listTileWidget(
+                            context,
+                            icon: FeatherIcons.trash,
+                            label: lang.delete,
+                            onTap: () {
+                              // TODO(dickyrey): delete a comment
+                            },
+                          ),
+                          _listTileWidget(
+                            context,
+                            icon: FeatherIcons.alertCircle,
+                            label: lang.report,
+                            onTap: () {
+                              // TODO(dickyrey): Reports a comment
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  );
+                },
+              );
+            },
           )
         ],
+      ),
+    );
+  }
+
+  SizedBox _listTileWidget(
+    BuildContext context, {
+    VoidCallback? onTap,
+    required IconData icon,
+    required String label,
+  }) {
+    final theme = Theme.of(context);
+    return SizedBox(
+      height: 40,
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(Const.radius),
+        child: Row(
+          children: [
+            Icon(
+              icon,
+              size: 18,
+              color: ColorLight.fontTitle,
+            ),
+            const SizedBox(width: Const.space12),
+            Text(
+              label,
+              style: theme.textTheme.bodyText2,
+            ),
+          ],
+        ),
       ),
     );
   }

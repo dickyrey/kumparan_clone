@@ -24,6 +24,7 @@ import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.da
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_comment_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/like_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/send_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
@@ -35,6 +36,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_wat
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
@@ -168,6 +170,11 @@ void init() {
     () => likeArticleUseCase,
   );
 
+  final sendCommentUseCase = SendComment(locator());
+  locator.registerLazySingleton(
+    () => sendCommentUseCase,
+  );
+
   //* Filter by [Auth] folder
   //*
   final checkGoogleAuthUseCase = CheckGoogleAuth(locator());
@@ -233,6 +240,11 @@ void init() {
   final newArticleWatcherBloc = NewArticleWatcherBloc(locator());
   locator.registerLazySingleton(
     () => newArticleWatcherBloc,
+  );
+
+  final sendCommentFormBloc = SendCommentActorBloc(locator());
+  locator.registerLazySingleton(
+    () => sendCommentFormBloc,
   );
 
   //* Auth BLoC folder

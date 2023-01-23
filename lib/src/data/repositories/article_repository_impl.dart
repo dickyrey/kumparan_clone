@@ -74,9 +74,23 @@ class ArticleRepositoryImpl extends ArticleRepository {
 
   @override
   Future<Either<Failure, List<Comment>>> getCommentList(String id) async {
-   try {
+    try {
       final result = await dataSource.getCommentList(id);
       return Right(result.map((e) => e.toEntity()).toList());
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> sendComment({required String id, required String comment}) async {
+    try {
+      final result = await dataSource.sendComment(id: id, comment: comment);
+      return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));
     } on SocketException {

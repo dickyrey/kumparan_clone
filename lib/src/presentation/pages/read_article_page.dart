@@ -12,8 +12,10 @@ import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
+import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class ReadArticlePage extends StatefulWidget {
   const ReadArticlePage({super.key, required this.article});
@@ -176,9 +178,6 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
   }
 
   Future<dynamic> _showCommentDialog(BuildContext context) {
-    final theme = Theme.of(context);
-    final lang = AppLocalizations.of(context)!;
-
     return showModalBottomSheet<dynamic>(
       context: context,
       isScrollControlled: true,
@@ -186,91 +185,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
         borderRadius: BorderRadius.circular(Const.radius),
       ),
       builder: (BuildContext context) {
-        return SizedBox(
-          height: Screens.heigth(context) - 100,
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: Const.margin,
-                  vertical: Const.space12,
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      lang.comments,
-                      style: theme.textTheme.headline4,
-                    ),
-                    InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(FeatherIcons.x),
-                    )
-                  ],
-                ),
-              ),
-              Expanded(
-                child: BlocBuilder<ArticleCommentWatcherBloc,
-                    ArticleCommentWatcherState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      orElse: () {
-                        return const Center(
-                          child: CircularProgressIndicator(),
-                        );
-                      },
-                      loaded: (state) {
-                        return ListView.builder(
-                          itemCount: state.comments.length,
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: Const.margin,
-                            vertical: Const.space12,
-                          ),
-                          physics: const ScrollPhysics(),
-                          itemBuilder: (context, index) {
-                            final comment = state.comments[index];
-                            return CommentCardWidget(comment: comment);
-                          },
-                        );
-                      },
-                    );
-                  },
-                ),
-              ),
-              Card(
-                elevation: 7,
-                margin: EdgeInsets.zero,
-                child: Container(
-                  width: Screens.width(context),
-                  height: 70,
-                  color: theme.backgroundColor,
-                  padding: const EdgeInsets.only(left: Const.margin),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextFormFieldWidget(
-                          hintText: lang.write_comment,
-                        ),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          // TODO(dickyrey): Send comment
-                        },
-                        icon: Icon(
-                          Icons.send,
-                          color: theme.primaryColor,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              )
-            ],
-          ),
-        );
+        return CommentDialog(article: widget.article);
       },
     );
   }
@@ -286,6 +201,153 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
         icon: Icon(
           FeatherIcons.arrowLeft,
           color: theme.iconTheme.color,
+        ),
+      ),
+    );
+  }
+}
+
+class CommentDialog extends StatefulWidget {
+  const CommentDialog({super.key, required this.article});
+
+  final Article article;
+
+  @override
+  State<CommentDialog> createState() => _CommentDialogState();
+}
+
+class _CommentDialogState extends State<CommentDialog> {
+  late TextEditingController _commentController;
+  late ScrollController _scrollController;
+  @override
+  void initState() {
+    super.initState();
+    _commentController = TextEditingController();
+    _scrollController = ScrollController();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+
+    return BlocListener<SendCommentActorBloc, SendCommentActorState>(
+      listener: (context, state) {
+        state.maybeMap(
+          orElse: () {},
+          sendFailure: (_) {
+            showToast(msg: lang.an_error_occurred_while_posting_the_comment);
+          },
+          sendSuccess: (value) {
+            _commentController.clear();
+            _scrollController.animateTo(
+              _scrollController.position.maxScrollExtent,
+              duration: const Duration(milliseconds: 500),
+              curve: Curves.easeOut,
+            );
+            context
+                .read<SendCommentActorBloc>()
+                .add(const SendCommentActorEvent.init());
+            context.read<ArticleCommentWatcherBloc>().add(
+                  ArticleCommentWatcherEvent.refreshComments(
+                    widget.article.url,
+                  ),
+                );
+          },
+        );
+      },
+      child: SizedBox(
+        height: Screens.heigth(context) - 100,
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: Const.margin,
+                vertical: Const.space12,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    lang.comments,
+                    style: theme.textTheme.headline4,
+                  ),
+                  InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(FeatherIcons.x),
+                  )
+                ],
+              ),
+            ),
+            Expanded(
+              child: BlocBuilder<ArticleCommentWatcherBloc,
+                  ArticleCommentWatcherState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    orElse: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loaded: (state) {
+                      return ListView.builder(
+                        controller: _scrollController,
+                        itemCount: state.comments.length,
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.fromLTRB(
+                          Const.margin,
+                          0,
+                          Const.margin,
+                          Const.space50 + Const.space25,
+                        ),
+                        physics: const ScrollPhysics(),
+                        itemBuilder: (context, index) {
+                          final comment = state.comments[index];
+                          return CommentCardWidget(comment: comment);
+                        },
+                      );
+                    },
+                  );
+                },
+              ),
+            ),
+            Card(
+              elevation: 7,
+              margin: EdgeInsets.zero,
+              child: Container(
+                width: Screens.width(context),
+                height: 70,
+                color: theme.backgroundColor,
+                padding: const EdgeInsets.only(left: Const.margin),
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: TextFormFieldWidget(
+                        controller: _commentController,
+                        hintText: lang.write_comment,
+                      ),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        context.read<SendCommentActorBloc>().add(
+                              SendCommentActorEvent.sendComment(
+                                id: widget.article.url,
+                                comment: _commentController.text,
+                              ),
+                            );
+                      },
+                      icon: Icon(
+                        Icons.send,
+                        color: theme.primaryColor,
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            )
+          ],
         ),
       ),
     );

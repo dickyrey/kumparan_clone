@@ -20,32 +20,38 @@ mixin _$ArticleCommentWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) fetchComments,
+    required TResult Function(String id) refreshComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? fetchComments,
+    TResult? Function(String id)? refreshComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? fetchComments,
+    TResult Function(String id)? refreshComments,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchComments value) fetchComments,
+    required TResult Function(_RefreshComments value) refreshComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchComments value)? fetchComments,
+    TResult? Function(_RefreshComments value)? refreshComments,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchComments value)? fetchComments,
+    TResult Function(_RefreshComments value)? refreshComments,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -157,6 +163,7 @@ class _$_FetchComments implements _FetchComments {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String id) fetchComments,
+    required TResult Function(String id) refreshComments,
   }) {
     return fetchComments(id);
   }
@@ -165,6 +172,7 @@ class _$_FetchComments implements _FetchComments {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function(String id)? fetchComments,
+    TResult? Function(String id)? refreshComments,
   }) {
     return fetchComments?.call(id);
   }
@@ -173,6 +181,7 @@ class _$_FetchComments implements _FetchComments {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String id)? fetchComments,
+    TResult Function(String id)? refreshComments,
     required TResult orElse(),
   }) {
     if (fetchComments != null) {
@@ -185,6 +194,7 @@ class _$_FetchComments implements _FetchComments {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_FetchComments value) fetchComments,
+    required TResult Function(_RefreshComments value) refreshComments,
   }) {
     return fetchComments(this);
   }
@@ -193,6 +203,7 @@ class _$_FetchComments implements _FetchComments {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_FetchComments value)? fetchComments,
+    TResult? Function(_RefreshComments value)? refreshComments,
   }) {
     return fetchComments?.call(this);
   }
@@ -201,6 +212,7 @@ class _$_FetchComments implements _FetchComments {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_FetchComments value)? fetchComments,
+    TResult Function(_RefreshComments value)? refreshComments,
     required TResult orElse(),
   }) {
     if (fetchComments != null) {
@@ -218,6 +230,143 @@ abstract class _FetchComments implements ArticleCommentWatcherEvent {
   @override
   @JsonKey(ignore: true)
   _$$_FetchCommentsCopyWith<_$_FetchComments> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$_RefreshCommentsCopyWith<$Res>
+    implements $ArticleCommentWatcherEventCopyWith<$Res> {
+  factory _$$_RefreshCommentsCopyWith(
+          _$_RefreshComments value, $Res Function(_$_RefreshComments) then) =
+      __$$_RefreshCommentsCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({String id});
+}
+
+/// @nodoc
+class __$$_RefreshCommentsCopyWithImpl<$Res>
+    extends _$ArticleCommentWatcherEventCopyWithImpl<$Res, _$_RefreshComments>
+    implements _$$_RefreshCommentsCopyWith<$Res> {
+  __$$_RefreshCommentsCopyWithImpl(
+      _$_RefreshComments _value, $Res Function(_$_RefreshComments) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = null,
+  }) {
+    return _then(_$_RefreshComments(
+      null == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_RefreshComments implements _RefreshComments {
+  const _$_RefreshComments(this.id);
+
+  @override
+  final String id;
+
+  @override
+  String toString() {
+    return 'ArticleCommentWatcherEvent.refreshComments(id: $id)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_RefreshComments &&
+            (identical(other.id, id) || other.id == id));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, id);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_RefreshCommentsCopyWith<_$_RefreshComments> get copyWith =>
+      __$$_RefreshCommentsCopyWithImpl<_$_RefreshComments>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String id) fetchComments,
+    required TResult Function(String id) refreshComments,
+  }) {
+    return refreshComments(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(String id)? fetchComments,
+    TResult? Function(String id)? refreshComments,
+  }) {
+    return refreshComments?.call(id);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String id)? fetchComments,
+    TResult Function(String id)? refreshComments,
+    required TResult orElse(),
+  }) {
+    if (refreshComments != null) {
+      return refreshComments(id);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchComments value) fetchComments,
+    required TResult Function(_RefreshComments value) refreshComments,
+  }) {
+    return refreshComments(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchComments value)? fetchComments,
+    TResult? Function(_RefreshComments value)? refreshComments,
+  }) {
+    return refreshComments?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchComments value)? fetchComments,
+    TResult Function(_RefreshComments value)? refreshComments,
+    required TResult orElse(),
+  }) {
+    if (refreshComments != null) {
+      return refreshComments(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RefreshComments implements ArticleCommentWatcherEvent {
+  const factory _RefreshComments(final String id) = _$_RefreshComments;
+
+  @override
+  String get id;
+  @override
+  @JsonKey(ignore: true)
+  _$$_RefreshCommentsCopyWith<_$_RefreshComments> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
