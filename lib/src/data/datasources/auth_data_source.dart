@@ -39,7 +39,7 @@ class AuthDataSourceImpl extends AuthDataSource {
   Future<void> signInWithGoogle(String base64Date) async {
     final prefs = await SharedPreferences.getInstance();
     final user = await googleSignIn.signIn();
-    final header = {'Accept': 'application/json'};
+    // final header = {'Accept': 'application/json'};
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
@@ -47,8 +47,7 @@ class AuthDataSourceImpl extends AuthDataSource {
       queryParameters: {'email': user?.email, 'token': base64Date},
     );
 
-    final response = await http.post(url, headers: header);
-
+    final response = await http.post(url, );
     if (response.statusCode == 200) {
       final accessToken = TokenModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,

@@ -10,7 +10,7 @@ class Const {
   static const String token = 'access_token';
   static const String host = 'interpretasi.id';
   static const String scheme = 'https';
-  static const String googleSignInPath = '/api/signin/google/';
+  static const String googleSignInPath = '/api/signin/google';
   static const String articlePath = '/api/article/';
   static const String signOutPath = '/api/signout/';
   static const String userPath = '/api/user/';
