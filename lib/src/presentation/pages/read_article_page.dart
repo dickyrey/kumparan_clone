@@ -106,8 +106,19 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
               child: Row(
                 children: [
                   Expanded(
-                    child: TextFormFieldWidget(
-                      hintText: lang.write_comment,
+                    child: GestureDetector(
+                      onTap: () {
+                        context.read<ArticleCommentWatcherBloc>().add(
+                              ArticleCommentWatcherEvent.fetchComments(
+                                widget.article.url,
+                              ),
+                            );
+                        _showCommentDialog(context);
+                      },
+                      child: TextFormFieldWidget(
+                        enabled: false,
+                        hintText: lang.write_comment,
+                      ),
                     ),
                   ),
                   const SizedBox(width: Const.space12),
@@ -276,7 +287,7 @@ class _CommentDialogState extends State<CommentDialog> {
                 );
               },
               deleteInSuccess: (_) {
-                 showToast(
+                showToast(
                   msg: lang.comment_deleted,
                   gravity: ToastGravity.BOTTOM,
                 );
