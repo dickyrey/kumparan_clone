@@ -349,6 +349,9 @@ class MenuPage extends StatelessWidget {
                 context
                     .read<AuthWatcherBloc>()
                     .add(const AuthWatcherEvent.signOut());
+                context
+                    .read<UserWatcherBloc>()
+                    .add(const UserWatcherEvent.init());
               },
             ),
           ],

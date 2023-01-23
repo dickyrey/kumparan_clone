@@ -81,7 +81,7 @@ class CommentCardWidget extends StatelessWidget {
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                if (state.user.id != comment.user.id)
+                                if (state.user.id == comment.user.id)
                                   _listTileWidget(
                                     context,
                                     icon: FeatherIcons.trash,
@@ -106,7 +106,7 @@ class CommentCardWidget extends StatelessWidget {
                                   icon: FeatherIcons.alertCircle,
                                   label: lang.report,
                                   onTap: () {
-                                    // TODO(dickyrey): Reports a comment
+                                    print(state.user.id);
                                   },
                                 )
                               ],
