@@ -12,6 +12,8 @@ class Const {
   static const String scheme = 'https';
   static const String googleSignInPath = '/api/signin/google';
   static const String articlePath = '/api/article/';
+  static const String commentPath = '/comment';
+  static const String likePath = '/like';
   static const String signOutPath = '/api/signout';
   static const String userPath = '/api/user/';
   static const String unusedPath = 'https://interpretasi.id/api/article/';

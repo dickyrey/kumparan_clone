@@ -3,7 +3,6 @@ import 'package:equatable/equatable.dart';
 class ArticleDetail extends Equatable {
   const ArticleDetail({
     required this.id,
-    required this.userId,
     required this.url,
     required this.title,
     required this.content,
@@ -14,7 +13,6 @@ class ArticleDetail extends Equatable {
   });
 
   final int id;
-  final int userId;
   final String url;
   final String title;
   final String content;
@@ -25,7 +23,6 @@ class ArticleDetail extends Equatable {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'user_id': userId,
         'url': url,
         'title': title,
         'content': content,
@@ -38,7 +35,6 @@ class ArticleDetail extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        userId,
         url,
         title,
         content,

@@ -4,7 +4,6 @@ import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
 class ArticleDetailModel extends Equatable {
   const ArticleDetailModel({
     required this.id,
-    required this.userId,
     required this.url,
     required this.title,
     required this.content,
@@ -17,7 +16,6 @@ class ArticleDetailModel extends Equatable {
   factory ArticleDetailModel.fromJson(Map<String, dynamic> json) {
     return ArticleDetailModel(
       id: json['id'] as int,
-      userId: json['user_id'] as int,
       url: json['url'] as String,
       title: json['title'] as String,
       content: json['content'] as String,
@@ -29,7 +27,6 @@ class ArticleDetailModel extends Equatable {
   }
 
   final int id;
-  final int userId;
   final String url;
   final String title;
   final String content;
@@ -41,7 +38,6 @@ class ArticleDetailModel extends Equatable {
   ArticleDetail toEntity() {
     return ArticleDetail(
       id: id,
-      userId: userId,
       url: url,
       title: title,
       content: content,
@@ -54,7 +50,6 @@ class ArticleDetailModel extends Equatable {
 
   Map<String, dynamic> toJson() => {
         'id': id,
-        'user_id': userId,
         'url': url,
         'title': title,
         'content': content,
@@ -67,7 +62,6 @@ class ArticleDetailModel extends Equatable {
   @override
   List<Object?> get props => [
         id,
-        userId,
         url,
         title,
         content,

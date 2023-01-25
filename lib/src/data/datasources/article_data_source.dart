@@ -33,7 +33,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
+      path: Const.articlePath + id + Const.likePath,
       queryParameters: {'type': 'like'},
     );
     final response = await http.get(url, headers: header);
@@ -106,15 +106,13 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
-      queryParameters: {'type': 'like'},
+      path: Const.articlePath + id + Const.likePath,
     );
 
-    final response = await http.put(
+    final response = await http.post(
       url,
       headers: header,
     );
-
     if (response.statusCode == 200) {
       return;
     } else {
@@ -134,8 +132,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
-      queryParameters: {'type': 'comments'},
+      path: Const.articlePath + id + Const.commentPath,
     );
 
     final response = await http.get(url, headers: header);
@@ -165,11 +162,11 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
-      queryParameters: {'type': 'comments'},
+      path: Const.articlePath + id + Const.commentPath,
     );
 
-    final response = await http.put(url, headers: header, body: body);
+    final response = await http.post(url, headers: header, body: body);
+
     if (response.statusCode == 200) {
       return;
     } else {
@@ -191,14 +188,12 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
-      queryParameters: {
-        'type': 'comments',
-        'id': userId.toString(),
-      },
+      path: '${Const.articlePath}$id${Const.commentPath}/$userId',
     );
 
     final response = await http.delete(url, headers: header);
+    print(response.body);
+
     if (response.statusCode == 200) {
       return;
     } else {
