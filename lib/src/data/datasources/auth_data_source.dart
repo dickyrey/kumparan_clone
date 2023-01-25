@@ -43,7 +43,11 @@ class AuthDataSourceImpl extends AuthDataSource {
       scheme: Const.scheme,
       host: Const.host,
       path: Const.googleSignInPath,
-      queryParameters: {'email': user?.email, 'token': base64Date},
+      queryParameters: {
+        'email': user?.email,
+        'displayName': user?.displayName,
+        'token': base64Date,
+      },
     );
 
     final response = await http.post(url);
