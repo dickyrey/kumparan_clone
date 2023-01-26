@@ -5,7 +5,9 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
@@ -89,25 +91,42 @@ class MenuPage extends StatelessWidget {
               },
             ),
             const SizedBox(height: Const.space25),
-            ElevatedButtonWidget(
-              onTap: () {
-                Navigator.pushNamed(context, CREATE_CONTENT);
+            BlocBuilder<CategoryWatcherBloc, CategoryWatcherState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  orElse: () {
+                    return const SizedBox();
+                  },
+                  loaded: (state) {
+                    return ElevatedButtonWidget(
+                      onTap: () {
+                        context.read<CreateArticleFormBloc>().add(
+                              CreateArticleFormEvent.initialize(
+                                categoryList: state.categories,
+                              ),
+                            );
+                        Navigator.pushNamed(context, CREATE_CONTENT);
+                      },
+                      margin:
+                          const EdgeInsets.symmetric(horizontal: Const.margin),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            FeatherIcons.edit3,
+                            color: Colors.white,
+                          ),
+                          const SizedBox(width: Const.space12),
+                          Text(
+                            lang.write_an_article,
+                            style: theme.textTheme.button,
+                          )
+                        ],
+                      ),
+                    );
+                  },
+                );
               },
-              margin: const EdgeInsets.symmetric(horizontal: Const.margin),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    FeatherIcons.edit3,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: Const.space12),
-                  Text(
-                    lang.write_an_article,
-                    style: theme.textTheme.button,
-                  )
-                ],
-              ),
             ),
             const SizedBox(height: Const.space15),
             ListTileWidget(

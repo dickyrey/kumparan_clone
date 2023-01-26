@@ -86,7 +86,8 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, void>> sendComment({required String id, required String comment}) async {
+  Future<Either<Failure, void>> sendComment(
+      {required String id, required String comment}) async {
     try {
       final result = await dataSource.sendComment(id: id, comment: comment);
       return Right(result);
@@ -98,11 +99,36 @@ class ArticleRepositoryImpl extends ArticleRepository {
       );
     }
   }
-  
+
   @override
-  Future<Either<Failure, void>> deleteComment({required String id, required int userId}) async {
-     try {
+  Future<Either<Failure, void>> deleteComment(
+      {required String id, required int userId}) async {
+    try {
       final result = await dataSource.deleteComment(id: id, userId: userId);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, void>> createArticle({
+    required String title,
+    required String content,
+    required File thumbnail,
+    required List<String> categories,
+  }) async {
+    try {
+      final result = await dataSource.createArticle(
+        title: title,
+        content: content,
+        thumbnail: thumbnail,
+        categories: categories,
+      );
       return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));

@@ -86,7 +86,9 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                           );
                         },
                         loaded: (state) {
-                          return Html(data: state.articleDetail.content);
+                          return Html(
+                            data: state.articleDetail.content,
+                          );
                         },
                       );
                     },

@@ -14,7 +14,7 @@ abstract class ProfileDataSource {
 class ProfileDataSourceImpl extends ProfileDataSource {
   ProfileDataSourceImpl(this.client);
   final http.Client client;
-  
+
   @override
   Future<void> changeProfile() {
     // TODO(dickyrey): implement changeProfile
@@ -37,11 +37,14 @@ class ProfileDataSourceImpl extends ProfileDataSource {
     );
 
     final response = await http.get(url, headers: header);
-
     if (response.statusCode == 200) {
       return UserModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
       );
+    } else if (response.statusCode == 401) {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.remove(Const.token);
+      throw ServerException(ExceptionMessage.internetNotConnected);
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

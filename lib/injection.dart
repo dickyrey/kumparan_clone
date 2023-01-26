@@ -20,6 +20,7 @@ import 'package:kumparan_clone/src/domain/repositories/category_repository.dart'
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/check_like_status.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/delete_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
@@ -36,6 +37,7 @@ import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
@@ -152,6 +154,11 @@ void init() {
     () => checkLikeStatusUseCase,
   );
 
+  final createArtcleUseCase = CreateArticle(locator());
+  locator.registerLazySingleton(
+    () => createArtcleUseCase,
+  );
+
   final deleteCommentUseCase = DeleteComment(locator());
   locator.registerLazySingleton(
     () => deleteCommentUseCase,
@@ -242,6 +249,11 @@ void init() {
   final articleLikeWatcherBloc = ArticleLikeWatcherBloc(locator(), locator());
   locator.registerLazySingleton(
     () => articleLikeWatcherBloc,
+  );
+
+  final createArticleFormBloc = CreateArticleFormBloc(locator());
+  locator.registerLazySingleton(
+    () => createArticleFormBloc,
   );
 
   final deleteCommentActorBloc = DeleteCommentActorBloc(locator());

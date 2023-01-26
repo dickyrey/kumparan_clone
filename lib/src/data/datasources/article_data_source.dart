@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/common/const.dart';
@@ -19,6 +20,12 @@ abstract class ArticleDataSource {
   Future<List<CommentModel>> getCommentList(String id);
   Future<void> sendComment({required String id, required String comment});
   Future<void> deleteComment({required String id, required int userId});
+  Future<void> createArticle({
+    required String title,
+    required String content,
+    required File thumbnail,
+    required List<String> categories,
+  });
 }
 
 class ArticleDataSourceImpl extends ArticleDataSource {
@@ -86,6 +93,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
 
     final uri = Uri.parse(url);
     final response = await http.get(uri, headers: header);
+    print(response.body);
     if (response.statusCode == 200) {
       return ArticleDetailResponse.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
@@ -192,7 +200,56 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     );
 
     final response = await http.delete(url, headers: header);
-    print(response.body);
+
+    if (response.statusCode == 200) {
+      return;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
+  Future<void> createArticle({
+    required String title,
+    required String content,
+    required File thumbnail,
+    required List<String> categories,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: '/api/article',
+    );
+
+    final request = http.MultipartRequest(
+      'POST',
+      url,
+    );
+    request.fields['title'] = title;
+    request.fields['content'] = content;
+    request.fields['categories'] = categories
+        .map((e) {
+          return e;
+        })
+        .toList()
+        .toString();
+        
+    final storeImage = await http.MultipartFile.fromPath('image', thumbnail.path);
+    
+    request.headers.addAll(header);
+    request.files.add(storeImage);
+    print(title);
+    print(content);
+    print(categories);
+    final response = await request.send();
+    print(response.statusCode);
 
     if (response.statusCode == 200) {
       return;

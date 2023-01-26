@@ -186,12 +186,12 @@ class ArticleCardWidget extends StatelessWidget {
                           size: 15,
                           color: theme.disabledColor,
                         ),
-                        const SizedBox(width: Const.space8 - 3),
-                        Text(
-                          article.comments.toString(),
-                          style: theme.textTheme.subtitle2,
-                          maxLines: 1,
-                        ),
+                        // const SizedBox(width: Const.space8 - 3),
+                        // Text(
+                        //   article.comments.toString(),
+                        //   style: theme.textTheme.subtitle2,
+                        //   maxLines: 1,
+                        // ),
                         const SizedBox(width: Const.space12),
                         Text(
                           timeago.format(article.createdAt),

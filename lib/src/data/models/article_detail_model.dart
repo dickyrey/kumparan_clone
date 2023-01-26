@@ -3,71 +3,71 @@ import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
 
 class ArticleDetailModel extends Equatable {
   const ArticleDetailModel({
-    required this.id,
     required this.url,
     required this.title,
     required this.content,
     required this.thumbnail,
-    required this.categories,
     required this.viewers,
+    required this.comments,
+    required this.likes,
     required this.createdAt,
   });
 
   factory ArticleDetailModel.fromJson(Map<String, dynamic> json) {
     return ArticleDetailModel(
-      id: json['id'] as int,
       url: json['url'] as String,
       title: json['title'] as String,
       content: json['content'] as String,
-      thumbnail: json['thumbnail'] as String,
-      categories: List<int>.from((json['categories'] as Iterable<dynamic>).map((x) => x)),
+      thumbnail: json['image'] as String,
       viewers: json['viewers'] as int,
+      comments: json['comments'] as int,
+      likes: json['likes'] as int,
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
 
-  final int id;
   final String url;
   final String title;
   final String content;
   final String thumbnail;
-  final List<int> categories;
   final int viewers;
+  final int comments;
+  final int likes;
   final DateTime createdAt;
 
   ArticleDetail toEntity() {
     return ArticleDetail(
-      id: id,
       url: url,
       title: title,
       content: content,
       thumbnail: thumbnail,
-      categories: categories,
       viewers: viewers,
+      comments: comments,
+      likes: likes,
       createdAt: createdAt,
     );
   }
 
   Map<String, dynamic> toJson() => {
-        'id': id,
         'url': url,
         'title': title,
         'content': content,
         'thumbnail': thumbnail,
-        'categories': List<dynamic>.from(categories.map((x) => x)),
         'viewers': viewers,
+        'comments': comments,
+        'likes': likes,
         'created_at': createdAt.toIso8601String(),
       };
 
   @override
   List<Object?> get props => [
-        id,
         url,
         title,
         content,
         thumbnail,
-        categories,
         viewers,
+        comments,
+        likes,
         createdAt,
       ];
 }

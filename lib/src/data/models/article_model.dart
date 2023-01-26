@@ -17,7 +17,7 @@ class ArticleModel extends Equatable {
     return ArticleModel(
       title: json['title'] as String,
       url: json['url'] as String,
-      thumbnail: json['thumbnail'] as String,
+      thumbnail: json['image'] as String,
       viewers: json['viewers'] as int,
       likes: json['likes'] as int,
       comments: json['comments'] as int,
