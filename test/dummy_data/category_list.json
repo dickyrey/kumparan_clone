@@ -1,0 +1,10 @@
+{
+    "code": 200,
+    "message": "success",
+    "data": [
+        {
+            "id": 1,
+            "name": "News"
+        }
+    ]
+}

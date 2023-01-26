@@ -16,10 +16,10 @@ abstract class ArticleDataSource {
   Future<List<ArticleModel>> getArticleList();
   Future<ArticleDetailModel> getArticleDetail(String url);
   Future<bool> checkLikeStatus(String id);
-  Future<void> likeArticle(String id);
+  Future<bool> likeArticle(String id);
   Future<List<CommentModel>> getCommentList(String id);
-  Future<void> sendComment({required String id, required String comment});
-  Future<void> deleteComment({required String id, required int userId});
+  Future<bool> sendComment({required String id, required String comment});
+  Future<bool> deleteComment({required String id, required int userId});
   Future<void> createArticle({
     required String title,
     required String content,
@@ -29,6 +29,9 @@ abstract class ArticleDataSource {
 }
 
 class ArticleDataSourceImpl extends ArticleDataSource {
+  ArticleDataSourceImpl(this.client);
+  final http.Client client;
+
   @override
   Future<bool> checkLikeStatus(String id) async {
     final prefs = await SharedPreferences.getInstance();
@@ -41,9 +44,8 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       scheme: Const.scheme,
       host: Const.host,
       path: Const.articlePath + id + Const.likePath,
-      queryParameters: {'type': 'like'},
     );
-    final response = await http.get(url, headers: header);
+    final response = await client.get(url, headers: header);
 
     if (response.statusCode == 200) {
       // ignore: avoid_dynamic_calls
@@ -73,7 +75,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       path: Const.articlePath,
     );
 
-    final response = await http.get(url, headers: header);
+    final response = await client.get(url, headers: header);
     if (response.statusCode == 200) {
       return ArticleResponse.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
@@ -92,8 +94,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     };
 
     final uri = Uri.parse(url);
-    final response = await http.get(uri, headers: header);
-    print(response.body);
+    final response = await client.get(uri, headers: header);
     if (response.statusCode == 200) {
       return ArticleDetailResponse.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
@@ -104,7 +105,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
   }
 
   @override
-  Future<void> likeArticle(String id) async {
+  Future<bool> likeArticle(String id) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Const.token);
     final header = {
@@ -117,12 +118,12 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       path: Const.articlePath + id + Const.likePath,
     );
 
-    final response = await http.post(
+    final response = await client.post(
       url,
       headers: header,
     );
     if (response.statusCode == 200) {
-      return;
+      return true;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }
@@ -143,7 +144,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       path: Const.articlePath + id + Const.commentPath,
     );
 
-    final response = await http.get(url, headers: header);
+    final response = await client.get(url, headers: header);
     if (response.statusCode == 200) {
       return CommentResponse.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
@@ -154,7 +155,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
   }
 
   @override
-  Future<void> sendComment({
+  Future<bool> sendComment({
     required String id,
     required String comment,
   }) async {
@@ -173,17 +174,17 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       path: Const.articlePath + id + Const.commentPath,
     );
 
-    final response = await http.post(url, headers: header, body: body);
+    final response = await client.post(url, headers: header, body: body);
 
     if (response.statusCode == 200) {
-      return;
+      return true;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }
   }
 
   @override
-  Future<void> deleteComment({
+  Future<bool> deleteComment({
     required String id,
     required int userId,
   }) async {
@@ -199,10 +200,10 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       path: '${Const.articlePath}$id${Const.commentPath}/$userId',
     );
 
-    final response = await http.delete(url, headers: header);
+    final response = await client.delete(url, headers: header);
 
     if (response.statusCode == 200) {
-      return;
+      return true;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }
@@ -240,17 +241,13 @@ class ArticleDataSourceImpl extends ArticleDataSource {
         })
         .toList()
         .toString();
-        
-    final storeImage = await http.MultipartFile.fromPath('image', thumbnail.path);
-    
+
+    final storeImage =
+        await http.MultipartFile.fromPath('image', thumbnail.path);
+
     request.headers.addAll(header);
     request.files.add(storeImage);
-    print(title);
-    print(content);
-    print(categories);
     final response = await request.send();
-    print(response.statusCode);
-
     if (response.statusCode == 200) {
       return;
     } else {

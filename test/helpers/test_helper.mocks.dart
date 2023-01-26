@@ -139,14 +139,13 @@ class MockArticleDataSource extends _i1.Mock implements _i6.ArticleDataSource {
         returnValue: _i7.Future<bool>.value(false),
       ) as _i7.Future<bool>);
   @override
-  _i7.Future<void> likeArticle(String? id) => (super.noSuchMethod(
+  _i7.Future<bool> likeArticle(String? id) => (super.noSuchMethod(
         Invocation.method(
           #likeArticle,
           [id],
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
   @override
   _i7.Future<List<_i9.CommentModel>> getCommentList(String? id) =>
       (super.noSuchMethod(
@@ -158,7 +157,7 @@ class MockArticleDataSource extends _i1.Mock implements _i6.ArticleDataSource {
             _i7.Future<List<_i9.CommentModel>>.value(<_i9.CommentModel>[]),
       ) as _i7.Future<List<_i9.CommentModel>>);
   @override
-  _i7.Future<void> sendComment({
+  _i7.Future<bool> sendComment({
     required String? id,
     required String? comment,
   }) =>
@@ -171,11 +170,10 @@ class MockArticleDataSource extends _i1.Mock implements _i6.ArticleDataSource {
             #comment: comment,
           },
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
   @override
-  _i7.Future<void> deleteComment({
+  _i7.Future<bool> deleteComment({
     required String? id,
     required int? userId,
   }) =>
@@ -188,9 +186,8 @@ class MockArticleDataSource extends _i1.Mock implements _i6.ArticleDataSource {
             #userId: userId,
           },
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
   @override
   _i7.Future<void> createArticle({
     required String? title,

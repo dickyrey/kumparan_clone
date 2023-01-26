@@ -1,7 +1,8 @@
+import 'package:equatable/equatable.dart';
 import 'package:kumparan_clone/src/domain/entities/user_comment.dart';
 
-class UserCommentModel {
-  UserCommentModel({
+class UserCommentModel extends Equatable {
+  const UserCommentModel({
     required this.id,
     required this.name,
     required this.photo,
@@ -32,4 +33,11 @@ class UserCommentModel {
         'name': name,
         'photo': photo,
       };
+
+  @override
+  List<Object?> get props => [
+        id,
+        name,
+        photo,
+      ];
 }

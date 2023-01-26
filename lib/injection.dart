@@ -77,7 +77,7 @@ void init() {
   /// List of [Remote Data Source]
   ///
   ///
-  final articleDataSource = ArticleDataSourceImpl();
+  final articleDataSource = ArticleDataSourceImpl(httpPackage);
   locator.registerLazySingleton<ArticleDataSource>(
     () => articleDataSource,
   );

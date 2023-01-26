@@ -18,6 +18,8 @@ import 'package:mockito/annotations.dart';
     AuthRepository,
     ProfileRepository,
   ],
-  customMocks: [MockSpec<http.Client>(as: #MockHttpClient)],
+  customMocks: [
+    MockSpec<http.Client>(as: #MockHttpClient),
+  ],
 )
 void main() {}

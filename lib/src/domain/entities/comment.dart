@@ -25,7 +25,7 @@ class Comment extends Equatable {
   List<Object?> get props => [
         id,
         body,
-        // createdAt,
+        createdAt,
         user,
       ];
 }
