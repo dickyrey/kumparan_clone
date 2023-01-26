@@ -44,23 +44,19 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-            create: (context) => di.locator<ArticleCommentWatcherBloc>()),
-        BlocProvider(
-            create: (context) => di.locator<ArticleDetailWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<ArticleCommentWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<ArticleDetailWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleLikeWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CreateArticleFormBloc>()),
         BlocProvider(create: (context) => di.locator<DeleteCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<NewArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SendCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<AuthWatcherBloc>()),
-        BlocProvider(
-            create: (context) => di.locator<SignInWithGoogleActorBloc>()),
+        BlocProvider(create: (context) => di.locator<SignInWithGoogleActorBloc>()),
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BackupEmailFormBloc>()),
-        BlocProvider(
-            create: (context) => di.locator<VerificationEmailFormBloc>()),
+        BlocProvider(create: (context) => di.locator<VerificationEmailFormBloc>()),
         BlocProvider(create: (context) => di.locator<ForgotPasswordFormBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
         BlocProvider(create: (context) => di.locator<LoginFormBloc>()),

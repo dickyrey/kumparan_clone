@@ -9,6 +9,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/widgets/dialog_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -365,12 +366,21 @@ class MenuPage extends StatelessWidget {
               icon: FeatherIcons.logOut,
               title: lang.exit,
               onTap: () {
-                context
-                    .read<AuthWatcherBloc>()
-                    .add(const AuthWatcherEvent.signOut());
-                context
-                    .read<UserWatcherBloc>()
-                    .add(const UserWatcherEvent.init());
+                showConfirmationDialog(
+                  context,
+                  title: AppLocalizations.of(context)!
+                      .are_you_sure_want_to_sign_out,
+                  primaryButtonLabel: lang.exit,
+                  onPrimaryButtonTap: () {
+                    Navigator.pop(context);
+                    context
+                        .read<AuthWatcherBloc>()
+                        .add(const AuthWatcherEvent.signOut());
+                    context
+                        .read<UserWatcherBloc>()
+                        .add(const UserWatcherEvent.init());
+                  },
+                );
               },
             ),
           ],

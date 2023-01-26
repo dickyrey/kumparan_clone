@@ -43,16 +43,19 @@ class ArticleCardWidget extends StatelessWidget {
                 child: OctoImage(
                   fit: BoxFit.cover,
                   width: 280,
+                  height: 200,
                   image: CachedNetworkImageProvider(article.thumbnail),
                 ),
               ),
               const SizedBox(height: Const.space12),
               Text(
                 article.title,
-                style: theme.textTheme.headline3,
+                style: theme.textTheme.headline3?.copyWith(
+                  height: 1.5,
+                ),
                 maxLines: 2,
               ),
-              const SizedBox(height: Const.space8),
+              const Spacer(),
               Row(
                 children: [
                   Icon(
@@ -100,8 +103,8 @@ class ArticleCardWidget extends StatelessWidget {
                   InkWell(
                     onTap: () async {
                       await FlutterShare.share(
-                        title: 'Share message',
-                        linkUrl: 'https://google.com',
+                        title: 'Share Article',
+                        linkUrl: article.url,
                         chooserTitle: 'Example Chooser Title',
                       );
                     },

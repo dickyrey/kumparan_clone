@@ -127,7 +127,7 @@ class ForYouTab extends StatelessWidget {
                 loaded: (state) {
                   return SizedBox(
                     width: double.infinity,
-                    height: 305,
+                    height: 290,
                     child: ListView.builder(
                       itemCount: state.articleList.length,
                       scrollDirection: Axis.horizontal,

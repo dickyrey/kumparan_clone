@@ -46,6 +46,7 @@ class AuthDataSourceImpl extends AuthDataSource {
       queryParameters: {
         'email': user?.email,
         'displayName': user?.displayName,
+        'photo': user?.photoUrl,
         'token': base64Date,
       },
     );
