@@ -13,8 +13,8 @@ import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
@@ -133,14 +133,14 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
                           ),
                           child: ElevatedButtonWidget(
                             onTap: () {
-                              context.read<CreateArticleFormBloc>().add(
-                                    CreateArticleFormEvent.fetchCategoryList(
+                              context.read<ArticleFormBloc>().add(
+                                    ArticleFormEvent.fetchCategoryList(
                                       category.categories,
                                     ),
                                   );
 
-                              context.read<CreateArticleFormBloc>().add(
-                                    CreateArticleFormEvent.initialize(
+                              context.read<ArticleFormBloc>().add(
+                                    ArticleFormEvent.initialize(
                                       state.articleDetail,
                                     ),
                                   );

@@ -1,8 +1,8 @@
-part of 'create_article_form_bloc.dart';
+part of 'article_form_bloc.dart';
 
 @freezed
-class CreateArticleFormState with _$CreateArticleFormState {
-  const factory CreateArticleFormState({
+class ArticleFormState with _$ArticleFormState {
+  const factory ArticleFormState({
     required RequestState state,
     required String message,
     required bool isSubmitting,
@@ -11,10 +11,10 @@ class CreateArticleFormState with _$CreateArticleFormState {
     required String imageUrl,
     required File? thumbnailFile,
     required List<CheckBoxState> categoryList,
-  }) = _CreateArticleFormState;
+  }) = _ArticleFormState;
 
-  factory CreateArticleFormState.initial() {
-    return const CreateArticleFormState(
+  factory ArticleFormState.initial() {
+    return const ArticleFormState(
       state: RequestState.empty,
       message: '',
       isSubmitting: false,

@@ -10,18 +10,18 @@ import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
 import 'package:kumparan_clone/src/utilities/image_cropper_utils.dart';
 
-part 'create_article_form_event.dart';
-part 'create_article_form_state.dart';
-part 'create_article_form_bloc.freezed.dart';
+part 'article_form_event.dart';
+part 'article_form_state.dart';
+part 'article_form_bloc.freezed.dart';
 
-class CreateArticleFormBloc
-    extends Bloc<CreateArticleFormEvent, CreateArticleFormState> {
-  CreateArticleFormBloc(this._createArticle)
-      : super(CreateArticleFormState.initial()) {
-    on<CreateArticleFormEvent>((event, emit) async {
+class ArticleFormBloc
+    extends Bloc<ArticleFormEvent, ArticleFormState> {
+  ArticleFormBloc(this._createArticle)
+      : super(ArticleFormState.initial()) {
+    on<ArticleFormEvent>((event, emit) async {
       await event.map(
         initial: (_) {
-          emit(CreateArticleFormState.initial());
+          emit(ArticleFormState.initial());
         },
         initialize: (event) async {
           final toEntity = event.article.categories

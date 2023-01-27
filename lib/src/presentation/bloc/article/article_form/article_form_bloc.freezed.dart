@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'create_article_form_bloc.dart';
+part of 'article_form_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$CreateArticleFormEvent {
+mixin _$ArticleFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -87,17 +87,16 @@ mixin _$CreateArticleFormEvent {
 }
 
 /// @nodoc
-abstract class $CreateArticleFormEventCopyWith<$Res> {
-  factory $CreateArticleFormEventCopyWith(CreateArticleFormEvent value,
-          $Res Function(CreateArticleFormEvent) then) =
-      _$CreateArticleFormEventCopyWithImpl<$Res, CreateArticleFormEvent>;
+abstract class $ArticleFormEventCopyWith<$Res> {
+  factory $ArticleFormEventCopyWith(
+          ArticleFormEvent value, $Res Function(ArticleFormEvent) then) =
+      _$ArticleFormEventCopyWithImpl<$Res, ArticleFormEvent>;
 }
 
 /// @nodoc
-class _$CreateArticleFormEventCopyWithImpl<$Res,
-        $Val extends CreateArticleFormEvent>
-    implements $CreateArticleFormEventCopyWith<$Res> {
-  _$CreateArticleFormEventCopyWithImpl(this._value, this._then);
+class _$ArticleFormEventCopyWithImpl<$Res, $Val extends ArticleFormEvent>
+    implements $ArticleFormEventCopyWith<$Res> {
+  _$ArticleFormEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -114,7 +113,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_Initial>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -127,7 +126,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.initial()';
+    return 'ArticleFormEvent.initial()';
   }
 
   @override
@@ -232,7 +231,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements CreateArticleFormEvent {
+abstract class _Initial implements ArticleFormEvent {
   const factory _Initial() = _$_Initial;
 }
 
@@ -247,7 +246,7 @@ abstract class _$$_InitializeCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitializeCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_Initialize>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_Initialize>
     implements _$$_InitializeCopyWith<$Res> {
   __$$_InitializeCopyWithImpl(
       _$_Initialize _value, $Res Function(_$_Initialize) _then)
@@ -277,7 +276,7 @@ class _$_Initialize implements _Initialize {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.initialize(article: $article)';
+    return 'ArticleFormEvent.initialize(article: $article)';
   }
 
   @override
@@ -390,7 +389,7 @@ class _$_Initialize implements _Initialize {
   }
 }
 
-abstract class _Initialize implements CreateArticleFormEvent {
+abstract class _Initialize implements ArticleFormEvent {
   const factory _Initialize(final ArticleDetail article) = _$_Initialize;
 
   ArticleDetail get article;
@@ -410,7 +409,7 @@ abstract class _$$_TitleOnChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_TitleOnChangedCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_TitleOnChanged>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_TitleOnChanged>
     implements _$$_TitleOnChangedCopyWith<$Res> {
   __$$_TitleOnChangedCopyWithImpl(
       _$_TitleOnChanged _value, $Res Function(_$_TitleOnChanged) _then)
@@ -440,7 +439,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.titleOnChanged(val: $val)';
+    return 'ArticleFormEvent.titleOnChanged(val: $val)';
   }
 
   @override
@@ -553,7 +552,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
   }
 }
 
-abstract class _TitleOnChanged implements CreateArticleFormEvent {
+abstract class _TitleOnChanged implements ArticleFormEvent {
   const factory _TitleOnChanged(final String val) = _$_TitleOnChanged;
 
   String get val;
@@ -573,7 +572,7 @@ abstract class _$$_ContentOnChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ContentOnChangedCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_ContentOnChanged>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_ContentOnChanged>
     implements _$$_ContentOnChangedCopyWith<$Res> {
   __$$_ContentOnChangedCopyWithImpl(
       _$_ContentOnChanged _value, $Res Function(_$_ContentOnChanged) _then)
@@ -603,7 +602,7 @@ class _$_ContentOnChanged implements _ContentOnChanged {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.contentOnChanged(val: $val)';
+    return 'ArticleFormEvent.contentOnChanged(val: $val)';
   }
 
   @override
@@ -716,7 +715,7 @@ class _$_ContentOnChanged implements _ContentOnChanged {
   }
 }
 
-abstract class _ContentOnChanged implements CreateArticleFormEvent {
+abstract class _ContentOnChanged implements ArticleFormEvent {
   const factory _ContentOnChanged(final String val) = _$_ContentOnChanged;
 
   String get val;
@@ -736,7 +735,7 @@ abstract class _$$_PickImageCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PickImageCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_PickImage>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_PickImage>
     implements _$$_PickImageCopyWith<$Res> {
   __$$_PickImageCopyWithImpl(
       _$_PickImage _value, $Res Function(_$_PickImage) _then)
@@ -766,7 +765,7 @@ class _$_PickImage implements _PickImage {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.pickImage(source: $source)';
+    return 'ArticleFormEvent.pickImage(source: $source)';
   }
 
   @override
@@ -879,7 +878,7 @@ class _$_PickImage implements _PickImage {
   }
 }
 
-abstract class _PickImage implements CreateArticleFormEvent {
+abstract class _PickImage implements ArticleFormEvent {
   const factory _PickImage(final ImageSource source) = _$_PickImage;
 
   ImageSource get source;
@@ -897,7 +896,7 @@ abstract class _$$_CreateArticlePressedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_CreateArticlePressedCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_CreateArticlePressed>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_CreateArticlePressed>
     implements _$$_CreateArticlePressedCopyWith<$Res> {
   __$$_CreateArticlePressedCopyWithImpl(_$_CreateArticlePressed _value,
       $Res Function(_$_CreateArticlePressed) _then)
@@ -911,7 +910,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.createArticlePressed()';
+    return 'ArticleFormEvent.createArticlePressed()';
   }
 
   @override
@@ -1016,7 +1015,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
   }
 }
 
-abstract class _CreateArticlePressed implements CreateArticleFormEvent {
+abstract class _CreateArticlePressed implements ArticleFormEvent {
   const factory _CreateArticlePressed() = _$_CreateArticlePressed;
 }
 
@@ -1031,7 +1030,7 @@ abstract class _$$_FetchCategoryListCopyWith<$Res> {
 
 /// @nodoc
 class __$$_FetchCategoryListCopyWithImpl<$Res>
-    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_FetchCategoryList>
+    extends _$ArticleFormEventCopyWithImpl<$Res, _$_FetchCategoryList>
     implements _$$_FetchCategoryListCopyWith<$Res> {
   __$$_FetchCategoryListCopyWithImpl(
       _$_FetchCategoryList _value, $Res Function(_$_FetchCategoryList) _then)
@@ -1067,7 +1066,7 @@ class _$_FetchCategoryList implements _FetchCategoryList {
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.fetchCategoryList(categories: $categories)';
+    return 'ArticleFormEvent.fetchCategoryList(categories: $categories)';
   }
 
   @override
@@ -1183,7 +1182,7 @@ class _$_FetchCategoryList implements _FetchCategoryList {
   }
 }
 
-abstract class _FetchCategoryList implements CreateArticleFormEvent {
+abstract class _FetchCategoryList implements ArticleFormEvent {
   const factory _FetchCategoryList(final List<Category> categories) =
       _$_FetchCategoryList;
 
@@ -1194,7 +1193,7 @@ abstract class _FetchCategoryList implements CreateArticleFormEvent {
 }
 
 /// @nodoc
-mixin _$CreateArticleFormState {
+mixin _$ArticleFormState {
   RequestState get state => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
@@ -1205,15 +1204,15 @@ mixin _$CreateArticleFormState {
   List<CheckBoxState> get categoryList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CreateArticleFormStateCopyWith<CreateArticleFormState> get copyWith =>
+  $ArticleFormStateCopyWith<ArticleFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $CreateArticleFormStateCopyWith<$Res> {
-  factory $CreateArticleFormStateCopyWith(CreateArticleFormState value,
-          $Res Function(CreateArticleFormState) then) =
-      _$CreateArticleFormStateCopyWithImpl<$Res, CreateArticleFormState>;
+abstract class $ArticleFormStateCopyWith<$Res> {
+  factory $ArticleFormStateCopyWith(
+          ArticleFormState value, $Res Function(ArticleFormState) then) =
+      _$ArticleFormStateCopyWithImpl<$Res, ArticleFormState>;
   @useResult
   $Res call(
       {RequestState state,
@@ -1227,10 +1226,9 @@ abstract class $CreateArticleFormStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$CreateArticleFormStateCopyWithImpl<$Res,
-        $Val extends CreateArticleFormState>
-    implements $CreateArticleFormStateCopyWith<$Res> {
-  _$CreateArticleFormStateCopyWithImpl(this._value, this._then);
+class _$ArticleFormStateCopyWithImpl<$Res, $Val extends ArticleFormState>
+    implements $ArticleFormStateCopyWith<$Res> {
+  _$ArticleFormStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1287,11 +1285,11 @@ class _$CreateArticleFormStateCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_CreateArticleFormStateCopyWith<$Res>
-    implements $CreateArticleFormStateCopyWith<$Res> {
-  factory _$$_CreateArticleFormStateCopyWith(_$_CreateArticleFormState value,
-          $Res Function(_$_CreateArticleFormState) then) =
-      __$$_CreateArticleFormStateCopyWithImpl<$Res>;
+abstract class _$$_ArticleFormStateCopyWith<$Res>
+    implements $ArticleFormStateCopyWith<$Res> {
+  factory _$$_ArticleFormStateCopyWith(
+          _$_ArticleFormState value, $Res Function(_$_ArticleFormState) then) =
+      __$$_ArticleFormStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1306,12 +1304,11 @@ abstract class _$$_CreateArticleFormStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_CreateArticleFormStateCopyWithImpl<$Res>
-    extends _$CreateArticleFormStateCopyWithImpl<$Res,
-        _$_CreateArticleFormState>
-    implements _$$_CreateArticleFormStateCopyWith<$Res> {
-  __$$_CreateArticleFormStateCopyWithImpl(_$_CreateArticleFormState _value,
-      $Res Function(_$_CreateArticleFormState) _then)
+class __$$_ArticleFormStateCopyWithImpl<$Res>
+    extends _$ArticleFormStateCopyWithImpl<$Res, _$_ArticleFormState>
+    implements _$$_ArticleFormStateCopyWith<$Res> {
+  __$$_ArticleFormStateCopyWithImpl(
+      _$_ArticleFormState _value, $Res Function(_$_ArticleFormState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1326,7 +1323,7 @@ class __$$_CreateArticleFormStateCopyWithImpl<$Res>
     Object? thumbnailFile = freezed,
     Object? categoryList = null,
   }) {
-    return _then(_$_CreateArticleFormState(
+    return _then(_$_ArticleFormState(
       state: null == state
           ? _value.state
           : state // ignore: cast_nullable_to_non_nullable
@@ -1365,8 +1362,8 @@ class __$$_CreateArticleFormStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_CreateArticleFormState implements _CreateArticleFormState {
-  const _$_CreateArticleFormState(
+class _$_ArticleFormState implements _ArticleFormState {
+  const _$_ArticleFormState(
       {required this.state,
       required this.message,
       required this.isSubmitting,
@@ -1401,14 +1398,14 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
 
   @override
   String toString() {
-    return 'CreateArticleFormState(state: $state, message: $message, isSubmitting: $isSubmitting, title: $title, content: $content, imageUrl: $imageUrl, thumbnailFile: $thumbnailFile, categoryList: $categoryList)';
+    return 'ArticleFormState(state: $state, message: $message, isSubmitting: $isSubmitting, title: $title, content: $content, imageUrl: $imageUrl, thumbnailFile: $thumbnailFile, categoryList: $categoryList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_CreateArticleFormState &&
+            other is _$_ArticleFormState &&
             (identical(other.state, state) || other.state == state) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.isSubmitting, isSubmitting) ||
@@ -1438,22 +1435,20 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_CreateArticleFormStateCopyWith<_$_CreateArticleFormState> get copyWith =>
-      __$$_CreateArticleFormStateCopyWithImpl<_$_CreateArticleFormState>(
-          this, _$identity);
+  _$$_ArticleFormStateCopyWith<_$_ArticleFormState> get copyWith =>
+      __$$_ArticleFormStateCopyWithImpl<_$_ArticleFormState>(this, _$identity);
 }
 
-abstract class _CreateArticleFormState implements CreateArticleFormState {
-  const factory _CreateArticleFormState(
-          {required final RequestState state,
-          required final String message,
-          required final bool isSubmitting,
-          required final String title,
-          required final String content,
-          required final String imageUrl,
-          required final File? thumbnailFile,
-          required final List<CheckBoxState> categoryList}) =
-      _$_CreateArticleFormState;
+abstract class _ArticleFormState implements ArticleFormState {
+  const factory _ArticleFormState(
+      {required final RequestState state,
+      required final String message,
+      required final bool isSubmitting,
+      required final String title,
+      required final String content,
+      required final String imageUrl,
+      required final File? thumbnailFile,
+      required final List<CheckBoxState> categoryList}) = _$_ArticleFormState;
 
   @override
   RequestState get state;
@@ -1473,6 +1468,6 @@ abstract class _CreateArticleFormState implements CreateArticleFormState {
   List<CheckBoxState> get categoryList;
   @override
   @JsonKey(ignore: true)
-  _$$_CreateArticleFormStateCopyWith<_$_CreateArticleFormState> get copyWith =>
+  _$$_ArticleFormStateCopyWith<_$_ArticleFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }

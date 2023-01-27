@@ -5,7 +5,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
@@ -102,8 +102,8 @@ class MenuPage extends StatelessWidget {
                   loaded: (state) {
                     return ElevatedButtonWidget(
                       onTap: () {
-                        context.read<CreateArticleFormBloc>().add(
-                              const CreateArticleFormEvent.initial(),
+                        context.read<ArticleFormBloc>().add(
+                              const ArticleFormEvent.initial(),
                             );
                         Navigator.pushNamed(context, ARTICLE_FORM);
                       },

@@ -37,8 +37,8 @@ import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
@@ -258,9 +258,9 @@ void init() {
     () => articleLikeWatcherBloc,
   );
 
-  final createArticleFormBloc = CreateArticleFormBloc(locator());
+  final articleFormBloc = ArticleFormBloc(locator());
   locator.registerLazySingleton(
-    () => createArticleFormBloc,
+    () => articleFormBloc,
   );
 
   final deleteCommentActorBloc = DeleteCommentActorBloc(locator());

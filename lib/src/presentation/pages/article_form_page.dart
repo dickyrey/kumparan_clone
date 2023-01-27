@@ -7,7 +7,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -30,7 +30,7 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
   @override
   void initState() {
     super.initState();
-    final state = context.read<CreateArticleFormBloc>().state;
+    final state = context.read<ArticleFormBloc>().state;
     _pageController = PageController(initialPage: _selectedIndex);
     _titleController = TextEditingController(text: state.title);
     // _quillController = quill.QuillController(
@@ -41,14 +41,12 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<CreateArticleFormBloc, CreateArticleFormState>(
+    return BlocListener<ArticleFormBloc, ArticleFormState>(
       listener: (context, state) {
         if (state.state == RequestState.error) {
           showToast(msg: 'Error while uploading article');
         } else if (state.state == RequestState.loaded) {
-          context
-              .read<CreateArticleFormBloc>()
-              .add(const CreateArticleFormEvent.initial());
+          context.read<ArticleFormBloc>().add(const ArticleFormEvent.initial());
           Navigator.pop(context);
           showToast(msg: 'Success upload artikel');
         }
@@ -122,7 +120,7 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
             ),
           ),
           const Spacer(),
-          BlocBuilder<CreateArticleFormBloc, CreateArticleFormState>(
+          BlocBuilder<ArticleFormBloc, ArticleFormState>(
             builder: (context, state) {
               return ElevatedButtonWidget(
                 onTap: () {
@@ -140,13 +138,13 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
                       List.castFrom(content),
                       ConverterOptions.forEmail(),
                     );
-                    context.read<CreateArticleFormBloc>().add(
-                          CreateArticleFormEvent.contentOnChanged(
+                    context.read<ArticleFormBloc>().add(
+                          ArticleFormEvent.contentOnChanged(
                             converter.convert(),
                           ),
                         );
-                    context.read<CreateArticleFormBloc>().add(
-                          const CreateArticleFormEvent.createArticlePressed(),
+                    context.read<ArticleFormBloc>().add(
+                          const ArticleFormEvent.createArticlePressed(),
                         );
                   }
                 },
@@ -177,7 +175,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return BlocBuilder<CreateArticleFormBloc, CreateArticleFormState>(
+    return BlocBuilder<ArticleFormBloc, ArticleFormState>(
       builder: (context, state) {
         return SingleChildScrollView(
           padding: const EdgeInsets.symmetric(horizontal: Const.margin),
@@ -193,8 +191,8 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
               InkWell(
                 borderRadius: BorderRadius.circular(Const.radius),
                 onTap: () {
-                  context.read<CreateArticleFormBloc>().add(
-                        const CreateArticleFormEvent.pickImage(
+                  context.read<ArticleFormBloc>().add(
+                        const ArticleFormEvent.pickImage(
                           ImageSource.gallery,
                         ),
                       );
@@ -233,8 +231,8 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
                 hintText: 'Tulis judul di sini',
                 onChanged: (v) {
                   context
-                      .read<CreateArticleFormBloc>()
-                      .add(CreateArticleFormEvent.titleOnChanged(v));
+                      .read<ArticleFormBloc>()
+                      .add(ArticleFormEvent.titleOnChanged(v));
                 },
               ),
               const SizedBox(height: Const.space15),
