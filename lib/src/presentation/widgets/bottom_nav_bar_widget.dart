@@ -81,10 +81,10 @@ class _ButtonNavBarWidgetState extends State<ButtonNavBarWidget> {
           }),
           type: BottomNavigationBarType.fixed,
           iconSize: 20,
-          selectedLabelStyle: theme.textTheme.bodyText2?.copyWith(
+          selectedLabelStyle: theme.textTheme.bodyMedium?.copyWith(
             fontSize: 9,
           ),
-          unselectedLabelStyle: theme.textTheme.subtitle2?.copyWith(
+          unselectedLabelStyle: theme.textTheme.titleMedium?.copyWith(
             fontSize: 9,
           ),
           items: [

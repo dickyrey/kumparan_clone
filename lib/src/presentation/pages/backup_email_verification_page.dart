@@ -32,13 +32,13 @@ class BackupEmailVerificationPage extends StatelessWidget {
             const SizedBox(height: Const.space25),
             Text(
               lang.email_verification,
-              style: theme.textTheme.headline3,
+              style: theme.textTheme.headlineSmall,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: Const.space12),
             Text(
               '${lang.please_click_the_verification_link_that_was_sent_to} $email',
-              style: theme.textTheme.bodyText2,
+              style: theme.textTheme.bodyMedium,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: Const.space25),
@@ -65,7 +65,7 @@ class BackupEmailVerificationPage extends StatelessWidget {
                         (state.isTimeoutDone)
                             ? lang.resend_the_verification_link
                             : '${lang.resend_in} ',
-                        style: theme.textTheme.button,
+                        style: theme.textTheme.headlineSmall,
                       ),
                       Countdown(
                         seconds: countdownTime,
@@ -74,8 +74,8 @@ class BackupEmailVerificationPage extends StatelessWidget {
                           return Text(
                             (state.isTimeoutDone == true)
                                 ? ''
-                                : '0:${timer.toInt().toString()}',
-                            style: theme.textTheme.button,
+                                : '0:${timer.toInt()}',
+                            style: theme.textTheme.labelMedium,
                           );
                         },
                         onFinished: () => context
@@ -99,7 +99,7 @@ class BackupEmailVerificationPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pushNamedAndRemoveUntil(
@@ -114,7 +114,7 @@ class BackupEmailVerificationPage extends StatelessWidget {
       ),
       title: Text(
         lang.add_email,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

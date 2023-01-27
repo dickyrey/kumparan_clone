@@ -59,7 +59,7 @@ class ElevatedButtonWidget extends StatelessWidget {
                   const SizedBox(width: 12),
                   Text(
                     labelLoading ?? '',
-                    style: theme.textTheme.button,
+                    style: theme.textTheme.labelMedium,
                   )
                 ],
               )
@@ -67,7 +67,7 @@ class ElevatedButtonWidget extends StatelessWidget {
                 ? child
                 : Text(
                     label ?? '',
-                    style: theme.textTheme.button?.copyWith(
+                    style: theme.textTheme.labelMedium?.copyWith(
                       fontSize: labelSize,
                       color: textColor,
                     ),

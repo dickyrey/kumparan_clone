@@ -49,7 +49,7 @@ class MyContentPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
         icon: Icon(
@@ -59,10 +59,10 @@ class MyContentPage extends StatelessWidget {
       ),
       title: Text(
         lang.my_content,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
       bottom: TabBar(
-        labelStyle: theme.textTheme.headline4,
+        labelStyle: theme.textTheme.headlineSmall,
         labelColor: ColorLight.fontTitle,
         unselectedLabelColor: ColorLight.fontSubtitle,
         isScrollable: true,

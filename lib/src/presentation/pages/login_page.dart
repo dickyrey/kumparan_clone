@@ -65,7 +65,7 @@ class LoginPage extends StatelessWidget {
                       ),
                       child: Text(
                         lang.login_first_so_you_can_comment_create_content_subscribe_to_kumparanplus_and_set_notifications_for_your_favorite_content_come_on,
-                        style: theme.textTheme.bodyText2,
+                        style: theme.textTheme.bodyMedium,
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -123,7 +123,7 @@ class LoginPage extends StatelessWidget {
                           ),
                           child: Text(
                             lang.forgot_password,
-                            style: theme.textTheme.headline4?.copyWith(
+                            style: theme.textTheme.headlineSmall?.copyWith(
                               color: theme.primaryColor,
                             ),
                           ),
@@ -170,7 +170,7 @@ class LoginPage extends StatelessWidget {
                     const SizedBox(height: Const.space25),
                     Text(
                       lang.or_use,
-                      style: theme.textTheme.subtitle1,
+                      style: theme.textTheme.titleLarge,
                       textAlign: TextAlign.center,
                     ),
                     const SizedBox(height: Const.space25),
@@ -180,7 +180,8 @@ class LoginPage extends StatelessWidget {
                       customIcon: CustomIcons.google,
                       onTap: () {
                         context.read<SignInWithGoogleActorBloc>().add(
-                            const SignInWithGoogleActorEvent.googleSignIn());
+                              const SignInWithGoogleActorEvent.googleSignIn(),
+                            );
                       },
                     ),
                     // const SizedBox(height: Const.space15),
@@ -189,7 +190,7 @@ class LoginPage extends StatelessWidget {
                     //   label: lang.facebook,
                     //   customIcon: CustomIcons.facebook,
                     //   onTap: () {
-                    //     // TODO(dickyrey): Facebook Sign In (optional)
+                    // TODO(dickyrey): Facebook Sign In (optional)
                     //   },
                     // ),
                     const SizedBox(height: Const.space15),
@@ -198,7 +199,7 @@ class LoginPage extends StatelessWidget {
                     //   label: lang.phone_number,
                     //   icon: FeatherIcons.smartphone,
                     //   onTap: () {
-                    //     // TODO(dickyrey): Sign in with Phone Number
+                    // TODO(dickyrey): Sign in with Phone Number
                     //   },
                     // ),
                     // const SizedBox(height: Const.space15),
@@ -212,11 +213,11 @@ class LoginPage extends StatelessWidget {
                           children: [
                             TextSpan(
                               text: '${lang.dont_have_an_account_yet} ',
-                              style: theme.textTheme.subtitle1,
+                              style: theme.textTheme.titleLarge,
                             ),
                             TextSpan(
                               text: lang.register_now,
-                              style: theme.textTheme.subtitle1?.copyWith(
+                              style: theme.textTheme.titleLarge?.copyWith(
                                 color: theme.primaryColor,
                               ),
                             ),
@@ -229,7 +230,7 @@ class LoginPage extends StatelessWidget {
                       child: RichText(
                         textAlign: TextAlign.center,
                         text: TextSpan(
-                          style: theme.textTheme.bodyText2?.copyWith(
+                          style: theme.textTheme.bodyMedium?.copyWith(
                             fontSize: 12,
                           ),
                           children: [
@@ -239,7 +240,7 @@ class LoginPage extends StatelessWidget {
                             ),
                             TextSpan(
                               text: '${lang.terms_and_privacy_policy} ',
-                              style: theme.textTheme.subtitle1?.copyWith(
+                              style: theme.textTheme.titleLarge?.copyWith(
                                 color: theme.primaryColor,
                                 fontSize: 12,
                               ),
@@ -277,7 +278,7 @@ class LoginPage extends StatelessWidget {
 
     return ElevatedButtonWidget(
       onTap: onTap,
-      color: theme.backgroundColor,
+      color: theme.colorScheme.background,
       margin: const EdgeInsets.symmetric(horizontal: Const.margin),
       elevation: 1,
       child: Row(
@@ -297,7 +298,7 @@ class LoginPage extends StatelessWidget {
           const SizedBox(width: Const.space15),
           Text(
             label,
-            style: theme.textTheme.headline3,
+            style: theme.textTheme.headlineSmall,
           )
         ],
       ),
@@ -309,7 +310,7 @@ class LoginPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -320,7 +321,7 @@ class LoginPage extends StatelessWidget {
       ),
       title: Text(
         lang.login,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

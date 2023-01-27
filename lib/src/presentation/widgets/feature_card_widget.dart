@@ -42,7 +42,7 @@ class FeatureCardWidget extends StatelessWidget {
               Expanded(
                 child: Text(
                   label,
-                  style: theme.textTheme.headline1?.copyWith(
+                  style: theme.textTheme.headlineLarge?.copyWith(
                     color: Colors.white,
                     fontSize: 10,
                   ),

@@ -46,7 +46,7 @@ class OutlinedButtonWidget extends StatelessWidget {
         onPressed: (isLoading == true) ? () {} : onTap,
         child: Text(
           label,
-          style: theme.textTheme.bodyText2?.copyWith(
+          style: theme.textTheme.bodyMedium?.copyWith(
             color: (labelColor == null) ? theme.primaryColor : labelColor,
           ),
         ),

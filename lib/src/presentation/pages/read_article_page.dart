@@ -62,18 +62,18 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                   const SizedBox(height: Const.space25),
                   Text(
                     'NEWS',
-                    style: theme.textTheme.headline4
+                    style: theme.textTheme.headlineSmall
                         ?.copyWith(color: theme.primaryColor),
                   ),
                   const SizedBox(height: Const.space8),
                   Text(
                     widget.article.title,
-                    style: theme.textTheme.headline1,
+                    style: theme.textTheme.headlineLarge,
                   ),
                   const SizedBox(height: Const.space12),
                   Text(
                     '${DateFormat.yMMMMEEEEd().format(widget.article.createdAt)} - waktu baca 2 menit',
-                    style: theme.textTheme.subtitle2,
+                    style: theme.textTheme.titleMedium,
                   ),
                   const SizedBox(height: Const.space15),
                   BlocBuilder<ArticleDetailWatcherBloc,
@@ -103,7 +103,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
             child: Container(
               width: Screens.width(context),
               height: 70,
-              color: theme.backgroundColor,
+              color: theme.colorScheme.background,
               padding: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Row(
                 children: [
@@ -209,7 +209,7 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
     final theme = Theme.of(context);
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -320,7 +320,7 @@ class _CommentDialogState extends State<CommentDialog> {
                 children: [
                   Text(
                     lang.comments,
-                    style: theme.textTheme.headline4,
+                    style: theme.textTheme.headlineSmall,
                   ),
                   InkWell(
                     onTap: () {
@@ -372,7 +372,7 @@ class _CommentDialogState extends State<CommentDialog> {
               child: Container(
                 width: Screens.width(context),
                 height: 70,
-                color: theme.backgroundColor,
+                color: theme.colorScheme.background,
                 padding: const EdgeInsets.only(left: Const.margin),
                 child: Row(
                   children: [

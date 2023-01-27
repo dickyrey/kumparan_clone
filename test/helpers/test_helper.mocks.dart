@@ -189,7 +189,7 @@ class MockArticleDataSource extends _i1.Mock implements _i6.ArticleDataSource {
         returnValue: _i7.Future<bool>.value(false),
       ) as _i7.Future<bool>);
   @override
-  _i7.Future<void> createArticle({
+  _i7.Future<bool> createArticle({
     required String? title,
     required String? content,
     required _i10.File? thumbnail,
@@ -206,9 +206,8 @@ class MockArticleDataSource extends _i1.Mock implements _i6.ArticleDataSource {
             #categories: categories,
           },
         ),
-        returnValue: _i7.Future<void>.value(),
-        returnValueForMissingStub: _i7.Future<void>.value(),
-      ) as _i7.Future<void>);
+        returnValue: _i7.Future<bool>.value(false),
+      ) as _i7.Future<bool>);
 }
 
 /// A class which mocks [AuthDataSource].
@@ -340,21 +339,21 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
         )),
       ) as _i7.Future<_i4.Either<_i14.Failure, bool>>);
   @override
-  _i7.Future<_i4.Either<_i14.Failure, void>> likeArticle(String? id) =>
+  _i7.Future<_i4.Either<_i14.Failure, bool>> likeArticle(String? id) =>
       (super.noSuchMethod(
         Invocation.method(
           #likeArticle,
           [id],
         ),
-        returnValue: _i7.Future<_i4.Either<_i14.Failure, void>>.value(
-            _FakeEither_2<_i14.Failure, void>(
+        returnValue: _i7.Future<_i4.Either<_i14.Failure, bool>>.value(
+            _FakeEither_2<_i14.Failure, bool>(
           this,
           Invocation.method(
             #likeArticle,
             [id],
           ),
         )),
-      ) as _i7.Future<_i4.Either<_i14.Failure, void>>);
+      ) as _i7.Future<_i4.Either<_i14.Failure, bool>>);
   @override
   _i7.Future<_i4.Either<_i14.Failure, List<_i17.Comment>>> getCommentList(
           String? id) =>
@@ -374,7 +373,7 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
         )),
       ) as _i7.Future<_i4.Either<_i14.Failure, List<_i17.Comment>>>);
   @override
-  _i7.Future<_i4.Either<_i14.Failure, void>> sendComment({
+  _i7.Future<_i4.Either<_i14.Failure, bool>> sendComment({
     required String? id,
     required String? comment,
   }) =>
@@ -387,8 +386,8 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
             #comment: comment,
           },
         ),
-        returnValue: _i7.Future<_i4.Either<_i14.Failure, void>>.value(
-            _FakeEither_2<_i14.Failure, void>(
+        returnValue: _i7.Future<_i4.Either<_i14.Failure, bool>>.value(
+            _FakeEither_2<_i14.Failure, bool>(
           this,
           Invocation.method(
             #sendComment,
@@ -399,9 +398,9 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
             },
           ),
         )),
-      ) as _i7.Future<_i4.Either<_i14.Failure, void>>);
+      ) as _i7.Future<_i4.Either<_i14.Failure, bool>>);
   @override
-  _i7.Future<_i4.Either<_i14.Failure, void>> deleteComment({
+  _i7.Future<_i4.Either<_i14.Failure, bool>> deleteComment({
     required String? id,
     required int? userId,
   }) =>
@@ -414,8 +413,8 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
             #userId: userId,
           },
         ),
-        returnValue: _i7.Future<_i4.Either<_i14.Failure, void>>.value(
-            _FakeEither_2<_i14.Failure, void>(
+        returnValue: _i7.Future<_i4.Either<_i14.Failure, bool>>.value(
+            _FakeEither_2<_i14.Failure, bool>(
           this,
           Invocation.method(
             #deleteComment,
@@ -426,9 +425,9 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
             },
           ),
         )),
-      ) as _i7.Future<_i4.Either<_i14.Failure, void>>);
+      ) as _i7.Future<_i4.Either<_i14.Failure, bool>>);
   @override
-  _i7.Future<_i4.Either<_i14.Failure, void>> createArticle({
+  _i7.Future<_i4.Either<_i14.Failure, bool>> createArticle({
     required String? title,
     required String? content,
     required _i10.File? thumbnail,
@@ -445,8 +444,8 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
             #categories: categories,
           },
         ),
-        returnValue: _i7.Future<_i4.Either<_i14.Failure, void>>.value(
-            _FakeEither_2<_i14.Failure, void>(
+        returnValue: _i7.Future<_i4.Either<_i14.Failure, bool>>.value(
+            _FakeEither_2<_i14.Failure, bool>(
           this,
           Invocation.method(
             #createArticle,
@@ -459,7 +458,7 @@ class MockArticleRepository extends _i1.Mock implements _i13.ArticleRepository {
             },
           ),
         )),
-      ) as _i7.Future<_i4.Either<_i14.Failure, void>>);
+      ) as _i7.Future<_i4.Either<_i14.Failure, bool>>);
 }
 
 /// A class which mocks [AuthRepository].

@@ -61,7 +61,7 @@ class _HomePageState extends State<HomePage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       leading: SvgPicture.asset(CustomIcons.duolingo),
       title: InkWell(
         onTap: () {
@@ -85,7 +85,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottom: TabBar(
-        labelStyle: theme.textTheme.headline4,
+        labelStyle: theme.textTheme.headlineSmall,
         labelColor: ColorLight.fontTitle,
         unselectedLabelColor: ColorLight.fontTitle,
         isScrollable: true,
@@ -293,7 +293,7 @@ class ForYouTab extends StatelessWidget {
                             children: [
                               Text(
                                 lang.see_more,
-                                style: theme.textTheme.bodyText1?.copyWith(
+                                style: theme.textTheme.bodyLarge?.copyWith(
                                   color: theme.primaryColor,
                                 ),
                               ),
@@ -487,7 +487,7 @@ class CategoryTab extends StatelessWidget {
                             children: [
                               Text(
                                 lang.see_more,
-                                style: theme.textTheme.bodyText1?.copyWith(
+                                style: theme.textTheme.bodyLarge?.copyWith(
                                   color: theme.primaryColor,
                                 ),
                               ),

@@ -32,7 +32,7 @@ class EmailVerificationPage extends StatelessWidget {
             const SizedBox(height: Const.space25),
             Text(
               '${lang.a_verification_link_will_be_sent_to} $mockEmail, ${lang.immediately_activate_the_account_before} $mockDate',
-              style: theme.textTheme.subtitle1,
+              style: theme.textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: Const.space25),
@@ -59,7 +59,7 @@ class EmailVerificationPage extends StatelessWidget {
                         (state.isTimeoutDone)
                             ? lang.resend_the_verification_link
                             : '${lang.resend_in} ',
-                        style: theme.textTheme.button,
+                        style: theme.textTheme.labelMedium,
                       ),
                       Countdown(
                         seconds: countdownTime,
@@ -68,8 +68,8 @@ class EmailVerificationPage extends StatelessWidget {
                           return Text(
                             (state.isTimeoutDone == true)
                                 ? ''
-                                : '0:${timer.toInt().toString()}',
-                            style: theme.textTheme.button,
+                                : '0:${timer.toInt()}',
+                            style: theme.textTheme.labelMedium,
                           );
                         },
                         onFinished: () => context
@@ -84,7 +84,7 @@ class EmailVerificationPage extends StatelessWidget {
             const SizedBox(height: Const.space50),
             Text(
               lang.havent_received_the_verification_email_yet,
-              style: theme.textTheme.subtitle1,
+              style: theme.textTheme.titleLarge,
               textAlign: TextAlign.center,
             ),
             TextButton(
@@ -93,7 +93,7 @@ class EmailVerificationPage extends StatelessWidget {
               },
               child: Text(
                 lang.contact_us,
-                style: theme.textTheme.headline4?.copyWith(
+                style: theme.textTheme.headlineSmall?.copyWith(
                   color: theme.primaryColor,
                 ),
               ),
@@ -110,7 +110,7 @@ class EmailVerificationPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -121,7 +121,7 @@ class EmailVerificationPage extends StatelessWidget {
       ),
       title: Text(
         lang.verification,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

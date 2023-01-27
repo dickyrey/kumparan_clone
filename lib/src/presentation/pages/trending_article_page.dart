@@ -35,7 +35,7 @@ class TrendingArticlePage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
         icon: Icon(
@@ -45,10 +45,10 @@ class TrendingArticlePage extends StatelessWidget {
       ),
       title: Text(
         lang.trending,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
       bottom: TabBar(
-        labelStyle: theme.textTheme.headline4,
+        labelStyle: theme.textTheme.headlineSmall,
         labelColor: ColorLight.fontTitle,
         unselectedLabelColor: ColorLight.fontTitle,
         isScrollable: true,

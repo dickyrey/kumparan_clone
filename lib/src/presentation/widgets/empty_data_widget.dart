@@ -41,7 +41,7 @@ class EmptyDataWidget extends StatelessWidget {
           Text(
             label,
             textAlign: TextAlign.center,
-            style: theme.textTheme.headline3,
+            style: theme.textTheme.headlineSmall,
           ),
           const SizedBox(height: Const.space25),
           if (useButton == true)

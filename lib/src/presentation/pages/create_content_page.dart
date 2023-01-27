@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -7,10 +6,8 @@ import 'package:flutter_quill/flutter_quill.dart' as quill;
 import 'package:image_picker/image_picker.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
-import 'package:kumparan_clone/src/domain/entities/category.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -37,7 +34,6 @@ class _CreateContentPageState extends State<CreateContentPage> {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
     return BlocListener<CreateArticleFormBloc, CreateArticleFormState>(
       listener: (context, state) {
         if (state.state == RequestState.error) {
@@ -77,7 +73,7 @@ class _CreateContentPageState extends State<CreateContentPage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -183,7 +179,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
               const SizedBox(height: Const.margin),
               Text(
                 'Tambah Poster',
-                style: theme.textTheme.headline3,
+                style: theme.textTheme.headlineSmall,
               ),
               const SizedBox(height: Const.space12),
               InkWell(
@@ -212,7 +208,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
                         ? const SizedBox()
                         : Text(
                             'Upload Thumbnail',
-                            style: theme.textTheme.bodyText1,
+                            style: theme.textTheme.bodyLarge,
                           ),
                   ),
                 ),
@@ -220,7 +216,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
               const SizedBox(height: Const.space15),
               Text(
                 'Buat Judul',
-                style: theme.textTheme.headline3,
+                style: theme.textTheme.headlineSmall,
               ),
               const SizedBox(height: Const.space12),
               TextFormFieldWidget(
@@ -235,7 +231,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
               const SizedBox(height: Const.space15),
               Text(
                 'Pilih Kategori',
-                style: theme.textTheme.headline3,
+                style: theme.textTheme.headlineSmall,
               ),
               const SizedBox(height: Const.space12),
               Wrap(
@@ -261,7 +257,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
         const SizedBox(width: Const.space15),
         Text(
           e.category.name,
-          style: theme.textTheme.bodyText2,
+          style: theme.textTheme.bodyMedium,
         )
       ],
     );

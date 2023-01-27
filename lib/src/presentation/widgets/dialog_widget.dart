@@ -33,7 +33,7 @@ Future<dynamic> showConfirmationDialog(
             children: [
               Text(
                 title,
-                style: theme.textTheme.bodyText1,
+                style: theme.textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 25),

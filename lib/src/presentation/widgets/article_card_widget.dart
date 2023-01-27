@@ -50,7 +50,7 @@ class ArticleCardWidget extends StatelessWidget {
               const SizedBox(height: Const.space12),
               Text(
                 article.title,
-                style: theme.textTheme.headline3?.copyWith(
+                style: theme.textTheme.headlineSmall?.copyWith(
                   height: 1.5,
                 ),
                 maxLines: 2,
@@ -66,7 +66,7 @@ class ArticleCardWidget extends StatelessWidget {
                   const SizedBox(width: Const.space8),
                   Text(
                     article.viewers.toString(),
-                    style: theme.textTheme.subtitle2,
+                    style: theme.textTheme.titleMedium,
                     maxLines: 1,
                   ),
                   const SizedBox(width: Const.space15),
@@ -78,7 +78,7 @@ class ArticleCardWidget extends StatelessWidget {
                   const SizedBox(width: Const.space8),
                   Text(
                     article.likes.toString(),
-                    style: theme.textTheme.subtitle2,
+                    style: theme.textTheme.titleMedium,
                     maxLines: 1,
                   ),
                   const SizedBox(width: Const.space15),
@@ -90,13 +90,13 @@ class ArticleCardWidget extends StatelessWidget {
                   const SizedBox(width: Const.space8),
                   Text(
                     article.comments.toString(),
-                    style: theme.textTheme.subtitle2,
+                    style: theme.textTheme.titleMedium,
                     maxLines: 1,
                   ),
                   const SizedBox(width: Const.space15),
                   Text(
                     timeago.format(article.createdAt),
-                    style: theme.textTheme.subtitle2,
+                    style: theme.textTheme.titleMedium,
                     maxLines: 1,
                   ),
                   const Expanded(child: SizedBox()),
@@ -136,7 +136,7 @@ class ArticleCardWidget extends StatelessWidget {
               if (useRank == true)
                 Text(
                   '${index + 1}.',
-                  style: theme.textTheme.headline3?.copyWith(
+                  style: theme.textTheme.headlineSmall?.copyWith(
                     color: theme.primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
@@ -154,7 +154,7 @@ class ArticleCardWidget extends StatelessWidget {
                   children: [
                     Text(
                       article.title,
-                      style: theme.textTheme.headline3,
+                      style: theme.textTheme.headlineSmall,
                       maxLines: 3,
                     ),
                     const SizedBox(height: Const.space8),
@@ -168,7 +168,7 @@ class ArticleCardWidget extends StatelessWidget {
                         const SizedBox(width: Const.space8 - 3),
                         Text(
                           article.viewers.toString(),
-                          style: theme.textTheme.subtitle2,
+                          style: theme.textTheme.titleMedium,
                           maxLines: 1,
                         ),
                         const SizedBox(width: Const.space12),
@@ -180,7 +180,7 @@ class ArticleCardWidget extends StatelessWidget {
                         const SizedBox(width: Const.space8 - 3),
                         Text(
                           article.likes.toString(),
-                          style: theme.textTheme.subtitle2,
+                          style: theme.textTheme.titleMedium,
                           maxLines: 1,
                         ),
                         const SizedBox(width: Const.space12),
@@ -192,13 +192,13 @@ class ArticleCardWidget extends StatelessWidget {
                         // const SizedBox(width: Const.space8 - 3),
                         // Text(
                         //   article.comments.toString(),
-                        //   style: theme.textTheme.subtitle2,
+                        //   style: theme.textTheme.titleMedium
                         //   maxLines: 1,
                         // ),
                         const SizedBox(width: Const.space12),
                         Text(
                           timeago.format(article.createdAt),
-                          style: theme.textTheme.subtitle2,
+                          style: theme.textTheme.titleMedium,
                           maxLines: 1,
                         ),
                       ],

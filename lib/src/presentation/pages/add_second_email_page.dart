@@ -33,7 +33,7 @@ class AddSecondEmailPage extends StatelessWidget {
                   const SizedBox(height: Const.space25),
                   Text(
                     lang.add_and_verify_email_to_be_able_to_login_with_email,
-                    style: theme.textTheme.bodyText1,
+                    style: theme.textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: Const.space50),
@@ -52,7 +52,7 @@ class AddSecondEmailPage extends StatelessWidget {
                       children: [
                         Text(
                           'vg.troyard@gmail.com',
-                          style: theme.textTheme.bodyText1,
+                          style: theme.textTheme.bodyLarge,
                         ),
                         Icon(
                           FeatherIcons.check,
@@ -115,7 +115,7 @@ class AddSecondEmailPage extends StatelessWidget {
                   children: [
                     Text(
                       lang.change_email,
-                      style: theme.textTheme.headline1,
+                      style: theme.textTheme.headlineLarge,
                     ),
                     IconButton(
                       onPressed: () => Navigator.pop(context),
@@ -130,11 +130,11 @@ class AddSecondEmailPage extends StatelessWidget {
                       TextSpan(
                         text: lang
                             .are_you_sure_you_want_to_change_the_backup_email_to,
-                        style: theme.textTheme.bodyText2,
+                        style: theme.textTheme.bodyMedium,
                       ),
                       TextSpan(
                         text: ' $email?',
-                        style: theme.textTheme.headline4,
+                        style: theme.textTheme.headlineSmall,
                       ),
                     ],
                   ),
@@ -174,7 +174,7 @@ class AddSecondEmailPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -185,7 +185,7 @@ class AddSecondEmailPage extends StatelessWidget {
       ),
       title: Text(
         lang.email,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

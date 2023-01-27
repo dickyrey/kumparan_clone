@@ -58,7 +58,7 @@ class ChangeProfilePage extends StatelessWidget {
                     children: [
                       Text(
                         lang.name,
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.headlineSmall,
                       ),
                       const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
@@ -73,7 +73,7 @@ class ChangeProfilePage extends StatelessWidget {
                       const SizedBox(height: Const.space12),
                       Text(
                         lang.biography,
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.headlineSmall,
                       ),
                       const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
@@ -90,7 +90,7 @@ class ChangeProfilePage extends StatelessWidget {
                       const SizedBox(height: Const.space12),
                       Text(
                         lang.website_or_social_media,
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.headlineSmall,
                       ),
                       const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
@@ -104,11 +104,11 @@ class ChangeProfilePage extends StatelessWidget {
                       const SizedBox(height: Const.space12),
                       Text(
                         lang.gender,
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.headlineSmall,
                       ),
                       Text(
                         lang.not_shown_on_your_profile,
-                        style: theme.textTheme.subtitle2,
+                        style: theme.textTheme.titleMedium,
                       ),
                       const SizedBox(height: Const.space8),
                       Row(
@@ -125,7 +125,7 @@ class ChangeProfilePage extends StatelessWidget {
                           const SizedBox(width: Const.space12),
                           Text(
                             lang.male,
-                            style: theme.textTheme.bodyText2,
+                            style: theme.textTheme.bodyMedium,
                           ),
                           const SizedBox(width: Const.space15),
                           Radio(
@@ -140,18 +140,18 @@ class ChangeProfilePage extends StatelessWidget {
                           const SizedBox(width: Const.space12),
                           Text(
                             lang.female,
-                            style: theme.textTheme.bodyText2,
+                            style: theme.textTheme.bodyMedium,
                           ),
                         ],
                       ),
                       const SizedBox(height: Const.space12),
                       Text(
                         lang.date_of_birth,
-                        style: theme.textTheme.headline3,
+                        style: theme.textTheme.headlineSmall,
                       ),
                       Text(
                         lang.not_shown_on_your_profile,
-                        style: theme.textTheme.subtitle2,
+                        style: theme.textTheme.titleMedium,
                       ),
                       const SizedBox(height: Const.space8),
                       InkWell(
@@ -174,7 +174,7 @@ class ChangeProfilePage extends StatelessWidget {
                             (state.birthdate.isNotEmpty)
                                 ? state.birthdate
                                 : lang.example_date,
-                            style: theme.textTheme.subtitle1?.copyWith(
+                            style: theme.textTheme.titleLarge?.copyWith(
                               color: (state.birthdate.isNotEmpty)
                                   ? ColorLight.fontTitle
                                   : ColorLight.fontSubtitle,
@@ -301,7 +301,7 @@ class ChangeProfilePage extends StatelessWidget {
                   children: [
                     Text(
                       lang.upload_image,
-                      style: theme.textTheme.headline1,
+                      style: theme.textTheme.headlineLarge,
                     ),
                     IconButton(
                       onPressed: () => Navigator.pop(context),
@@ -329,7 +329,7 @@ class ChangeProfilePage extends StatelessWidget {
                   },
                   child: Text(
                     '${lang.take_photo}...',
-                    style: theme.textTheme.bodyText2,
+                    style: theme.textTheme.bodyMedium,
                   ),
                 ),
                 TextButton(
@@ -351,7 +351,7 @@ class ChangeProfilePage extends StatelessWidget {
                   },
                   child: Text(
                     '${lang.choose_from_library}...',
-                    style: theme.textTheme.bodyText2,
+                    style: theme.textTheme.bodyMedium,
                   ),
                 ),
               ],
@@ -367,7 +367,7 @@ class ChangeProfilePage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -378,7 +378,7 @@ class ChangeProfilePage extends StatelessWidget {
       ),
       title: Text(
         lang.change_profile,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

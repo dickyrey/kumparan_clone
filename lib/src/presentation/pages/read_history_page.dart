@@ -57,7 +57,7 @@ class ReadHistoryPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -68,7 +68,7 @@ class ReadHistoryPage extends StatelessWidget {
       ),
       title: Text(
         lang.read_history,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

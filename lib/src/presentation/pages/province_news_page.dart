@@ -61,7 +61,7 @@ class ProvinceNewsPage extends StatelessWidget {
     final theme = Theme.of(context);
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
         icon: Icon(
@@ -71,7 +71,7 @@ class ProvinceNewsPage extends StatelessWidget {
       ),
       title: Text(
         title,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

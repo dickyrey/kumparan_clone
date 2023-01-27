@@ -33,7 +33,7 @@ class ForgotPasswordPage extends StatelessWidget {
               const SizedBox(height: Const.space25),
               Text(
                 lang.enter_your_email_to_change_the_password,
-                style: theme.textTheme.bodyText2,
+                style: theme.textTheme.bodyMedium,
               ),
               const SizedBox(height: Const.space25),
               Padding(
@@ -79,7 +79,7 @@ class ForgotPasswordPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -90,7 +90,7 @@ class ForgotPasswordPage extends StatelessWidget {
       ),
       title: Text(
         lang.login,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }
@@ -123,7 +123,7 @@ class ForgotPasswordPage extends StatelessWidget {
           ],
           content: Text(
             text,
-            style: theme.textTheme.bodyText2,
+            style: theme.textTheme.bodyMedium,
           ),
         );
       },

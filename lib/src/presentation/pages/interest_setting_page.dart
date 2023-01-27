@@ -40,7 +40,7 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
                 const SizedBox(height: Const.space25),
                 Text(
                   lang.set_notifications_to_get_content_from_your_favorite_channels,
-                  style: theme.textTheme.bodyText1,
+                  style: theme.textTheme.bodyLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: Const.space25),
@@ -65,7 +65,7 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
                         children: [
                           Text(
                             category.category.name,
-                            style: theme.textTheme.headline3,
+                            style: theme.textTheme.headlineSmall,
                           ),
                           Switch(
                             value: category.value,
@@ -95,7 +95,7 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -106,7 +106,7 @@ class _InterestSettingPageState extends State<InterestSettingPage> {
       ),
       title: Text(
         lang.notification_setting,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

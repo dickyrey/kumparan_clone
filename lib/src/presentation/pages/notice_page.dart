@@ -75,23 +75,23 @@ class _NoticePageState extends State<NoticePage> {
                         Expanded(
                           child: RichText(
                             text: TextSpan(
-                              style: theme.textTheme.bodyText2,
+                              style: theme.textTheme.bodyMedium,
                               children: [
                                 TextSpan(
                                   text: data.creatorName,
-                                  style: theme.textTheme.headline3,
+                                  style: theme.textTheme.headlineSmall,
                                 ),
                                 TextSpan(
                                   text: ' ${lang.publish_a_content} ',
-                                  style: theme.textTheme.bodyText2,
+                                  style: theme.textTheme.bodyMedium,
                                 ),
                                 TextSpan(
                                   text: data.title,
-                                  style: theme.textTheme.headline3,
+                                  style: theme.textTheme.headlineSmall,
                                 ),
                                 TextSpan(
                                   text: '\n${timeago.format(data.createdAt)}',
-                                  style: theme.textTheme.subtitle2,
+                                  style: theme.textTheme.titleMedium,
                                 ),
                               ],
                             ),
@@ -114,11 +114,11 @@ class _NoticePageState extends State<NoticePage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       title: Text(
         lang.notification,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
       actions: [
         IconButton(

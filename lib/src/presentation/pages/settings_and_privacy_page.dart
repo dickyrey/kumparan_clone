@@ -83,7 +83,7 @@ class SettingsAndPrivacyPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -94,7 +94,7 @@ class SettingsAndPrivacyPage extends StatelessWidget {
       ),
       title: Text(
         lang.settings_and_privacy,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

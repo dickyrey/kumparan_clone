@@ -46,13 +46,13 @@ class ListTileWidget extends StatelessWidget {
                 children: [
                   Text(
                     title,
-                    style: theme.textTheme.bodyText2?.copyWith(
+                    style: theme.textTheme.bodyMedium?.copyWith(
                       fontSize: fontSize,
                     ),
                   ),
                   const SizedBox(height: 5),
                   if (subtitle != null)
-                    Text(subtitle!, style: theme.textTheme.subtitle2)
+                    Text(subtitle!, style: theme.textTheme.titleSmall)
                   else
                     const SizedBox(),
                 ],

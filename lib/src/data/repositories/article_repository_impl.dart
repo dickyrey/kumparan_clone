@@ -58,7 +58,7 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, void>> likeArticle(String id) async {
+  Future<Either<Failure, bool>> likeArticle(String id) async {
     try {
       final result = await dataSource.likeArticle(id);
       return Right(result);
@@ -86,8 +86,10 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, void>> sendComment(
-      {required String id, required String comment}) async {
+  Future<Either<Failure, bool>> sendComment({
+    required String id,
+    required String comment,
+  }) async {
     try {
       final result = await dataSource.sendComment(id: id, comment: comment);
       return Right(result);
@@ -101,8 +103,10 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, void>> deleteComment(
-      {required String id, required int userId}) async {
+  Future<Either<Failure, bool>> deleteComment({
+    required String id,
+    required int userId,
+  }) async {
     try {
       final result = await dataSource.deleteComment(id: id, userId: userId);
       return Right(result);
@@ -116,7 +120,7 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, void>> createArticle({
+  Future<Either<Failure, bool>> createArticle({
     required String title,
     required String content,
     required File thumbnail,

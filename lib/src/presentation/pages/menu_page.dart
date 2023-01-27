@@ -59,12 +59,12 @@ class MenuPage extends StatelessWidget {
                               children: [
                                 Text(
                                   state.user.name,
-                                  style: theme.textTheme.headline3,
+                                  style: theme.textTheme.headlineSmall,
                                   maxLines: 1,
                                 ),
                                 Text(
                                   state.user.email,
-                                  style: theme.textTheme.subtitle1,
+                                  style: theme.textTheme.titleLarge,
                                   maxLines: 1,
                                 ),
                                 InkWell(
@@ -76,7 +76,7 @@ class MenuPage extends StatelessWidget {
                                   },
                                   child: Text(
                                     lang.change_profile,
-                                    style: theme.textTheme.subtitle1?.copyWith(
+                                    style: theme.textTheme.titleLarge?.copyWith(
                                       color: theme.primaryColor,
                                     ),
                                   ),
@@ -120,7 +120,7 @@ class MenuPage extends StatelessWidget {
                           const SizedBox(width: Const.space12),
                           Text(
                             lang.write_an_article,
-                            style: theme.textTheme.button,
+                            style: theme.textTheme.labelMedium,
                           )
                         ],
                       ),
@@ -308,7 +308,7 @@ class MenuPage extends StatelessWidget {
             ExpansionTile(
               title: Text(
                 lang.about_kumparan,
-                style: theme.textTheme.bodyText2,
+                style: theme.textTheme.bodyMedium,
               ),
               children: [
                 ListTileWidget(
@@ -394,10 +394,10 @@ class MenuPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       title: Text(
         lang.menu,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

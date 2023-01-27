@@ -56,7 +56,7 @@ class RegisterPage extends StatelessWidget {
                   ),
                   child: Text(
                     lang.register_first_so_you_can_comment_create_content_subscribe_to_kumparanplus_and_set_notifications_for_your_favorite_content_come_on,
-                    style: theme.textTheme.bodyText2,
+                    style: theme.textTheme.bodyMedium,
                     textAlign: TextAlign.center,
                   ),
                 ),
@@ -95,7 +95,7 @@ class RegisterPage extends StatelessWidget {
                 const SizedBox(height: Const.space25),
                 Text(
                   lang.or_use,
-                  style: theme.textTheme.subtitle1,
+                  style: theme.textTheme.titleLarge,
                   textAlign: TextAlign.center,
                 ),
                 const SizedBox(height: Const.space25),
@@ -136,11 +136,11 @@ class RegisterPage extends StatelessWidget {
                       children: [
                         TextSpan(
                           text: '${lang.already_have_an_account} ',
-                          style: theme.textTheme.subtitle1,
+                          style: theme.textTheme.titleLarge,
                         ),
                         TextSpan(
                           text: lang.login,
-                          style: theme.textTheme.subtitle1?.copyWith(
+                          style: theme.textTheme.titleLarge?.copyWith(
                             color: theme.primaryColor,
                           ),
                         ),
@@ -153,7 +153,7 @@ class RegisterPage extends StatelessWidget {
                   child: RichText(
                     textAlign: TextAlign.center,
                     text: TextSpan(
-                      style: theme.textTheme.bodyText2?.copyWith(
+                      style: theme.textTheme.bodyMedium?.copyWith(
                         fontSize: 12,
                       ),
                       children: [
@@ -163,7 +163,7 @@ class RegisterPage extends StatelessWidget {
                         ),
                         TextSpan(
                           text: '${lang.terms_and_privacy_policy} ',
-                          style: theme.textTheme.subtitle1?.copyWith(
+                          style: theme.textTheme.titleLarge?.copyWith(
                             color: theme.primaryColor,
                             fontSize: 12,
                           ),
@@ -199,7 +199,7 @@ class RegisterPage extends StatelessWidget {
 
     return ElevatedButtonWidget(
       onTap: onTap,
-      color: theme.backgroundColor,
+      color: theme.colorScheme.background,
       margin: const EdgeInsets.symmetric(horizontal: Const.margin),
       elevation: 1,
       child: Row(
@@ -219,7 +219,7 @@ class RegisterPage extends StatelessWidget {
           const SizedBox(width: Const.space15),
           Text(
             label,
-            style: theme.textTheme.headline3,
+            style: theme.textTheme.headlineSmall,
           )
         ],
       ),
@@ -254,7 +254,7 @@ class RegisterPage extends StatelessWidget {
           ],
           content: Text(
             text,
-            style: theme.textTheme.bodyText2,
+            style: theme.textTheme.bodyMedium,
           ),
         );
       },
@@ -266,7 +266,7 @@ class RegisterPage extends StatelessWidget {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -277,7 +277,7 @@ class RegisterPage extends StatelessWidget {
       ),
       title: Text(
         lang.register,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

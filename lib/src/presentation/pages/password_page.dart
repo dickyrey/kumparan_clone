@@ -36,7 +36,7 @@ class _PasswordPageState extends State<PasswordPage> {
               const SizedBox(height: Const.space25),
               Text(
                 lang.password_must_be_at_least_8_characters_long_and_must_be_a_combination_of_uppercase_letters_and_numbers,
-                style: theme.textTheme.bodyText1,
+                style: theme.textTheme.bodyLarge,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: Const.space50),
@@ -107,7 +107,7 @@ class _PasswordPageState extends State<PasswordPage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -118,7 +118,7 @@ class _PasswordPageState extends State<PasswordPage> {
       ),
       title: Text(
         lang.password,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

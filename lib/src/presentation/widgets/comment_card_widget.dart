@@ -44,17 +44,17 @@ class CommentCardWidget extends StatelessWidget {
               children: [
                 Text(
                   comment.user.name,
-                  style: theme.textTheme.headline5,
+                  style: theme.textTheme.headlineSmall,
                 ),
                 const SizedBox(height: Const.space8 - 5),
                 Text(
                   comment.body,
-                  style: theme.textTheme.bodyText2,
+                  style: theme.textTheme.bodyMedium,
                 ),
                 const SizedBox(height: Const.space8),
                 Text(
                   timeago.format(comment.createdAt),
-                  style: theme.textTheme.subtitle2,
+                  style: theme.textTheme.titleMedium,
                 ),
               ],
             ),
@@ -76,7 +76,7 @@ class CommentCardWidget extends StatelessWidget {
                           return AlertDialog(
                             title: Text(
                               lang.choose_an_action,
-                              style: theme.textTheme.headline3,
+                              style: theme.textTheme.headlineSmall,
                             ),
                             content: Column(
                               mainAxisSize: MainAxisSize.min,
@@ -106,7 +106,6 @@ class CommentCardWidget extends StatelessWidget {
                                   icon: FeatherIcons.alertCircle,
                                   label: lang.report,
                                   onTap: () {
-                                    print(state.user.id);
                                   },
                                 )
                               ],
@@ -147,7 +146,7 @@ class CommentCardWidget extends StatelessWidget {
             const SizedBox(width: Const.space12),
             Text(
               label,
-              style: theme.textTheme.bodyText2,
+              style: theme.textTheme.bodyMedium,
             ),
           ],
         ),

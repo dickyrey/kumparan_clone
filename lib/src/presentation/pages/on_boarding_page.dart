@@ -103,12 +103,12 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                     Text(
                       data.title,
                       textAlign: TextAlign.center,
-                      style: theme.textTheme.headline1,
+                      style: theme.textTheme.headlineLarge,
                     ),
                     const Expanded(child: SizedBox()),
                     Text(
                       data.subtitle,
-                      style: theme.textTheme.bodyText1,
+                      style: theme.textTheme.bodyLarge,
                       textAlign: TextAlign.center,
                     ),
                   ],
@@ -184,7 +184,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
 
   AppBar _appBar(ThemeData theme, AppLocalizations lang) {
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -198,7 +198,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           onPressed: () => Navigator.pushNamed(context, REGISTER),
           child: Text(
             lang.skip,
-            style: theme.textTheme.subtitle1,
+            style: theme.textTheme.titleLarge,
           ),
         ),
       ],

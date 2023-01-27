@@ -41,25 +41,25 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
                   children: [
                     TextSpan(
                       text: 'Apakah kamu yakin akan menghapus akun kamu?\n\n',
-                      style: theme.textTheme.headline3,
+                      style: theme.textTheme.headlineSmall,
                     ),
                     TextSpan(
                       text:
                           'Menghapus akun akan menyebabkan semua histori termasuk profil, konten, keterbacaan serta komentar akan hilang dan tidak dapat dikembalikan.\n\nBeberapa informasi dari akun kamu yang sudah ada di website atau platform lain di luar, mungkin tidak akan mengalami perubahan meskipun kamu telah menyelesaikan proses penghapusan akun.\n\nUntuk informasi lebih lengkap, kamu dapat membaca ',
-                      style: theme.textTheme.bodyText1,
+                      style: theme.textTheme.bodyLarge,
                     ),
                     TextSpan(
                       text: 'Ketentuan dan Kebijakan Privasi',
-                      style: theme.textTheme.bodyText1
+                      style: theme.textTheme.bodyLarge
                           ?.copyWith(color: theme.primaryColor),
                     ),
                     TextSpan(
                       text: ' atau kamu dapat menghubungi: ',
-                      style: theme.textTheme.bodyText1,
+                      style: theme.textTheme.bodyLarge,
                     ),
                     TextSpan(
                       text: 'collaboration.team@kumparan.com',
-                      style: theme.textTheme.bodyText1
+                      style: theme.textTheme.bodyLarge
                           ?.copyWith(color: theme.primaryColor),
                     ),
                   ],
@@ -72,7 +72,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
               padding: const EdgeInsets.symmetric(horizontal: Const.margin),
               child: Text(
                 'Alasan menghapus akun',
-                style: theme.textTheme.headline3,
+                style: theme.textTheme.headlineSmall,
                 textAlign: TextAlign.left,
               ),
             ),
@@ -180,7 +180,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
         Expanded(
           child: Text(
             label,
-            style: theme.textTheme.bodyText1,
+            style: theme.textTheme.bodyLarge,
           ),
         ),
         const SizedBox(width: Const.margin),
@@ -193,7 +193,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -204,7 +204,7 @@ class _DeleteAccountPageState extends State<DeleteAccountPage> {
       ),
       title: Text(
         lang.delete_account,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
     );
   }

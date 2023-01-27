@@ -10,11 +10,11 @@ abstract class ArticleRepository {
   Future<Either<Failure, List<Article>>> getArticleList();
   Future<Either<Failure, ArticleDetail>> getArticleDetail(String url);
   Future<Either<Failure, bool>> checkLikeStatus(String id);
-  Future<Either<Failure, void>> likeArticle(String id);
+  Future<Either<Failure, bool>> likeArticle(String id);
   Future<Either<Failure, List<Comment>>> getCommentList(String id);
-  Future<Either<Failure, void>> sendComment({required String id, required String comment});
-  Future<Either<Failure, void>> deleteComment({required String id, required int userId});
-  Future<Either<Failure, void>> createArticle({
+  Future<Either<Failure, bool>> sendComment({required String id, required String comment});
+  Future<Either<Failure, bool>> deleteComment({required String id, required int userId});
+  Future<Either<Failure, bool>> createArticle({
     required String title,
     required String content,
     required File thumbnail,

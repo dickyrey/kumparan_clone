@@ -9,11 +9,21 @@ ThemeData themeLight(BuildContext context) {
       color: ColorLight.fontTitle,
       size: 20,
     ),
-    backgroundColor: ColorLight.background,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.light,
+      primary: ColorLight.primary,
+      onPrimary: ColorLight.primary,
+      secondary: ColorLight.secondary,
+      onSecondary: ColorLight.secondary,
+      error: ColorLight.error,
+      onError: ColorLight.error,
+      background: ColorLight.background,
+      onBackground: ColorLight.background,
+      surface: ColorLight.background,
+      onSurface: ColorLight.background,
+    ),
     cardColor: ColorLight.card,
     disabledColor: ColorLight.disabledButton,
-    errorColor: ColorLight.error,
-    // highlightColor: ColorLight.fontTitle,
     hintColor: ColorLight.fontSubtitle,
     indicatorColor: ColorLight.primary,
     iconTheme: const IconThemeData(color: ColorLight.fontTitle),
@@ -27,54 +37,64 @@ ThemeData themeLight(BuildContext context) {
       centerTitle: true,
     ),
     textTheme: GoogleFonts.poppinsTextTheme().copyWith(
-      headline1: GoogleFonts.poppins(
+      headlineLarge: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-      headline2: GoogleFonts.poppins(
+      headlineMedium: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
         fontSize: 18,
         fontWeight: FontWeight.w500,
       ),
-      headline3: GoogleFonts.poppins(
+      headlineSmall: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
         fontSize: 16,
         fontWeight: FontWeight.w500,
       ),
-      headline4: GoogleFonts.poppins(
+      bodyLarge: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
         fontSize: 14,
         fontWeight: FontWeight.w500,
       ),
-      headline5: GoogleFonts.poppins(
+      bodyMedium: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      bodyText1: GoogleFonts.poppins(
+      bodySmall: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
-        fontSize: 16,
+        fontSize: 10,
         fontWeight: FontWeight.normal,
       ),
-      bodyText2: GoogleFonts.poppins(
+      titleLarge: GoogleFonts.poppins(
         color: ColorLight.fontTitle,
         fontSize: 14,
         fontWeight: FontWeight.normal,
       ),
-      subtitle1: GoogleFonts.poppins(
-        color: ColorLight.fontSubtitle,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      subtitle2: GoogleFonts.poppins(
+      titleMedium: GoogleFonts.poppins(
         color: ColorLight.fontSubtitle,
         fontSize: 12,
         fontWeight: FontWeight.normal,
       ),
-      button: GoogleFonts.poppins(
+      titleSmall: GoogleFonts.poppins(
+        color: ColorLight.fontSubtitle,
+        fontSize: 10,
+        fontWeight: FontWeight.normal,
+      ),
+      labelLarge: GoogleFonts.poppins(
         color: Colors.white,
         fontSize: 14,
+        fontWeight: FontWeight.normal,
+      ),
+      labelMedium: GoogleFonts.poppins(
+        color: Colors.white,
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+      ),
+      labelSmall: GoogleFonts.poppins(
+        color: Colors.white,
+        fontSize: 10,
         fontWeight: FontWeight.normal,
       ),
     ),
@@ -83,16 +103,26 @@ ThemeData themeLight(BuildContext context) {
 
 ThemeData themeDark(BuildContext context) {
   return ThemeData(
-    brightness: Brightness.light,
+    brightness: Brightness.dark,
     primaryIconTheme: const IconThemeData(
       color: ColorDark.fontTitle,
       size: 20,
     ),
-    backgroundColor: ColorDark.background,
+    colorScheme: const ColorScheme(
+      brightness: Brightness.dark,
+      primary: ColorDark.primary,
+      onPrimary: ColorDark.primary,
+      secondary: ColorDark.secondary,
+      onSecondary: ColorDark.secondary,
+      error: ColorDark.error,
+      onError: ColorDark.error,
+      background: ColorDark.background,
+      onBackground: ColorDark.background,
+      surface: ColorDark.background,
+      onSurface: ColorDark.background,
+    ),
     cardColor: ColorDark.card,
     disabledColor: ColorDark.disabledButton,
-    errorColor: ColorDark.error,
-    // highlightColor: ColorDark.fontTitle,
     hintColor: ColorDark.fontSubtitle,
     indicatorColor: ColorDark.primary,
     iconTheme: const IconThemeData(color: ColorDark.fontTitle),
@@ -106,54 +136,64 @@ ThemeData themeDark(BuildContext context) {
       centerTitle: true,
     ),
     textTheme: GoogleFonts.poppinsTextTheme().copyWith(
-      headline1: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
+      headlineLarge: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
         fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
-      headline2: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
+      headlineMedium: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
         fontSize: 18,
         fontWeight: FontWeight.w500,
       ),
-      headline3: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
+      headlineSmall: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
         fontSize: 16,
         fontWeight: FontWeight.w500,
       ),
-      headline4: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
+      bodyLarge: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
         fontSize: 14,
         fontWeight: FontWeight.w500,
       ),
-      headline5: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
+      bodyMedium: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
         fontSize: 12,
         fontWeight: FontWeight.w500,
       ),
-      bodyText1: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
-        fontSize: 16,
+      bodySmall: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
+        fontSize: 10,
         fontWeight: FontWeight.normal,
       ),
-      bodyText2: GoogleFonts.poppins(
-        color: ColorDark.fontTitle,
+      titleLarge: GoogleFonts.poppins(
+        color: ColorLight.fontTitle,
         fontSize: 14,
         fontWeight: FontWeight.normal,
       ),
-      subtitle1: GoogleFonts.poppins(
-        color: ColorDark.fontSubtitle,
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      subtitle2: GoogleFonts.poppins(
-        color: ColorDark.fontSubtitle,
+      titleMedium: GoogleFonts.poppins(
+        color: ColorLight.fontSubtitle,
         fontSize: 12,
         fontWeight: FontWeight.normal,
       ),
-      button: GoogleFonts.poppins(
+      titleSmall: GoogleFonts.poppins(
+        color: ColorLight.fontSubtitle,
+        fontSize: 10,
+        fontWeight: FontWeight.normal,
+      ),
+      labelLarge: GoogleFonts.poppins(
         color: Colors.white,
         fontSize: 14,
+        fontWeight: FontWeight.normal,
+      ),
+      labelMedium: GoogleFonts.poppins(
+        color: Colors.white,
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
+      ),
+      labelSmall: GoogleFonts.poppins(
+        color: Colors.white,
+        fontSize: 10,
         fontWeight: FontWeight.normal,
       ),
     ),

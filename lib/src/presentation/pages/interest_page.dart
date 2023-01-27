@@ -34,7 +34,7 @@ class _InterestPageState extends State<InterestPage> {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: theme.backgroundColor,
+        backgroundColor: theme.colorScheme.background,
         elevation: 2,
       ),
       body: Column(
@@ -48,12 +48,12 @@ class _InterestPageState extends State<InterestPage> {
                       const SizedBox(height: Const.space25),
                       Text(
                         lang.your_favorite_topic,
-                        style: theme.textTheme.headline2,
+                        style: theme.textTheme.headlineMedium,
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         lang.let_us_know_what_your_preference,
-                        style: theme.textTheme.bodyText2,
+                        style: theme.textTheme.bodyMedium,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: Const.space25),
@@ -81,7 +81,7 @@ class _InterestPageState extends State<InterestPage> {
                               children: [
                                 Text(
                                   category.category.name,
-                                  style: theme.textTheme.headline3,
+                                  style: theme.textTheme.headlineSmall,
                                 ),
                                 Switch(
                                   value: category.value,
@@ -100,7 +100,7 @@ class _InterestPageState extends State<InterestPage> {
                       const SizedBox(height: Const.space25),
                       Text(
                         lang.you_can_reset_it_on_the_notification_settings_page,
-                        style: theme.textTheme.subtitle1,
+                        style: theme.textTheme.titleLarge,
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: Const.space25),

@@ -20,7 +20,7 @@ abstract class ArticleDataSource {
   Future<List<CommentModel>> getCommentList(String id);
   Future<bool> sendComment({required String id, required String comment});
   Future<bool> deleteComment({required String id, required int userId});
-  Future<void> createArticle({
+  Future<bool> createArticle({
     required String title,
     required String content,
     required File thumbnail,
@@ -210,7 +210,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
   }
 
   @override
-  Future<void> createArticle({
+  Future<bool> createArticle({
     required String title,
     required String content,
     required File thumbnail,
@@ -249,7 +249,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     request.files.add(storeImage);
     final response = await request.send();
     if (response.statusCode == 200) {
-      return;
+      return true;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

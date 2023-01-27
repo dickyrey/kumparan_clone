@@ -40,7 +40,7 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
                 color: const Color(0xFFEB4768),
               ),
               const SizedBox(width: Const.space8),
-              Text(widget.label, style: theme.textTheme.headline1),
+              Text(widget.label, style: theme.textTheme.headlineLarge),
               const Expanded(child: SizedBox()),
               if (widget.type == HeadingTileType.normal)
                 IconButton(
@@ -64,14 +64,14 @@ class _HeadingTileWidgetState extends State<HeadingTileWidget> {
                       FeatherIcons.chevronDown,
                       color: ColorLight.fontTitle,
                     ),
-                    style: theme.textTheme.bodyText2,
+                    style: theme.textTheme.bodyMedium,
                     items: ['a', 'b']
                         .map(
                           (value) => DropdownMenuItem(
                             value: value,
                             child: Text(
                               (value == 'a') ? 'Recommend' : 'Newest',
-                              style: theme.textTheme.bodyText2,
+                              style: theme.textTheme.bodyMedium,
                             ),
                           ),
                         )

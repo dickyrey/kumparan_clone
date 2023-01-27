@@ -3,9 +3,6 @@ import 'dart:convert';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:kumparan_clone/src/data/models/category_model.dart';
 import 'package:kumparan_clone/src/data/models/category_response.dart';
-import 'package:kumparan_clone/src/data/models/comment_model.dart';
-import 'package:kumparan_clone/src/data/models/comment_response.dart';
-import 'package:kumparan_clone/src/data/models/user_comment_model.dart';
 
 import '../../helpers/json_reader.dart';
 

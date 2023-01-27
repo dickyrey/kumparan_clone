@@ -64,17 +64,17 @@ class _ProfilePageState extends State<ProfilePage>
             const SizedBox(height: Const.space25),
             Text(
               'Troyard Esport',
-              style: theme.textTheme.headline3,
+              style: theme.textTheme.headlineSmall,
             ),
             const SizedBox(height: Const.space15),
             RichText(
               text: TextSpan(
-                style: theme.textTheme.bodyText2,
+                style: theme.textTheme.bodyMedium,
                 children: [
-                  TextSpan(text: '121', style: theme.textTheme.headline4),
+                  TextSpan(text: '121', style: theme.textTheme.headlineSmall),
                   TextSpan(text: ' ${lang.following}'),
                   const TextSpan(text: ' • '),
-                  TextSpan(text: '3553', style: theme.textTheme.headline4),
+                  TextSpan(text: '3553', style: theme.textTheme.headlineSmall),
                   TextSpan(text: ' ${lang.follower}'),
                 ],
               ),
@@ -86,7 +86,7 @@ class _ProfilePageState extends State<ProfilePage>
               },
               child: Text(
                 lang.change_profile,
-                style: theme.textTheme.headline3,
+                style: theme.textTheme.headlineSmall,
               ),
             ),
             const SizedBox(height: Const.space25),
@@ -171,7 +171,7 @@ class _ProfilePageState extends State<ProfilePage>
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       centerTitle: false,
       leading: IconButton(
@@ -194,7 +194,7 @@ class _ProfilePageState extends State<ProfilePage>
           const SizedBox(width: Const.space12),
           Text(
             lang.notification,
-            style: theme.textTheme.headline3,
+            style: theme.textTheme.headlineSmall,
           ),
         ],
       ),

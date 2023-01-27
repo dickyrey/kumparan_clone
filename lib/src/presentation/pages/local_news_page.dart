@@ -85,7 +85,7 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
     final lang = AppLocalizations.of(context)!;
 
     return AppBar(
-      backgroundColor: theme.backgroundColor,
+      backgroundColor: theme.colorScheme.background,
       elevation: .5,
       leading: IconButton(
         onPressed: () => Navigator.pop(context),
@@ -96,10 +96,10 @@ class _LocalNewsPageState extends State<LocalNewsPage> {
       ),
       title: Text(
         lang.local_news,
-        style: theme.textTheme.headline3,
+        style: theme.textTheme.headlineSmall,
       ),
       bottom: TabBar(
-        labelStyle: theme.textTheme.headline4,
+        labelStyle: theme.textTheme.headlineSmall,
         labelColor: ColorLight.fontTitle,
         unselectedLabelColor: ColorLight.fontTitle,
         tabs: [
@@ -199,7 +199,7 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                           const SizedBox(width: Const.space12),
                           Text(
                             lang.all_province,
-                            style: theme.textTheme.headline1,
+                            style: theme.textTheme.headlineLarge,
                           ),
                         ],
                       ),
@@ -230,7 +230,7 @@ class _OtherLocalNewsTabView extends StatelessWidget {
                             alignment: Alignment.centerLeft,
                             child: Text(
                               data,
-                              style: theme.textTheme.bodyText1,
+                              style: theme.textTheme.bodyLarge,
                               textAlign: TextAlign.left,
                             ),
                           ),
