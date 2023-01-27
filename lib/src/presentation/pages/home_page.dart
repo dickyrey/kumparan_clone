@@ -7,7 +7,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/feature_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/heading_tile_widget.dart';
@@ -27,8 +27,8 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     Future.microtask(
       () => context
-          .read<NewArticleWatcherBloc>()
-          .add(const NewArticleWatcherEvent.fetchNewArticle()),
+          .read<ArticleWatcherBloc>()
+          .add(const ArticleWatcherEvent.fetchArticle()),
     );
   }
 
@@ -117,7 +117,7 @@ class ForYouTab extends StatelessWidget {
           const SizedBox(height: Const.space15),
 
           /// Horizontal Scrollable [ArticleCardWidget]
-          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+          BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
             builder: (context, state) {
               return state.maybeMap(
                 orElse: () {
@@ -129,7 +129,7 @@ class ForYouTab extends StatelessWidget {
                     width: double.infinity,
                     height: 290,
                     child: ListView.builder(
-                      itemCount: 10,
+                      itemCount: state.articleList.take(10).length,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       padding:
@@ -245,7 +245,7 @@ class ForYouTab extends StatelessWidget {
 
           /// List of `Trending Article`
           /// Allow users to explore more trending article
-          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+          BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
             builder: (context, state) {
               return state.maybeMap(
                 orElse: () {
@@ -336,7 +336,7 @@ class CategoryTab extends StatelessWidget {
           const SizedBox(height: Const.space15),
 
           /// Horizontal Scrollable [ArticleCardWidget]
-          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+          BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
             builder: (context, state) {
               return state.map(
                 initial: (_) {
@@ -385,7 +385,7 @@ class CategoryTab extends StatelessWidget {
 
           /// List of `Trending Article`
           /// Allow users to explore more trending article
-          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+          BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
             builder: (context, state) {
               return state.map(
                 initial: (_) {
@@ -437,7 +437,7 @@ class CategoryTab extends StatelessWidget {
 
           /// List of `Newest or Recommended Article`
           /// Allow users to explore more trending article
-          BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+          BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
             builder: (context, state) {
               return state.map(
                 initial: (_) {

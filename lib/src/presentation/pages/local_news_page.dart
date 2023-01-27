@@ -7,7 +7,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/empty_data_widget.dart';
@@ -116,7 +116,7 @@ class _NearbyContentTabView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+    return BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
       builder: (context, state) {
         return state.map(
           initial: (_) {

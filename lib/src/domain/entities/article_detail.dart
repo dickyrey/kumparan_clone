@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:kumparan_clone/src/domain/entities/category.dart';
 
 class ArticleDetail extends Equatable {
   const ArticleDetail({
@@ -9,6 +10,7 @@ class ArticleDetail extends Equatable {
     required this.viewers,
     required this.comments,
     required this.likes,
+    required this.categories,
     required this.createdAt,
   });
 
@@ -19,6 +21,7 @@ class ArticleDetail extends Equatable {
   final int viewers;
   final int comments;
   final int likes;
+  final List<Category> categories;
   final DateTime createdAt;
 
   Map<String, dynamic> toJson() => {
@@ -29,6 +32,7 @@ class ArticleDetail extends Equatable {
         'viewers': viewers,
         'comments': comments,
         'likes': likes,
+        'categories': categories,
         'created_at': createdAt.toIso8601String(),
       };
 
@@ -41,6 +45,7 @@ class ArticleDetail extends Equatable {
         viewers,
         comments,
         likes,
+        categories,
         createdAt,
       ];
 }

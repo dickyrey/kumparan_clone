@@ -1,5 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:kumparan_clone/src/data/models/category_model.dart';
 import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
+import 'package:kumparan_clone/src/domain/entities/category.dart';
 
 class ArticleDetailModel extends Equatable {
   const ArticleDetailModel({
@@ -10,6 +12,7 @@ class ArticleDetailModel extends Equatable {
     required this.viewers,
     required this.comments,
     required this.likes,
+    required this.categories,
     required this.createdAt,
   });
 
@@ -22,6 +25,7 @@ class ArticleDetailModel extends Equatable {
       viewers: json['viewers'] as int,
       comments: json['comments'] as int,
       likes: json['likes'] as int,
+      categories: List<CategoryModel>.from((json['categories'] as Iterable<dynamic>).map((x) => CategoryModel.fromJson(x as Map<String, dynamic>))),
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }
@@ -33,6 +37,7 @@ class ArticleDetailModel extends Equatable {
   final int viewers;
   final int comments;
   final int likes;
+  final List<CategoryModel> categories;
   final DateTime createdAt;
 
   ArticleDetail toEntity() {
@@ -44,6 +49,7 @@ class ArticleDetailModel extends Equatable {
       viewers: viewers,
       comments: comments,
       likes: likes,
+      categories: categories.map((x) => x.toEntity()).toList(),
       createdAt: createdAt,
     );
   }
@@ -56,6 +62,7 @@ class ArticleDetailModel extends Equatable {
         'viewers': viewers,
         'comments': comments,
         'likes': likes,
+        'categories': categories,
         'created_at': createdAt.toIso8601String(),
       };
 
@@ -68,6 +75,7 @@ class ArticleDetailModel extends Equatable {
         viewers,
         comments,
         likes,
+        categories,
         createdAt,
       ];
 }

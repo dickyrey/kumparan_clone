@@ -14,6 +14,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ArticleDataSource {
   Future<List<ArticleModel>> getArticleList();
+  Future<List<ArticleModel>> getMyArticleList();
   Future<ArticleDetailModel> getArticleDetail(String url);
   Future<bool> checkLikeStatus(String id);
   Future<bool> likeArticle(String id);
@@ -73,6 +74,32 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       scheme: Const.scheme,
       host: Const.host,
       path: Const.articlePath,
+    );
+
+    final response = await client.get(url, headers: header);
+    if (response.statusCode == 200) {
+      return ArticleResponse.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      ).articleList;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
+  Future<List<ArticleModel>> getMyArticleList() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.articlePath,
+      queryParameters: {'type': 'myArticles'},
     );
 
     final response = await client.get(url, headers: header);

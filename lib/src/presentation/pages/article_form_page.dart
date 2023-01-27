@@ -11,25 +11,32 @@ import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
-
 import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
-class CreateContentPage extends StatefulWidget {
-  const CreateContentPage({super.key});
+class ArticleFormPage extends StatefulWidget {
+  const ArticleFormPage({super.key});
 
   @override
-  State<CreateContentPage> createState() => _CreateContentPageState();
+  State<ArticleFormPage> createState() => _ArticleFormPageState();
 }
 
-class _CreateContentPageState extends State<CreateContentPage> {
+class _ArticleFormPageState extends State<ArticleFormPage> {
   int _selectedIndex = 0;
   final _formKey = GlobalKey<FormState>();
-  final _quillController = quill.QuillController.basic();
+  var _quillController = quill.QuillController.basic();
   PageController _pageController = PageController();
+  late TextEditingController _titleController;
+
   @override
   void initState() {
     super.initState();
+    final state = context.read<CreateArticleFormBloc>().state;
     _pageController = PageController(initialPage: _selectedIndex);
+    _titleController = TextEditingController(text: state.title);
+    // _quillController = quill.QuillController(
+    //   document: quill.Document.fromJson(),
+    //   selection: const TextSelection.collapsed(offset: 0),
+    // );
   }
 
   @override
@@ -59,7 +66,7 @@ class _CreateContentPageState extends State<CreateContentPage> {
               });
             },
             children: [
-              const CreateTitleContentPage(),
+              CreateTitleContentPage(titleController: _titleController),
               EditorContentPage(controller: _quillController),
             ],
           ),
@@ -158,7 +165,8 @@ class _CreateContentPageState extends State<CreateContentPage> {
 }
 
 class CreateTitleContentPage extends StatefulWidget {
-  const CreateTitleContentPage({super.key});
+  const CreateTitleContentPage({super.key, required this.titleController});
+  final TextEditingController titleController;
 
   @override
   State<CreateTitleContentPage> createState() => _CreateTitleContentPageState();
@@ -220,6 +228,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
               ),
               const SizedBox(height: Const.space12),
               TextFormFieldWidget(
+                controller: widget.titleController,
                 maxLines: null,
                 hintText: 'Tulis judul di sini',
                 onChanged: (v) {

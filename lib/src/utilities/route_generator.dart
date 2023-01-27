@@ -5,7 +5,7 @@ import 'package:kumparan_clone/src/presentation/pages/add_phone_number_page.dart
 import 'package:kumparan_clone/src/presentation/pages/add_second_email_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/backup_email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/change_profile_page.dart';
-import 'package:kumparan_clone/src/presentation/pages/create_content_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/article_form_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/delete_account_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/email_verification_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/forgot_password_page.dart';
@@ -13,9 +13,10 @@ import 'package:kumparan_clone/src/presentation/pages/interest_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/interest_setting_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/local_news_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/login_page.dart';
-import 'package:kumparan_clone/src/presentation/pages/my_content_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/my_article_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/on_boarding_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/password_page.dart';
+import 'package:kumparan_clone/src/presentation/pages/preview_article_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/profile_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/province_news_page.dart';
 import 'package:kumparan_clone/src/presentation/pages/read_article_page.dart';
@@ -82,9 +83,9 @@ class RouteGenerator {
         return MaterialPageRoute(
           builder: (_) => const ProfilePage(),
         );
-      case MY_CONTENT:
+      case MY_ARTICLE:
         return MaterialPageRoute(
-          builder: (_) => const MyContentPage(),
+          builder: (_) => const MyArticlePage(),
         );
       case SETTINGS_AND_PRIVACY:
         return MaterialPageRoute(
@@ -136,10 +137,17 @@ class RouteGenerator {
           );
         }
         return _errorRoute();
-      case CREATE_CONTENT:
+      case ARTICLE_FORM:
         return MaterialPageRoute(
-          builder: (_) => const CreateContentPage(),
+          builder: (_) => const ArticleFormPage(),
         );
+      case PREVIEW_ARTICLE:
+        if (args is Article) {
+          return MaterialPageRoute(
+            builder: (_) => PreviewArticlePage(article: args),
+          );
+        }
+        return _errorRoute();
       default:
         return _errorRoute();
     }

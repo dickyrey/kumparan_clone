@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
 
 class LatestPage extends StatelessWidget {
@@ -13,7 +13,7 @@ class LatestPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar(context),
-      body: BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+      body: BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
         builder: (context, state) {
           return state.map(
             initial: (_) {

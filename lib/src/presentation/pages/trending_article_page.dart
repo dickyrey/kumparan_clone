@@ -5,7 +5,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/new_article/new_article_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
 
 class TrendingArticlePage extends StatelessWidget {
@@ -69,7 +69,7 @@ class _ContentList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<NewArticleWatcherBloc, NewArticleWatcherState>(
+    return BlocBuilder<ArticleWatcherBloc, ArticleWatcherState>(
       builder: (context, state) {
         return state.map(
           initial: (_) {

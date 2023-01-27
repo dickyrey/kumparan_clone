@@ -6,6 +6,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
@@ -102,14 +103,13 @@ class MenuPage extends StatelessWidget {
                     return ElevatedButtonWidget(
                       onTap: () {
                         context.read<CreateArticleFormBloc>().add(
-                              CreateArticleFormEvent.initialize(
-                                categoryList: state.categories,
-                              ),
+                              const CreateArticleFormEvent.initial(),
                             );
-                        Navigator.pushNamed(context, CREATE_CONTENT);
+                        Navigator.pushNamed(context, ARTICLE_FORM);
                       },
-                      margin:
-                          const EdgeInsets.symmetric(horizontal: Const.margin),
+                      margin: const EdgeInsets.symmetric(
+                        horizontal: Const.margin,
+                      ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
@@ -134,7 +134,10 @@ class MenuPage extends StatelessWidget {
               icon: FeatherIcons.fileText,
               title: lang.my_content,
               onTap: () {
-                Navigator.pushNamed(context, MY_CONTENT);
+                context
+                    .read<MyArticleWatcherBloc>()
+                    .add(const MyArticleWatcherEvent.fetchArticle());
+                Navigator.pushNamed(context, MY_ARTICLE);
               },
             ),
             const SizedBox(height: Const.space25),

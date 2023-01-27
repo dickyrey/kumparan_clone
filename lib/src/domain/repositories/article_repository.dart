@@ -8,6 +8,7 @@ import 'package:kumparan_clone/src/domain/entities/comment.dart';
 
 abstract class ArticleRepository {
   Future<Either<Failure, List<Article>>> getArticleList();
+  Future<Either<Failure, List<Article>>> getMyArticleList();
   Future<Either<Failure, ArticleDetail>> getArticleDetail(String url);
   Future<Either<Failure, bool>> checkLikeStatus(String id);
   Future<Either<Failure, bool>> likeArticle(String id);

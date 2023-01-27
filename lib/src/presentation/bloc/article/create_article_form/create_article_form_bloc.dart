@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
+import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
 import 'package:kumparan_clone/src/domain/entities/category.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
@@ -18,19 +19,37 @@ class CreateArticleFormBloc
   CreateArticleFormBloc(this._createArticle)
       : super(CreateArticleFormState.initial()) {
     on<CreateArticleFormEvent>((event, emit) async {
-     await event.map(
+      await event.map(
         initial: (_) {
           emit(CreateArticleFormState.initial());
         },
-        initialize: (e) {
-          final checkboxState = e.categoryList.map((e) {
-            return CheckBoxState(category: e);
+        initialize: (event) async {
+          final toEntity = event.article.categories
+              .map((e) => CheckBoxState(category: e))
+              .toList();
+
+          toEntity.map((e) {
+            state.categoryList
+                .firstWhere((x) => x.category.id == e.category.id)
+                .value = true;
           }).toList();
           emit(
             state.copyWith(
-              categoryList: checkboxState,
+              state: RequestState.empty,
+              message: '',
+              thumbnailFile: null,
+              isSubmitting: false,
+              title: event.article.title,
+              content: event.article.content,
+              imageUrl: event.article.thumbnail,
             ),
           );
+
+          // state.categoryList.firstWhere((e) {
+          //   return e.category.id == categoryId
+          //       ? e.value = true
+          //       : e.value = false;
+          // });
         },
         titleOnChanged: (e) {
           emit(state.copyWith(title: e.val));
@@ -50,6 +69,16 @@ class CreateArticleFormBloc
               emit(state.copyWith(thumbnailFile: File(croppedImage.path)));
             }
           }
+        },
+        fetchCategoryList: (e) {
+          final categoryMap = e.categories.map((e) => e).toList();
+          emit(
+            state.copyWith(
+              state: RequestState.empty,
+              categoryList:
+                  categoryMap.map((e) => CheckBoxState(category: e)).toList(),
+            ),
+          );
         },
         createArticlePressed: (e) async {
           emit(

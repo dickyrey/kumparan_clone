@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'new_article_watcher_bloc.dart';
+part of 'article_watcher_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,53 +15,52 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$NewArticleWatcherEvent {
+mixin _$ArticleWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchNewArticle,
+    required TResult Function() fetchArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchNewArticle,
+    TResult? Function()? fetchArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchNewArticle,
+    TResult Function()? fetchArticle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchNewArticle value) fetchNewArticle,
+    required TResult Function(_FetchArticle value) fetchArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchNewArticle value)? fetchNewArticle,
+    TResult? Function(_FetchArticle value)? fetchArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchNewArticle value)? fetchNewArticle,
+    TResult Function(_FetchArticle value)? fetchArticle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $NewArticleWatcherEventCopyWith<$Res> {
-  factory $NewArticleWatcherEventCopyWith(NewArticleWatcherEvent value,
-          $Res Function(NewArticleWatcherEvent) then) =
-      _$NewArticleWatcherEventCopyWithImpl<$Res, NewArticleWatcherEvent>;
+abstract class $ArticleWatcherEventCopyWith<$Res> {
+  factory $ArticleWatcherEventCopyWith(
+          ArticleWatcherEvent value, $Res Function(ArticleWatcherEvent) then) =
+      _$ArticleWatcherEventCopyWithImpl<$Res, ArticleWatcherEvent>;
 }
 
 /// @nodoc
-class _$NewArticleWatcherEventCopyWithImpl<$Res,
-        $Val extends NewArticleWatcherEvent>
-    implements $NewArticleWatcherEventCopyWith<$Res> {
-  _$NewArticleWatcherEventCopyWithImpl(this._value, this._then);
+class _$ArticleWatcherEventCopyWithImpl<$Res, $Val extends ArticleWatcherEvent>
+    implements $ArticleWatcherEventCopyWith<$Res> {
+  _$ArticleWatcherEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -70,35 +69,35 @@ class _$NewArticleWatcherEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_FetchNewArticleCopyWith<$Res> {
-  factory _$$_FetchNewArticleCopyWith(
-          _$_FetchNewArticle value, $Res Function(_$_FetchNewArticle) then) =
-      __$$_FetchNewArticleCopyWithImpl<$Res>;
+abstract class _$$_FetchArticleCopyWith<$Res> {
+  factory _$$_FetchArticleCopyWith(
+          _$_FetchArticle value, $Res Function(_$_FetchArticle) then) =
+      __$$_FetchArticleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchNewArticleCopyWithImpl<$Res>
-    extends _$NewArticleWatcherEventCopyWithImpl<$Res, _$_FetchNewArticle>
-    implements _$$_FetchNewArticleCopyWith<$Res> {
-  __$$_FetchNewArticleCopyWithImpl(
-      _$_FetchNewArticle _value, $Res Function(_$_FetchNewArticle) _then)
+class __$$_FetchArticleCopyWithImpl<$Res>
+    extends _$ArticleWatcherEventCopyWithImpl<$Res, _$_FetchArticle>
+    implements _$$_FetchArticleCopyWith<$Res> {
+  __$$_FetchArticleCopyWithImpl(
+      _$_FetchArticle _value, $Res Function(_$_FetchArticle) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FetchNewArticle implements _FetchNewArticle {
-  const _$_FetchNewArticle();
+class _$_FetchArticle implements _FetchArticle {
+  const _$_FetchArticle();
 
   @override
   String toString() {
-    return 'NewArticleWatcherEvent.fetchNewArticle()';
+    return 'ArticleWatcherEvent.fetchArticle()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchNewArticle);
+        (other.runtimeType == runtimeType && other is _$_FetchArticle);
   }
 
   @override
@@ -107,27 +106,27 @@ class _$_FetchNewArticle implements _FetchNewArticle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchNewArticle,
+    required TResult Function() fetchArticle,
   }) {
-    return fetchNewArticle();
+    return fetchArticle();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchNewArticle,
+    TResult? Function()? fetchArticle,
   }) {
-    return fetchNewArticle?.call();
+    return fetchArticle?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchNewArticle,
+    TResult Function()? fetchArticle,
     required TResult orElse(),
   }) {
-    if (fetchNewArticle != null) {
-      return fetchNewArticle();
+    if (fetchArticle != null) {
+      return fetchArticle();
     }
     return orElse();
   }
@@ -135,38 +134,38 @@ class _$_FetchNewArticle implements _FetchNewArticle {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchNewArticle value) fetchNewArticle,
+    required TResult Function(_FetchArticle value) fetchArticle,
   }) {
-    return fetchNewArticle(this);
+    return fetchArticle(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchNewArticle value)? fetchNewArticle,
+    TResult? Function(_FetchArticle value)? fetchArticle,
   }) {
-    return fetchNewArticle?.call(this);
+    return fetchArticle?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchNewArticle value)? fetchNewArticle,
+    TResult Function(_FetchArticle value)? fetchArticle,
     required TResult orElse(),
   }) {
-    if (fetchNewArticle != null) {
-      return fetchNewArticle(this);
+    if (fetchArticle != null) {
+      return fetchArticle(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchNewArticle implements NewArticleWatcherEvent {
-  const factory _FetchNewArticle() = _$_FetchNewArticle;
+abstract class _FetchArticle implements ArticleWatcherEvent {
+  const factory _FetchArticle() = _$_FetchArticle;
 }
 
 /// @nodoc
-mixin _$NewArticleWatcherState {
+mixin _$ArticleWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -220,17 +219,16 @@ mixin _$NewArticleWatcherState {
 }
 
 /// @nodoc
-abstract class $NewArticleWatcherStateCopyWith<$Res> {
-  factory $NewArticleWatcherStateCopyWith(NewArticleWatcherState value,
-          $Res Function(NewArticleWatcherState) then) =
-      _$NewArticleWatcherStateCopyWithImpl<$Res, NewArticleWatcherState>;
+abstract class $ArticleWatcherStateCopyWith<$Res> {
+  factory $ArticleWatcherStateCopyWith(
+          ArticleWatcherState value, $Res Function(ArticleWatcherState) then) =
+      _$ArticleWatcherStateCopyWithImpl<$Res, ArticleWatcherState>;
 }
 
 /// @nodoc
-class _$NewArticleWatcherStateCopyWithImpl<$Res,
-        $Val extends NewArticleWatcherState>
-    implements $NewArticleWatcherStateCopyWith<$Res> {
-  _$NewArticleWatcherStateCopyWithImpl(this._value, this._then);
+class _$ArticleWatcherStateCopyWithImpl<$Res, $Val extends ArticleWatcherState>
+    implements $ArticleWatcherStateCopyWith<$Res> {
+  _$ArticleWatcherStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -247,7 +245,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$NewArticleWatcherStateCopyWithImpl<$Res, _$_Initial>
+    extends _$ArticleWatcherStateCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -260,7 +258,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'NewArticleWatcherState.initial()';
+    return 'ArticleWatcherState.initial()';
   }
 
   @override
@@ -347,7 +345,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements NewArticleWatcherState {
+abstract class _Initial implements ArticleWatcherState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -360,7 +358,7 @@ abstract class _$$_LoadingCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadingCopyWithImpl<$Res>
-    extends _$NewArticleWatcherStateCopyWithImpl<$Res, _$_Loading>
+    extends _$ArticleWatcherStateCopyWithImpl<$Res, _$_Loading>
     implements _$$_LoadingCopyWith<$Res> {
   __$$_LoadingCopyWithImpl(_$_Loading _value, $Res Function(_$_Loading) _then)
       : super(_value, _then);
@@ -373,7 +371,7 @@ class _$_Loading implements _Loading {
 
   @override
   String toString() {
-    return 'NewArticleWatcherState.loading()';
+    return 'ArticleWatcherState.loading()';
   }
 
   @override
@@ -460,7 +458,7 @@ class _$_Loading implements _Loading {
   }
 }
 
-abstract class _Loading implements NewArticleWatcherState {
+abstract class _Loading implements ArticleWatcherState {
   const factory _Loading() = _$_Loading;
 }
 
@@ -474,7 +472,7 @@ abstract class _$$_ErrorCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ErrorCopyWithImpl<$Res>
-    extends _$NewArticleWatcherStateCopyWithImpl<$Res, _$_Error>
+    extends _$ArticleWatcherStateCopyWithImpl<$Res, _$_Error>
     implements _$$_ErrorCopyWith<$Res> {
   __$$_ErrorCopyWithImpl(_$_Error _value, $Res Function(_$_Error) _then)
       : super(_value, _then);
@@ -503,7 +501,7 @@ class _$_Error implements _Error {
 
   @override
   String toString() {
-    return 'NewArticleWatcherState.error(message: $message)';
+    return 'ArticleWatcherState.error(message: $message)';
   }
 
   @override
@@ -598,7 +596,7 @@ class _$_Error implements _Error {
   }
 }
 
-abstract class _Error implements NewArticleWatcherState {
+abstract class _Error implements ArticleWatcherState {
   const factory _Error(final String message) = _$_Error;
 
   String get message;
@@ -617,7 +615,7 @@ abstract class _$$_LoadedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_LoadedCopyWithImpl<$Res>
-    extends _$NewArticleWatcherStateCopyWithImpl<$Res, _$_Loaded>
+    extends _$ArticleWatcherStateCopyWithImpl<$Res, _$_Loaded>
     implements _$$_LoadedCopyWith<$Res> {
   __$$_LoadedCopyWithImpl(_$_Loaded _value, $Res Function(_$_Loaded) _then)
       : super(_value, _then);
@@ -651,7 +649,7 @@ class _$_Loaded implements _Loaded {
 
   @override
   String toString() {
-    return 'NewArticleWatcherState.loaded(articleList: $articleList)';
+    return 'ArticleWatcherState.loaded(articleList: $articleList)';
   }
 
   @override
@@ -748,7 +746,7 @@ class _$_Loaded implements _Loaded {
   }
 }
 
-abstract class _Loaded implements NewArticleWatcherState {
+abstract class _Loaded implements ArticleWatcherState {
   const factory _Loaded(final List<Article> articleList) = _$_Loaded;
 
   List<Article> get articleList;

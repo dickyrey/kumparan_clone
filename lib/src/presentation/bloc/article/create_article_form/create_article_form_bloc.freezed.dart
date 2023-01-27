@@ -19,31 +19,34 @@ mixin _$CreateArticleFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,6 +58,7 @@ mixin _$CreateArticleFormEvent {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -65,6 +69,7 @@ mixin _$CreateArticleFormEvent {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -75,6 +80,7 @@ mixin _$CreateArticleFormEvent {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -137,11 +143,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
     return initial();
   }
@@ -150,11 +157,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
     return initial?.call();
   }
@@ -163,11 +171,12 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -185,6 +194,7 @@ class _$_Initial implements _Initial {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) {
     return initial(this);
   }
@@ -198,6 +208,7 @@ class _$_Initial implements _Initial {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) {
     return initial?.call(this);
   }
@@ -211,6 +222,7 @@ class _$_Initial implements _Initial {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -230,7 +242,7 @@ abstract class _$$_InitializeCopyWith<$Res> {
           _$_Initialize value, $Res Function(_$_Initialize) then) =
       __$$_InitializeCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<Category> categoryList});
+  $Res call({ArticleDetail article});
 }
 
 /// @nodoc
@@ -244,13 +256,13 @@ class __$$_InitializeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? categoryList = null,
+    Object? article = null,
   }) {
     return _then(_$_Initialize(
-      categoryList: null == categoryList
-          ? _value._categoryList
-          : categoryList // ignore: cast_nullable_to_non_nullable
-              as List<Category>,
+      null == article
+          ? _value.article
+          : article // ignore: cast_nullable_to_non_nullable
+              as ArticleDetail,
     ));
   }
 }
@@ -258,20 +270,14 @@ class __$$_InitializeCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_Initialize implements _Initialize {
-  const _$_Initialize({required final List<Category> categoryList})
-      : _categoryList = categoryList;
+  const _$_Initialize(this.article);
 
-  final List<Category> _categoryList;
   @override
-  List<Category> get categoryList {
-    if (_categoryList is EqualUnmodifiableListView) return _categoryList;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_categoryList);
-  }
+  final ArticleDetail article;
 
   @override
   String toString() {
-    return 'CreateArticleFormEvent.initialize(categoryList: $categoryList)';
+    return 'CreateArticleFormEvent.initialize(article: $article)';
   }
 
   @override
@@ -279,13 +285,11 @@ class _$_Initialize implements _Initialize {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_Initialize &&
-            const DeepCollectionEquality()
-                .equals(other._categoryList, _categoryList));
+            (identical(other.article, article) || other.article == article));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_categoryList));
+  int get hashCode => Object.hash(runtimeType, article);
 
   @JsonKey(ignore: true)
   @override
@@ -297,41 +301,44 @@ class _$_Initialize implements _Initialize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
-    return initialize(categoryList);
+    return initialize(article);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
-    return initialize?.call(categoryList);
+    return initialize?.call(article);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (initialize != null) {
-      return initialize(categoryList);
+      return initialize(article);
     }
     return orElse();
   }
@@ -345,6 +352,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) {
     return initialize(this);
   }
@@ -358,6 +366,7 @@ class _$_Initialize implements _Initialize {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) {
     return initialize?.call(this);
   }
@@ -371,6 +380,7 @@ class _$_Initialize implements _Initialize {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (initialize != null) {
@@ -381,10 +391,9 @@ class _$_Initialize implements _Initialize {
 }
 
 abstract class _Initialize implements CreateArticleFormEvent {
-  const factory _Initialize({required final List<Category> categoryList}) =
-      _$_Initialize;
+  const factory _Initialize(final ArticleDetail article) = _$_Initialize;
 
-  List<Category> get categoryList;
+  ArticleDetail get article;
   @JsonKey(ignore: true)
   _$$_InitializeCopyWith<_$_Initialize> get copyWith =>
       throw _privateConstructorUsedError;
@@ -455,11 +464,12 @@ class _$_TitleOnChanged implements _TitleOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
     return titleOnChanged(val);
   }
@@ -468,11 +478,12 @@ class _$_TitleOnChanged implements _TitleOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
     return titleOnChanged?.call(val);
   }
@@ -481,11 +492,12 @@ class _$_TitleOnChanged implements _TitleOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (titleOnChanged != null) {
@@ -503,6 +515,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) {
     return titleOnChanged(this);
   }
@@ -516,6 +529,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) {
     return titleOnChanged?.call(this);
   }
@@ -529,6 +543,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (titleOnChanged != null) {
@@ -612,11 +627,12 @@ class _$_ContentOnChanged implements _ContentOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
     return contentOnChanged(val);
   }
@@ -625,11 +641,12 @@ class _$_ContentOnChanged implements _ContentOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
     return contentOnChanged?.call(val);
   }
@@ -638,11 +655,12 @@ class _$_ContentOnChanged implements _ContentOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (contentOnChanged != null) {
@@ -660,6 +678,7 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) {
     return contentOnChanged(this);
   }
@@ -673,6 +692,7 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) {
     return contentOnChanged?.call(this);
   }
@@ -686,6 +706,7 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (contentOnChanged != null) {
@@ -769,11 +790,12 @@ class _$_PickImage implements _PickImage {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
     return pickImage(source);
   }
@@ -782,11 +804,12 @@ class _$_PickImage implements _PickImage {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
     return pickImage?.call(source);
   }
@@ -795,11 +818,12 @@ class _$_PickImage implements _PickImage {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (pickImage != null) {
@@ -817,6 +841,7 @@ class _$_PickImage implements _PickImage {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) {
     return pickImage(this);
   }
@@ -830,6 +855,7 @@ class _$_PickImage implements _PickImage {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) {
     return pickImage?.call(this);
   }
@@ -843,6 +869,7 @@ class _$_PickImage implements _PickImage {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (pickImage != null) {
@@ -900,11 +927,12 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
-    required TResult Function(List<Category> categoryList) initialize,
+    required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
     required TResult Function(String val) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
     return createArticlePressed();
   }
@@ -913,11 +941,12 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
-    TResult? Function(List<Category> categoryList)? initialize,
+    TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
     TResult? Function(String val)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
     return createArticlePressed?.call();
   }
@@ -926,11 +955,12 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
-    TResult Function(List<Category> categoryList)? initialize,
+    TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
     TResult Function(String val)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (createArticlePressed != null) {
@@ -948,6 +978,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
     required TResult Function(_ContentOnChanged value) contentOnChanged,
     required TResult Function(_PickImage value) pickImage,
     required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
   }) {
     return createArticlePressed(this);
   }
@@ -961,6 +992,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
     TResult? Function(_ContentOnChanged value)? contentOnChanged,
     TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
   }) {
     return createArticlePressed?.call(this);
   }
@@ -974,6 +1006,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
     TResult Function(_ContentOnChanged value)? contentOnChanged,
     TResult Function(_PickImage value)? pickImage,
     TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (createArticlePressed != null) {
@@ -988,12 +1021,186 @@ abstract class _CreateArticlePressed implements CreateArticleFormEvent {
 }
 
 /// @nodoc
+abstract class _$$_FetchCategoryListCopyWith<$Res> {
+  factory _$$_FetchCategoryListCopyWith(_$_FetchCategoryList value,
+          $Res Function(_$_FetchCategoryList) then) =
+      __$$_FetchCategoryListCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<Category> categories});
+}
+
+/// @nodoc
+class __$$_FetchCategoryListCopyWithImpl<$Res>
+    extends _$CreateArticleFormEventCopyWithImpl<$Res, _$_FetchCategoryList>
+    implements _$$_FetchCategoryListCopyWith<$Res> {
+  __$$_FetchCategoryListCopyWithImpl(
+      _$_FetchCategoryList _value, $Res Function(_$_FetchCategoryList) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? categories = null,
+  }) {
+    return _then(_$_FetchCategoryList(
+      null == categories
+          ? _value._categories
+          : categories // ignore: cast_nullable_to_non_nullable
+              as List<Category>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_FetchCategoryList implements _FetchCategoryList {
+  const _$_FetchCategoryList(final List<Category> categories)
+      : _categories = categories;
+
+  final List<Category> _categories;
+  @override
+  List<Category> get categories {
+    if (_categories is EqualUnmodifiableListView) return _categories;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_categories);
+  }
+
+  @override
+  String toString() {
+    return 'CreateArticleFormEvent.fetchCategoryList(categories: $categories)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_FetchCategoryList &&
+            const DeepCollectionEquality()
+                .equals(other._categories, _categories));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_categories));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_FetchCategoryListCopyWith<_$_FetchCategoryList> get copyWith =>
+      __$$_FetchCategoryListCopyWithImpl<_$_FetchCategoryList>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(ArticleDetail article) initialize,
+    required TResult Function(String val) titleOnChanged,
+    required TResult Function(String val) contentOnChanged,
+    required TResult Function(ImageSource source) pickImage,
+    required TResult Function() createArticlePressed,
+    required TResult Function(List<Category> categories) fetchCategoryList,
+  }) {
+    return fetchCategoryList(categories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(ArticleDetail article)? initialize,
+    TResult? Function(String val)? titleOnChanged,
+    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function()? createArticlePressed,
+    TResult? Function(List<Category> categories)? fetchCategoryList,
+  }) {
+    return fetchCategoryList?.call(categories);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(ArticleDetail article)? initialize,
+    TResult Function(String val)? titleOnChanged,
+    TResult Function(String val)? contentOnChanged,
+    TResult Function(ImageSource source)? pickImage,
+    TResult Function()? createArticlePressed,
+    TResult Function(List<Category> categories)? fetchCategoryList,
+    required TResult orElse(),
+  }) {
+    if (fetchCategoryList != null) {
+      return fetchCategoryList(categories);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_TitleOnChanged value) titleOnChanged,
+    required TResult Function(_ContentOnChanged value) contentOnChanged,
+    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_CreateArticlePressed value) createArticlePressed,
+    required TResult Function(_FetchCategoryList value) fetchCategoryList,
+  }) {
+    return fetchCategoryList(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_TitleOnChanged value)? titleOnChanged,
+    TResult? Function(_ContentOnChanged value)? contentOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult? Function(_FetchCategoryList value)? fetchCategoryList,
+  }) {
+    return fetchCategoryList?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_TitleOnChanged value)? titleOnChanged,
+    TResult Function(_ContentOnChanged value)? contentOnChanged,
+    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_CreateArticlePressed value)? createArticlePressed,
+    TResult Function(_FetchCategoryList value)? fetchCategoryList,
+    required TResult orElse(),
+  }) {
+    if (fetchCategoryList != null) {
+      return fetchCategoryList(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchCategoryList implements CreateArticleFormEvent {
+  const factory _FetchCategoryList(final List<Category> categories) =
+      _$_FetchCategoryList;
+
+  List<Category> get categories;
+  @JsonKey(ignore: true)
+  _$$_FetchCategoryListCopyWith<_$_FetchCategoryList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
 mixin _$CreateArticleFormState {
   RequestState get state => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
   File? get thumbnailFile => throw _privateConstructorUsedError;
   List<CheckBoxState> get categoryList => throw _privateConstructorUsedError;
 
@@ -1014,6 +1221,7 @@ abstract class $CreateArticleFormStateCopyWith<$Res> {
       bool isSubmitting,
       String title,
       String content,
+      String imageUrl,
       File? thumbnailFile,
       List<CheckBoxState> categoryList});
 }
@@ -1037,6 +1245,7 @@ class _$CreateArticleFormStateCopyWithImpl<$Res,
     Object? isSubmitting = null,
     Object? title = null,
     Object? content = null,
+    Object? imageUrl = null,
     Object? thumbnailFile = freezed,
     Object? categoryList = null,
   }) {
@@ -1060,6 +1269,10 @@ class _$CreateArticleFormStateCopyWithImpl<$Res,
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
       thumbnailFile: freezed == thumbnailFile
           ? _value.thumbnailFile
@@ -1087,6 +1300,7 @@ abstract class _$$_CreateArticleFormStateCopyWith<$Res>
       bool isSubmitting,
       String title,
       String content,
+      String imageUrl,
       File? thumbnailFile,
       List<CheckBoxState> categoryList});
 }
@@ -1108,6 +1322,7 @@ class __$$_CreateArticleFormStateCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? title = null,
     Object? content = null,
+    Object? imageUrl = null,
     Object? thumbnailFile = freezed,
     Object? categoryList = null,
   }) {
@@ -1132,6 +1347,10 @@ class __$$_CreateArticleFormStateCopyWithImpl<$Res>
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
               as String,
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
+              as String,
       thumbnailFile: freezed == thumbnailFile
           ? _value.thumbnailFile
           : thumbnailFile // ignore: cast_nullable_to_non_nullable
@@ -1153,6 +1372,7 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
       required this.isSubmitting,
       required this.title,
       required this.content,
+      required this.imageUrl,
       required this.thumbnailFile,
       required final List<CheckBoxState> categoryList})
       : _categoryList = categoryList;
@@ -1168,6 +1388,8 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
   @override
   final String content;
   @override
+  final String imageUrl;
+  @override
   final File? thumbnailFile;
   final List<CheckBoxState> _categoryList;
   @override
@@ -1179,7 +1401,7 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
 
   @override
   String toString() {
-    return 'CreateArticleFormState(state: $state, message: $message, isSubmitting: $isSubmitting, title: $title, content: $content, thumbnailFile: $thumbnailFile, categoryList: $categoryList)';
+    return 'CreateArticleFormState(state: $state, message: $message, isSubmitting: $isSubmitting, title: $title, content: $content, imageUrl: $imageUrl, thumbnailFile: $thumbnailFile, categoryList: $categoryList)';
   }
 
   @override
@@ -1193,6 +1415,8 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
                 other.isSubmitting == isSubmitting) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
             (identical(other.thumbnailFile, thumbnailFile) ||
                 other.thumbnailFile == thumbnailFile) &&
             const DeepCollectionEquality()
@@ -1207,6 +1431,7 @@ class _$_CreateArticleFormState implements _CreateArticleFormState {
       isSubmitting,
       title,
       content,
+      imageUrl,
       thumbnailFile,
       const DeepCollectionEquality().hash(_categoryList));
 
@@ -1225,6 +1450,7 @@ abstract class _CreateArticleFormState implements CreateArticleFormState {
           required final bool isSubmitting,
           required final String title,
           required final String content,
+          required final String imageUrl,
           required final File? thumbnailFile,
           required final List<CheckBoxState> categoryList}) =
       _$_CreateArticleFormState;
@@ -1239,6 +1465,8 @@ abstract class _CreateArticleFormState implements CreateArticleFormState {
   String get title;
   @override
   String get content;
+  @override
+  String get imageUrl;
   @override
   File? get thumbnailFile;
   @override

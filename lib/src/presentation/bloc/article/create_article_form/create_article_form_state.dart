@@ -8,6 +8,7 @@ class CreateArticleFormState with _$CreateArticleFormState {
     required bool isSubmitting,
     required String title,
     required String content,
+    required String imageUrl,
     required File? thumbnailFile,
     required List<CheckBoxState> categoryList,
   }) = _CreateArticleFormState;
@@ -19,6 +20,7 @@ class CreateArticleFormState with _$CreateArticleFormState {
       isSubmitting: false,
       title: '',
       content: '',
+      imageUrl: '',
       thumbnailFile: null,
       categoryList: [],
     );
