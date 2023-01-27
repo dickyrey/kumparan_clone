@@ -129,7 +129,7 @@ class ForYouTab extends StatelessWidget {
                     width: double.infinity,
                     height: 290,
                     child: ListView.builder(
-                      itemCount: state.articleList.length,
+                      itemCount: 10,
                       scrollDirection: Axis.horizontal,
                       physics: const BouncingScrollPhysics(),
                       padding:
