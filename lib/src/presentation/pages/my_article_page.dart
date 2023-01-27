@@ -4,9 +4,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
-import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/widgets/article_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/empty_data_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/my_article_card_widget.dart';
 

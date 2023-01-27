@@ -1,11 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/create_article_form/create_article_form_bloc.dart';
 import 'package:octo_image/octo_image.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
@@ -105,7 +103,7 @@ class MyArticleCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(Const.radius),
                 child: OctoImage(
                   fit: BoxFit.cover,
-                  image: CachedNetworkImageProvider(article.thumbnail),
+                  image: CachedNetworkImageProvider(article.image),
                 ),
               ),
             ),

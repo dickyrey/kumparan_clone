@@ -44,7 +44,7 @@ class ArticleCardWidget extends StatelessWidget {
                   fit: BoxFit.cover,
                   width: 280,
                   height: 200,
-                  image: CachedNetworkImageProvider(article.thumbnail),
+                  image: CachedNetworkImageProvider(article.image),
                 ),
               ),
               const SizedBox(height: Const.space12),
@@ -214,7 +214,7 @@ class ArticleCardWidget extends StatelessWidget {
                   borderRadius: BorderRadius.circular(Const.radius),
                   child: OctoImage(
                     fit: BoxFit.cover,
-                    image: CachedNetworkImageProvider(article.thumbnail),
+                    image: CachedNetworkImageProvider(article.image),
                   ),
                 ),
               ),

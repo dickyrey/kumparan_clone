@@ -1,7 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:kumparan_clone/src/data/models/category_model.dart';
 import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
-import 'package:kumparan_clone/src/domain/entities/category.dart';
 
 class ArticleDetailModel extends Equatable {
   const ArticleDetailModel({

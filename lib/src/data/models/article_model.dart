@@ -6,7 +6,7 @@ class ArticleModel extends Equatable {
   const ArticleModel({
     required this.title,
     required this.url,
-    required this.thumbnail,
+    required this.image,
     required this.viewers,
     required this.likes,
     required this.comments,
@@ -17,7 +17,7 @@ class ArticleModel extends Equatable {
     return ArticleModel(
       title: json['title'] as String,
       url: json['url'] as String,
-      thumbnail: json['image'] as String,
+      image: json['image'] as String,
       viewers: json['viewers'] as int,
       likes: json['likes'] as int,
       comments: json['comments'] as int,
@@ -27,7 +27,7 @@ class ArticleModel extends Equatable {
 
   final String title;
   final String url;
-  final String thumbnail;
+  final String image;
   final int viewers;
   final int likes;
   final int comments;
@@ -37,7 +37,7 @@ class ArticleModel extends Equatable {
     return Article(
       title: title,
       url: url,
-      thumbnail: thumbnail,
+      image: image,
       viewers: viewers,
       likes: likes,
       comments: comments,
@@ -49,7 +49,7 @@ class ArticleModel extends Equatable {
   List<Object?> get props => [
         title,
         url,
-        thumbnail,
+        image,
         viewers,
         likes,
         comments,

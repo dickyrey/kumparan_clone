@@ -4,7 +4,7 @@ class Article extends Equatable {
   const Article({
     required this.title,
     required this.url,
-    required this.thumbnail,
+    required this.image,
     required this.viewers,
     required this.likes,
     required this.comments,
@@ -13,7 +13,7 @@ class Article extends Equatable {
 
   final String title;
   final String url;
-  final String thumbnail;
+  final String image;
   final int viewers;
   final int likes;
   final int comments;
@@ -23,7 +23,7 @@ class Article extends Equatable {
   List<Object?> get props => [
         title,
         url,
-        thumbnail,
+        image,
         viewers,
         likes,
         comments,
