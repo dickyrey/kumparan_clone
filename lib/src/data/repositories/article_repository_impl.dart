@@ -44,9 +44,9 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, List<Article>>> getMyArticleList() async {
+  Future<Either<Failure, List<Article>>> getMyArticleList(String status) async {
     try {
-      final result = await dataSource.getMyArticleList();
+      final result = await dataSource.getMyArticleList(status);
       return Right(result.map((e) => e.toEntity()).toList());
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));
@@ -58,9 +58,9 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, ArticleDetail>> getArticleDetail(String url) async {
+  Future<Either<Failure, ArticleDetail>> getArticleDetail(String id) async {
     try {
-      final result = await dataSource.getArticleDetail(url);
+      final result = await dataSource.getArticleDetail(id);
       return Right(result.toEntity());
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));
@@ -138,6 +138,7 @@ class ArticleRepositoryImpl extends ArticleRepository {
     required String title,
     required String content,
     required File thumbnail,
+    required String originalContent,
     required List<String> categories,
   }) async {
     try {
@@ -145,6 +146,7 @@ class ArticleRepositoryImpl extends ArticleRepository {
         title: title,
         content: content,
         thumbnail: thumbnail,
+        originalContent: originalContent,
         categories: categories,
       );
       return Right(result);

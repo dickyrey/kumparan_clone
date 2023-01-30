@@ -12,10 +12,50 @@ class MyArticleWatcherBloc
   MyArticleWatcherBloc(this._myArticleList) : super(const _Initial()) {
     on<MyArticleWatcherEvent>((event, emit) async {
       await event.map(
-        fetchArticle: (_) async {
+        fetchDraftedArticle: (_) async {
           emit(const MyArticleWatcherState.loading());
 
-          final result = await _myArticleList.execute();
+          final result = await _myArticleList.execute('drafted');
+
+          result.fold(
+            (f) => emit(MyArticleWatcherState.error(f.message)),
+            (data) => emit(MyArticleWatcherState.loaded(data)),
+          );
+        },
+        fetchModeratedArticle: (_) async {
+          emit(const MyArticleWatcherState.loading());
+
+          final result = await _myArticleList.execute('moderated');
+
+          result.fold(
+            (f) => emit(MyArticleWatcherState.error(f.message)),
+            (data) => emit(MyArticleWatcherState.loaded(data)),
+          );
+        },
+        fetchRejectedArticle: (_) async {
+          emit(const MyArticleWatcherState.loading());
+
+          final result = await _myArticleList.execute('rejected');
+
+          result.fold(
+            (f) => emit(MyArticleWatcherState.error(f.message)),
+            (data) => emit(MyArticleWatcherState.loaded(data)),
+          );
+        },
+        fetchPublishedArticle: (_) async {
+          emit(const MyArticleWatcherState.loading());
+
+          final result = await _myArticleList.execute('published');
+
+          result.fold(
+            (f) => emit(MyArticleWatcherState.error(f.message)),
+            (data) => emit(MyArticleWatcherState.loaded(data)),
+          );
+        },
+        fetchBannedArticle: (_) async {
+          emit(const MyArticleWatcherState.loading());
+
+          final result = await _myArticleList.execute('banned');
 
           result.fold(
             (f) => emit(MyArticleWatcherState.error(f.message)),

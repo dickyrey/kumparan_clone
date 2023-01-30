@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 
@@ -13,8 +14,9 @@ class ArticleDetailWatcherBloc extends Bloc<ArticleDetailWatcherEvent, ArticleDe
       await event.map(
         fetchArticleDetail: (event) async {
           emit(const ArticleDetailWatcherState.loading());
+          final id = event.url.replaceFirst(Const.unusedPath, '');
 
-          final result = await _articleDetail.execute(event.url);
+          final result = await _articleDetail.execute(id);
 
           result.fold(
             (f) => emit(ArticleDetailWatcherState.error(f.message)),

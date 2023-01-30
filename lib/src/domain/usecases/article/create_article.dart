@@ -11,12 +11,14 @@ class CreateArticle {
   Future<Either<Failure, void>> execute({
     required String title,
     required String content,
+    required String originalContent,
     required File thumbnail,
     required List<String> categories,
   }) {
     return repository.createArticle(
       title: title,
       content: content,
+      originalContent: originalContent,
       thumbnail: thumbnail,
       categories: categories,
     );

@@ -18,33 +18,59 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$MyArticleWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchArticle,
+    required TResult Function() fetchDraftedArticle,
+    required TResult Function() fetchModeratedArticle,
+    required TResult Function() fetchRejectedArticle,
+    required TResult Function() fetchPublishedArticle,
+    required TResult Function() fetchBannedArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchArticle,
+    TResult? Function()? fetchDraftedArticle,
+    TResult? Function()? fetchModeratedArticle,
+    TResult? Function()? fetchRejectedArticle,
+    TResult? Function()? fetchPublishedArticle,
+    TResult? Function()? fetchBannedArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchArticle,
+    TResult Function()? fetchDraftedArticle,
+    TResult Function()? fetchModeratedArticle,
+    TResult Function()? fetchRejectedArticle,
+    TResult Function()? fetchPublishedArticle,
+    TResult Function()? fetchBannedArticle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchArticle value) fetchArticle,
+    required TResult Function(_FetchDraftedArticle value) fetchDraftedArticle,
+    required TResult Function(_FetchModeratedArticle value)
+        fetchModeratedArticle,
+    required TResult Function(_FetchRejectedArticle value) fetchRejectedArticle,
+    required TResult Function(_FetchPublishedArticle value)
+        fetchPublishedArticle,
+    required TResult Function(_FetchBannedArticle value) fetchBannedArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchArticle value)? fetchArticle,
+    TResult? Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult? Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult? Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult? Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult? Function(_FetchBannedArticle value)? fetchBannedArticle,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchArticle value)? fetchArticle,
+    TResult Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult Function(_FetchBannedArticle value)? fetchBannedArticle,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,35 +96,35 @@ class _$MyArticleWatcherEventCopyWithImpl<$Res,
 }
 
 /// @nodoc
-abstract class _$$_FetchArticleCopyWith<$Res> {
-  factory _$$_FetchArticleCopyWith(
-          _$_FetchArticle value, $Res Function(_$_FetchArticle) then) =
-      __$$_FetchArticleCopyWithImpl<$Res>;
+abstract class _$$_FetchDraftedArticleCopyWith<$Res> {
+  factory _$$_FetchDraftedArticleCopyWith(_$_FetchDraftedArticle value,
+          $Res Function(_$_FetchDraftedArticle) then) =
+      __$$_FetchDraftedArticleCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_FetchArticleCopyWithImpl<$Res>
-    extends _$MyArticleWatcherEventCopyWithImpl<$Res, _$_FetchArticle>
-    implements _$$_FetchArticleCopyWith<$Res> {
-  __$$_FetchArticleCopyWithImpl(
-      _$_FetchArticle _value, $Res Function(_$_FetchArticle) _then)
+class __$$_FetchDraftedArticleCopyWithImpl<$Res>
+    extends _$MyArticleWatcherEventCopyWithImpl<$Res, _$_FetchDraftedArticle>
+    implements _$$_FetchDraftedArticleCopyWith<$Res> {
+  __$$_FetchDraftedArticleCopyWithImpl(_$_FetchDraftedArticle _value,
+      $Res Function(_$_FetchDraftedArticle) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_FetchArticle implements _FetchArticle {
-  const _$_FetchArticle();
+class _$_FetchDraftedArticle implements _FetchDraftedArticle {
+  const _$_FetchDraftedArticle();
 
   @override
   String toString() {
-    return 'MyArticleWatcherEvent.fetchArticle()';
+    return 'MyArticleWatcherEvent.fetchDraftedArticle()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_FetchArticle);
+        (other.runtimeType == runtimeType && other is _$_FetchDraftedArticle);
   }
 
   @override
@@ -107,27 +133,39 @@ class _$_FetchArticle implements _FetchArticle {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() fetchArticle,
+    required TResult Function() fetchDraftedArticle,
+    required TResult Function() fetchModeratedArticle,
+    required TResult Function() fetchRejectedArticle,
+    required TResult Function() fetchPublishedArticle,
+    required TResult Function() fetchBannedArticle,
   }) {
-    return fetchArticle();
+    return fetchDraftedArticle();
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? fetchArticle,
+    TResult? Function()? fetchDraftedArticle,
+    TResult? Function()? fetchModeratedArticle,
+    TResult? Function()? fetchRejectedArticle,
+    TResult? Function()? fetchPublishedArticle,
+    TResult? Function()? fetchBannedArticle,
   }) {
-    return fetchArticle?.call();
+    return fetchDraftedArticle?.call();
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? fetchArticle,
+    TResult Function()? fetchDraftedArticle,
+    TResult Function()? fetchModeratedArticle,
+    TResult Function()? fetchRejectedArticle,
+    TResult Function()? fetchPublishedArticle,
+    TResult Function()? fetchBannedArticle,
     required TResult orElse(),
   }) {
-    if (fetchArticle != null) {
-      return fetchArticle();
+    if (fetchDraftedArticle != null) {
+      return fetchDraftedArticle();
     }
     return orElse();
   }
@@ -135,34 +173,536 @@ class _$_FetchArticle implements _FetchArticle {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_FetchArticle value) fetchArticle,
+    required TResult Function(_FetchDraftedArticle value) fetchDraftedArticle,
+    required TResult Function(_FetchModeratedArticle value)
+        fetchModeratedArticle,
+    required TResult Function(_FetchRejectedArticle value) fetchRejectedArticle,
+    required TResult Function(_FetchPublishedArticle value)
+        fetchPublishedArticle,
+    required TResult Function(_FetchBannedArticle value) fetchBannedArticle,
   }) {
-    return fetchArticle(this);
+    return fetchDraftedArticle(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_FetchArticle value)? fetchArticle,
+    TResult? Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult? Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult? Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult? Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult? Function(_FetchBannedArticle value)? fetchBannedArticle,
   }) {
-    return fetchArticle?.call(this);
+    return fetchDraftedArticle?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_FetchArticle value)? fetchArticle,
+    TResult Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult Function(_FetchBannedArticle value)? fetchBannedArticle,
     required TResult orElse(),
   }) {
-    if (fetchArticle != null) {
-      return fetchArticle(this);
+    if (fetchDraftedArticle != null) {
+      return fetchDraftedArticle(this);
     }
     return orElse();
   }
 }
 
-abstract class _FetchArticle implements MyArticleWatcherEvent {
-  const factory _FetchArticle() = _$_FetchArticle;
+abstract class _FetchDraftedArticle implements MyArticleWatcherEvent {
+  const factory _FetchDraftedArticle() = _$_FetchDraftedArticle;
+}
+
+/// @nodoc
+abstract class _$$_FetchModeratedArticleCopyWith<$Res> {
+  factory _$$_FetchModeratedArticleCopyWith(_$_FetchModeratedArticle value,
+          $Res Function(_$_FetchModeratedArticle) then) =
+      __$$_FetchModeratedArticleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FetchModeratedArticleCopyWithImpl<$Res>
+    extends _$MyArticleWatcherEventCopyWithImpl<$Res, _$_FetchModeratedArticle>
+    implements _$$_FetchModeratedArticleCopyWith<$Res> {
+  __$$_FetchModeratedArticleCopyWithImpl(_$_FetchModeratedArticle _value,
+      $Res Function(_$_FetchModeratedArticle) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_FetchModeratedArticle implements _FetchModeratedArticle {
+  const _$_FetchModeratedArticle();
+
+  @override
+  String toString() {
+    return 'MyArticleWatcherEvent.fetchModeratedArticle()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FetchModeratedArticle);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchDraftedArticle,
+    required TResult Function() fetchModeratedArticle,
+    required TResult Function() fetchRejectedArticle,
+    required TResult Function() fetchPublishedArticle,
+    required TResult Function() fetchBannedArticle,
+  }) {
+    return fetchModeratedArticle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchDraftedArticle,
+    TResult? Function()? fetchModeratedArticle,
+    TResult? Function()? fetchRejectedArticle,
+    TResult? Function()? fetchPublishedArticle,
+    TResult? Function()? fetchBannedArticle,
+  }) {
+    return fetchModeratedArticle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchDraftedArticle,
+    TResult Function()? fetchModeratedArticle,
+    TResult Function()? fetchRejectedArticle,
+    TResult Function()? fetchPublishedArticle,
+    TResult Function()? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchModeratedArticle != null) {
+      return fetchModeratedArticle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchDraftedArticle value) fetchDraftedArticle,
+    required TResult Function(_FetchModeratedArticle value)
+        fetchModeratedArticle,
+    required TResult Function(_FetchRejectedArticle value) fetchRejectedArticle,
+    required TResult Function(_FetchPublishedArticle value)
+        fetchPublishedArticle,
+    required TResult Function(_FetchBannedArticle value) fetchBannedArticle,
+  }) {
+    return fetchModeratedArticle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult? Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult? Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult? Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult? Function(_FetchBannedArticle value)? fetchBannedArticle,
+  }) {
+    return fetchModeratedArticle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult Function(_FetchBannedArticle value)? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchModeratedArticle != null) {
+      return fetchModeratedArticle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchModeratedArticle implements MyArticleWatcherEvent {
+  const factory _FetchModeratedArticle() = _$_FetchModeratedArticle;
+}
+
+/// @nodoc
+abstract class _$$_FetchRejectedArticleCopyWith<$Res> {
+  factory _$$_FetchRejectedArticleCopyWith(_$_FetchRejectedArticle value,
+          $Res Function(_$_FetchRejectedArticle) then) =
+      __$$_FetchRejectedArticleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FetchRejectedArticleCopyWithImpl<$Res>
+    extends _$MyArticleWatcherEventCopyWithImpl<$Res, _$_FetchRejectedArticle>
+    implements _$$_FetchRejectedArticleCopyWith<$Res> {
+  __$$_FetchRejectedArticleCopyWithImpl(_$_FetchRejectedArticle _value,
+      $Res Function(_$_FetchRejectedArticle) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_FetchRejectedArticle implements _FetchRejectedArticle {
+  const _$_FetchRejectedArticle();
+
+  @override
+  String toString() {
+    return 'MyArticleWatcherEvent.fetchRejectedArticle()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FetchRejectedArticle);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchDraftedArticle,
+    required TResult Function() fetchModeratedArticle,
+    required TResult Function() fetchRejectedArticle,
+    required TResult Function() fetchPublishedArticle,
+    required TResult Function() fetchBannedArticle,
+  }) {
+    return fetchRejectedArticle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchDraftedArticle,
+    TResult? Function()? fetchModeratedArticle,
+    TResult? Function()? fetchRejectedArticle,
+    TResult? Function()? fetchPublishedArticle,
+    TResult? Function()? fetchBannedArticle,
+  }) {
+    return fetchRejectedArticle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchDraftedArticle,
+    TResult Function()? fetchModeratedArticle,
+    TResult Function()? fetchRejectedArticle,
+    TResult Function()? fetchPublishedArticle,
+    TResult Function()? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchRejectedArticle != null) {
+      return fetchRejectedArticle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchDraftedArticle value) fetchDraftedArticle,
+    required TResult Function(_FetchModeratedArticle value)
+        fetchModeratedArticle,
+    required TResult Function(_FetchRejectedArticle value) fetchRejectedArticle,
+    required TResult Function(_FetchPublishedArticle value)
+        fetchPublishedArticle,
+    required TResult Function(_FetchBannedArticle value) fetchBannedArticle,
+  }) {
+    return fetchRejectedArticle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult? Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult? Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult? Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult? Function(_FetchBannedArticle value)? fetchBannedArticle,
+  }) {
+    return fetchRejectedArticle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult Function(_FetchBannedArticle value)? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchRejectedArticle != null) {
+      return fetchRejectedArticle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchRejectedArticle implements MyArticleWatcherEvent {
+  const factory _FetchRejectedArticle() = _$_FetchRejectedArticle;
+}
+
+/// @nodoc
+abstract class _$$_FetchPublishedArticleCopyWith<$Res> {
+  factory _$$_FetchPublishedArticleCopyWith(_$_FetchPublishedArticle value,
+          $Res Function(_$_FetchPublishedArticle) then) =
+      __$$_FetchPublishedArticleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FetchPublishedArticleCopyWithImpl<$Res>
+    extends _$MyArticleWatcherEventCopyWithImpl<$Res, _$_FetchPublishedArticle>
+    implements _$$_FetchPublishedArticleCopyWith<$Res> {
+  __$$_FetchPublishedArticleCopyWithImpl(_$_FetchPublishedArticle _value,
+      $Res Function(_$_FetchPublishedArticle) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_FetchPublishedArticle implements _FetchPublishedArticle {
+  const _$_FetchPublishedArticle();
+
+  @override
+  String toString() {
+    return 'MyArticleWatcherEvent.fetchPublishedArticle()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FetchPublishedArticle);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchDraftedArticle,
+    required TResult Function() fetchModeratedArticle,
+    required TResult Function() fetchRejectedArticle,
+    required TResult Function() fetchPublishedArticle,
+    required TResult Function() fetchBannedArticle,
+  }) {
+    return fetchPublishedArticle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchDraftedArticle,
+    TResult? Function()? fetchModeratedArticle,
+    TResult? Function()? fetchRejectedArticle,
+    TResult? Function()? fetchPublishedArticle,
+    TResult? Function()? fetchBannedArticle,
+  }) {
+    return fetchPublishedArticle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchDraftedArticle,
+    TResult Function()? fetchModeratedArticle,
+    TResult Function()? fetchRejectedArticle,
+    TResult Function()? fetchPublishedArticle,
+    TResult Function()? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchPublishedArticle != null) {
+      return fetchPublishedArticle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchDraftedArticle value) fetchDraftedArticle,
+    required TResult Function(_FetchModeratedArticle value)
+        fetchModeratedArticle,
+    required TResult Function(_FetchRejectedArticle value) fetchRejectedArticle,
+    required TResult Function(_FetchPublishedArticle value)
+        fetchPublishedArticle,
+    required TResult Function(_FetchBannedArticle value) fetchBannedArticle,
+  }) {
+    return fetchPublishedArticle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult? Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult? Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult? Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult? Function(_FetchBannedArticle value)? fetchBannedArticle,
+  }) {
+    return fetchPublishedArticle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult Function(_FetchBannedArticle value)? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchPublishedArticle != null) {
+      return fetchPublishedArticle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchPublishedArticle implements MyArticleWatcherEvent {
+  const factory _FetchPublishedArticle() = _$_FetchPublishedArticle;
+}
+
+/// @nodoc
+abstract class _$$_FetchBannedArticleCopyWith<$Res> {
+  factory _$$_FetchBannedArticleCopyWith(_$_FetchBannedArticle value,
+          $Res Function(_$_FetchBannedArticle) then) =
+      __$$_FetchBannedArticleCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_FetchBannedArticleCopyWithImpl<$Res>
+    extends _$MyArticleWatcherEventCopyWithImpl<$Res, _$_FetchBannedArticle>
+    implements _$$_FetchBannedArticleCopyWith<$Res> {
+  __$$_FetchBannedArticleCopyWithImpl(
+      _$_FetchBannedArticle _value, $Res Function(_$_FetchBannedArticle) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_FetchBannedArticle implements _FetchBannedArticle {
+  const _$_FetchBannedArticle();
+
+  @override
+  String toString() {
+    return 'MyArticleWatcherEvent.fetchBannedArticle()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_FetchBannedArticle);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() fetchDraftedArticle,
+    required TResult Function() fetchModeratedArticle,
+    required TResult Function() fetchRejectedArticle,
+    required TResult Function() fetchPublishedArticle,
+    required TResult Function() fetchBannedArticle,
+  }) {
+    return fetchBannedArticle();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? fetchDraftedArticle,
+    TResult? Function()? fetchModeratedArticle,
+    TResult? Function()? fetchRejectedArticle,
+    TResult? Function()? fetchPublishedArticle,
+    TResult? Function()? fetchBannedArticle,
+  }) {
+    return fetchBannedArticle?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? fetchDraftedArticle,
+    TResult Function()? fetchModeratedArticle,
+    TResult Function()? fetchRejectedArticle,
+    TResult Function()? fetchPublishedArticle,
+    TResult Function()? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchBannedArticle != null) {
+      return fetchBannedArticle();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_FetchDraftedArticle value) fetchDraftedArticle,
+    required TResult Function(_FetchModeratedArticle value)
+        fetchModeratedArticle,
+    required TResult Function(_FetchRejectedArticle value) fetchRejectedArticle,
+    required TResult Function(_FetchPublishedArticle value)
+        fetchPublishedArticle,
+    required TResult Function(_FetchBannedArticle value) fetchBannedArticle,
+  }) {
+    return fetchBannedArticle(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult? Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult? Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult? Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult? Function(_FetchBannedArticle value)? fetchBannedArticle,
+  }) {
+    return fetchBannedArticle?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_FetchDraftedArticle value)? fetchDraftedArticle,
+    TResult Function(_FetchModeratedArticle value)? fetchModeratedArticle,
+    TResult Function(_FetchRejectedArticle value)? fetchRejectedArticle,
+    TResult Function(_FetchPublishedArticle value)? fetchPublishedArticle,
+    TResult Function(_FetchBannedArticle value)? fetchBannedArticle,
+    required TResult orElse(),
+  }) {
+    if (fetchBannedArticle != null) {
+      return fetchBannedArticle(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FetchBannedArticle implements MyArticleWatcherEvent {
+  const factory _FetchBannedArticle() = _$_FetchBannedArticle;
 }
 
 /// @nodoc

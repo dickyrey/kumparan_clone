@@ -6,6 +6,7 @@ class ArticleDetail extends Equatable {
     required this.url,
     required this.title,
     required this.content,
+    required this.originalContent,
     required this.thumbnail,
     required this.viewers,
     required this.comments,
@@ -17,6 +18,7 @@ class ArticleDetail extends Equatable {
   final String url;
   final String title;
   final String content;
+  final String originalContent;
   final String thumbnail;
   final int viewers;
   final int comments;
@@ -28,6 +30,7 @@ class ArticleDetail extends Equatable {
         'url': url,
         'title': title,
         'content': content,
+        'originalContent': originalContent,
         'thumbnail': thumbnail,
         'viewers': viewers,
         'comments': comments,
@@ -41,6 +44,7 @@ class ArticleDetail extends Equatable {
         url,
         title,
         content,
+        originalContent,
         thumbnail,
         viewers,
         comments,

@@ -8,7 +8,7 @@ class GetArticleDetail {
   
   final ArticleRepository repository;
 
-  Future<Either<Failure, ArticleDetail>> execute(String url) {
-    return repository.getArticleDetail(url);
+  Future<Either<Failure, ArticleDetail>> execute(String id) {
+    return repository.getArticleDetail(id);
   }
 }

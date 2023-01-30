@@ -21,7 +21,7 @@ mixin _$ArticleFormEvent {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -32,7 +32,7 @@ mixin _$ArticleFormEvent {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -43,7 +43,7 @@ mixin _$ArticleFormEvent {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -144,7 +144,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -158,7 +158,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -172,7 +172,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -302,7 +302,7 @@ class _$_Initialize implements _Initialize {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -316,7 +316,7 @@ class _$_Initialize implements _Initialize {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -330,7 +330,7 @@ class _$_Initialize implements _Initialize {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -465,7 +465,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -479,7 +479,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -493,7 +493,7 @@ class _$_TitleOnChanged implements _TitleOnChanged {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -567,7 +567,7 @@ abstract class _$$_ContentOnChangedCopyWith<$Res> {
           _$_ContentOnChanged value, $Res Function(_$_ContentOnChanged) then) =
       __$$_ContentOnChangedCopyWithImpl<$Res>;
   @useResult
-  $Res call({String val});
+  $Res call({String html, String deltaJson});
 }
 
 /// @nodoc
@@ -581,12 +581,17 @@ class __$$_ContentOnChangedCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? val = null,
+    Object? html = null,
+    Object? deltaJson = null,
   }) {
     return _then(_$_ContentOnChanged(
-      null == val
-          ? _value.val
-          : val // ignore: cast_nullable_to_non_nullable
+      html: null == html
+          ? _value.html
+          : html // ignore: cast_nullable_to_non_nullable
+              as String,
+      deltaJson: null == deltaJson
+          ? _value.deltaJson
+          : deltaJson // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -595,14 +600,16 @@ class __$$_ContentOnChangedCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_ContentOnChanged implements _ContentOnChanged {
-  const _$_ContentOnChanged(this.val);
+  const _$_ContentOnChanged({required this.html, required this.deltaJson});
 
   @override
-  final String val;
+  final String html;
+  @override
+  final String deltaJson;
 
   @override
   String toString() {
-    return 'ArticleFormEvent.contentOnChanged(val: $val)';
+    return 'ArticleFormEvent.contentOnChanged(html: $html, deltaJson: $deltaJson)';
   }
 
   @override
@@ -610,11 +617,13 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_ContentOnChanged &&
-            (identical(other.val, val) || other.val == val));
+            (identical(other.html, html) || other.html == html) &&
+            (identical(other.deltaJson, deltaJson) ||
+                other.deltaJson == deltaJson));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, val);
+  int get hashCode => Object.hash(runtimeType, html, deltaJson);
 
   @JsonKey(ignore: true)
   @override
@@ -628,12 +637,12 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
   }) {
-    return contentOnChanged(val);
+    return contentOnChanged(html, deltaJson);
   }
 
   @override
@@ -642,12 +651,12 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
   }) {
-    return contentOnChanged?.call(val);
+    return contentOnChanged?.call(html, deltaJson);
   }
 
   @override
@@ -656,14 +665,14 @@ class _$_ContentOnChanged implements _ContentOnChanged {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
     required TResult orElse(),
   }) {
     if (contentOnChanged != null) {
-      return contentOnChanged(val);
+      return contentOnChanged(html, deltaJson);
     }
     return orElse();
   }
@@ -716,9 +725,12 @@ class _$_ContentOnChanged implements _ContentOnChanged {
 }
 
 abstract class _ContentOnChanged implements ArticleFormEvent {
-  const factory _ContentOnChanged(final String val) = _$_ContentOnChanged;
+  const factory _ContentOnChanged(
+      {required final String html,
+      required final String deltaJson}) = _$_ContentOnChanged;
 
-  String get val;
+  String get html;
+  String get deltaJson;
   @JsonKey(ignore: true)
   _$$_ContentOnChangedCopyWith<_$_ContentOnChanged> get copyWith =>
       throw _privateConstructorUsedError;
@@ -791,7 +803,7 @@ class _$_PickImage implements _PickImage {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -805,7 +817,7 @@ class _$_PickImage implements _PickImage {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -819,7 +831,7 @@ class _$_PickImage implements _PickImage {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -928,7 +940,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -942,7 +954,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -956,7 +968,7 @@ class _$_CreateArticlePressed implements _CreateArticlePressed {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -1095,7 +1107,7 @@ class _$_FetchCategoryList implements _FetchCategoryList {
     required TResult Function() initial,
     required TResult Function(ArticleDetail article) initialize,
     required TResult Function(String val) titleOnChanged,
-    required TResult Function(String val) contentOnChanged,
+    required TResult Function(String html, String deltaJson) contentOnChanged,
     required TResult Function(ImageSource source) pickImage,
     required TResult Function() createArticlePressed,
     required TResult Function(List<Category> categories) fetchCategoryList,
@@ -1109,7 +1121,7 @@ class _$_FetchCategoryList implements _FetchCategoryList {
     TResult? Function()? initial,
     TResult? Function(ArticleDetail article)? initialize,
     TResult? Function(String val)? titleOnChanged,
-    TResult? Function(String val)? contentOnChanged,
+    TResult? Function(String html, String deltaJson)? contentOnChanged,
     TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? createArticlePressed,
     TResult? Function(List<Category> categories)? fetchCategoryList,
@@ -1123,7 +1135,7 @@ class _$_FetchCategoryList implements _FetchCategoryList {
     TResult Function()? initial,
     TResult Function(ArticleDetail article)? initialize,
     TResult Function(String val)? titleOnChanged,
-    TResult Function(String val)? contentOnChanged,
+    TResult Function(String html, String deltaJson)? contentOnChanged,
     TResult Function(ImageSource source)? pickImage,
     TResult Function()? createArticlePressed,
     TResult Function(List<Category> categories)? fetchCategoryList,
@@ -1199,6 +1211,7 @@ mixin _$ArticleFormState {
   bool get isSubmitting => throw _privateConstructorUsedError;
   String get title => throw _privateConstructorUsedError;
   String get content => throw _privateConstructorUsedError;
+  String get originalContent => throw _privateConstructorUsedError;
   String get imageUrl => throw _privateConstructorUsedError;
   File? get thumbnailFile => throw _privateConstructorUsedError;
   List<CheckBoxState> get categoryList => throw _privateConstructorUsedError;
@@ -1220,6 +1233,7 @@ abstract class $ArticleFormStateCopyWith<$Res> {
       bool isSubmitting,
       String title,
       String content,
+      String originalContent,
       String imageUrl,
       File? thumbnailFile,
       List<CheckBoxState> categoryList});
@@ -1243,6 +1257,7 @@ class _$ArticleFormStateCopyWithImpl<$Res, $Val extends ArticleFormState>
     Object? isSubmitting = null,
     Object? title = null,
     Object? content = null,
+    Object? originalContent = null,
     Object? imageUrl = null,
     Object? thumbnailFile = freezed,
     Object? categoryList = null,
@@ -1267,6 +1282,10 @@ class _$ArticleFormStateCopyWithImpl<$Res, $Val extends ArticleFormState>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      originalContent: null == originalContent
+          ? _value.originalContent
+          : originalContent // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -1298,6 +1317,7 @@ abstract class _$$_ArticleFormStateCopyWith<$Res>
       bool isSubmitting,
       String title,
       String content,
+      String originalContent,
       String imageUrl,
       File? thumbnailFile,
       List<CheckBoxState> categoryList});
@@ -1319,6 +1339,7 @@ class __$$_ArticleFormStateCopyWithImpl<$Res>
     Object? isSubmitting = null,
     Object? title = null,
     Object? content = null,
+    Object? originalContent = null,
     Object? imageUrl = null,
     Object? thumbnailFile = freezed,
     Object? categoryList = null,
@@ -1343,6 +1364,10 @@ class __$$_ArticleFormStateCopyWithImpl<$Res>
       content: null == content
           ? _value.content
           : content // ignore: cast_nullable_to_non_nullable
+              as String,
+      originalContent: null == originalContent
+          ? _value.originalContent
+          : originalContent // ignore: cast_nullable_to_non_nullable
               as String,
       imageUrl: null == imageUrl
           ? _value.imageUrl
@@ -1369,6 +1394,7 @@ class _$_ArticleFormState implements _ArticleFormState {
       required this.isSubmitting,
       required this.title,
       required this.content,
+      required this.originalContent,
       required this.imageUrl,
       required this.thumbnailFile,
       required final List<CheckBoxState> categoryList})
@@ -1385,6 +1411,8 @@ class _$_ArticleFormState implements _ArticleFormState {
   @override
   final String content;
   @override
+  final String originalContent;
+  @override
   final String imageUrl;
   @override
   final File? thumbnailFile;
@@ -1398,7 +1426,7 @@ class _$_ArticleFormState implements _ArticleFormState {
 
   @override
   String toString() {
-    return 'ArticleFormState(state: $state, message: $message, isSubmitting: $isSubmitting, title: $title, content: $content, imageUrl: $imageUrl, thumbnailFile: $thumbnailFile, categoryList: $categoryList)';
+    return 'ArticleFormState(state: $state, message: $message, isSubmitting: $isSubmitting, title: $title, content: $content, originalContent: $originalContent, imageUrl: $imageUrl, thumbnailFile: $thumbnailFile, categoryList: $categoryList)';
   }
 
   @override
@@ -1412,6 +1440,8 @@ class _$_ArticleFormState implements _ArticleFormState {
                 other.isSubmitting == isSubmitting) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.content, content) || other.content == content) &&
+            (identical(other.originalContent, originalContent) ||
+                other.originalContent == originalContent) &&
             (identical(other.imageUrl, imageUrl) ||
                 other.imageUrl == imageUrl) &&
             (identical(other.thumbnailFile, thumbnailFile) ||
@@ -1428,6 +1458,7 @@ class _$_ArticleFormState implements _ArticleFormState {
       isSubmitting,
       title,
       content,
+      originalContent,
       imageUrl,
       thumbnailFile,
       const DeepCollectionEquality().hash(_categoryList));
@@ -1446,6 +1477,7 @@ abstract class _ArticleFormState implements ArticleFormState {
       required final bool isSubmitting,
       required final String title,
       required final String content,
+      required final String originalContent,
       required final String imageUrl,
       required final File? thumbnailFile,
       required final List<CheckBoxState> categoryList}) = _$_ArticleFormState;
@@ -1460,6 +1492,8 @@ abstract class _ArticleFormState implements ArticleFormState {
   String get title;
   @override
   String get content;
+  @override
+  String get originalContent;
   @override
   String get imageUrl;
   @override

@@ -93,50 +93,43 @@ class MenuPage extends StatelessWidget {
               },
             ),
             const SizedBox(height: Const.space25),
-            BlocBuilder<CategoryWatcherBloc, CategoryWatcherState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  orElse: () {
-                    return const SizedBox();
-                  },
-                  loaded: (state) {
-                    return ElevatedButtonWidget(
-                      onTap: () {
-                        context.read<ArticleFormBloc>().add(
-                              const ArticleFormEvent.initial(),
-                            );
-                        Navigator.pushNamed(context, ARTICLE_FORM);
-                      },
-                      margin: const EdgeInsets.symmetric(
-                        horizontal: Const.margin,
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            FeatherIcons.edit3,
-                            color: Colors.white,
-                          ),
-                          const SizedBox(width: Const.space12),
-                          Text(
-                            lang.write_an_article,
-                            style: theme.textTheme.labelMedium,
-                          )
-                        ],
-                      ),
+            ElevatedButtonWidget(
+              onTap: () {
+                context.read<ArticleFormBloc>().add(
+                      const ArticleFormEvent.initial(),
                     );
-                  },
-                );
+                final category = context.read<CategoryWatcherBloc>().state;
+                context.read<ArticleFormBloc>().add(
+                      ArticleFormEvent.fetchCategoryList(category.categories),
+                    );
+                Navigator.pushNamed(context, ARTICLE_FORM);
               },
+              margin: const EdgeInsets.symmetric(
+                horizontal: Const.margin,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    FeatherIcons.edit3,
+                    color: Colors.white,
+                  ),
+                  const SizedBox(width: Const.space12),
+                  Text(
+                    lang.write_an_article,
+                    style: theme.textTheme.labelMedium,
+                  )
+                ],
+              ),
             ),
             const SizedBox(height: Const.space15),
             ListTileWidget(
               icon: FeatherIcons.fileText,
               title: lang.my_content,
               onTap: () {
-                context
-                    .read<MyArticleWatcherBloc>()
-                    .add(const MyArticleWatcherEvent.fetchArticle());
+              context
+                  .read<MyArticleWatcherBloc>()
+                  .add(const MyArticleWatcherEvent.fetchDraftedArticle());
                 Navigator.pushNamed(context, MY_ARTICLE);
               },
             ),

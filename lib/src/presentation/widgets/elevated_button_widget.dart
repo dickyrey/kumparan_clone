@@ -67,7 +67,7 @@ class ElevatedButtonWidget extends StatelessWidget {
                 ? child
                 : Text(
                     label ?? '',
-                    style: theme.textTheme.labelMedium?.copyWith(
+                    style: theme.textTheme.labelLarge?.copyWith(
                       fontSize: labelSize,
                       color: textColor,
                     ),

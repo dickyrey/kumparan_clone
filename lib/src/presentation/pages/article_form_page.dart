@@ -1,17 +1,19 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:flutter_quill/flutter_quill.dart' as quill;
+import 'package:html_editor_enhanced/html_editor.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
+import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
-import 'package:vsc_quill_delta_to_html/vsc_quill_delta_to_html.dart';
 
 class ArticleFormPage extends StatefulWidget {
   const ArticleFormPage({super.key});
@@ -21,22 +23,38 @@ class ArticleFormPage extends StatefulWidget {
 }
 
 class _ArticleFormPageState extends State<ArticleFormPage> {
+  late HtmlEditorController htmlController = HtmlEditorController();
+  String initialHtml = '';
   int _selectedIndex = 0;
   final _formKey = GlobalKey<FormState>();
-  var _quillController = quill.QuillController.basic();
+  // var _quillController = quill.QuillController.basic();
   PageController _pageController = PageController();
   late TextEditingController _titleController;
 
   @override
   void initState() {
     super.initState();
+    htmlController = HtmlEditorController();
     final state = context.read<ArticleFormBloc>().state;
     _pageController = PageController(initialPage: _selectedIndex);
     _titleController = TextEditingController(text: state.title);
-    // _quillController = quill.QuillController(
-    //   document: quill.Document.fromJson(),
-    //   selection: const TextSelection.collapsed(offset: 0),
-    // );
+    initialHtml = state.content;
+// // final jsonList = "[{insert: \"lorem ipsum\"}]" as List<dynamic>;
+// // final jsonString = state.originalContent.replaceAll(new RegExp(r"(\w+):"), '"$1":');
+//     if (state.originalContent != '') {
+//       final String deltaString = "insert⟨ lakad matatang⏎ ⟩ insert⟨ normalin  ⟩ + {bold: true} insert⟨ inslace ⟩ + {italic: true} insert⟨   ⟩ insert⟨ asdasd ⟩ + {link: https://google.com} insert⟨ ⏎ ⟩";
+//       // String fixedJson = state.originalContent.replaceAllMapped(
+//       //     RegExp(r'(\w+)\s*:\s*([^}]+)'),
+//       //     (match) => '"${match[1]}": "${match[2]}"');
+//       // fixedJson = "[$fixedJson]";
+
+//       // List<dynamic> decoded = jsonDecode(fixedJson) as List<dynamic>;
+
+//       _quillController = quill.QuillController(
+//         document: quill.Document.fromDelta(deltaString),
+//         selection: const TextSelection.collapsed(offset: 0),
+//       );
+//     }
   }
 
   @override
@@ -65,7 +83,10 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
             },
             children: [
               CreateTitleContentPage(titleController: _titleController),
-              EditorContentPage(controller: _quillController),
+              EditorContentPage(
+                controller: htmlController,
+                initialHtml: initialHtml,
+              ),
             ],
           ),
         ),
@@ -89,37 +110,6 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
       ),
       title: Row(
         children: [
-          Expanded(
-            child: quill.QuillToolbar.basic(
-              controller: _quillController,
-              toolbarIconSize: 23,
-              showFontFamily: false,
-              showBackgroundColorButton: false,
-              showBoldButton: false,
-              showCenterAlignment: false,
-              showClearFormat: false,
-              showCodeBlock: false,
-              showColorButton: false,
-              showDividers: false,
-              showFontSize: false,
-              showHeaderStyle: false,
-              showIndent: false,
-              showInlineCode: false,
-              showItalicButton: false,
-              showJustifyAlignment: false,
-              showLeftAlignment: false,
-              showLink: false,
-              showListBullets: false,
-              showListCheck: false,
-              showListNumbers: false,
-              showQuote: false,
-              showRightAlignment: false,
-              showSearchButton: false,
-              showStrikeThrough: false,
-              showUnderLineButton: false,
-            ),
-          ),
-          const Spacer(),
           BlocBuilder<ArticleFormBloc, ArticleFormState>(
             builder: (context, state) {
               return ElevatedButtonWidget(
@@ -132,17 +122,22 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
                       );
                     }
                   } else {
-                    final content =
-                        _quillController.document.toDelta().toJson();
-                    final converter = QuillDeltaToHtmlConverter(
-                      List.castFrom(content),
-                      ConverterOptions.forEmail(),
-                    );
-                    context.read<ArticleFormBloc>().add(
-                          ArticleFormEvent.contentOnChanged(
-                            converter.convert(),
-                          ),
-                        );
+                    // Clipboard.setData(ClipboardData(
+                    //     text: _quillController.document
+                    //         .toDelta()
+                    //         // .toJson()
+                    //         .toString()));
+                    // final deltaJson = _quillController.document.toDelta();
+                    // final converter = QuillDeltaToHtmlConverter(
+                    //   List.castFrom(deltaJson.toJson()),
+                    //   ConverterOptions.forEmail(),
+                    // );
+                    // context.read<ArticleFormBloc>().add(
+                    //       ArticleFormEvent.contentOnChanged(
+                    //         html: htmlController.getText(),
+                    //         deltaJson: deltaJson.toJson().toString(),
+                    //       ),
+                    //     );
                     context.read<ArticleFormBloc>().add(
                           const ArticleFormEvent.createArticlePressed(),
                         );
@@ -198,19 +193,25 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
                       );
                 },
                 child: AspectRatio(
-                  aspectRatio: 16 / 6,
+                  aspectRatio: 16 / 10,
                   child: Container(
                     alignment: Alignment.center,
                     decoration: BoxDecoration(
                       border: Border.all(color: theme.disabledColor),
                       borderRadius: BorderRadius.circular(Const.radius),
-                      image: state.thumbnailFile != null
+                      image: (state.thumbnailFile != null)
                           ? DecorationImage(
                               image: FileImage(state.thumbnailFile!),
                             )
-                          : null,
+                          : (state.imageUrl != '')
+                              ? DecorationImage(
+                                  image: CachedNetworkImageProvider(
+                                    state.imageUrl,
+                                  ),
+                                )
+                              : null,
                     ),
-                    child: state.thumbnailFile != null
+                    child: (state.thumbnailFile != null || state.imageUrl != '')
                         ? const SizedBox()
                         : Text(
                             'Upload Thumbnail',
@@ -274,39 +275,45 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
 class EditorContentPage extends StatelessWidget {
   const EditorContentPage({
     super.key,
-    required quill.QuillController controller,
+    required HtmlEditorController controller,
+    required this.initialHtml,
   }) : _controller = controller;
 
-  final quill.QuillController _controller;
+  final HtmlEditorController _controller;
+  final String initialHtml;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-          child: Container(
-            // color: Colors.black12,
-            margin: const EdgeInsets.all(Const.margin),
-            child: quill.QuillEditor.basic(
-              controller: _controller,
-              readOnly: false,
-            ),
-          ),
-        ),
-        quill.QuillToolbar.basic(
-          controller: _controller,
-          toolbarIconSize: 23,
-          showClearFormat: false,
-          showListCheck: false,
-          showBackgroundColorButton: false,
-          showSearchButton: false,
-          multiRowsDisplay: false,
-          showRedo: false,
-          showStrikeThrough: false,
-          showFontFamily: false,
-          showUndo: false,
-        )
-      ],
+    final theme = Theme.of(context);
+
+    return HtmlEditor(
+      controller: _controller,
+      callbacks: Callbacks(
+        onInit: () {
+          _controller.setFullScreen();
+        },
+        onChangeContent: (p0) {
+          context.read<ArticleFormBloc>().add(
+                ArticleFormEvent.contentOnChanged(
+                  html: p0!,
+                  deltaJson: p0,
+                ),
+              );
+        },
+      ),
+      htmlToolbarOptions: HtmlToolbarOptions(
+        toolbarType: ToolbarType.nativeExpandable,
+        buttonColor: ColorLight.fontTitle,
+        buttonSelectedColor: theme.primaryColor,
+        toolbarPosition: ToolbarPosition.belowEditor,
+        toolbarItemHeight: 30,
+      ),
+      htmlEditorOptions: HtmlEditorOptions(
+        hint: 'Tulis artikelmu disini',
+        shouldEnsureVisible: true,
+        androidUseHybridComposition: false,
+        initialText: initialHtml,
+      ),
     );
   }
 }

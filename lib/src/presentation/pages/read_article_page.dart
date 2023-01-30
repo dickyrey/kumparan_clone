@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -18,6 +19,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
+import 'package:octo_image/octo_image.dart';
 
 class ReadArticlePage extends StatefulWidget {
   const ReadArticlePage({super.key, required this.article});
@@ -66,6 +68,13 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                         ?.copyWith(color: theme.primaryColor),
                   ),
                   const SizedBox(height: Const.space8),
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(Const.radius),
+                    child: OctoImage(
+                      image: CachedNetworkImageProvider(widget.article.image),
+                    ),
+                  ),
+                  const SizedBox(height: Const.space15),
                   Text(
                     widget.article.title,
                     style: theme.textTheme.headlineLarge,

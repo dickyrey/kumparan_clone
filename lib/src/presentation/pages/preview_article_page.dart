@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
@@ -19,6 +20,7 @@ import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
+import 'package:octo_image/octo_image.dart';
 
 class PreviewArticlePage extends StatefulWidget {
   const PreviewArticlePage({super.key, required this.article});
@@ -58,6 +60,13 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
                   ?.copyWith(color: theme.primaryColor),
             ),
             const SizedBox(height: Const.space8),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(Const.radius),
+              child: OctoImage(
+                image: CachedNetworkImageProvider(widget.article.image),
+              ),
+            ),
+            const SizedBox(height: Const.space15),
             Text(
               widget.article.title,
               style: theme.textTheme.headlineLarge,
@@ -104,60 +113,50 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
         ),
       ),
       actions: [
-        BlocBuilder<CategoryWatcherBloc, CategoryWatcherState>(
+        BlocBuilder<ArticleDetailWatcherBloc, ArticleDetailWatcherState>(
           builder: (context, state) {
             return state.maybeMap(
               orElse: () {
                 return const SizedBox();
               },
-              loaded: (category) {
-                return BlocBuilder<ArticleDetailWatcherBloc,
-                    ArticleDetailWatcherState>(
-                  builder: (context, state) {
-                    return state.maybeMap(
-                      orElse: () {
-                        return const SizedBox();
-                      },
-                      loaded: (state) {
-                        return Padding(
-                          padding: const EdgeInsets.fromLTRB(
-                            0,
-                            Const.space8,
-                            Const.margin,
-                            Const.space8,
-                          ),
-                          child: ElevatedButtonWidget(
-                            onTap: () {
-                              context.read<ArticleFormBloc>().add(
-                                    ArticleFormEvent.fetchCategoryList(
-                                      category.categories,
-                                    ),
-                                  );
+              loaded: (state) {
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    0,
+                    Const.space8,
+                    Const.margin,
+                    Const.space8,
+                  ),
+                  child: ElevatedButtonWidget(
+                    onTap: () {
+                      final category =
+                          context.read<CategoryWatcherBloc>().state;
+                      context.read<ArticleFormBloc>().add(
+                            ArticleFormEvent.fetchCategoryList(
+                              category.categories,
+                            ),
+                          );
 
-                              context.read<ArticleFormBloc>().add(
-                                    ArticleFormEvent.initialize(
-                                      state.articleDetail,
-                                    ),
-                                  );
-                              Navigator.pushNamed(
-                                context,
-                                ARTICLE_FORM,
-                                arguments: article,
-                              );
-                            },
-                            label: 'Edit',
-                            width: 80,
-                            height: 30,
-                          ),
-                        );
-                      },
-                    );
-                  },
+                      context.read<ArticleFormBloc>().add(
+                            ArticleFormEvent.initialize(
+                              state.articleDetail,
+                            ),
+                          );
+                      Navigator.pushNamed(
+                        context,
+                        ARTICLE_FORM,
+                        arguments: article,
+                      );
+                    },
+                    label: 'Edit',
+                    width: 80,
+                    height: 30,
+                  ),
                 );
               },
             );
           },
-        )
+        ),
       ],
     );
   }

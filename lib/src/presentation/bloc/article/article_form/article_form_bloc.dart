@@ -33,6 +33,7 @@ class ArticleFormBloc
                 .firstWhere((x) => x.category.id == e.category.id)
                 .value = true;
           }).toList();
+          
           emit(
             state.copyWith(
               state: RequestState.empty,
@@ -41,6 +42,7 @@ class ArticleFormBloc
               isSubmitting: false,
               title: event.article.title,
               content: event.article.content,
+              originalContent: event.article.originalContent,
               imageUrl: event.article.thumbnail,
             ),
           );
@@ -55,7 +57,7 @@ class ArticleFormBloc
           emit(state.copyWith(title: e.val));
         },
         contentOnChanged: (e) {
-          emit(state.copyWith(content: e.val));
+          emit(state.copyWith(content: e.html,originalContent: e.deltaJson));
         },
         pickImage: (e) async {
           final pickedImage = await ImagePicker().pickImage(
@@ -97,6 +99,7 @@ class ArticleFormBloc
             final result = await _createArticle.execute(
               title: state.title,
               content: state.content,
+              originalContent: state.originalContent,
               thumbnail: state.thumbnailFile!,
               categories: selectedCategory,
             );

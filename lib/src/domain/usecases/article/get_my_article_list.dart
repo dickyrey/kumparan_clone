@@ -9,7 +9,7 @@ class GetMyArticleList {
   
   final ArticleRepository repository;
 
-  Future<Either<Failure, List<Article>>> execute() {
-    return repository.getMyArticleList();
+  Future<Either<Failure, List<Article>>> execute(String status) {
+    return repository.getMyArticleList(status);
   }
 }
