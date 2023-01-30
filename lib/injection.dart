@@ -5,6 +5,7 @@ import 'package:kumparan_clone/src/data/datasources/article_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/auth_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/boarding_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/comment_article_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/like_article_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
@@ -13,6 +14,7 @@ import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dar
 import 'package:kumparan_clone/src/data/repositories/auth_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/boarding_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/category_repository_impl.dart';
+import 'package:kumparan_clone/src/data/repositories/comment_article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/like_article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/notice_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/profile_repository_impl.dart';
@@ -21,19 +23,20 @@ import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
+import 'package:kumparan_clone/src/domain/repositories/comment_article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/like_article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/user_article_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
-import 'package:kumparan_clone/src/domain/usecases/article/delete_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
-import 'package:kumparan_clone/src/domain/usecases/article/get_comment_list.dart';
-import 'package:kumparan_clone/src/domain/usecases/article/send_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
+import 'package:kumparan_clone/src/domain/usecases/comment_article/delete_comment.dart';
+import 'package:kumparan_clone/src/domain/usecases/comment_article/get_comment_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/comment_article/send_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
@@ -45,16 +48,16 @@ import 'package:kumparan_clone/src/domain/usecases/user_article/get_drafted_arti
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_moderated_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_published_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_rejected_article.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/comment_article/article_comment_watcher/article_comment_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/comment_article/delete_comment_actor/delete_comment_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/comment_article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email/backup_email_form/backup_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email/verification_email_form/verification_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_password_form_bloc.dart';
@@ -116,6 +119,11 @@ void init() {
     () => categoryRemoteDataSource,
   );
 
+  final commentArticleDataSource = CommentArticleDataSourceImpl(locator());
+  locator.registerLazySingleton<CommentArticleDataSource>(
+    () => commentArticleDataSource,
+  );
+
   final likeArticleDataSource = LikeArticleDataSourceImpl(locator());
   locator.registerLazySingleton<LikeArticleDataSource>(
     () => likeArticleDataSource,
@@ -157,6 +165,11 @@ void init() {
   final categoryRepository = CategoryRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<CategoryRepository>(
     () => categoryRepository,
+  );
+
+  final commentArticleRepository = CommentArticleRepositoryImpl(locator());
+  locator.registerLazySingleton<CommentArticleRepository>(
+    () => commentArticleRepository,
   );
 
   final likeArticleRepository = LikeArticleRepositoryImpl(locator());

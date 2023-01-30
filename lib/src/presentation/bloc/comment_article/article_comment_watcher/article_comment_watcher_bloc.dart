@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/domain/entities/comment.dart';
-import 'package:kumparan_clone/src/domain/usecases/article/get_comment_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/comment_article/get_comment_list.dart';
 
 part 'article_comment_watcher_event.dart';
 part 'article_comment_watcher_state.dart';

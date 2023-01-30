@@ -7,7 +7,6 @@ import 'package:kumparan_clone/src/common/failure.dart';
 import 'package:kumparan_clone/src/data/datasources/article_data_source.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
-import 'package:kumparan_clone/src/domain/entities/comment.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 
 class ArticleRepositoryImpl extends ArticleRepository {
@@ -34,54 +33,6 @@ class ArticleRepositoryImpl extends ArticleRepository {
     try {
       final result = await dataSource.getArticleDetail(id);
       return Right(result.toEntity());
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on SocketException {
-      return const Left(
-        ConnectionFailure(ExceptionMessage.internetNotConnected),
-      );
-    }
-  }
-
-  @override
-  Future<Either<Failure, List<Comment>>> getCommentList(String id) async {
-    try {
-      final result = await dataSource.getCommentList(id);
-      return Right(result.map((e) => e.toEntity()).toList());
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on SocketException {
-      return const Left(
-        ConnectionFailure(ExceptionMessage.internetNotConnected),
-      );
-    }
-  }
-
-  @override
-  Future<Either<Failure, bool>> sendComment({
-    required String id,
-    required String comment,
-  }) async {
-    try {
-      final result = await dataSource.sendComment(id: id, comment: comment);
-      return Right(result);
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on SocketException {
-      return const Left(
-        ConnectionFailure(ExceptionMessage.internetNotConnected),
-      );
-    }
-  }
-
-  @override
-  Future<Either<Failure, bool>> deleteComment({
-    required String id,
-    required int userId,
-  }) async {
-    try {
-      final result = await dataSource.deleteComment(id: id, userId: userId);
-      return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));
     } on SocketException {

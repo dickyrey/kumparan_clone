@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kumparan_clone/src/common/const.dart';
-import 'package:kumparan_clone/src/domain/usecases/article/delete_comment.dart';
+import 'package:kumparan_clone/src/domain/usecases/comment_article/delete_comment.dart';
 
 part 'delete_comment_actor_event.dart';
 part 'delete_comment_actor_state.dart';

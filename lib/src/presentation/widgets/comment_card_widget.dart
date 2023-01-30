@@ -7,7 +7,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/domain/entities/comment.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/comment_article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
