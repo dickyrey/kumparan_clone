@@ -9,7 +9,6 @@ import 'package:kumparan_clone/src/common/themes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
@@ -21,6 +20,7 @@ import 'package:kumparan_clone/src/presentation/bloc/email/backup_email_form/bac
 import 'package:kumparan_clone/src/presentation/bloc/email/verification_email_form/verification_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/like_article_watcher/like_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc.dart';
@@ -51,7 +51,6 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(create: (context) => di.locator<ArticleCommentWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleDetailWatcherBloc>()),
-        BlocProvider(create: (context) => di.locator<ArticleLikeWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleFormBloc>()),
         BlocProvider(create: (context) => di.locator<DeleteCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleWatcherBloc>()),
@@ -64,6 +63,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<VerificationEmailFormBloc>()),
         BlocProvider(create: (context) => di.locator<ForgotPasswordFormBloc>()),
         BlocProvider(create: (context) => di.locator<InterestFormBloc>()),
+        BlocProvider(create: (context) => di.locator<LikeArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<LoginFormBloc>()),
         BlocProvider(create: (context) => di.locator<NoticeWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<PasswordFormBloc>()),

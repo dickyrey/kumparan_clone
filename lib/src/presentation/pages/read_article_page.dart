@@ -13,9 +13,9 @@ import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/like_article_watcher/like_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -38,11 +38,9 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
       context.read<ArticleDetailWatcherBloc>().add(
             ArticleDetailWatcherEvent.fetchArticleDetail(widget.article.url),
           );
-      context.read<ArticleLikeWatcherBloc>().add(
-            ArticleLikeWatcherEvent.fetchLikeStatus(
-              widget.article.url,
-            ),
-          );
+      context
+          .read<LikeArticleWatcherBloc>()
+          .add(LikeArticleWatcherEvent.fetchStatus(widget.article.url));
     });
   }
 
@@ -133,14 +131,14 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                     ),
                   ),
                   const SizedBox(width: Const.space12),
-                  BlocBuilder<ArticleLikeWatcherBloc, ArticleLikeWatcherState>(
+                  BlocBuilder<LikeArticleWatcherBloc, LikeArticleWatcherState>(
                     builder: (context, state) {
                       return state.maybeMap(
                         orElse: () {
                           return GestureDetector(
                             onTap: () {
-                              context.read<ArticleLikeWatcherBloc>().add(
-                                    ArticleLikeWatcherEvent.likePressed(
+                              context.read<LikeArticleWatcherBloc>().add(
+                                    LikeArticleWatcherEvent.likePressed(
                                       widget.article.url,
                                     ),
                                   );
@@ -154,8 +152,8 @@ class _ReadArticlePageState extends State<ReadArticlePage> {
                         liked: (_) {
                           return GestureDetector(
                             onTap: () {
-                              context.read<ArticleLikeWatcherBloc>().add(
-                                    ArticleLikeWatcherEvent.likePressed(
+                              context.read<LikeArticleWatcherBloc>().add(
+                                    LikeArticleWatcherEvent.likePressed(
                                       widget.article.url,
                                     ),
                                   );

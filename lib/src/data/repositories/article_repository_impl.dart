@@ -16,20 +16,6 @@ class ArticleRepositoryImpl extends ArticleRepository {
   final ArticleDataSource dataSource;
 
   @override
-  Future<Either<Failure, bool>> checkLikeStatus(String id) async {
-    try {
-      final result = await dataSource.checkLikeStatus(id);
-      return Right(result);
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on SocketException {
-      return const Left(
-        ConnectionFailure(ExceptionMessage.internetNotConnected),
-      );
-    }
-  }
-
-  @override
   Future<Either<Failure, List<Article>>> getArticleList() async {
     try {
       final result = await dataSource.getArticleList();
@@ -48,20 +34,6 @@ class ArticleRepositoryImpl extends ArticleRepository {
     try {
       final result = await dataSource.getArticleDetail(id);
       return Right(result.toEntity());
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on SocketException {
-      return const Left(
-        ConnectionFailure(ExceptionMessage.internetNotConnected),
-      );
-    }
-  }
-
-  @override
-  Future<Either<Failure, bool>> likeArticle(String id) async {
-    try {
-      final result = await dataSource.likeArticle(id);
-      return Right(result);
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));
     } on SocketException {
