@@ -27,8 +27,9 @@ class ArticleDetailModel extends Equatable {
       comments: json['comments'] as int,
       likes: json['likes'] as int,
       categories: List<CategoryModel>.from(
-          (json['categories'] as Iterable<dynamic>)
-              .map((x) => CategoryModel.fromJson(x as Map<String, dynamic>))),
+        (json['categories'] as Iterable<dynamic>)
+            .map((x) => CategoryModel.fromJson(x as Map<String, dynamic>)),
+      ),
       createdAt: DateTime.parse(json['created_at'] as String),
     );
   }

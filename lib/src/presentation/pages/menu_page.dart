@@ -6,7 +6,6 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
@@ -127,9 +126,6 @@ class MenuPage extends StatelessWidget {
               icon: FeatherIcons.fileText,
               title: lang.my_content,
               onTap: () {
-              context
-                  .read<MyArticleWatcherBloc>()
-                  .add(const MyArticleWatcherEvent.fetchDraftedArticle());
                 Navigator.pushNamed(context, MY_ARTICLE);
               },
             ),

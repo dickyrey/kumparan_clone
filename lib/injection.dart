@@ -7,25 +7,27 @@ import 'package:kumparan_clone/src/data/datasources/boarding_remote_data_source.
 import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/user_article_data_source.dart';
 import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/auth_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/boarding_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/category_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/notice_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/profile_repository_impl.dart';
+import 'package:kumparan_clone/src/data/repositories/user_article_repository_impl.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/category_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
+import 'package:kumparan_clone/src/domain/repositories/user_article_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/check_like_status.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/delete_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_comment_list.dart';
-import 'package:kumparan_clone/src/domain/usecases/article/get_my_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/like_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/send_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
@@ -35,12 +37,16 @@ import 'package:kumparan_clone/src/domain/usecases/get_boarding_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/get_banned_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/get_drafted_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/get_moderated_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/get_published_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/get_rejected_article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
@@ -59,6 +65,11 @@ import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_banned_watcher/user_article_banned_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_drafted_watcher/user_article_drafted_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_moderated_watcher/user_article_moderated_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_published_watcher/user_article_published_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_rejected_watcher/user_article_rejected_watcher_bloc.dart';
 
 final locator = GetIt.instance;
 
@@ -112,6 +123,11 @@ void init() {
     () => profileDataSource,
   );
 
+  final userArticleDataSource = UserArticleDataSourceImpl(locator());
+  locator.registerLazySingleton<UserArticleDataSource>(
+    () => userArticleDataSource,
+  );
+
   /// List of [Repositories]
   ///
   ///
@@ -143,6 +159,11 @@ void init() {
   final profileRepository = ProfileRepositoryImpl(locator());
   locator.registerLazySingleton<ProfileRepository>(
     () => profileRepository,
+  );
+
+  final userArticleRepository = UserArticleRepositoryImpl(locator());
+  locator.registerLazySingleton<UserArticleRepository>(
+    () => userArticleRepository,
   );
 
   /// List of [Usecases]
@@ -181,11 +202,6 @@ void init() {
     () => getCommentListUseCase,
   );
 
-  final getMyArticleListUseCase = GetMyArticleList(locator());
-  locator.registerLazySingleton(
-    () => getMyArticleListUseCase,
-  );
-
   final likeArticleUseCase = LikeArticle(locator());
   locator.registerLazySingleton(
     () => likeArticleUseCase,
@@ -218,6 +234,33 @@ void init() {
   final getProfileUseCase = GetProfile(locator());
   locator.registerLazySingleton(
     () => getProfileUseCase,
+  );
+
+  //* Filter by [User Article] folder
+  //*
+  final getBannedArticle = GetBannedArticle(locator());
+  locator.registerLazySingleton(
+    () => getBannedArticle,
+  );
+  
+  final getDraftedArticle = GetDraftedArticle(locator());
+  locator.registerLazySingleton(
+    () => getDraftedArticle,
+  );
+
+  final getModeratedArticle = GetModeratedArticle(locator());
+  locator.registerLazySingleton(
+    () => getModeratedArticle,
+  );
+
+  final getPublishedArticle = GetPublishedArticle(locator());
+  locator.registerLazySingleton(
+    () => getPublishedArticle,
+  );
+
+  final getRejectedArticle = GetRejectedArticle(locator());
+  locator.registerLazySingleton(
+    () => getRejectedArticle,
   );
 
   //! Part of [UI Kit] usecases
@@ -266,11 +309,6 @@ void init() {
   final deleteCommentActorBloc = DeleteCommentActorBloc(locator());
   locator.registerLazySingleton(
     () => deleteCommentActorBloc,
-  );
-
-  final myArticleWatcherBloc = MyArticleWatcherBloc(locator());
-  locator.registerLazySingleton(
-    () => myArticleWatcherBloc,
   );
 
   final articleWatcherBloc = ArticleWatcherBloc(locator());
@@ -388,4 +426,32 @@ void init() {
   locator.registerLazySingleton(
     () => userWatcherBloc,
   );
+
+  //* User BLoC folder
+  //*
+  final userArticleBannedWatcherBloc = UserArticleBannedWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => userArticleBannedWatcherBloc,
+  );
+  
+  final userArticleDraftedWatcherBloc = UserArticleDraftedWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => userArticleDraftedWatcherBloc,
+  );
+  
+  final userArticleModeratedWatcherBloc = UserArticleModeratedWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => userArticleModeratedWatcherBloc,
+  );
+  
+  final userArticlePublishedWatcherBloc = UserArticlePublishedWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => userArticlePublishedWatcherBloc,
+  );
+  
+  final userArticleRejectedWatcherBloc = UserArticleRejectedWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => userArticleRejectedWatcherBloc,
+  );
+
 }

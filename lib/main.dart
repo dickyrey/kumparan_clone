@@ -11,7 +11,6 @@ import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watc
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_like_watcher/article_like_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_comment_actor/delete_comment_actor_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/article/my_article_watcher/my_article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
@@ -30,6 +29,11 @@ import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_banned_watcher/user_article_banned_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_drafted_watcher/user_article_drafted_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_moderated_watcher/user_article_moderated_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_published_watcher/user_article_published_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_rejected_watcher/user_article_rejected_watcher_bloc.dart';
 import 'package:kumparan_clone/src/utilities/route_generator.dart';
 
 void main() {
@@ -50,7 +54,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<ArticleLikeWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleFormBloc>()),
         BlocProvider(create: (context) => di.locator<DeleteCommentActorBloc>()),
-        BlocProvider(create: (context) => di.locator<MyArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SendCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<AuthWatcherBloc>()),
@@ -69,6 +72,12 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<SearchProvinceFormBloc>()),
         BlocProvider(create: (context) => di.locator<UserFormBloc>()),
         BlocProvider(create: (context) => di.locator<UserWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<UserArticleBannedWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<UserArticleDraftedWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<UserArticleModeratedWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<UserArticlePublishedWatcherBloc>()),
+        BlocProvider(create: (context) => di.locator<UserArticleRejectedWatcherBloc>()),
+
       ],
       child: MaterialApp(
         title: 'Kumparan',

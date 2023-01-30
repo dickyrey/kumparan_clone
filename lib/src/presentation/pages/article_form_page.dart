@@ -8,7 +8,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
-import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';

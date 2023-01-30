@@ -44,20 +44,6 @@ class ArticleRepositoryImpl extends ArticleRepository {
   }
 
   @override
-  Future<Either<Failure, List<Article>>> getMyArticleList(String status) async {
-    try {
-      final result = await dataSource.getMyArticleList(status);
-      return Right(result.map((e) => e.toEntity()).toList());
-    } on ServerException catch (e) {
-      return Left(ServerFailure(e.message));
-    } on SocketException {
-      return const Left(
-        ConnectionFailure(ExceptionMessage.internetNotConnected),
-      );
-    }
-  }
-
-  @override
   Future<Either<Failure, ArticleDetail>> getArticleDetail(String id) async {
     try {
       final result = await dataSource.getArticleDetail(id);
