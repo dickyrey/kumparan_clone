@@ -3,21 +3,24 @@ import 'dart:io';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/domain/entities/article_detail.dart';
 import 'package:kumparan_clone/src/domain/entities/category.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
 import 'package:kumparan_clone/src/utilities/image_cropper_utils.dart';
 
 part 'article_form_event.dart';
 part 'article_form_state.dart';
 part 'article_form_bloc.freezed.dart';
 
-class ArticleFormBloc
-    extends Bloc<ArticleFormEvent, ArticleFormState> {
-  ArticleFormBloc(this._createArticle)
-      : super(ArticleFormState.initial()) {
+class ArticleFormBloc extends Bloc<ArticleFormEvent, ArticleFormState> {
+  ArticleFormBloc({
+    required this.create,
+    required this.update,
+  }) : super(ArticleFormState.initial()) {
     on<ArticleFormEvent>((event, emit) async {
       await event.map(
         initial: (_) {
@@ -33,31 +36,27 @@ class ArticleFormBloc
                 .firstWhere((x) => x.category.id == e.category.id)
                 .value = true;
           }).toList();
-          
+
+          final id = event.article.url.replaceFirst(Const.unusedPath, '');
+
           emit(
             state.copyWith(
               state: RequestState.empty,
               message: '',
-              thumbnailFile: null,
+              imageFile: null,
               isSubmitting: false,
+              articleId: id,
               title: event.article.title,
               content: event.article.content,
-              originalContent: event.article.originalContent,
               imageUrl: event.article.thumbnail,
             ),
           );
-
-          // state.categoryList.firstWhere((e) {
-          //   return e.category.id == categoryId
-          //       ? e.value = true
-          //       : e.value = false;
-          // });
         },
         titleOnChanged: (e) {
           emit(state.copyWith(title: e.val));
         },
         contentOnChanged: (e) {
-          emit(state.copyWith(content: e.html,originalContent: e.deltaJson));
+          emit(state.copyWith(content: e.html));
         },
         pickImage: (e) async {
           final pickedImage = await ImagePicker().pickImage(
@@ -68,7 +67,7 @@ class ArticleFormBloc
               pickedImage.path,
             );
             if (croppedImage != null) {
-              emit(state.copyWith(thumbnailFile: File(croppedImage.path)));
+              emit(state.copyWith(imageFile: File(croppedImage.path)));
             }
           }
         },
@@ -95,12 +94,50 @@ class ArticleFormBloc
           final selectedCategory =
               selected.map((e) => '"${e.category.id}"').toList();
 
-          if (state.thumbnailFile != null) {
-            final result = await _createArticle.execute(
+          if (state.imageFile != null) {
+            final result = await create.execute(
               title: state.title,
               content: state.content,
-              originalContent: state.originalContent,
-              thumbnail: state.thumbnailFile!,
+              image: state.imageFile!,
+              categories: selectedCategory,
+            );
+
+            result.fold(
+              (f) => emit(
+                state.copyWith(
+                  state: RequestState.error,
+                  isSubmitting: false,
+                  message: f.message,
+                ),
+              ),
+              (_) => emit(
+                state.copyWith(
+                  state: RequestState.loaded,
+                  isSubmitting: true,
+                ),
+              ),
+            );
+          }
+        },
+        updateArticlePressed: (e) async {
+          emit(
+            state.copyWith(
+              state: RequestState.loading,
+              isSubmitting: true,
+            ),
+          );
+          final selected =
+              state.categoryList.where((e) => e.value == true).toList();
+
+          final selectedCategory =
+              selected.map((e) => '"${e.category.id}"').toList();
+
+          if (state.imageFile != null) {
+            final result = await update.execute(
+              id: state.articleId,
+              title: state.title,
+              content: state.content,
+              image: state.imageFile!,
               categories: selectedCategory,
             );
 
@@ -124,5 +161,6 @@ class ArticleFormBloc
       );
     });
   }
-  final CreateArticle _createArticle;
+  final CreateArticle create;
+  final UpdateArticle update;
 }

@@ -31,6 +31,7 @@ import 'package:kumparan_clone/src/domain/repositories/user_article_repository.d
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
@@ -203,11 +204,6 @@ void init() {
     () => createArtcleUseCase,
   );
 
-  final deleteCommentUseCase = DeleteComment(locator());
-  locator.registerLazySingleton(
-    () => deleteCommentUseCase,
-  );
-
   final getArticleDetailUseCase = GetArticleDetail(locator());
   locator.registerLazySingleton(
     () => getArticleDetailUseCase,
@@ -218,14 +214,9 @@ void init() {
     () => getArticleListUseCase,
   );
 
-  final getCommentListUseCase = GetCommentList(locator());
+  final updateArtcleUseCase = UpdateArticle(locator());
   locator.registerLazySingleton(
-    () => getCommentListUseCase,
-  );
-
-  final sendCommentUseCase = SendComment(locator());
-  locator.registerLazySingleton(
-    () => sendCommentUseCase,
+    () => updateArtcleUseCase,
   );
 
   //* Filter by [Auth] folder
@@ -243,6 +234,23 @@ void init() {
   final signOutWithGoogle = SignOut(locator());
   locator.registerLazySingleton(
     () => signOutWithGoogle,
+  );
+
+  //* Filter by [Comment Article] folder
+  //*
+  final deleteCommentUseCase = DeleteComment(locator());
+  locator.registerLazySingleton(
+    () => deleteCommentUseCase,
+  );
+
+  final getCommentListUseCase = GetCommentList(locator());
+  locator.registerLazySingleton(
+    () => getCommentListUseCase,
+  );
+
+  final sendCommentUseCase = SendComment(locator());
+  locator.registerLazySingleton(
+    () => sendCommentUseCase,
   );
 
   //* Filter by [Profile] folder
@@ -323,7 +331,10 @@ void init() {
     () => articleDetailWatcherBloc,
   );
 
-  final articleFormBloc = ArticleFormBloc(locator());
+  final articleFormBloc = ArticleFormBloc(
+    create: locator(),
+    update: locator(),
+  );
   locator.registerLazySingleton(
     () => articleFormBloc,
   );

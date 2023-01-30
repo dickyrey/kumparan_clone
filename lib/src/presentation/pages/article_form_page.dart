@@ -15,7 +15,11 @@ import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.d
 import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class ArticleFormPage extends StatefulWidget {
-  const ArticleFormPage({super.key});
+  const ArticleFormPage({
+    super.key,
+    this.isEdit = false,
+  });
+  final bool isEdit;
 
   @override
   State<ArticleFormPage> createState() => _ArticleFormPageState();
@@ -26,7 +30,6 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
   String initialHtml = '';
   int _selectedIndex = 0;
   final _formKey = GlobalKey<FormState>();
-  // var _quillController = quill.QuillController.basic();
   PageController _pageController = PageController();
   late TextEditingController _titleController;
 
@@ -37,23 +40,9 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
     final state = context.read<ArticleFormBloc>().state;
     _pageController = PageController(initialPage: _selectedIndex);
     _titleController = TextEditingController(text: state.title);
-    initialHtml = state.content;
-// // final jsonList = "[{insert: \"lorem ipsum\"}]" as List<dynamic>;
-// // final jsonString = state.originalContent.replaceAll(new RegExp(r"(\w+):"), '"$1":');
-//     if (state.originalContent != '') {
-//       final String deltaString = "insert⟨ lakad matatang⏎ ⟩ insert⟨ normalin  ⟩ + {bold: true} insert⟨ inslace ⟩ + {italic: true} insert⟨   ⟩ insert⟨ asdasd ⟩ + {link: https://google.com} insert⟨ ⏎ ⟩";
-//       // String fixedJson = state.originalContent.replaceAllMapped(
-//       //     RegExp(r'(\w+)\s*:\s*([^}]+)'),
-//       //     (match) => '"${match[1]}": "${match[2]}"');
-//       // fixedJson = "[$fixedJson]";
-
-//       // List<dynamic> decoded = jsonDecode(fixedJson) as List<dynamic>;
-
-//       _quillController = quill.QuillController(
-//         document: quill.Document.fromDelta(deltaString),
-//         selection: const TextSelection.collapsed(offset: 0),
-//       );
-//     }
+    if (widget.isEdit == true) {
+      initialHtml = state.content;
+    }
   }
 
   @override
@@ -121,25 +110,15 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
                       );
                     }
                   } else {
-                    // Clipboard.setData(ClipboardData(
-                    //     text: _quillController.document
-                    //         .toDelta()
-                    //         // .toJson()
-                    //         .toString()));
-                    // final deltaJson = _quillController.document.toDelta();
-                    // final converter = QuillDeltaToHtmlConverter(
-                    //   List.castFrom(deltaJson.toJson()),
-                    //   ConverterOptions.forEmail(),
-                    // );
-                    // context.read<ArticleFormBloc>().add(
-                    //       ArticleFormEvent.contentOnChanged(
-                    //         html: htmlController.getText(),
-                    //         deltaJson: deltaJson.toJson().toString(),
-                    //       ),
-                    //     );
-                    context.read<ArticleFormBloc>().add(
-                          const ArticleFormEvent.createArticlePressed(),
-                        );
+                    if (widget.isEdit == true) {
+                      context.read<ArticleFormBloc>().add(
+                            const ArticleFormEvent.updateArticlePressed(),
+                          );
+                    } else {
+                      context.read<ArticleFormBloc>().add(
+                            const ArticleFormEvent.createArticlePressed(),
+                          );
+                    }
                   }
                 },
                 width: 80,
@@ -198,9 +177,9 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
                     decoration: BoxDecoration(
                       border: Border.all(color: theme.disabledColor),
                       borderRadius: BorderRadius.circular(Const.radius),
-                      image: (state.thumbnailFile != null)
+                      image: (state.imageFile != null)
                           ? DecorationImage(
-                              image: FileImage(state.thumbnailFile!),
+                              image: FileImage(state.imageFile!),
                             )
                           : (state.imageUrl != '')
                               ? DecorationImage(
@@ -210,7 +189,7 @@ class _CreateTitleContentPageState extends State<CreateTitleContentPage> {
                                 )
                               : null,
                     ),
-                    child: (state.thumbnailFile != null || state.imageUrl != '')
+                    child: (state.imageFile != null || state.imageUrl != '')
                         ? const SizedBox()
                         : Text(
                             'Upload Thumbnail',
@@ -288,23 +267,17 @@ class EditorContentPage extends StatelessWidget {
     return HtmlEditor(
       controller: _controller,
       callbacks: Callbacks(
-        onInit: () {
-          _controller.setFullScreen();
-        },
+        onInit: _controller.setFullScreen,
         onChangeContent: (p0) {
-          context.read<ArticleFormBloc>().add(
-                ArticleFormEvent.contentOnChanged(
-                  html: p0!,
-                  deltaJson: p0,
-                ),
-              );
+          context
+              .read<ArticleFormBloc>()
+              .add(ArticleFormEvent.contentOnChanged(p0!));
         },
       ),
       htmlToolbarOptions: HtmlToolbarOptions(
         toolbarType: ToolbarType.nativeExpandable,
         buttonColor: ColorLight.fontTitle,
         buttonSelectedColor: theme.primaryColor,
-        toolbarPosition: ToolbarPosition.belowEditor,
         toolbarItemHeight: 30,
       ),
       htmlEditorOptions: HtmlEditorOptions(

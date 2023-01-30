@@ -47,7 +47,7 @@ class AuthDataSourceImpl extends AuthDataSource {
         'email': user?.email,
         'displayName': user?.displayName,
         'photo': (user!.photoUrl == null) ? Const.photo : user.photoUrl,
-        // 'token': base64Date,pth
+        // 'token': base64Date
       },
     );
 
@@ -82,12 +82,13 @@ class AuthDataSourceImpl extends AuthDataSource {
     );
 
     final response = await http.post(url, headers: header);
-
     if (response.statusCode == 200) {
       await googleSignIn.signOut();
       await prefs.remove(Const.token);
       return;
     } else {
+      await googleSignIn.signOut();
+      await prefs.remove(Const.token);
       throw ServerException(ExceptionMessage.internetNotConnected);
     }
   }

@@ -138,9 +138,12 @@ class RouteGenerator {
         }
         return _errorRoute();
       case ARTICLE_FORM:
-        return MaterialPageRoute(
-          builder: (_) => const ArticleFormPage(),
-        );
+        if (args is bool) {
+          return MaterialPageRoute(
+            builder: (_) => ArticleFormPage(isEdit: args),
+          );
+        }
+        return _errorRoute();
       case PREVIEW_ARTICLE:
         if (args is Article) {
           return MaterialPageRoute(

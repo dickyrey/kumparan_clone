@@ -46,16 +46,40 @@ class ArticleRepositoryImpl extends ArticleRepository {
   Future<Either<Failure, bool>> createArticle({
     required String title,
     required String content,
-    required File thumbnail,
-    required String originalContent,
+    required File image,
     required List<String> categories,
   }) async {
     try {
       final result = await dataSource.createArticle(
         title: title,
         content: content,
-        thumbnail: thumbnail,
-        originalContent: originalContent,
+        image: image,
+        categories: categories,
+      );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, bool>> updateArticle({
+    required String id,
+    required String title,
+    required String content,
+    required File image,
+    required List<String> categories,
+  }) async {
+    try {
+      final result = await dataSource.updateArticle(
+        id: id,
+        title: title,
+        content: content,
+        image: image,
         categories: categories,
       );
       return Right(result);

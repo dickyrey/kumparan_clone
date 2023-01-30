@@ -16,8 +16,14 @@ abstract class ArticleDataSource {
   Future<bool> createArticle({
     required String title,
     required String content,
-    required String originalContent,
-    required File thumbnail,
+    required File image,
+    required List<String> categories,
+  });
+  Future<bool> updateArticle({
+    required String id,
+    required String title,
+    required String content,
+    required File image,
     required List<String> categories,
   });
 }
@@ -77,8 +83,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
   Future<bool> createArticle({
     required String title,
     required String content,
-    required File thumbnail,
-    required String originalContent,
+    required File image,
     required List<String> categories,
   }) async {
     final prefs = await SharedPreferences.getInstance();
@@ -100,8 +105,6 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     );
     request.fields['title'] = title;
     request.fields['content'] = content;
-    request.fields['original_content'] = originalContent;
-
     request.fields['categories'] = categories
         .map((e) {
           return e;
@@ -109,12 +112,67 @@ class ArticleDataSourceImpl extends ArticleDataSource {
         .toList()
         .toString();
 
-    final storeImage =
-        await http.MultipartFile.fromPath('image', thumbnail.path);
+    final storeImage = await http.MultipartFile.fromPath(
+      'image',
+      image.path,
+    );
 
     request.headers.addAll(header);
     request.files.add(storeImage);
     final response = await request.send();
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
+  Future<bool> updateArticle({
+    required String id,
+    required String title,
+    required String content,
+    required File image,
+    required List<String> categories,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: '/api/article/$id',
+    );
+
+    final request = http.MultipartRequest(
+      'POST',
+      url,
+    );
+
+    request.fields['_method'] = 'PUT';
+    request.fields['title'] = title;
+    request.fields['content'] = content;
+    request.fields['categories'] = categories
+        .map((e) {
+          return e;
+        })
+        .toList()
+        .toString();
+
+      final storeImage = await http.MultipartFile.fromPath(
+        'image',
+        image.path,
+      );
+      request.files.add(storeImage);
+
+    request.headers.addAll(header);
+    final response = await request.send();
+    final respStr = await response.stream.bytesToString();
+    print(respStr);
     if (response.statusCode == 200) {
       return true;
     } else {

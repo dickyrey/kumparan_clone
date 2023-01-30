@@ -26,9 +26,21 @@ class ArticleCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+
+    String formatViewsCount(int viewsCount) {
+      if (viewsCount >= 1000000000) {
+        return '${(viewsCount / 1000000000).toStringAsFixed(1)}b';
+      } else if (viewsCount >= 1000000) {
+        return '${(viewsCount / 1000000).toStringAsFixed(1)}m';
+      } else if (viewsCount >= 1000) {
+        return '${(viewsCount / 1000).toStringAsFixed(1)}k';
+      }
+      return '$viewsCount';
+    }
+
     if (cardAlignment == CardAlignment.horizontal) {
       return Container(
-        width: 280,
+        width: 300,
         margin: const EdgeInsets.only(right: Const.space12),
         child: InkWell(
           onTap: () {
@@ -42,7 +54,7 @@ class ArticleCardWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(Const.radius),
                 child: OctoImage(
                   fit: BoxFit.cover,
-                  width: 280,
+                  width: 300,
                   height: 200,
                   image: CachedNetworkImageProvider(article.image),
                 ),
@@ -65,7 +77,7 @@ class ArticleCardWidget extends StatelessWidget {
                   ),
                   const SizedBox(width: Const.space8),
                   Text(
-                    article.viewers.toString(),
+                    formatViewsCount(article.viewers),
                     style: theme.textTheme.titleMedium,
                     maxLines: 1,
                   ),
@@ -99,7 +111,7 @@ class ArticleCardWidget extends StatelessWidget {
                     style: theme.textTheme.titleMedium,
                     maxLines: 1,
                   ),
-                  const Expanded(child: SizedBox()),
+                  const Spacer(),
                   InkWell(
                     onTap: () async {
                       await FlutterShare.share(
@@ -167,7 +179,7 @@ class ArticleCardWidget extends StatelessWidget {
                         ),
                         const SizedBox(width: Const.space8 - 3),
                         Text(
-                          article.viewers.toString(),
+                          formatViewsCount(article.viewers),
                           style: theme.textTheme.titleMedium,
                           maxLines: 1,
                         ),
@@ -208,8 +220,8 @@ class ArticleCardWidget extends StatelessWidget {
               ),
               const SizedBox(width: Const.space15),
               SizedBox(
-                height: 80,
-                width: 80,
+                height: 70,
+                width: 70,
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(Const.radius),
                   child: OctoImage(

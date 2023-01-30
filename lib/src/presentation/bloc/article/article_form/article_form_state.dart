@@ -6,11 +6,11 @@ class ArticleFormState with _$ArticleFormState {
     required RequestState state,
     required String message,
     required bool isSubmitting,
+    required String articleId,
     required String title,
     required String content,
-    required String originalContent,
     required String imageUrl,
-    required File? thumbnailFile,
+    required File? imageFile,
     required List<CheckBoxState> categoryList,
   }) = _ArticleFormState;
 
@@ -19,11 +19,11 @@ class ArticleFormState with _$ArticleFormState {
       state: RequestState.empty,
       message: '',
       isSubmitting: false,
+      articleId: '',
       title: '',
-      originalContent: '',
       content: '',
       imageUrl: '',
-      thumbnailFile: null,
+      imageFile: null,
       categoryList: [],
     );
   }

@@ -145,7 +145,7 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
                       Navigator.pushNamed(
                         context,
                         ARTICLE_FORM,
-                        arguments: article,
+                        arguments: true,
                       );
                     },
                     label: 'Edit',

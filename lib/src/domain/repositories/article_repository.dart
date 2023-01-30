@@ -11,8 +11,14 @@ abstract class ArticleRepository {
   Future<Either<Failure, bool>> createArticle({
     required String title,
     required String content,
-    required String originalContent,
-    required File thumbnail,
+    required File image,
+    required List<String> categories,
+  });
+  Future<Either<Failure, bool>> updateArticle({
+    required String id,
+    required String title,
+    required String content,
+    required File image,
     required List<String> categories,
   });
 }

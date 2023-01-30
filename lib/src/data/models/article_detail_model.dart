@@ -7,7 +7,6 @@ class ArticleDetailModel extends Equatable {
     required this.url,
     required this.title,
     required this.content,
-    required this.originalContent,
     required this.thumbnail,
     required this.viewers,
     required this.comments,
@@ -21,7 +20,6 @@ class ArticleDetailModel extends Equatable {
       url: json['url'] as String,
       title: json['title'] as String,
       content: json['content'] as String,
-      originalContent: json['original_content'] as String,
       thumbnail: json['image'] as String,
       viewers: json['viewers'] as int,
       comments: json['comments'] as int,
@@ -37,7 +35,6 @@ class ArticleDetailModel extends Equatable {
   final String url;
   final String title;
   final String content;
-  final String originalContent;
   final String thumbnail;
   final int viewers;
   final int comments;
@@ -50,7 +47,6 @@ class ArticleDetailModel extends Equatable {
       url: url,
       title: title,
       content: content,
-      originalContent: originalContent,
       thumbnail: thumbnail,
       viewers: viewers,
       comments: comments,
@@ -64,7 +60,6 @@ class ArticleDetailModel extends Equatable {
         'url': url,
         'title': title,
         'content': content,
-        'originalContent': originalContent,
         'thumbnail': thumbnail,
         'viewers': viewers,
         'comments': comments,
@@ -78,7 +73,6 @@ class ArticleDetailModel extends Equatable {
         url,
         title,
         content,
-        originalContent,
         thumbnail,
         viewers,
         comments,
