@@ -3,7 +3,7 @@
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
-part of 'login_form_bloc.dart';
+part of 'sign_in_with_email_form_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$LoginFormEvent {
+mixin _$SignInWithEmailFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -75,16 +75,17 @@ mixin _$LoginFormEvent {
 }
 
 /// @nodoc
-abstract class $LoginFormEventCopyWith<$Res> {
-  factory $LoginFormEventCopyWith(
-          LoginFormEvent value, $Res Function(LoginFormEvent) then) =
-      _$LoginFormEventCopyWithImpl<$Res, LoginFormEvent>;
+abstract class $SignInWithEmailFormEventCopyWith<$Res> {
+  factory $SignInWithEmailFormEventCopyWith(SignInWithEmailFormEvent value,
+          $Res Function(SignInWithEmailFormEvent) then) =
+      _$SignInWithEmailFormEventCopyWithImpl<$Res, SignInWithEmailFormEvent>;
 }
 
 /// @nodoc
-class _$LoginFormEventCopyWithImpl<$Res, $Val extends LoginFormEvent>
-    implements $LoginFormEventCopyWith<$Res> {
-  _$LoginFormEventCopyWithImpl(this._value, this._then);
+class _$SignInWithEmailFormEventCopyWithImpl<$Res,
+        $Val extends SignInWithEmailFormEvent>
+    implements $SignInWithEmailFormEventCopyWith<$Res> {
+  _$SignInWithEmailFormEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -101,7 +102,7 @@ abstract class _$$_InitialCopyWith<$Res> {
 
 /// @nodoc
 class __$$_InitialCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$_Initial>
+    extends _$SignInWithEmailFormEventCopyWithImpl<$Res, _$_Initial>
     implements _$$_InitialCopyWith<$Res> {
   __$$_InitialCopyWithImpl(_$_Initial _value, $Res Function(_$_Initial) _then)
       : super(_value, _then);
@@ -114,7 +115,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'LoginFormEvent.initial()';
+    return 'SignInWithEmailFormEvent.initial()';
   }
 
   @override
@@ -207,7 +208,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements LoginFormEvent {
+abstract class _Initial implements SignInWithEmailFormEvent {
   const factory _Initial() = _$_Initial;
 }
 
@@ -220,7 +221,7 @@ abstract class _$$_ObscureTextPressedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_ObscureTextPressedCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$_ObscureTextPressed>
+    extends _$SignInWithEmailFormEventCopyWithImpl<$Res, _$_ObscureTextPressed>
     implements _$$_ObscureTextPressedCopyWith<$Res> {
   __$$_ObscureTextPressedCopyWithImpl(
       _$_ObscureTextPressed _value, $Res Function(_$_ObscureTextPressed) _then)
@@ -234,7 +235,7 @@ class _$_ObscureTextPressed implements _ObscureTextPressed {
 
   @override
   String toString() {
-    return 'LoginFormEvent.obscureTextPressed()';
+    return 'SignInWithEmailFormEvent.obscureTextPressed()';
   }
 
   @override
@@ -327,7 +328,7 @@ class _$_ObscureTextPressed implements _ObscureTextPressed {
   }
 }
 
-abstract class _ObscureTextPressed implements LoginFormEvent {
+abstract class _ObscureTextPressed implements SignInWithEmailFormEvent {
   const factory _ObscureTextPressed() = _$_ObscureTextPressed;
 }
 
@@ -340,7 +341,7 @@ abstract class _$$_SignInPressedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_SignInPressedCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$_SignInPressed>
+    extends _$SignInWithEmailFormEventCopyWithImpl<$Res, _$_SignInPressed>
     implements _$$_SignInPressedCopyWith<$Res> {
   __$$_SignInPressedCopyWithImpl(
       _$_SignInPressed _value, $Res Function(_$_SignInPressed) _then)
@@ -354,7 +355,7 @@ class _$_SignInPressed implements _SignInPressed {
 
   @override
   String toString() {
-    return 'LoginFormEvent.signInPressed()';
+    return 'SignInWithEmailFormEvent.signInPressed()';
   }
 
   @override
@@ -447,7 +448,7 @@ class _$_SignInPressed implements _SignInPressed {
   }
 }
 
-abstract class _SignInPressed implements LoginFormEvent {
+abstract class _SignInPressed implements SignInWithEmailFormEvent {
   const factory _SignInPressed() = _$_SignInPressed;
 }
 
@@ -462,7 +463,7 @@ abstract class _$$_EmailOnChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_EmailOnChangedCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$_EmailOnChanged>
+    extends _$SignInWithEmailFormEventCopyWithImpl<$Res, _$_EmailOnChanged>
     implements _$$_EmailOnChangedCopyWith<$Res> {
   __$$_EmailOnChangedCopyWithImpl(
       _$_EmailOnChanged _value, $Res Function(_$_EmailOnChanged) _then)
@@ -492,7 +493,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
 
   @override
   String toString() {
-    return 'LoginFormEvent.emailOnChanged(email: $email)';
+    return 'SignInWithEmailFormEvent.emailOnChanged(email: $email)';
   }
 
   @override
@@ -593,7 +594,7 @@ class _$_EmailOnChanged implements _EmailOnChanged {
   }
 }
 
-abstract class _EmailOnChanged implements LoginFormEvent {
+abstract class _EmailOnChanged implements SignInWithEmailFormEvent {
   const factory _EmailOnChanged(final String email) = _$_EmailOnChanged;
 
   String get email;
@@ -613,7 +614,7 @@ abstract class _$$_PasswordOnChangedCopyWith<$Res> {
 
 /// @nodoc
 class __$$_PasswordOnChangedCopyWithImpl<$Res>
-    extends _$LoginFormEventCopyWithImpl<$Res, _$_PasswordOnChanged>
+    extends _$SignInWithEmailFormEventCopyWithImpl<$Res, _$_PasswordOnChanged>
     implements _$$_PasswordOnChangedCopyWith<$Res> {
   __$$_PasswordOnChangedCopyWithImpl(
       _$_PasswordOnChanged _value, $Res Function(_$_PasswordOnChanged) _then)
@@ -643,7 +644,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
 
   @override
   String toString() {
-    return 'LoginFormEvent.passwordOnChanged(password: $password)';
+    return 'SignInWithEmailFormEvent.passwordOnChanged(password: $password)';
   }
 
   @override
@@ -746,7 +747,7 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
   }
 }
 
-abstract class _PasswordOnChanged implements LoginFormEvent {
+abstract class _PasswordOnChanged implements SignInWithEmailFormEvent {
   const factory _PasswordOnChanged(final String password) =
       _$_PasswordOnChanged;
 
@@ -757,38 +758,39 @@ abstract class _PasswordOnChanged implements LoginFormEvent {
 }
 
 /// @nodoc
-mixin _$LoginFormState {
-  RequestState get result => throw _privateConstructorUsedError;
+mixin _$SignInWithEmailFormState {
+  RequestState get state => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
   String get email => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
-  bool get isShowErrorMessages => throw _privateConstructorUsedError;
   bool get obscureText => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $LoginFormStateCopyWith<LoginFormState> get copyWith =>
+  $SignInWithEmailFormStateCopyWith<SignInWithEmailFormState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $LoginFormStateCopyWith<$Res> {
-  factory $LoginFormStateCopyWith(
-          LoginFormState value, $Res Function(LoginFormState) then) =
-      _$LoginFormStateCopyWithImpl<$Res, LoginFormState>;
+abstract class $SignInWithEmailFormStateCopyWith<$Res> {
+  factory $SignInWithEmailFormStateCopyWith(SignInWithEmailFormState value,
+          $Res Function(SignInWithEmailFormState) then) =
+      _$SignInWithEmailFormStateCopyWithImpl<$Res, SignInWithEmailFormState>;
   @useResult
   $Res call(
-      {RequestState result,
+      {RequestState state,
+      String message,
       String email,
       String password,
       bool isSubmitting,
-      bool isShowErrorMessages,
       bool obscureText});
 }
 
 /// @nodoc
-class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
-    implements $LoginFormStateCopyWith<$Res> {
-  _$LoginFormStateCopyWithImpl(this._value, this._then);
+class _$SignInWithEmailFormStateCopyWithImpl<$Res,
+        $Val extends SignInWithEmailFormState>
+    implements $SignInWithEmailFormStateCopyWith<$Res> {
+  _$SignInWithEmailFormStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -798,18 +800,22 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? state = null,
+    Object? message = null,
     Object? email = null,
     Object? password = null,
     Object? isSubmitting = null,
-    Object? isShowErrorMessages = null,
     Object? obscureText = null,
   }) {
     return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -821,10 +827,6 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isShowErrorMessages: null == isShowErrorMessages
-          ? _value.isShowErrorMessages
-          : isShowErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
       obscureText: null == obscureText
           ? _value.obscureText
@@ -835,45 +837,51 @@ class _$LoginFormStateCopyWithImpl<$Res, $Val extends LoginFormState>
 }
 
 /// @nodoc
-abstract class _$$_LoginFormStateCopyWith<$Res>
-    implements $LoginFormStateCopyWith<$Res> {
-  factory _$$_LoginFormStateCopyWith(
-          _$_LoginFormState value, $Res Function(_$_LoginFormState) then) =
-      __$$_LoginFormStateCopyWithImpl<$Res>;
+abstract class _$$_SignInWithEmailFormStateCopyWith<$Res>
+    implements $SignInWithEmailFormStateCopyWith<$Res> {
+  factory _$$_SignInWithEmailFormStateCopyWith(
+          _$_SignInWithEmailFormState value,
+          $Res Function(_$_SignInWithEmailFormState) then) =
+      __$$_SignInWithEmailFormStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {RequestState result,
+      {RequestState state,
+      String message,
       String email,
       String password,
       bool isSubmitting,
-      bool isShowErrorMessages,
       bool obscureText});
 }
 
 /// @nodoc
-class __$$_LoginFormStateCopyWithImpl<$Res>
-    extends _$LoginFormStateCopyWithImpl<$Res, _$_LoginFormState>
-    implements _$$_LoginFormStateCopyWith<$Res> {
-  __$$_LoginFormStateCopyWithImpl(
-      _$_LoginFormState _value, $Res Function(_$_LoginFormState) _then)
+class __$$_SignInWithEmailFormStateCopyWithImpl<$Res>
+    extends _$SignInWithEmailFormStateCopyWithImpl<$Res,
+        _$_SignInWithEmailFormState>
+    implements _$$_SignInWithEmailFormStateCopyWith<$Res> {
+  __$$_SignInWithEmailFormStateCopyWithImpl(_$_SignInWithEmailFormState _value,
+      $Res Function(_$_SignInWithEmailFormState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? state = null,
+    Object? message = null,
     Object? email = null,
     Object? password = null,
     Object? isSubmitting = null,
-    Object? isShowErrorMessages = null,
     Object? obscureText = null,
   }) {
-    return _then(_$_LoginFormState(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+    return _then(_$_SignInWithEmailFormState(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       email: null == email
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
@@ -885,10 +893,6 @@ class __$$_LoginFormStateCopyWithImpl<$Res>
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
-              as bool,
-      isShowErrorMessages: null == isShowErrorMessages
-          ? _value.isShowErrorMessages
-          : isShowErrorMessages // ignore: cast_nullable_to_non_nullable
               as bool,
       obscureText: null == obscureText
           ? _value.obscureText
@@ -900,17 +904,19 @@ class __$$_LoginFormStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_LoginFormState implements _LoginFormState {
-  const _$_LoginFormState(
-      {required this.result,
+class _$_SignInWithEmailFormState implements _SignInWithEmailFormState {
+  const _$_SignInWithEmailFormState(
+      {required this.state,
+      required this.message,
       required this.email,
       required this.password,
       required this.isSubmitting,
-      required this.isShowErrorMessages,
       required this.obscureText});
 
   @override
-  final RequestState result;
+  final RequestState state;
+  @override
+  final String message;
   @override
   final String email;
   @override
@@ -918,54 +924,54 @@ class _$_LoginFormState implements _LoginFormState {
   @override
   final bool isSubmitting;
   @override
-  final bool isShowErrorMessages;
-  @override
   final bool obscureText;
 
   @override
   String toString() {
-    return 'LoginFormState(result: $result, email: $email, password: $password, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages, obscureText: $obscureText)';
+    return 'SignInWithEmailFormState(state: $state, message: $message, email: $email, password: $password, isSubmitting: $isSubmitting, obscureText: $obscureText)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_LoginFormState &&
-            (identical(other.result, result) || other.result == result) &&
+            other is _$_SignInWithEmailFormState &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
-            (identical(other.isShowErrorMessages, isShowErrorMessages) ||
-                other.isShowErrorMessages == isShowErrorMessages) &&
             (identical(other.obscureText, obscureText) ||
                 other.obscureText == obscureText));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result, email, password,
-      isSubmitting, isShowErrorMessages, obscureText);
+  int get hashCode => Object.hash(
+      runtimeType, state, message, email, password, isSubmitting, obscureText);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_LoginFormStateCopyWith<_$_LoginFormState> get copyWith =>
-      __$$_LoginFormStateCopyWithImpl<_$_LoginFormState>(this, _$identity);
+  _$$_SignInWithEmailFormStateCopyWith<_$_SignInWithEmailFormState>
+      get copyWith => __$$_SignInWithEmailFormStateCopyWithImpl<
+          _$_SignInWithEmailFormState>(this, _$identity);
 }
 
-abstract class _LoginFormState implements LoginFormState {
-  const factory _LoginFormState(
-      {required final RequestState result,
+abstract class _SignInWithEmailFormState implements SignInWithEmailFormState {
+  const factory _SignInWithEmailFormState(
+      {required final RequestState state,
+      required final String message,
       required final String email,
       required final String password,
       required final bool isSubmitting,
-      required final bool isShowErrorMessages,
-      required final bool obscureText}) = _$_LoginFormState;
+      required final bool obscureText}) = _$_SignInWithEmailFormState;
 
   @override
-  RequestState get result;
+  RequestState get state;
+  @override
+  String get message;
   @override
   String get email;
   @override
@@ -973,11 +979,9 @@ abstract class _LoginFormState implements LoginFormState {
   @override
   bool get isSubmitting;
   @override
-  bool get isShowErrorMessages;
-  @override
   bool get obscureText;
   @override
   @JsonKey(ignore: true)
-  _$$_LoginFormStateCopyWith<_$_LoginFormState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SignInWithEmailFormStateCopyWith<_$_SignInWithEmailFormState>
+      get copyWith => throw _privateConstructorUsedError;
 }

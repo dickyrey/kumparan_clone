@@ -12,6 +12,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class AuthDataSource {
   Future<bool> checkGoogleAuth();
   Future<void> signInWithGoogle(String base64Date);
+  Future<bool> signInWithEmail({
+    required String email,
+    required String password,
+  });
   Future<bool> signUpWithEmail(String email);
   Future<void> signOut();
   Future<List<String>> getTimeZone();
@@ -34,6 +38,8 @@ class AuthDataSourceImpl extends AuthDataSource {
     final token = prefs.getString(Const.token);
 
     if (isSignedIn && token != null) {
+      return true;
+    } else if (token != null) {
       return true;
     } else {
       return false;
@@ -59,6 +65,7 @@ class AuthDataSourceImpl extends AuthDataSource {
       );
 
       final response = await http.post(url);
+      print(response.body);
       if (response.statusCode == 200) {
         final accessToken = TokenModel.fromJson(
           json.decode(response.body) as Map<String, dynamic>,
@@ -85,6 +92,43 @@ class AuthDataSourceImpl extends AuthDataSource {
         await googleSignIn.signOut();
         throw ServerException(ExceptionMessage.internetNotConnected);
       }
+    }
+  }
+
+  @override
+  Future<bool> signInWithEmail({
+    required String email,
+    required String password,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+
+    final headers = {
+      'Accept': 'application/json',
+    };
+    final body = {
+      'email': email,
+      'password': password,
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.signInPath,
+    );
+
+    final response = await http.post(url, headers: headers, body: body);
+    if (response.statusCode == 200) {
+      final accessToken = TokenModel.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      );
+      await prefs.setString(Const.token, accessToken.token);
+      return true;
+    } else if (response.statusCode == 403) {
+      throw ServerException(ExceptionMessage.wrongPassword);
+    } else if (response.statusCode == 404) {
+      throw ServerException(ExceptionMessage.userNotFound);
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
     }
   }
 
@@ -131,6 +175,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     );
 
     final response = await http.post(url, headers: header);
+
     if (response.statusCode == 200) {
       await googleSignIn.signOut();
       await prefs.remove(Const.token);

@@ -11,11 +11,12 @@ import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_email_form/sign_in_with_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
+import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -27,13 +28,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
-    super.initState();
-    print('ini login page');
-    Future.microtask(
-      () => context
-          .read<TimeZoneWatcherBloc>()
-          .add(const TimeZoneWatcherEvent.fetchTimeZone()),
-    );
+    super.initState(); 
   }
 
   @override
@@ -44,33 +39,45 @@ class _LoginPageState extends State<LoginPage> {
 
     return Scaffold(
       appBar: _appBar(context),
-      body: BlocListener<SignInWithGoogleActorBloc, SignInWithGoogleActorState>(
-        listener: (context, state) {
-          state.maybeMap(
-            orElse: () {},
-            signInSuccess: (_) {
-              context
-                  .read<AuthWatcherBloc>()
-                  .add(const AuthWatcherEvent.authCheckRequested());
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                HOME,
-                (route) => false,
+      body: MultiBlocListener(
+        listeners: [
+          BlocListener<SignInWithGoogleActorBloc, SignInWithGoogleActorState>(
+            listener: (context, state) {
+              state.maybeMap(
+                orElse: () {},
+                signInSuccess: (_) {
+                  context
+                      .read<AuthWatcherBloc>()
+                      .add(const AuthWatcherEvent.authCheckRequested());
+                  Navigator.pushNamedAndRemoveUntil(
+                    context,
+                    HOME,
+                    (route) => false,
+                  );
+                },
               );
             },
-          );
-        },
-        child: BlocConsumer<LoginFormBloc, LoginFormState>(
-          listener: (context, state) {
-            if (state.result == RequestState.loaded) {
-              context.read<LoginFormBloc>().add(const LoginFormEvent.initial());
-              Navigator.pushNamedAndRemoveUntil(
-                context,
-                HOME,
-                (route) => false,
-              );
-            }
-          },
+          ),
+          BlocListener<SignInWithEmailFormBloc, SignInWithEmailFormState>(
+            listener: (context, state) {
+              if (state.state == RequestState.loaded) {
+                context
+                    .read<SignInWithEmailFormBloc>()
+                    .add(const SignInWithEmailFormEvent.initial());
+                Navigator.pushNamedAndRemoveUntil(
+                  context,
+                  SPLASH,
+                  (route) => false,
+                );
+              } else if (state.state == RequestState.error && state.message == ExceptionMessage.wrongPassword) {
+showToast(msg: 'Password Salah');
+              } else if (state.state == RequestState.error && state.message == ExceptionMessage.userNotFound){
+showToast(msg: 'Pengguna tidak ditemukan');
+              }
+            },
+          ),
+        ],
+        child: BlocBuilder<SignInWithEmailFormBloc, SignInWithEmailFormState>(
           builder: (context, state) {
             return SingleChildScrollView(
               child: Form(
@@ -99,8 +106,8 @@ class _LoginPageState extends State<LoginPage> {
                         textFieldType: TextFieldType.email,
                         onChanged: (v) {
                           context
-                              .read<LoginFormBloc>()
-                              .add(LoginFormEvent.emailOnChanged(v));
+                              .read<SignInWithEmailFormBloc>()
+                              .add(SignInWithEmailFormEvent.emailOnChanged(v));
                         },
                       ),
                     ),
@@ -114,9 +121,11 @@ class _LoginPageState extends State<LoginPage> {
                         obscureText: state.obscureText,
                         textFieldType: TextFieldType.password,
                         suffixIcon: IconButton(
-                          onPressed: () => context
-                              .read<LoginFormBloc>()
-                              .add(const LoginFormEvent.obscureTextPressed()),
+                          onPressed: () =>
+                              context.read<SignInWithEmailFormBloc>().add(
+                                    const SignInWithEmailFormEvent
+                                        .obscureTextPressed(),
+                                  ),
                           icon: Icon(
                             state.obscureText == true
                                 ? FeatherIcons.eyeOff
@@ -124,9 +133,9 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                         onChanged: (v) {
-                          context
-                              .read<LoginFormBloc>()
-                              .add(LoginFormEvent.passwordOnChanged(v));
+                          context.read<SignInWithEmailFormBloc>().add(
+                                SignInWithEmailFormEvent.passwordOnChanged(v),
+                              );
                         },
                       ),
                     ),
@@ -153,8 +162,8 @@ class _LoginPageState extends State<LoginPage> {
                     const SizedBox(height: Const.space15),
                     BlocBuilder<SignInWithGoogleActorBloc,
                         SignInWithGoogleActorState>(
-                      builder: (context, state) {
-                        return state.maybeMap(
+                      builder: (context, googleSignInState) {
+                        return googleSignInState.maybeMap(
                           orElse: () {
                             return Padding(
                               padding: const EdgeInsets.symmetric(
@@ -163,12 +172,15 @@ class _LoginPageState extends State<LoginPage> {
                               child: ElevatedButtonWidget(
                                 onTap: () {
                                   if (formKey.currentState!.validate()) {
-                                    context.read<LoginFormBloc>().add(
-                                          const LoginFormEvent.signInPressed(),
+                                    context.read<SignInWithEmailFormBloc>().add(
+                                          const SignInWithEmailFormEvent
+                                              .signInPressed(),
                                         );
                                   }
                                 },
                                 label: lang.login,
+                                isLoading:
+                                    (state.isSubmitting == true) ? true : false,
                               ),
                             );
                           },
@@ -241,7 +253,7 @@ class _LoginPageState extends State<LoginPage> {
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: '${lang.dont_have_an_account_yet} ',
+                              text: '//${lang.dont_have_an_account_yet} ',
                               style: theme.textTheme.titleLarge,
                             ),
                             TextSpan(

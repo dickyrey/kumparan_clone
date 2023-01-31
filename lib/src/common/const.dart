@@ -18,9 +18,10 @@ class Const {
   static const String myArticlePath = '/api/user/my-articles';
   static const String commentPath = '/comment';
   static const String likePath = '/like';
+  static const String signInPath = '/api/signin';
   static const String signUpPath = '/api/signup';
   static const String signOutPath = '/api/signout';
-  static const String userPath = '/api/user/';
+  static const String profilePath = '/api/user/profile';
   static const String unusedPath = 'https://interpretasi.id/api/article/';
   static const String datetimePath = '/api/datetime';
   static const String photo = 'https://i.pinimg.com/564x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg';
@@ -45,4 +46,6 @@ class CustomIcons {
 class ExceptionMessage {
   static const String internetNotConnected = 'internet-not-connected';
   static const String userAlreadyExist = 'user-already-exist';
+  static const String wrongPassword = 'wrong-password';
+  static const String userNotFound = 'user-not-found';
 }

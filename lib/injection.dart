@@ -39,6 +39,7 @@ import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_user_verification.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/get_time_zone.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_email.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_up_with_email.dart';
@@ -63,6 +64,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/article_form/articl
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_actor/delete_article_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_email_form/sign_in_with_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_up_with_email_form/sign_up_with_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/verification_status_watcher/verification_status_watcher_bloc.dart';
@@ -76,7 +78,6 @@ import 'package:kumparan_clone/src/presentation/bloc/email/verification_email_fo
 import 'package:kumparan_clone/src/presentation/bloc/forgot_password/forgot_password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/interest/interest_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/like_article_watcher/like_article_watcher_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
@@ -273,6 +274,11 @@ void init() {
     () => signOutWithGoogle,
   );
 
+  final signInWithEmail = SignInWithEmail(locator());
+  locator.registerLazySingleton(
+    () => signInWithEmail,
+  );
+
   final signUpWithEmail = SignUpWithEmail(locator());
   locator.registerLazySingleton(
     () => signUpWithEmail,
@@ -419,6 +425,11 @@ void init() {
     () => authWatcherBloc,
   );
 
+  final signInWithEmailFormBloc = SignInWithEmailFormBloc(locator());
+  locator.registerLazySingleton(
+    () => signInWithEmailFormBloc,
+  );
+
   final signInWithGoogleActorBloc = SignInWithGoogleActorBloc(locator());
   locator.registerLazySingleton(
     () => signInWithGoogleActorBloc,
@@ -484,13 +495,6 @@ void init() {
   );
   locator.registerLazySingleton(
     () => articleLikeWatcherBloc,
-  );
-
-  //* Login/Sign in BLoC folder
-  //*
-  final loginFormBloc = LoginFormBloc();
-  locator.registerLazySingleton(
-    () => loginFormBloc,
   );
 
   //* Notice / Notification BLoC folder

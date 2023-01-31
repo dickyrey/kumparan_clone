@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/data/models/user_model.dart';
+import 'package:kumparan_clone/src/data/models/user_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class ProfileDataSource {
@@ -33,14 +34,14 @@ class ProfileDataSourceImpl extends ProfileDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.userPath,
+      path: Const.profilePath,
     );
 
     final response = await http.get(url, headers: header);
     if (response.statusCode == 200) {
-      return UserModel.fromJson(
+      return UserResponse.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
-      );
+      ).user;
     } else if (response.statusCode == 401) {
       final prefs = await SharedPreferences.getInstance();
       await prefs.remove(Const.token);

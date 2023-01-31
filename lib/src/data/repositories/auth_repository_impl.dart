@@ -85,6 +85,26 @@ class AuthRepositoryImpl extends AuthRepository {
   }
 
   @override
+  Future<Either<Failure, bool>> signInWithEmail({
+    required String email,
+    required String password,
+  }) async {
+    try {
+      final result = await dataSource.signInWithEmail(
+        email: email,
+        password: password,
+      );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+
+  @override
   Future<Either<Failure, bool>> signUpWithEmail(String email) async {
     try {
       final result = await dataSource.signUpWithEmail(email);
