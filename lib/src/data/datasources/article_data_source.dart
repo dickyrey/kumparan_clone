@@ -172,8 +172,6 @@ class ArticleDataSourceImpl extends ArticleDataSource {
 
     request.headers.addAll(header);
     final response = await request.send();
-    final respStr = await response.stream.bytesToString();
-    print(respStr);
     if (response.statusCode == 200) {
       return true;
     } else {

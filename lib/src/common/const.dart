@@ -9,7 +9,6 @@ class Const {
   
   static const String token = 'access_token';
   static const String host = 'interpretasi.id';
-  static const String worldTimeAPIHost = 'worldtimeapi.org';
   static const String scheme = 'https';
   static const String googleSignInPath = '/api/signin/google';
   static const String articlePath = '/api/article/';
@@ -19,7 +18,7 @@ class Const {
   static const String signOutPath = '/api/signout';
   static const String userPath = '/api/user/';
   static const String unusedPath = 'https://interpretasi.id/api/article/';
-  static const String timeZonePath = '/api/timezone/asia/jakarta';
+  static const String datetimePath = '/api/datetime';
   static const String photo = 'https://i.pinimg.com/564x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg';
 }
 

@@ -1,10 +1,9 @@
 import 'package:dartz/dartz.dart';
 import 'package:kumparan_clone/src/common/failure.dart';
-import 'package:kumparan_clone/src/domain/entities/time_zone.dart';
 
 abstract class AuthRepository {
   Future<Either<Failure, void>> signInWithGoogle(String token);
   Future<Either<Failure, void>> signOut();
   Future<Either<Failure, bool>> checkGoogleAuth();
-  Future<Either<Failure, TimeZone>> getTimeZone();
+  Future<Either<Failure, List<String>>> getTimeZone();
 }

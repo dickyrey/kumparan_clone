@@ -5,7 +5,6 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
-import 'package:kumparan_clone/src/data/models/time_zone_model.dart';
 import 'package:kumparan_clone/src/data/models/token_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -13,7 +12,7 @@ abstract class AuthDataSource {
   Future<bool> checkGoogleAuth();
   Future<void> signInWithGoogle(String base64Date);
   Future<void> signOut();
-  Future<TimeZoneModel> getTimeZone();
+  Future<List<String>> getTimeZone();
 }
 
 class AuthDataSourceImpl extends AuthDataSource {
@@ -113,17 +112,19 @@ class AuthDataSourceImpl extends AuthDataSource {
   }
 
   @override
-  Future<TimeZoneModel> getTimeZone() async {
+  Future<List<String>> getTimeZone() async {
     final url = Uri(
       scheme: Const.scheme,
-      host: Const.worldTimeAPIHost,
-      path: Const.timeZonePath,
+      host: Const.host,
+      path: Const.datetimePath,
     );
     final response = await client.get(url);
     if (response.statusCode == 200) {
-      return TimeZoneModel.fromJson(
-        json.decode(response.body) as Map<String, dynamic>,
-      );
+      List<String> timeZoneModelFromJson(String str) {
+        final list = json.decode(str) as List;
+        return List<String>.from(list.map((x) => x.toString()));
+      }
+      return timeZoneModelFromJson(response.body);
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

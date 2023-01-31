@@ -2,11 +2,13 @@ import 'package:equatable/equatable.dart';
 
 class TimeZone extends Equatable {
   const TimeZone({
+    required this.abbreviation,
     required this.datetime,
     required this.unixtime,
     required this.utcDatetime,
   });
 
+  final String abbreviation;
   final DateTime datetime;
   final int unixtime;
   final DateTime utcDatetime;
@@ -21,6 +23,7 @@ class TimeZone extends Equatable {
 
   @override
   List<Object?> get props => [
+        abbreviation,
         datetime,
         unixtime,
         utcDatetime,

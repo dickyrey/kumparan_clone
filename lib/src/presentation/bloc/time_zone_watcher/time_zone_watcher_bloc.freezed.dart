@@ -170,8 +170,6 @@ mixin _$TimeZoneWatcherState {
   RequestState get state => throw _privateConstructorUsedError;
   String get message => throw _privateConstructorUsedError;
   String get dateTime => throw _privateConstructorUsedError;
-  int get unixtime => throw _privateConstructorUsedError;
-  String get utcDateTime => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $TimeZoneWatcherStateCopyWith<TimeZoneWatcherState> get copyWith =>
@@ -184,12 +182,7 @@ abstract class $TimeZoneWatcherStateCopyWith<$Res> {
           $Res Function(TimeZoneWatcherState) then) =
       _$TimeZoneWatcherStateCopyWithImpl<$Res, TimeZoneWatcherState>;
   @useResult
-  $Res call(
-      {RequestState state,
-      String message,
-      String dateTime,
-      int unixtime,
-      String utcDateTime});
+  $Res call({RequestState state, String message, String dateTime});
 }
 
 /// @nodoc
@@ -209,8 +202,6 @@ class _$TimeZoneWatcherStateCopyWithImpl<$Res,
     Object? state = null,
     Object? message = null,
     Object? dateTime = null,
-    Object? unixtime = null,
-    Object? utcDateTime = null,
   }) {
     return _then(_value.copyWith(
       state: null == state
@@ -225,14 +216,6 @@ class _$TimeZoneWatcherStateCopyWithImpl<$Res,
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as String,
-      unixtime: null == unixtime
-          ? _value.unixtime
-          : unixtime // ignore: cast_nullable_to_non_nullable
-              as int,
-      utcDateTime: null == utcDateTime
-          ? _value.utcDateTime
-          : utcDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
     ) as $Val);
   }
 }
@@ -245,12 +228,7 @@ abstract class _$$_InitialCopyWith<$Res>
       __$$_InitialCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {RequestState state,
-      String message,
-      String dateTime,
-      int unixtime,
-      String utcDateTime});
+  $Res call({RequestState state, String message, String dateTime});
 }
 
 /// @nodoc
@@ -266,8 +244,6 @@ class __$$_InitialCopyWithImpl<$Res>
     Object? state = null,
     Object? message = null,
     Object? dateTime = null,
-    Object? unixtime = null,
-    Object? utcDateTime = null,
   }) {
     return _then(_$_Initial(
       state: null == state
@@ -282,14 +258,6 @@ class __$$_InitialCopyWithImpl<$Res>
           ? _value.dateTime
           : dateTime // ignore: cast_nullable_to_non_nullable
               as String,
-      unixtime: null == unixtime
-          ? _value.unixtime
-          : unixtime // ignore: cast_nullable_to_non_nullable
-              as int,
-      utcDateTime: null == utcDateTime
-          ? _value.utcDateTime
-          : utcDateTime // ignore: cast_nullable_to_non_nullable
-              as String,
     ));
   }
 }
@@ -298,11 +266,7 @@ class __$$_InitialCopyWithImpl<$Res>
 
 class _$_Initial implements _Initial {
   const _$_Initial(
-      {required this.state,
-      required this.message,
-      required this.dateTime,
-      required this.unixtime,
-      required this.utcDateTime});
+      {required this.state, required this.message, required this.dateTime});
 
   @override
   final RequestState state;
@@ -310,14 +274,10 @@ class _$_Initial implements _Initial {
   final String message;
   @override
   final String dateTime;
-  @override
-  final int unixtime;
-  @override
-  final String utcDateTime;
 
   @override
   String toString() {
-    return 'TimeZoneWatcherState(state: $state, message: $message, dateTime: $dateTime, unixtime: $unixtime, utcDateTime: $utcDateTime)';
+    return 'TimeZoneWatcherState(state: $state, message: $message, dateTime: $dateTime)';
   }
 
   @override
@@ -328,16 +288,11 @@ class _$_Initial implements _Initial {
             (identical(other.state, state) || other.state == state) &&
             (identical(other.message, message) || other.message == message) &&
             (identical(other.dateTime, dateTime) ||
-                other.dateTime == dateTime) &&
-            (identical(other.unixtime, unixtime) ||
-                other.unixtime == unixtime) &&
-            (identical(other.utcDateTime, utcDateTime) ||
-                other.utcDateTime == utcDateTime));
+                other.dateTime == dateTime));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, state, message, dateTime, unixtime, utcDateTime);
+  int get hashCode => Object.hash(runtimeType, state, message, dateTime);
 
   @JsonKey(ignore: true)
   @override
@@ -350,9 +305,7 @@ abstract class _Initial implements TimeZoneWatcherState {
   const factory _Initial(
       {required final RequestState state,
       required final String message,
-      required final String dateTime,
-      required final int unixtime,
-      required final String utcDateTime}) = _$_Initial;
+      required final String dateTime}) = _$_Initial;
 
   @override
   RequestState get state;
@@ -360,10 +313,6 @@ abstract class _Initial implements TimeZoneWatcherState {
   String get message;
   @override
   String get dateTime;
-  @override
-  int get unixtime;
-  @override
-  String get utcDateTime;
   @override
   @JsonKey(ignore: true)
   _$$_InitialCopyWith<_$_Initial> get copyWith =>
