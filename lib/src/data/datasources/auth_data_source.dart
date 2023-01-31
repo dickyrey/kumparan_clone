@@ -6,6 +6,7 @@ import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/data/models/token_model.dart';
+import 'package:kumparan_clone/src/data/models/verification_status_model.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class AuthDataSource {
@@ -13,6 +14,7 @@ abstract class AuthDataSource {
   Future<void> signInWithGoogle(String base64Date);
   Future<void> signOut();
   Future<List<String>> getTimeZone();
+  Future<VerificationStatusModel> checkUserVerification();
 }
 
 class AuthDataSourceImpl extends AuthDataSource {
@@ -124,7 +126,31 @@ class AuthDataSourceImpl extends AuthDataSource {
         final list = json.decode(str) as List;
         return List<String>.from(list.map((x) => x.toString()));
       }
+
       return timeZoneModelFromJson(response.body);
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
+  Future<VerificationStatusModel> checkUserVerification() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.userVerificationPath,
+    );
+    final response = await client.get(url, headers: header);
+    if (response.statusCode == 200) {
+      return VerificationStatusModel.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      );
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

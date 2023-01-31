@@ -6,6 +6,7 @@ import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/common/failure.dart';
 import 'package:kumparan_clone/src/data/datasources/auth_data_source.dart';
+import 'package:kumparan_clone/src/domain/entities/verification_status.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl extends AuthRepository {
@@ -60,6 +61,20 @@ class AuthRepositoryImpl extends AuthRepository {
     try {
       final result = await dataSource.getTimeZone();
       return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+
+  @override
+  Future<Either<Failure, VerificationStatus>> checkUserVerification() async {
+    try {
+      final result = await dataSource.checkUserVerification();
+      return Right(result.toEntity());
     } on ServerException catch (e) {
       return Left(ServerFailure(e.message));
     } on SocketException {

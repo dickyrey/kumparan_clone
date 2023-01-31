@@ -12,6 +12,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_acto
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/verification_status_watcher/verification_status_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/article_comment_watcher/article_comment_watcher_bloc.dart';
@@ -60,6 +61,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<SendCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<AuthWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SignInWithGoogleActorBloc>()),
+        BlocProvider(create: (context) => di.locator<VerificationStatusWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BackupEmailFormBloc>()),

@@ -34,6 +34,7 @@ import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.da
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/check_user_verification.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/get_time_zone.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
@@ -57,6 +58,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_acto
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/verification_status_watcher/verification_status_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/article_comment_watcher/article_comment_watcher_bloc.dart';
@@ -235,6 +237,11 @@ void init() {
     () => checkGoogleAuthUseCase,
   );
 
+  final checkUserVerificationUseCase = CheckUserVerification(locator());
+  locator.registerLazySingleton(
+    () => checkUserVerificationUseCase,
+  );
+
   final getTimeZoneUseCase = GetTimeZone(locator());
   locator.registerLazySingleton(
     () => getTimeZoneUseCase,
@@ -383,6 +390,13 @@ void init() {
   final signInWithGoogleActorBloc = SignInWithGoogleActorBloc(locator());
   locator.registerLazySingleton(
     () => signInWithGoogleActorBloc,
+  );
+
+  final verificationStatusWatcherBloc = VerificationStatusWatcherBloc(
+    locator(),
+  );
+  locator.registerLazySingleton(
+    () => verificationStatusWatcherBloc,
   );
 
   //* OnBoarding BLoC folder

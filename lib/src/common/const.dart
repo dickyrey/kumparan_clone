@@ -11,6 +11,7 @@ class Const {
   static const String host = 'interpretasi.id';
   static const String scheme = 'https';
   static const String googleSignInPath = '/api/signin/google';
+  static const String userVerificationPath = '/api/user/check';
   static const String articlePath = '/api/article/';
   static const String myArticlePath = '/api/user/my-articles';
   static const String commentPath = '/comment';

@@ -28,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
+    print('ini login page');
     Future.microtask(
       () => context
           .read<TimeZoneWatcherBloc>()
