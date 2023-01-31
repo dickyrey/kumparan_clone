@@ -83,4 +83,18 @@ class AuthRepositoryImpl extends AuthRepository {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> signUpWithEmail(String email) async {
+    try {
+      final result = await dataSource.signUpWithEmail(email);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
 }

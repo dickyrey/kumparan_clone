@@ -53,9 +53,9 @@ class RouteGenerator {
           builder: (_) => const RegisterPage(),
         );
       case EMAIL_VERIFICATION:
-        return MaterialPageRoute(
-          builder: (_) => const EmailVerificationPage(),
-        );
+          return MaterialPageRoute(
+            builder: (_) => EmailVerificationPage(),
+          );
       case BACKUP_EMAIL_VERIFICATION:
         if (args is String) {
           return MaterialPageRoute(

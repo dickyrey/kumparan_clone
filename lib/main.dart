@@ -12,6 +12,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_acto
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/sign_up_with_email_form/sign_up_with_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/verification_status_watcher/verification_status_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
@@ -27,7 +28,6 @@ import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart'
 import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
@@ -61,6 +61,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<SendCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<AuthWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SignInWithGoogleActorBloc>()),
+        BlocProvider(create: (context) => di.locator<SignUpWithEmailFormBloc>()),
         BlocProvider(create: (context) => di.locator<VerificationStatusWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<BoardingWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<CategoryWatcherBloc>()),
@@ -73,7 +74,6 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<NoticeWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<PasswordFormBloc>()),
         BlocProvider(create: (context) => di.locator<PhoneNumberFormBloc>()),
-        BlocProvider(create: (context) => di.locator<RegisterFormBloc>()),
         BlocProvider(create: (context) => di.locator<SearchProvinceFormBloc>()),
         BlocProvider(create: (context) => di.locator<TimeZoneWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<UserFormBloc>()),

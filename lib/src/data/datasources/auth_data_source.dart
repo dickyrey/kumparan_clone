@@ -12,6 +12,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class AuthDataSource {
   Future<bool> checkGoogleAuth();
   Future<void> signInWithGoogle(String base64Date);
+  Future<bool> signUpWithEmail(String email);
   Future<void> signOut();
   Future<List<String>> getTimeZone();
   Future<VerificationStatusModel> checkUserVerification();
@@ -88,6 +89,29 @@ class AuthDataSourceImpl extends AuthDataSource {
   }
 
   @override
+  Future<bool> signUpWithEmail(String email) async {
+    final body = {
+      'email': email,
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.signUpPath,
+    );
+
+    final response = await http.post(url, body: body);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return true;
+    }else if (response.statusCode == 400){
+      throw ServerException(ExceptionMessage.userAlreadyExist);
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
   Future<void> signOut() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Const.token);
@@ -147,6 +171,8 @@ class AuthDataSourceImpl extends AuthDataSource {
       path: Const.userVerificationPath,
     );
     final response = await client.get(url, headers: header);
+    print(response.statusCode);
+    print(response.body);
     if (response.statusCode == 200) {
       return VerificationStatusModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,

@@ -18,32 +18,38 @@ final _privateConstructorUsedError = UnsupportedError(
 mixin _$VerificationStatusWatcherEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() fetchStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? fetchStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? fetchStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_FetchStatus value) fetchStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_FetchStatus value)? fetchStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_FetchStatus value)? fetchStatus,
     required TResult orElse(),
   }) =>
@@ -69,6 +75,106 @@ class _$VerificationStatusWatcherEventCopyWithImpl<$Res,
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$_InitCopyWith<$Res> {
+  factory _$$_InitCopyWith(_$_Init value, $Res Function(_$_Init) then) =
+      __$$_InitCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_InitCopyWithImpl<$Res>
+    extends _$VerificationStatusWatcherEventCopyWithImpl<$Res, _$_Init>
+    implements _$$_InitCopyWith<$Res> {
+  __$$_InitCopyWithImpl(_$_Init _value, $Res Function(_$_Init) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_Init implements _Init {
+  const _$_Init();
+
+  @override
+  String toString() {
+    return 'VerificationStatusWatcherEvent.init()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_Init);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() init,
+    required TResult Function() fetchStatus,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
+    TResult? Function()? fetchStatus,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
+    TResult Function()? fetchStatus,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
+    required TResult Function(_FetchStatus value) fetchStatus,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
+    TResult? Function(_FetchStatus value)? fetchStatus,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
+    TResult Function(_FetchStatus value)? fetchStatus,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements VerificationStatusWatcherEvent {
+  const factory _Init() = _$_Init;
 }
 
 /// @nodoc
@@ -109,6 +215,7 @@ class _$_FetchStatus implements _FetchStatus {
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
+    required TResult Function() init,
     required TResult Function() fetchStatus,
   }) {
     return fetchStatus();
@@ -117,6 +224,7 @@ class _$_FetchStatus implements _FetchStatus {
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? init,
     TResult? Function()? fetchStatus,
   }) {
     return fetchStatus?.call();
@@ -125,6 +233,7 @@ class _$_FetchStatus implements _FetchStatus {
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? init,
     TResult Function()? fetchStatus,
     required TResult orElse(),
   }) {
@@ -137,6 +246,7 @@ class _$_FetchStatus implements _FetchStatus {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
+    required TResult Function(_Init value) init,
     required TResult Function(_FetchStatus value) fetchStatus,
   }) {
     return fetchStatus(this);
@@ -145,6 +255,7 @@ class _$_FetchStatus implements _FetchStatus {
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Init value)? init,
     TResult? Function(_FetchStatus value)? fetchStatus,
   }) {
     return fetchStatus?.call(this);
@@ -153,6 +264,7 @@ class _$_FetchStatus implements _FetchStatus {
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Init value)? init,
     TResult Function(_FetchStatus value)? fetchStatus,
     required TResult orElse(),
   }) {

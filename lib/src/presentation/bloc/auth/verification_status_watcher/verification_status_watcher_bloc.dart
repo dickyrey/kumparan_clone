@@ -9,9 +9,13 @@ part 'verification_status_watcher_bloc.freezed.dart';
 
 class VerificationStatusWatcherBloc extends Bloc<VerificationStatusWatcherEvent,
     VerificationStatusWatcherState> {
-  VerificationStatusWatcherBloc(this._verification) : super(const _Initial()) {
+  VerificationStatusWatcherBloc(this._verification)
+      : super(const VerificationStatusWatcherState.initial()) {
     on<VerificationStatusWatcherEvent>((event, emit) async {
       await event.map(
+        init: (_) {
+          emit(const VerificationStatusWatcherState.initial());
+        },
         fetchStatus: (_) async {
           emit(const VerificationStatusWatcherState.loading());
           final result = await _verification.execute();

@@ -16,6 +16,7 @@ class Const {
   static const String myArticlePath = '/api/user/my-articles';
   static const String commentPath = '/comment';
   static const String likePath = '/like';
+  static const String signUpPath = '/api/signup';
   static const String signOutPath = '/api/signout';
   static const String userPath = '/api/user/';
   static const String unusedPath = 'https://interpretasi.id/api/article/';
@@ -41,4 +42,5 @@ class CustomIcons {
 
 class ExceptionMessage {
   static const String internetNotConnected = 'internet-not-connected';
+  static const String userAlreadyExist = 'user-already-exist';
 }

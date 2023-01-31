@@ -38,6 +38,7 @@ import 'package:kumparan_clone/src/domain/usecases/auth/check_user_verification.
 import 'package:kumparan_clone/src/domain/usecases/auth/get_time_zone.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/sign_up_with_email.dart';
 import 'package:kumparan_clone/src/domain/usecases/comment_article/delete_comment.dart';
 import 'package:kumparan_clone/src/domain/usecases/comment_article/get_comment_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/comment_article/send_comment.dart';
@@ -58,6 +59,7 @@ import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_acto
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/sign_up_with_email_form/sign_up_with_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/verification_status_watcher/verification_status_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/boarding/boarding_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
@@ -73,7 +75,6 @@ import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart'
 import 'package:kumparan_clone/src/presentation/bloc/notice/notice_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
-import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
@@ -257,6 +258,11 @@ void init() {
     () => signOutWithGoogle,
   );
 
+  final signUpWithEmail = SignUpWithEmail(locator());
+  locator.registerLazySingleton(
+    () => signUpWithEmail,
+  );
+
   //* Filter by [Comment Article] folder
   //*
   final deleteCommentUseCase = DeleteComment(locator());
@@ -392,6 +398,11 @@ void init() {
     () => signInWithGoogleActorBloc,
   );
 
+  final signUpWithEmailFormBloc = SignUpWithEmailFormBloc(locator());
+  locator.registerLazySingleton(
+    () => signUpWithEmailFormBloc,
+  );
+
   final verificationStatusWatcherBloc = VerificationStatusWatcherBloc(
     locator(),
   );
@@ -420,7 +431,7 @@ void init() {
     () => backupEmailFormBloc,
   );
 
-  final verificationEmailFormBloc = VerificationEmailFormBloc();
+  final verificationEmailFormBloc = VerificationEmailFormBloc(locator());
   locator.registerLazySingleton(
     () => verificationEmailFormBloc,
   );
@@ -475,13 +486,6 @@ void init() {
   final phoneNumberFormBloc = PhoneNumberFormBloc();
   locator.registerLazySingleton(
     () => phoneNumberFormBloc,
-  );
-
-  //* Register / Sign Up BLoC folder
-  //*
-  final registerFormBloc = RegisterFormBloc();
-  locator.registerLazySingleton(
-    () => registerFormBloc,
   );
 
   //* Search Province BLoC folder

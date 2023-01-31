@@ -6,6 +6,7 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/auth/sign_up_with_email_form/sign_up_with_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/verification_status_watcher/verification_status_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/email/verification_email_form/verification_email_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
@@ -22,10 +23,12 @@ class EmailVerificationPage extends StatefulWidget {
 class _EmailVerificationPageState extends State<EmailVerificationPage>
     with WidgetsBindingObserver {
   final StreamController<bool> _streamController = StreamController<bool>();
+  String email = '';
 
   @override
   void initState() {
     super.initState();
+    email = context.read<SignUpWithEmailFormBloc>().state.email;
     WidgetsBinding.instance.addObserver(this);
   }
 
@@ -48,10 +51,6 @@ class _EmailVerificationPageState extends State<EmailVerificationPage>
   Widget build(BuildContext context) {
     final controllerCountdown = CountdownController(autoStart: true);
     const countdownTime = 59;
-
-    const mockEmail = 'handsome.troyard@byneet.co.id';
-    const mockDate = '13 Januari 2023';
-
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
@@ -84,7 +83,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage>
                   Expanded(flex: 8, child: Image.asset(CustomIcons.mail)),
                   const SizedBox(height: Const.space25),
                   Text(
-                    '${lang.a_verification_link_will_be_sent_to} , ${lang.immediately_activate_the_account_before} ',
+                    '${lang.a_verification_link_will_be_sent_to} $email, ${lang.immediately_activate_the_account_before} ',
                     style: theme.textTheme.titleLarge,
                     textAlign: TextAlign.center,
                   ),
@@ -95,6 +94,11 @@ class _EmailVerificationPageState extends State<EmailVerificationPage>
                       return ElevatedButtonWidget(
                         onTap: () {
                           if (state.isTimeoutDone == true) {
+                            context.read<VerificationEmailFormBloc>().add(
+                                  VerificationEmailFormEvent.resendEmail(
+                                    email,
+                                  ),
+                                );
                             context.read<VerificationEmailFormBloc>().add(
                                   VerificationEmailFormEvent.startTimeOut(
                                     controllerCountdown,
@@ -126,10 +130,11 @@ class _EmailVerificationPageState extends State<EmailVerificationPage>
                                   style: theme.textTheme.labelMedium,
                                 );
                               },
-                              onFinished: () => context
-                                  .read<VerificationEmailFormBloc>()
-                                  .add(const VerificationEmailFormEvent
-                                      .onFinished()),
+                              onFinished: () =>
+                                  context.read<VerificationEmailFormBloc>().add(
+                                        const VerificationEmailFormEvent
+                                            .onFinished(),
+                                      ),
                             )
                           ],
                         ),
