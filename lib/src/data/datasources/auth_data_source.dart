@@ -90,6 +90,8 @@ class AuthDataSourceImpl extends AuthDataSource {
 
   @override
   Future<bool> signUpWithEmail(String email) async {
+    final prefs = await SharedPreferences.getInstance();
+
     final body = {
       'email': email,
     };
@@ -101,10 +103,13 @@ class AuthDataSourceImpl extends AuthDataSource {
     );
 
     final response = await http.post(url, body: body);
-    print(response.body);
     if (response.statusCode == 200) {
+      final accessToken = TokenModel.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      );
+      await prefs.setString(Const.token, accessToken.token);
       return true;
-    }else if (response.statusCode == 400){
+    } else if (response.statusCode == 400) {
       throw ServerException(ExceptionMessage.userAlreadyExist);
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
