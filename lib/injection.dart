@@ -33,6 +33,7 @@ import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.da
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/get_time_zone.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/comment_article/delete_comment.dart';
@@ -70,6 +71,7 @@ import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_banned_watcher/user_article_banned_watcher_bloc.dart';
@@ -153,7 +155,7 @@ void init() {
     () => articleRepository,
   );
 
-  final authRepository = AuthRepositoryImpl(dataSource: locator());
+  final authRepository = AuthRepositoryImpl(locator());
   locator.registerLazySingleton<AuthRepository>(
     () => authRepository,
   );
@@ -226,9 +228,14 @@ void init() {
     () => checkGoogleAuthUseCase,
   );
 
-  final signInWithGoogle = SignInWithGoogle(locator());
+  final getTimeZoneUseCase = GetTimeZone(locator());
   locator.registerLazySingleton(
-    () => signInWithGoogle,
+    () => getTimeZoneUseCase,
+  );
+
+  final signInWithGoogleUseCase = SignInWithGoogle(locator());
+  locator.registerLazySingleton(
+    () => signInWithGoogleUseCase,
   );
 
   final signOutWithGoogle = SignOut(locator());
@@ -456,6 +463,13 @@ void init() {
   final searchProvinceFormBloc = SearchProvinceFormBloc();
   locator.registerLazySingleton(
     () => searchProvinceFormBloc,
+  );
+
+  //* Search Province BLoC folder
+  //*
+  final timeZoneWatcherBloc = TimeZoneWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => timeZoneWatcherBloc,
   );
 
   //* User BLoC folder

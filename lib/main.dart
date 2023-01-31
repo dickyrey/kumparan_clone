@@ -27,6 +27,7 @@ import 'package:kumparan_clone/src/presentation/bloc/password/password_form_bloc
 import 'package:kumparan_clone/src/presentation/bloc/phone_number/phone_number_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/register/register_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_banned_watcher/user_article_banned_watcher_bloc.dart';
@@ -70,6 +71,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<PhoneNumberFormBloc>()),
         BlocProvider(create: (context) => di.locator<RegisterFormBloc>()),
         BlocProvider(create: (context) => di.locator<SearchProvinceFormBloc>()),
+        BlocProvider(create: (context) => di.locator<TimeZoneWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<UserFormBloc>()),
         BlocProvider(create: (context) => di.locator<UserWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<UserArticleBannedWatcherBloc>()),

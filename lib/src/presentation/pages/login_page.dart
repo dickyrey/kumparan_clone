@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:crypto/crypto.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,11 +13,27 @@ import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/login/login_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  void initState() {
+    super.initState();
+    Future.microtask(
+      () => context
+          .read<TimeZoneWatcherBloc>()
+          .add(const TimeZoneWatcherEvent.fetchTimeZone()),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -179,8 +198,17 @@ class LoginPage extends StatelessWidget {
                       label: lang.google,
                       customIcon: CustomIcons.google,
                       onTap: () {
+                        final state = context.read<TimeZoneWatcherBloc>().state;
+                        String generateSHA256(String data) {
+                          final bytes = utf8.encode(data);
+                          final hash = sha256.convert(bytes);
+                          return hash.toString();
+                        }
+
                         context.read<SignInWithGoogleActorBloc>().add(
-                              const SignInWithGoogleActorEvent.googleSignIn(),
+                              SignInWithGoogleActorEvent.googleSignIn(
+                                generateSHA256(state.dateTime),
+                              ),
                             );
                       },
                     ),

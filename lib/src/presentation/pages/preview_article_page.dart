@@ -1,3 +1,4 @@
+import 'package:animated_floating_buttons/animated_floating_buttons.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +18,7 @@ import 'package:kumparan_clone/src/presentation/bloc/comment_article/article_com
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/send_comment_actor/send_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
+import 'package:kumparan_clone/src/presentation/widgets/dialog_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
@@ -32,6 +34,8 @@ class PreviewArticlePage extends StatefulWidget {
 }
 
 class _PreviewArticlePageState extends State<PreviewArticlePage> {
+  final GlobalKey<AnimatedFloatingActionButtonState> key =
+      GlobalKey<AnimatedFloatingActionButtonState>();
   @override
   void initState() {
     super.initState();
@@ -40,6 +44,74 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
             ArticleDetailWatcherEvent.fetchArticleDetail(widget.article.url),
           );
     });
+  }
+
+  Widget edit() {
+    final theme = Theme.of(context);
+    return BlocBuilder<ArticleDetailWatcherBloc, ArticleDetailWatcherState>(
+      builder: (context, state) {
+        return state.maybeMap(
+          orElse: () {
+            return SizedBox();
+          },
+          loaded: (state) {
+            return FloatingActionButton(
+              onPressed: () {
+                key.currentState?.closeFABs();
+                final category = context.read<CategoryWatcherBloc>().state;
+                context.read<ArticleFormBloc>().add(
+                      ArticleFormEvent.fetchCategoryList(
+                        category.categories,
+                      ),
+                    );
+
+                context.read<ArticleFormBloc>().add(
+                      ArticleFormEvent.initialize(
+                        state.articleDetail,
+                      ),
+                    );
+                Navigator.pushNamed(
+                  context,
+                  ARTICLE_FORM,
+                  arguments: true,
+                );
+              },
+              heroTag: 'Edit',
+              tooltip: 'Edit',
+              child: const Icon(
+                FeatherIcons.edit2,
+                color: Colors.white,
+              ),
+            );
+          },
+        );
+      },
+    );
+  }
+
+  Widget delete() {
+    final theme = Theme.of(context);
+    final lang = AppLocalizations.of(context)!;
+    return FloatingActionButton(
+      onPressed: () {
+        key.currentState?.closeFABs();
+        showConfirmationDialog(
+          context,
+          title: 'Apakah kamu yakin ingin menghapus artikel ini?',
+          primaryButtonLabel: lang.delete,
+          onPrimaryButtonTap: (){
+            Navigator.pop(context);
+          },
+        );
+      },
+      heroTag: 'Delete',
+      tooltip: 'Delete',
+      backgroundColor: theme.colorScheme.error,
+      child: const Icon(
+        FeatherIcons.trash,
+        color: Colors.white,
+      ),
+    );
   }
 
   @override
@@ -95,6 +167,16 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
             )
           ],
         ),
+      ),
+      floatingActionButton: AnimatedFloatingActionButton(
+        fabButtons: <Widget>[
+          edit(),
+          delete(),
+        ],
+        key: key,
+        colorStartAnimation: theme.colorScheme.background,
+        colorEndAnimation: theme.colorScheme.background,
+        animatedIconData: AnimatedIcons.menu_close,
       ),
     );
   }

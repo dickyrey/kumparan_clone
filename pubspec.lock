@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.0"
+  animated_floating_buttons:
+    dependency: "direct main"
+    description:
+      name: animated_floating_buttons
+      sha256: cd89653ab917fb0d7ab04d5b5d6807c75de3f002de99b10f63fcf3c5c7133d60
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   args:
     dependency: transitive
     description:
@@ -210,7 +218,7 @@ packages:
     source: hosted
     version: "0.3.3+2"
   crypto:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: crypto
       sha256: aa274aa7774f8964e4f4f38cc994db7b6158dd36e9187aaceaddc994b35c6c67
