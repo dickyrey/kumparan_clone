@@ -21,7 +21,8 @@ mixin _$PasswordFormEvent {
     required TResult Function() initial,
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String repeatPassword) repeatPasswordOnChanged,
-    required TResult Function() sendPressed,
+    required TResult Function() addPasswordPressed,
+    required TResult Function() obscureTextPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -29,7 +30,8 @@ mixin _$PasswordFormEvent {
     TResult? Function()? initial,
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult? Function()? sendPressed,
+    TResult? Function()? addPasswordPressed,
+    TResult? Function()? obscureTextPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -37,7 +39,8 @@ mixin _$PasswordFormEvent {
     TResult Function()? initial,
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult Function()? sendPressed,
+    TResult Function()? addPasswordPressed,
+    TResult Function()? obscureTextPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -47,7 +50,8 @@ mixin _$PasswordFormEvent {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_RepeatPasswordOnChanged value)
         repeatPasswordOnChanged,
-    required TResult Function(_SendPressed value) sendPressed,
+    required TResult Function(_AddPasswordPressed value) addPasswordPressed,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -55,7 +59,8 @@ mixin _$PasswordFormEvent {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult? Function(_SendPressed value)? sendPressed,
+    TResult? Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -63,7 +68,8 @@ mixin _$PasswordFormEvent {
     TResult Function(_Initial value)? initial,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult Function(_SendPressed value)? sendPressed,
+    TResult Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -127,7 +133,8 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String repeatPassword) repeatPasswordOnChanged,
-    required TResult Function() sendPressed,
+    required TResult Function() addPasswordPressed,
+    required TResult Function() obscureTextPressed,
   }) {
     return initial();
   }
@@ -138,7 +145,8 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult? Function()? sendPressed,
+    TResult? Function()? addPasswordPressed,
+    TResult? Function()? obscureTextPressed,
   }) {
     return initial?.call();
   }
@@ -149,7 +157,8 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult Function()? sendPressed,
+    TResult Function()? addPasswordPressed,
+    TResult Function()? obscureTextPressed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -165,7 +174,8 @@ class _$_Initial implements _Initial {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_RepeatPasswordOnChanged value)
         repeatPasswordOnChanged,
-    required TResult Function(_SendPressed value) sendPressed,
+    required TResult Function(_AddPasswordPressed value) addPasswordPressed,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
   }) {
     return initial(this);
   }
@@ -176,7 +186,8 @@ class _$_Initial implements _Initial {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult? Function(_SendPressed value)? sendPressed,
+    TResult? Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
   }) {
     return initial?.call(this);
   }
@@ -187,7 +198,8 @@ class _$_Initial implements _Initial {
     TResult Function(_Initial value)? initial,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult Function(_SendPressed value)? sendPressed,
+    TResult Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -270,7 +282,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     required TResult Function() initial,
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String repeatPassword) repeatPasswordOnChanged,
-    required TResult Function() sendPressed,
+    required TResult Function() addPasswordPressed,
+    required TResult Function() obscureTextPressed,
   }) {
     return passwordOnChanged(password);
   }
@@ -281,7 +294,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult? Function()? initial,
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult? Function()? sendPressed,
+    TResult? Function()? addPasswordPressed,
+    TResult? Function()? obscureTextPressed,
   }) {
     return passwordOnChanged?.call(password);
   }
@@ -292,7 +306,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult Function()? initial,
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult Function()? sendPressed,
+    TResult Function()? addPasswordPressed,
+    TResult Function()? obscureTextPressed,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -308,7 +323,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_RepeatPasswordOnChanged value)
         repeatPasswordOnChanged,
-    required TResult Function(_SendPressed value) sendPressed,
+    required TResult Function(_AddPasswordPressed value) addPasswordPressed,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
   }) {
     return passwordOnChanged(this);
   }
@@ -319,7 +335,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult? Function(_SendPressed value)? sendPressed,
+    TResult? Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
   }) {
     return passwordOnChanged?.call(this);
   }
@@ -330,7 +347,8 @@ class _$_PasswordOnChanged implements _PasswordOnChanged {
     TResult Function(_Initial value)? initial,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult Function(_SendPressed value)? sendPressed,
+    TResult Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     required TResult orElse(),
   }) {
     if (passwordOnChanged != null) {
@@ -420,7 +438,8 @@ class _$_RepeatPasswordOnChanged implements _RepeatPasswordOnChanged {
     required TResult Function() initial,
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String repeatPassword) repeatPasswordOnChanged,
-    required TResult Function() sendPressed,
+    required TResult Function() addPasswordPressed,
+    required TResult Function() obscureTextPressed,
   }) {
     return repeatPasswordOnChanged(repeatPassword);
   }
@@ -431,7 +450,8 @@ class _$_RepeatPasswordOnChanged implements _RepeatPasswordOnChanged {
     TResult? Function()? initial,
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult? Function()? sendPressed,
+    TResult? Function()? addPasswordPressed,
+    TResult? Function()? obscureTextPressed,
   }) {
     return repeatPasswordOnChanged?.call(repeatPassword);
   }
@@ -442,7 +462,8 @@ class _$_RepeatPasswordOnChanged implements _RepeatPasswordOnChanged {
     TResult Function()? initial,
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult Function()? sendPressed,
+    TResult Function()? addPasswordPressed,
+    TResult Function()? obscureTextPressed,
     required TResult orElse(),
   }) {
     if (repeatPasswordOnChanged != null) {
@@ -458,7 +479,8 @@ class _$_RepeatPasswordOnChanged implements _RepeatPasswordOnChanged {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_RepeatPasswordOnChanged value)
         repeatPasswordOnChanged,
-    required TResult Function(_SendPressed value) sendPressed,
+    required TResult Function(_AddPasswordPressed value) addPasswordPressed,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
   }) {
     return repeatPasswordOnChanged(this);
   }
@@ -469,7 +491,8 @@ class _$_RepeatPasswordOnChanged implements _RepeatPasswordOnChanged {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult? Function(_SendPressed value)? sendPressed,
+    TResult? Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
   }) {
     return repeatPasswordOnChanged?.call(this);
   }
@@ -480,7 +503,8 @@ class _$_RepeatPasswordOnChanged implements _RepeatPasswordOnChanged {
     TResult Function(_Initial value)? initial,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult Function(_SendPressed value)? sendPressed,
+    TResult Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     required TResult orElse(),
   }) {
     if (repeatPasswordOnChanged != null) {
@@ -501,35 +525,35 @@ abstract class _RepeatPasswordOnChanged implements PasswordFormEvent {
 }
 
 /// @nodoc
-abstract class _$$_SendPressedCopyWith<$Res> {
-  factory _$$_SendPressedCopyWith(
-          _$_SendPressed value, $Res Function(_$_SendPressed) then) =
-      __$$_SendPressedCopyWithImpl<$Res>;
+abstract class _$$_AddPasswordPressedCopyWith<$Res> {
+  factory _$$_AddPasswordPressedCopyWith(_$_AddPasswordPressed value,
+          $Res Function(_$_AddPasswordPressed) then) =
+      __$$_AddPasswordPressedCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_SendPressedCopyWithImpl<$Res>
-    extends _$PasswordFormEventCopyWithImpl<$Res, _$_SendPressed>
-    implements _$$_SendPressedCopyWith<$Res> {
-  __$$_SendPressedCopyWithImpl(
-      _$_SendPressed _value, $Res Function(_$_SendPressed) _then)
+class __$$_AddPasswordPressedCopyWithImpl<$Res>
+    extends _$PasswordFormEventCopyWithImpl<$Res, _$_AddPasswordPressed>
+    implements _$$_AddPasswordPressedCopyWith<$Res> {
+  __$$_AddPasswordPressedCopyWithImpl(
+      _$_AddPasswordPressed _value, $Res Function(_$_AddPasswordPressed) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_SendPressed implements _SendPressed {
-  const _$_SendPressed();
+class _$_AddPasswordPressed implements _AddPasswordPressed {
+  const _$_AddPasswordPressed();
 
   @override
   String toString() {
-    return 'PasswordFormEvent.sendPressed()';
+    return 'PasswordFormEvent.addPasswordPressed()';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_SendPressed);
+        (other.runtimeType == runtimeType && other is _$_AddPasswordPressed);
   }
 
   @override
@@ -541,9 +565,10 @@ class _$_SendPressed implements _SendPressed {
     required TResult Function() initial,
     required TResult Function(String password) passwordOnChanged,
     required TResult Function(String repeatPassword) repeatPasswordOnChanged,
-    required TResult Function() sendPressed,
+    required TResult Function() addPasswordPressed,
+    required TResult Function() obscureTextPressed,
   }) {
-    return sendPressed();
+    return addPasswordPressed();
   }
 
   @override
@@ -552,9 +577,10 @@ class _$_SendPressed implements _SendPressed {
     TResult? Function()? initial,
     TResult? Function(String password)? passwordOnChanged,
     TResult? Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult? Function()? sendPressed,
+    TResult? Function()? addPasswordPressed,
+    TResult? Function()? obscureTextPressed,
   }) {
-    return sendPressed?.call();
+    return addPasswordPressed?.call();
   }
 
   @override
@@ -563,11 +589,12 @@ class _$_SendPressed implements _SendPressed {
     TResult Function()? initial,
     TResult Function(String password)? passwordOnChanged,
     TResult Function(String repeatPassword)? repeatPasswordOnChanged,
-    TResult Function()? sendPressed,
+    TResult Function()? addPasswordPressed,
+    TResult Function()? obscureTextPressed,
     required TResult orElse(),
   }) {
-    if (sendPressed != null) {
-      return sendPressed();
+    if (addPasswordPressed != null) {
+      return addPasswordPressed();
     }
     return orElse();
   }
@@ -579,9 +606,10 @@ class _$_SendPressed implements _SendPressed {
     required TResult Function(_PasswordOnChanged value) passwordOnChanged,
     required TResult Function(_RepeatPasswordOnChanged value)
         repeatPasswordOnChanged,
-    required TResult Function(_SendPressed value) sendPressed,
+    required TResult Function(_AddPasswordPressed value) addPasswordPressed,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
   }) {
-    return sendPressed(this);
+    return addPasswordPressed(this);
   }
 
   @override
@@ -590,9 +618,10 @@ class _$_SendPressed implements _SendPressed {
     TResult? Function(_Initial value)? initial,
     TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult? Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult? Function(_SendPressed value)? sendPressed,
+    TResult? Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
   }) {
-    return sendPressed?.call(this);
+    return addPasswordPressed?.call(this);
   }
 
   @override
@@ -601,25 +630,149 @@ class _$_SendPressed implements _SendPressed {
     TResult Function(_Initial value)? initial,
     TResult Function(_PasswordOnChanged value)? passwordOnChanged,
     TResult Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
-    TResult Function(_SendPressed value)? sendPressed,
+    TResult Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
     required TResult orElse(),
   }) {
-    if (sendPressed != null) {
-      return sendPressed(this);
+    if (addPasswordPressed != null) {
+      return addPasswordPressed(this);
     }
     return orElse();
   }
 }
 
-abstract class _SendPressed implements PasswordFormEvent {
-  const factory _SendPressed() = _$_SendPressed;
+abstract class _AddPasswordPressed implements PasswordFormEvent {
+  const factory _AddPasswordPressed() = _$_AddPasswordPressed;
+}
+
+/// @nodoc
+abstract class _$$_ObscureTextPressedCopyWith<$Res> {
+  factory _$$_ObscureTextPressedCopyWith(_$_ObscureTextPressed value,
+          $Res Function(_$_ObscureTextPressed) then) =
+      __$$_ObscureTextPressedCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_ObscureTextPressedCopyWithImpl<$Res>
+    extends _$PasswordFormEventCopyWithImpl<$Res, _$_ObscureTextPressed>
+    implements _$$_ObscureTextPressedCopyWith<$Res> {
+  __$$_ObscureTextPressedCopyWithImpl(
+      _$_ObscureTextPressed _value, $Res Function(_$_ObscureTextPressed) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_ObscureTextPressed implements _ObscureTextPressed {
+  const _$_ObscureTextPressed();
+
+  @override
+  String toString() {
+    return 'PasswordFormEvent.obscureTextPressed()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_ObscureTextPressed);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(String password) passwordOnChanged,
+    required TResult Function(String repeatPassword) repeatPasswordOnChanged,
+    required TResult Function() addPasswordPressed,
+    required TResult Function() obscureTextPressed,
+  }) {
+    return obscureTextPressed();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(String password)? passwordOnChanged,
+    TResult? Function(String repeatPassword)? repeatPasswordOnChanged,
+    TResult? Function()? addPasswordPressed,
+    TResult? Function()? obscureTextPressed,
+  }) {
+    return obscureTextPressed?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(String password)? passwordOnChanged,
+    TResult Function(String repeatPassword)? repeatPasswordOnChanged,
+    TResult Function()? addPasswordPressed,
+    TResult Function()? obscureTextPressed,
+    required TResult orElse(),
+  }) {
+    if (obscureTextPressed != null) {
+      return obscureTextPressed();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_PasswordOnChanged value) passwordOnChanged,
+    required TResult Function(_RepeatPasswordOnChanged value)
+        repeatPasswordOnChanged,
+    required TResult Function(_AddPasswordPressed value) addPasswordPressed,
+    required TResult Function(_ObscureTextPressed value) obscureTextPressed,
+  }) {
+    return obscureTextPressed(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult? Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
+    TResult? Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult? Function(_ObscureTextPressed value)? obscureTextPressed,
+  }) {
+    return obscureTextPressed?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_PasswordOnChanged value)? passwordOnChanged,
+    TResult Function(_RepeatPasswordOnChanged value)? repeatPasswordOnChanged,
+    TResult Function(_AddPasswordPressed value)? addPasswordPressed,
+    TResult Function(_ObscureTextPressed value)? obscureTextPressed,
+    required TResult orElse(),
+  }) {
+    if (obscureTextPressed != null) {
+      return obscureTextPressed(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ObscureTextPressed implements PasswordFormEvent {
+  const factory _ObscureTextPressed() = _$_ObscureTextPressed;
 }
 
 /// @nodoc
 mixin _$PasswordFormState {
-  RequestState get result => throw _privateConstructorUsedError;
+  RequestState get state => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
   String get password => throw _privateConstructorUsedError;
   String get repeatPassword => throw _privateConstructorUsedError;
+  bool get obscureText => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get isShowErrorMessages => throw _privateConstructorUsedError;
 
@@ -635,9 +788,11 @@ abstract class $PasswordFormStateCopyWith<$Res> {
       _$PasswordFormStateCopyWithImpl<$Res, PasswordFormState>;
   @useResult
   $Res call(
-      {RequestState result,
+      {RequestState state,
+      String message,
       String password,
       String repeatPassword,
+      bool obscureText,
       bool isSubmitting,
       bool isShowErrorMessages});
 }
@@ -655,17 +810,23 @@ class _$PasswordFormStateCopyWithImpl<$Res, $Val extends PasswordFormState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? state = null,
+    Object? message = null,
     Object? password = null,
     Object? repeatPassword = null,
+    Object? obscureText = null,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
   }) {
     return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -674,6 +835,10 @@ class _$PasswordFormStateCopyWithImpl<$Res, $Val extends PasswordFormState>
           ? _value.repeatPassword
           : repeatPassword // ignore: cast_nullable_to_non_nullable
               as String,
+      obscureText: null == obscureText
+          ? _value.obscureText
+          : obscureText // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -695,9 +860,11 @@ abstract class _$$_PasswordFormStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {RequestState result,
+      {RequestState state,
+      String message,
       String password,
       String repeatPassword,
+      bool obscureText,
       bool isSubmitting,
       bool isShowErrorMessages});
 }
@@ -713,17 +880,23 @@ class __$$_PasswordFormStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? state = null,
+    Object? message = null,
     Object? password = null,
     Object? repeatPassword = null,
+    Object? obscureText = null,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
   }) {
     return _then(_$_PasswordFormState(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       password: null == password
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
@@ -732,6 +905,10 @@ class __$$_PasswordFormStateCopyWithImpl<$Res>
           ? _value.repeatPassword
           : repeatPassword // ignore: cast_nullable_to_non_nullable
               as String,
+      obscureText: null == obscureText
+          ? _value.obscureText
+          : obscureText // ignore: cast_nullable_to_non_nullable
+              as bool,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
           : isSubmitting // ignore: cast_nullable_to_non_nullable
@@ -748,18 +925,24 @@ class __$$_PasswordFormStateCopyWithImpl<$Res>
 
 class _$_PasswordFormState implements _PasswordFormState {
   const _$_PasswordFormState(
-      {required this.result,
+      {required this.state,
+      required this.message,
       required this.password,
       required this.repeatPassword,
+      required this.obscureText,
       required this.isSubmitting,
       required this.isShowErrorMessages});
 
   @override
-  final RequestState result;
+  final RequestState state;
+  @override
+  final String message;
   @override
   final String password;
   @override
   final String repeatPassword;
+  @override
+  final bool obscureText;
   @override
   final bool isSubmitting;
   @override
@@ -767,7 +950,7 @@ class _$_PasswordFormState implements _PasswordFormState {
 
   @override
   String toString() {
-    return 'PasswordFormState(result: $result, password: $password, repeatPassword: $repeatPassword, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
+    return 'PasswordFormState(state: $state, message: $message, password: $password, repeatPassword: $repeatPassword, obscureText: $obscureText, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
   }
 
   @override
@@ -775,11 +958,14 @@ class _$_PasswordFormState implements _PasswordFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_PasswordFormState &&
-            (identical(other.result, result) || other.result == result) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.password, password) ||
                 other.password == password) &&
             (identical(other.repeatPassword, repeatPassword) ||
                 other.repeatPassword == repeatPassword) &&
+            (identical(other.obscureText, obscureText) ||
+                other.obscureText == obscureText) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isShowErrorMessages, isShowErrorMessages) ||
@@ -787,8 +973,8 @@ class _$_PasswordFormState implements _PasswordFormState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, result, password, repeatPassword,
-      isSubmitting, isShowErrorMessages);
+  int get hashCode => Object.hash(runtimeType, state, message, password,
+      repeatPassword, obscureText, isSubmitting, isShowErrorMessages);
 
   @JsonKey(ignore: true)
   @override
@@ -800,18 +986,24 @@ class _$_PasswordFormState implements _PasswordFormState {
 
 abstract class _PasswordFormState implements PasswordFormState {
   const factory _PasswordFormState(
-      {required final RequestState result,
+      {required final RequestState state,
+      required final String message,
       required final String password,
       required final String repeatPassword,
+      required final bool obscureText,
       required final bool isSubmitting,
       required final bool isShowErrorMessages}) = _$_PasswordFormState;
 
   @override
-  RequestState get result;
+  RequestState get state;
+  @override
+  String get message;
   @override
   String get password;
   @override
   String get repeatPassword;
+  @override
+  bool get obscureText;
   @override
   bool get isSubmitting;
   @override

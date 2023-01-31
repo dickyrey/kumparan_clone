@@ -8,6 +8,7 @@ import 'package:kumparan_clone/src/data/datasources/category_remote_data_source.
 import 'package:kumparan_clone/src/data/datasources/comment_article_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/like_article_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/password_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/user_article_data_source.dart';
 import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dart';
@@ -17,6 +18,7 @@ import 'package:kumparan_clone/src/data/repositories/category_repository_impl.da
 import 'package:kumparan_clone/src/data/repositories/comment_article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/like_article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/notice_repository_impl.dart';
+import 'package:kumparan_clone/src/data/repositories/password_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/profile_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/user_article_repository_impl.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
@@ -26,6 +28,7 @@ import 'package:kumparan_clone/src/domain/repositories/category_repository.dart'
 import 'package:kumparan_clone/src/domain/repositories/comment_article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/like_article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
+import 'package:kumparan_clone/src/domain/repositories/password_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/user_article_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
@@ -47,6 +50,8 @@ import 'package:kumparan_clone/src/domain/usecases/get_categories.dart';
 import 'package:kumparan_clone/src/domain/usecases/get_notice_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/like_article/check_like_status.dart';
 import 'package:kumparan_clone/src/domain/usecases/like_article/like_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/password/add_password.dart';
+import 'package:kumparan_clone/src/domain/usecases/password/change_password.dart';
 import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_banned_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_drafted_article.dart';
@@ -142,6 +147,11 @@ void init() {
     () => noticeRemoteDataSource,
   );
 
+  final passwordDataSource = PasswordDataSourceImpl(locator());
+  locator.registerLazySingleton<PasswordDataSource>(
+    () => passwordDataSource,
+  );
+
   final profileDataSource = ProfileDataSourceImpl(locator());
   locator.registerLazySingleton<ProfileDataSource>(
     () => profileDataSource,
@@ -188,6 +198,11 @@ void init() {
   final noticeRepository = NoticeRepositoryImpl(dataSource: locator());
   locator.registerLazySingleton<NoticeRepository>(
     () => noticeRepository,
+  );
+
+  final passwordRepository = PasswordRepositoryImpl(locator());
+  locator.registerLazySingleton<PasswordRepository>(
+    () => passwordRepository,
   );
 
   final profileRepository = ProfileRepositoryImpl(locator());
@@ -289,6 +304,17 @@ void init() {
   final likeOrUnlikedArticleUseCase = LikeOrUnlikedArticle(locator());
   locator.registerLazySingleton(
     () => likeOrUnlikedArticleUseCase,
+  );
+
+  //* Filter by [Password] folder
+  //*
+  final addPasswordUseCase = AddPassword(locator());
+  locator.registerLazySingleton(
+    () => addPasswordUseCase,
+  );
+  final changePasswordUseCase = ChangePassword(locator());
+  locator.registerLazySingleton(
+    () => changePasswordUseCase,
   );
 
   //* Filter by [Profile] folder
@@ -476,7 +502,7 @@ void init() {
 
   //* Password4 BLoC folder
   //*
-  final passwordFormBloc = PasswordFormBloc();
+  final passwordFormBloc = PasswordFormBloc(locator());
   locator.registerLazySingleton(
     () => passwordFormBloc,
   );
@@ -514,7 +540,7 @@ void init() {
     () => userWatcherBloc,
   );
 
-  //* User BLoC folder
+  //* User Article BLoC folder
   //*
   final userArticleBannedWatcherBloc = UserArticleBannedWatcherBloc(locator());
   locator.registerLazySingleton(
