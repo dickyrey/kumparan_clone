@@ -91,4 +91,18 @@ class ArticleRepositoryImpl extends ArticleRepository {
       );
     }
   }
+  
+  @override
+  Future<Either<Failure, bool>> deleteArticle(String id) async {
+    try {
+      final result = await dataSource.deleteArticle(id);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
 }

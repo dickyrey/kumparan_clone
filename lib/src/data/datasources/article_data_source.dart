@@ -13,6 +13,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class ArticleDataSource {
   Future<List<ArticleModel>> getArticleList();
   Future<ArticleDetailModel> getArticleDetail(String id);
+  Future<bool> deleteArticle(String id);
   Future<bool> createArticle({
     required String title,
     required String content,
@@ -173,6 +174,28 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final response = await request.send();
     final respStr = await response.stream.bytesToString();
     print(respStr);
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+  
+  @override
+  Future<bool> deleteArticle(String id) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.articlePath + id,
+    );
+
+    final response = await client.delete(url, headers: header);
     if (response.statusCode == 200) {
       return true;
     } else {

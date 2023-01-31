@@ -13,6 +13,7 @@ import 'package:kumparan_clone/src/common/screens.dart';
 import 'package:kumparan_clone/src/domain/entities/article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_actor/delete_article_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/delete_comment_actor/delete_comment_actor_bloc.dart';
@@ -99,7 +100,10 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
           context,
           title: 'Apakah kamu yakin ingin menghapus artikel ini?',
           primaryButtonLabel: lang.delete,
-          onPrimaryButtonTap: (){
+          onPrimaryButtonTap: () {
+            context
+                .read<DeleteArticleActorBloc>()
+                .add(DeleteArticleActorEvent.delete(widget.article.url));
             Navigator.pop(context);
           },
         );
@@ -118,65 +122,83 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return Scaffold(
-      appBar: _appBar(context, article: widget.article),
-      body: SingleChildScrollView(
-        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const SizedBox(height: Const.space25),
-            Text(
-              'NEWS',
-              style: theme.textTheme.headlineSmall
-                  ?.copyWith(color: theme.primaryColor),
-            ),
-            const SizedBox(height: Const.space8),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(Const.radius),
-              child: OctoImage(
-                image: CachedNetworkImageProvider(widget.article.image),
+    return BlocListener<DeleteArticleActorBloc, DeleteArticleActorState>(
+      listener: (context, state) {
+        state.maybeMap(
+          orElse: () {},
+          error: (_) {
+            showToast(msg: 'Gagal menghapus artikel');
+          },
+          success: (value) {
+            showToast(msg: 'Artikel dihapus');
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              MENU,
+              (route) => false,
+            );
+          },
+        );
+      },
+      child: Scaffold(
+        appBar: _appBar(context, article: widget.article),
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: Const.space25),
+              Text(
+                'NEWS',
+                style: theme.textTheme.headlineSmall
+                    ?.copyWith(color: theme.primaryColor),
               ),
-            ),
-            const SizedBox(height: Const.space15),
-            Text(
-              widget.article.title,
-              style: theme.textTheme.headlineLarge,
-            ),
-            const SizedBox(height: Const.space12),
-            Text(
-              '${DateFormat.yMMMMEEEEd().format(widget.article.createdAt)} - waktu baca 2 menit',
-              style: theme.textTheme.titleMedium,
-            ),
-            const SizedBox(height: Const.space15),
-            BlocBuilder<ArticleDetailWatcherBloc, ArticleDetailWatcherState>(
-              builder: (context, state) {
-                return state.maybeMap(
-                  orElse: () {
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  },
-                  loaded: (state) {
-                    return Html(
-                      data: state.articleDetail.content,
-                    );
-                  },
-                );
-              },
-            )
-          ],
+              const SizedBox(height: Const.space8),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(Const.radius),
+                child: OctoImage(
+                  image: CachedNetworkImageProvider(widget.article.image),
+                ),
+              ),
+              const SizedBox(height: Const.space15),
+              Text(
+                widget.article.title,
+                style: theme.textTheme.headlineLarge,
+              ),
+              const SizedBox(height: Const.space12),
+              Text(
+                '${DateFormat.yMMMMEEEEd().format(widget.article.createdAt)} - waktu baca 2 menit',
+                style: theme.textTheme.titleMedium,
+              ),
+              const SizedBox(height: Const.space15),
+              BlocBuilder<ArticleDetailWatcherBloc, ArticleDetailWatcherState>(
+                builder: (context, state) {
+                  return state.maybeMap(
+                    orElse: () {
+                      return const Center(
+                        child: CircularProgressIndicator(),
+                      );
+                    },
+                    loaded: (state) {
+                      return Html(
+                        data: state.articleDetail.content,
+                      );
+                    },
+                  );
+                },
+              )
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: AnimatedFloatingActionButton(
-        fabButtons: <Widget>[
-          edit(),
-          delete(),
-        ],
-        key: key,
-        colorStartAnimation: theme.colorScheme.background,
-        colorEndAnimation: theme.colorScheme.background,
-        animatedIconData: AnimatedIcons.menu_close,
+        floatingActionButton: AnimatedFloatingActionButton(
+          fabButtons: <Widget>[
+            edit(),
+            delete(),
+          ],
+          key: key,
+          colorStartAnimation: theme.colorScheme.background,
+          colorEndAnimation: theme.colorScheme.background,
+          animatedIconData: AnimatedIcons.menu_close,
+        ),
       ),
     );
   }

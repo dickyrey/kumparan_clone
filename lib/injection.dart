@@ -29,6 +29,7 @@ import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/user_article_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/article/delete_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_list.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
@@ -52,6 +53,7 @@ import 'package:kumparan_clone/src/domain/usecases/user_article/get_published_ar
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_rejected_article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_actor/delete_article_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
@@ -206,6 +208,11 @@ void init() {
     () => createArtcleUseCase,
   );
 
+  final deleteArticleUseCase = DeleteArticle(locator());
+  locator.registerLazySingleton(
+    () => deleteArticleUseCase,
+  );
+
   final getArticleDetailUseCase = GetArticleDetail(locator());
   locator.registerLazySingleton(
     () => getArticleDetailUseCase,
@@ -344,6 +351,11 @@ void init() {
   );
   locator.registerLazySingleton(
     () => articleFormBloc,
+  );
+
+  final deleteArticleActorBloc = DeleteArticleActorBloc(locator());
+  locator.registerLazySingleton(
+    () => deleteArticleActorBloc,
   );
 
   final deleteCommentActorBloc = DeleteCommentActorBloc(locator());

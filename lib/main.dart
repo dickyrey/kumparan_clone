@@ -8,6 +8,7 @@ import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/common/themes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_actor/delete_article_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/new_article/article_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/sign_in_with_google_actor/sign_in_with_google_actor_bloc.dart';
@@ -53,6 +54,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => di.locator<ArticleCommentWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleDetailWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleFormBloc>()),
+        BlocProvider(create: (context) => di.locator<DeleteArticleActorBloc>()),
         BlocProvider(create: (context) => di.locator<DeleteCommentActorBloc>()),
         BlocProvider(create: (context) => di.locator<ArticleWatcherBloc>()),
         BlocProvider(create: (context) => di.locator<SendCommentActorBloc>()),
