@@ -53,7 +53,8 @@ import 'package:kumparan_clone/src/domain/usecases/like_article/check_like_statu
 import 'package:kumparan_clone/src/domain/usecases/like_article/like_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/password/add_password.dart';
 import 'package:kumparan_clone/src/domain/usecases/password/change_password.dart';
-import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
+import 'package:kumparan_clone/src/domain/usecases/user/get_user_profile.dart';
+import 'package:kumparan_clone/src/domain/usecases/user/update_user_profile.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_banned_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_drafted_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_moderated_article.dart';
@@ -323,11 +324,15 @@ void init() {
     () => changePasswordUseCase,
   );
 
-  //* Filter by [Profile] folder
+  //* Filter by [User] folder
   //*
-  final getProfileUseCase = GetProfile(locator());
+  final getUserProfileUseCase = GetUserProfile(locator());
   locator.registerLazySingleton(
-    () => getProfileUseCase,
+    () => getUserProfileUseCase,
+  );
+  final updateUserProfileUseCase = UpdateUserProfile(locator());
+  locator.registerLazySingleton(
+    () => updateUserProfileUseCase,
   );
 
   //* Filter by [User Article] folder
@@ -534,7 +539,7 @@ void init() {
 
   //* User BLoC folder
   //*
-  final userFormBloc = UserFormBloc();
+  final userFormBloc = UserFormBloc(locator());
   locator.registerLazySingleton(
     () => userFormBloc,
   );

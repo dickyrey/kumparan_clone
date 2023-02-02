@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:kumparan_clone/src/domain/entities/user.dart';
-import 'package:kumparan_clone/src/domain/usecases/profile/get_profile.dart';
+import 'package:kumparan_clone/src/domain/usecases/user/get_user_profile.dart';
 
 part 'user_watcher_event.dart';
 part 'user_watcher_state.dart';
@@ -27,5 +27,5 @@ class UserWatcherBloc extends Bloc<UserWatcherEvent, UserWatcherState> {
       );
     });
   }
-  final GetProfile _getProfile;
+  final GetUserProfile _getProfile;
 }

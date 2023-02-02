@@ -19,39 +19,27 @@ mixin _$UserFormEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) initialize,
     required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function(ImageSource source) pickImage,
     required TResult Function() saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? initialize,
     TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? initialize,
     TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function(ImageSource source)? pickImage,
     TResult Function()? saveChanges,
     required TResult orElse(),
   }) =>
@@ -59,39 +47,27 @@ mixin _$UserFormEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
     required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_SaveChanges value) saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
     TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_SaveChanges value)? saveChanges,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
     TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) =>
@@ -154,13 +130,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) initialize,
     required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function(ImageSource source) pickImage,
     required TResult Function() saveChanges,
   }) {
     return initial();
@@ -170,13 +142,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? initialize,
     TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? saveChanges,
   }) {
     return initial?.call();
@@ -186,13 +154,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? initialize,
     TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function(ImageSource source)? pickImage,
     TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
@@ -206,13 +170,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
     required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return initial(this);
@@ -222,13 +182,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
     TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return initial?.call(this);
@@ -238,13 +194,9 @@ class _$_Initial implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
     TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
@@ -257,6 +209,157 @@ class _$_Initial implements _Initial {
 
 abstract class _Initial implements UserFormEvent {
   const factory _Initial() = _$_Initial;
+}
+
+/// @nodoc
+abstract class _$$_InitializeCopyWith<$Res> {
+  factory _$$_InitializeCopyWith(
+          _$_Initialize value, $Res Function(_$_Initialize) then) =
+      __$$_InitializeCopyWithImpl<$Res>;
+  @useResult
+  $Res call({User user});
+}
+
+/// @nodoc
+class __$$_InitializeCopyWithImpl<$Res>
+    extends _$UserFormEventCopyWithImpl<$Res, _$_Initialize>
+    implements _$$_InitializeCopyWith<$Res> {
+  __$$_InitializeCopyWithImpl(
+      _$_Initialize _value, $Res Function(_$_Initialize) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? user = null,
+  }) {
+    return _then(_$_Initialize(
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as User,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_Initialize implements _Initialize {
+  const _$_Initialize(this.user);
+
+  @override
+  final User user;
+
+  @override
+  String toString() {
+    return 'UserFormEvent.initialize(user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Initialize &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_InitializeCopyWith<_$_Initialize> get copyWith =>
+      __$$_InitializeCopyWithImpl<_$_Initialize>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(User user) initialize,
+    required TResult Function(String name) nameOnChanged,
+    required TResult Function(ImageSource source) pickImage,
+    required TResult Function() saveChanges,
+  }) {
+    return initialize(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(User user)? initialize,
+    TResult? Function(String name)? nameOnChanged,
+    TResult? Function(ImageSource source)? pickImage,
+    TResult? Function()? saveChanges,
+  }) {
+    return initialize?.call(user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(User user)? initialize,
+    TResult Function(String name)? nameOnChanged,
+    TResult Function(ImageSource source)? pickImage,
+    TResult Function()? saveChanges,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
+    required TResult Function(_NameOnChanged value) nameOnChanged,
+    required TResult Function(_PickImage value) pickImage,
+    required TResult Function(_SaveChanges value) saveChanges,
+  }) {
+    return initialize(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
+    TResult? Function(_NameOnChanged value)? nameOnChanged,
+    TResult? Function(_PickImage value)? pickImage,
+    TResult? Function(_SaveChanges value)? saveChanges,
+  }) {
+    return initialize?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
+    TResult Function(_NameOnChanged value)? nameOnChanged,
+    TResult Function(_PickImage value)? pickImage,
+    TResult Function(_SaveChanges value)? saveChanges,
+    required TResult orElse(),
+  }) {
+    if (initialize != null) {
+      return initialize(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Initialize implements UserFormEvent {
+  const factory _Initialize(final User user) = _$_Initialize;
+
+  User get user;
+  @JsonKey(ignore: true)
+  _$$_InitializeCopyWith<_$_Initialize> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -324,13 +427,9 @@ class _$_NameOnChanged implements _NameOnChanged {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) initialize,
     required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function(ImageSource source) pickImage,
     required TResult Function() saveChanges,
   }) {
     return nameOnChanged(name);
@@ -340,13 +439,9 @@ class _$_NameOnChanged implements _NameOnChanged {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? initialize,
     TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? saveChanges,
   }) {
     return nameOnChanged?.call(name);
@@ -356,13 +451,9 @@ class _$_NameOnChanged implements _NameOnChanged {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? initialize,
     TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function(ImageSource source)? pickImage,
     TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
@@ -376,13 +467,9 @@ class _$_NameOnChanged implements _NameOnChanged {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
     required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return nameOnChanged(this);
@@ -392,13 +479,9 @@ class _$_NameOnChanged implements _NameOnChanged {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
     TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return nameOnChanged?.call(this);
@@ -408,13 +491,9 @@ class _$_NameOnChanged implements _NameOnChanged {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
     TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
@@ -435,723 +514,20 @@ abstract class _NameOnChanged implements UserFormEvent {
 }
 
 /// @nodoc
-abstract class _$$_BioOnChangedCopyWith<$Res> {
-  factory _$$_BioOnChangedCopyWith(
-          _$_BioOnChanged value, $Res Function(_$_BioOnChanged) then) =
-      __$$_BioOnChangedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String bio});
-}
-
-/// @nodoc
-class __$$_BioOnChangedCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_BioOnChanged>
-    implements _$$_BioOnChangedCopyWith<$Res> {
-  __$$_BioOnChangedCopyWithImpl(
-      _$_BioOnChanged _value, $Res Function(_$_BioOnChanged) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? bio = null,
-  }) {
-    return _then(_$_BioOnChanged(
-      null == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_BioOnChanged implements _BioOnChanged {
-  const _$_BioOnChanged(this.bio);
-
-  @override
-  final String bio;
-
-  @override
-  String toString() {
-    return 'UserFormEvent.bioOnChanged(bio: $bio)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_BioOnChanged &&
-            (identical(other.bio, bio) || other.bio == bio));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, bio);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_BioOnChangedCopyWith<_$_BioOnChanged> get copyWith =>
-      __$$_BioOnChangedCopyWithImpl<_$_BioOnChanged>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
-    required TResult Function() saveChanges,
-  }) {
-    return bioOnChanged(bio);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
-    TResult? Function()? saveChanges,
-  }) {
-    return bioOnChanged?.call(bio);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
-    TResult Function()? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (bioOnChanged != null) {
-      return bioOnChanged(bio);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
-    required TResult Function(_SaveChanges value) saveChanges,
-  }) {
-    return bioOnChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult? Function(_SaveChanges value)? saveChanges,
-  }) {
-    return bioOnChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult Function(_SaveChanges value)? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (bioOnChanged != null) {
-      return bioOnChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BioOnChanged implements UserFormEvent {
-  const factory _BioOnChanged(final String bio) = _$_BioOnChanged;
-
-  String get bio;
-  @JsonKey(ignore: true)
-  _$$_BioOnChangedCopyWith<_$_BioOnChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_WebOnChangedCopyWith<$Res> {
-  factory _$$_WebOnChangedCopyWith(
-          _$_WebOnChanged value, $Res Function(_$_WebOnChanged) then) =
-      __$$_WebOnChangedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({String web});
-}
-
-/// @nodoc
-class __$$_WebOnChangedCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_WebOnChanged>
-    implements _$$_WebOnChangedCopyWith<$Res> {
-  __$$_WebOnChangedCopyWithImpl(
-      _$_WebOnChanged _value, $Res Function(_$_WebOnChanged) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? web = null,
-  }) {
-    return _then(_$_WebOnChanged(
-      null == web
-          ? _value.web
-          : web // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_WebOnChanged implements _WebOnChanged {
-  const _$_WebOnChanged(this.web);
-
-  @override
-  final String web;
-
-  @override
-  String toString() {
-    return 'UserFormEvent.webOnChanged(web: $web)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_WebOnChanged &&
-            (identical(other.web, web) || other.web == web));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, web);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_WebOnChangedCopyWith<_$_WebOnChanged> get copyWith =>
-      __$$_WebOnChangedCopyWithImpl<_$_WebOnChanged>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
-    required TResult Function() saveChanges,
-  }) {
-    return webOnChanged(web);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
-    TResult? Function()? saveChanges,
-  }) {
-    return webOnChanged?.call(web);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
-    TResult Function()? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (webOnChanged != null) {
-      return webOnChanged(web);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
-    required TResult Function(_SaveChanges value) saveChanges,
-  }) {
-    return webOnChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult? Function(_SaveChanges value)? saveChanges,
-  }) {
-    return webOnChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult Function(_SaveChanges value)? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (webOnChanged != null) {
-      return webOnChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _WebOnChanged implements UserFormEvent {
-  const factory _WebOnChanged(final String web) = _$_WebOnChanged;
-
-  String get web;
-  @JsonKey(ignore: true)
-  _$$_WebOnChangedCopyWith<_$_WebOnChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_BirthdateOnChangedCopyWith<$Res> {
-  factory _$$_BirthdateOnChangedCopyWith(_$_BirthdateOnChanged value,
-          $Res Function(_$_BirthdateOnChanged) then) =
-      __$$_BirthdateOnChangedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({BuildContext context});
-}
-
-/// @nodoc
-class __$$_BirthdateOnChangedCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_BirthdateOnChanged>
-    implements _$$_BirthdateOnChangedCopyWith<$Res> {
-  __$$_BirthdateOnChangedCopyWithImpl(
-      _$_BirthdateOnChanged _value, $Res Function(_$_BirthdateOnChanged) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? context = null,
-  }) {
-    return _then(_$_BirthdateOnChanged(
-      null == context
-          ? _value.context
-          : context // ignore: cast_nullable_to_non_nullable
-              as BuildContext,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_BirthdateOnChanged implements _BirthdateOnChanged {
-  const _$_BirthdateOnChanged(this.context);
-
-  @override
-  final BuildContext context;
-
-  @override
-  String toString() {
-    return 'UserFormEvent.birthdateOnChanged(context: $context)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_BirthdateOnChanged &&
-            (identical(other.context, context) || other.context == context));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, context);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_BirthdateOnChangedCopyWith<_$_BirthdateOnChanged> get copyWith =>
-      __$$_BirthdateOnChangedCopyWithImpl<_$_BirthdateOnChanged>(
-          this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
-    required TResult Function() saveChanges,
-  }) {
-    return birthdateOnChanged(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
-    TResult? Function()? saveChanges,
-  }) {
-    return birthdateOnChanged?.call(context);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
-    TResult Function()? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (birthdateOnChanged != null) {
-      return birthdateOnChanged(context);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
-    required TResult Function(_SaveChanges value) saveChanges,
-  }) {
-    return birthdateOnChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult? Function(_SaveChanges value)? saveChanges,
-  }) {
-    return birthdateOnChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult Function(_SaveChanges value)? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (birthdateOnChanged != null) {
-      return birthdateOnChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _BirthdateOnChanged implements UserFormEvent {
-  const factory _BirthdateOnChanged(final BuildContext context) =
-      _$_BirthdateOnChanged;
-
-  BuildContext get context;
-  @JsonKey(ignore: true)
-  _$$_BirthdateOnChangedCopyWith<_$_BirthdateOnChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_GenderOnChangedCopyWith<$Res> {
-  factory _$$_GenderOnChangedCopyWith(
-          _$_GenderOnChanged value, $Res Function(_$_GenderOnChanged) then) =
-      __$$_GenderOnChangedCopyWithImpl<$Res>;
-  @useResult
-  $Res call({int genderId});
-}
-
-/// @nodoc
-class __$$_GenderOnChangedCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_GenderOnChanged>
-    implements _$$_GenderOnChangedCopyWith<$Res> {
-  __$$_GenderOnChangedCopyWithImpl(
-      _$_GenderOnChanged _value, $Res Function(_$_GenderOnChanged) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? genderId = null,
-  }) {
-    return _then(_$_GenderOnChanged(
-      null == genderId
-          ? _value.genderId
-          : genderId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_GenderOnChanged implements _GenderOnChanged {
-  const _$_GenderOnChanged(this.genderId);
-
-  @override
-  final int genderId;
-
-  @override
-  String toString() {
-    return 'UserFormEvent.genderOnChanged(genderId: $genderId)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_GenderOnChanged &&
-            (identical(other.genderId, genderId) ||
-                other.genderId == genderId));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, genderId);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_GenderOnChangedCopyWith<_$_GenderOnChanged> get copyWith =>
-      __$$_GenderOnChangedCopyWithImpl<_$_GenderOnChanged>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
-    required TResult Function() saveChanges,
-  }) {
-    return genderOnChanged(genderId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
-    TResult? Function()? saveChanges,
-  }) {
-    return genderOnChanged?.call(genderId);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
-    TResult Function()? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (genderOnChanged != null) {
-      return genderOnChanged(genderId);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
-    required TResult Function(_SaveChanges value) saveChanges,
-  }) {
-    return genderOnChanged(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult? Function(_SaveChanges value)? saveChanges,
-  }) {
-    return genderOnChanged?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult Function(_SaveChanges value)? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (genderOnChanged != null) {
-      return genderOnChanged(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GenderOnChanged implements UserFormEvent {
-  const factory _GenderOnChanged(final int genderId) = _$_GenderOnChanged;
-
-  int get genderId;
-  @JsonKey(ignore: true)
-  _$$_GenderOnChangedCopyWith<_$_GenderOnChanged> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_PickPhotoProfileCopyWith<$Res> {
-  factory _$$_PickPhotoProfileCopyWith(
-          _$_PickPhotoProfile value, $Res Function(_$_PickPhotoProfile) then) =
-      __$$_PickPhotoProfileCopyWithImpl<$Res>;
+abstract class _$$_PickImageCopyWith<$Res> {
+  factory _$$_PickImageCopyWith(
+          _$_PickImage value, $Res Function(_$_PickImage) then) =
+      __$$_PickImageCopyWithImpl<$Res>;
   @useResult
   $Res call({ImageSource source});
 }
 
 /// @nodoc
-class __$$_PickPhotoProfileCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_PickPhotoProfile>
-    implements _$$_PickPhotoProfileCopyWith<$Res> {
-  __$$_PickPhotoProfileCopyWithImpl(
-      _$_PickPhotoProfile _value, $Res Function(_$_PickPhotoProfile) _then)
+class __$$_PickImageCopyWithImpl<$Res>
+    extends _$UserFormEventCopyWithImpl<$Res, _$_PickImage>
+    implements _$$_PickImageCopyWith<$Res> {
+  __$$_PickImageCopyWithImpl(
+      _$_PickImage _value, $Res Function(_$_PickImage) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1159,7 +535,7 @@ class __$$_PickPhotoProfileCopyWithImpl<$Res>
   $Res call({
     Object? source = null,
   }) {
-    return _then(_$_PickPhotoProfile(
+    return _then(_$_PickImage(
       null == source
           ? _value.source
           : source // ignore: cast_nullable_to_non_nullable
@@ -1170,22 +546,22 @@ class __$$_PickPhotoProfileCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_PickPhotoProfile implements _PickPhotoProfile {
-  const _$_PickPhotoProfile(this.source);
+class _$_PickImage implements _PickImage {
+  const _$_PickImage(this.source);
 
   @override
   final ImageSource source;
 
   @override
   String toString() {
-    return 'UserFormEvent.pickPhotoProfile(source: $source)';
+    return 'UserFormEvent.pickImage(source: $source)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_PickPhotoProfile &&
+            other is _$_PickImage &&
             (identical(other.source, source) || other.source == source));
   }
 
@@ -1195,57 +571,45 @@ class _$_PickPhotoProfile implements _PickPhotoProfile {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_PickPhotoProfileCopyWith<_$_PickPhotoProfile> get copyWith =>
-      __$$_PickPhotoProfileCopyWithImpl<_$_PickPhotoProfile>(this, _$identity);
+  _$$_PickImageCopyWith<_$_PickImage> get copyWith =>
+      __$$_PickImageCopyWithImpl<_$_PickImage>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) initialize,
     required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function(ImageSource source) pickImage,
     required TResult Function() saveChanges,
   }) {
-    return pickPhotoProfile(source);
+    return pickImage(source);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? initialize,
     TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? saveChanges,
   }) {
-    return pickPhotoProfile?.call(source);
+    return pickImage?.call(source);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? initialize,
     TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function(ImageSource source)? pickImage,
     TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
-    if (pickPhotoProfile != null) {
-      return pickPhotoProfile(source);
+    if (pickImage != null) {
+      return pickImage(source);
     }
     return orElse();
   }
@@ -1254,237 +618,49 @@ class _$_PickPhotoProfile implements _PickPhotoProfile {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
     required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_SaveChanges value) saveChanges,
   }) {
-    return pickPhotoProfile(this);
+    return pickImage(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
     TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_SaveChanges value)? saveChanges,
   }) {
-    return pickPhotoProfile?.call(this);
+    return pickImage?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
     TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
-    if (pickPhotoProfile != null) {
-      return pickPhotoProfile(this);
+    if (pickImage != null) {
+      return pickImage(this);
     }
     return orElse();
   }
 }
 
-abstract class _PickPhotoProfile implements UserFormEvent {
-  const factory _PickPhotoProfile(final ImageSource source) =
-      _$_PickPhotoProfile;
+abstract class _PickImage implements UserFormEvent {
+  const factory _PickImage(final ImageSource source) = _$_PickImage;
 
   ImageSource get source;
   @JsonKey(ignore: true)
-  _$$_PickPhotoProfileCopyWith<_$_PickPhotoProfile> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$$_PickPhotoHeaderCopyWith<$Res> {
-  factory _$$_PickPhotoHeaderCopyWith(
-          _$_PickPhotoHeader value, $Res Function(_$_PickPhotoHeader) then) =
-      __$$_PickPhotoHeaderCopyWithImpl<$Res>;
-  @useResult
-  $Res call({ImageSource source});
-}
-
-/// @nodoc
-class __$$_PickPhotoHeaderCopyWithImpl<$Res>
-    extends _$UserFormEventCopyWithImpl<$Res, _$_PickPhotoHeader>
-    implements _$$_PickPhotoHeaderCopyWith<$Res> {
-  __$$_PickPhotoHeaderCopyWithImpl(
-      _$_PickPhotoHeader _value, $Res Function(_$_PickPhotoHeader) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? source = null,
-  }) {
-    return _then(_$_PickPhotoHeader(
-      null == source
-          ? _value.source
-          : source // ignore: cast_nullable_to_non_nullable
-              as ImageSource,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_PickPhotoHeader implements _PickPhotoHeader {
-  const _$_PickPhotoHeader(this.source);
-
-  @override
-  final ImageSource source;
-
-  @override
-  String toString() {
-    return 'UserFormEvent.pickPhotoHeader(source: $source)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$_PickPhotoHeader &&
-            (identical(other.source, source) || other.source == source));
-  }
-
-  @override
-  int get hashCode => Object.hash(runtimeType, source);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$_PickPhotoHeaderCopyWith<_$_PickPhotoHeader> get copyWith =>
-      __$$_PickPhotoHeaderCopyWithImpl<_$_PickPhotoHeader>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
-    required TResult Function() saveChanges,
-  }) {
-    return pickPhotoHeader(source);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
-    TResult? Function()? saveChanges,
-  }) {
-    return pickPhotoHeader?.call(source);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
-    TResult Function()? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (pickPhotoHeader != null) {
-      return pickPhotoHeader(source);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
-    required TResult Function(_SaveChanges value) saveChanges,
-  }) {
-    return pickPhotoHeader(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult? Function(_SaveChanges value)? saveChanges,
-  }) {
-    return pickPhotoHeader?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
-    TResult Function(_SaveChanges value)? saveChanges,
-    required TResult orElse(),
-  }) {
-    if (pickPhotoHeader != null) {
-      return pickPhotoHeader(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _PickPhotoHeader implements UserFormEvent {
-  const factory _PickPhotoHeader(final ImageSource source) = _$_PickPhotoHeader;
-
-  ImageSource get source;
-  @JsonKey(ignore: true)
-  _$$_PickPhotoHeaderCopyWith<_$_PickPhotoHeader> get copyWith =>
+  _$$_PickImageCopyWith<_$_PickImage> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1527,13 +703,9 @@ class _$_SaveChanges implements _SaveChanges {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(User user) initialize,
     required TResult Function(String name) nameOnChanged,
-    required TResult Function(String bio) bioOnChanged,
-    required TResult Function(String web) webOnChanged,
-    required TResult Function(BuildContext context) birthdateOnChanged,
-    required TResult Function(int genderId) genderOnChanged,
-    required TResult Function(ImageSource source) pickPhotoProfile,
-    required TResult Function(ImageSource source) pickPhotoHeader,
+    required TResult Function(ImageSource source) pickImage,
     required TResult Function() saveChanges,
   }) {
     return saveChanges();
@@ -1543,13 +715,9 @@ class _$_SaveChanges implements _SaveChanges {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(User user)? initialize,
     TResult? Function(String name)? nameOnChanged,
-    TResult? Function(String bio)? bioOnChanged,
-    TResult? Function(String web)? webOnChanged,
-    TResult? Function(BuildContext context)? birthdateOnChanged,
-    TResult? Function(int genderId)? genderOnChanged,
-    TResult? Function(ImageSource source)? pickPhotoProfile,
-    TResult? Function(ImageSource source)? pickPhotoHeader,
+    TResult? Function(ImageSource source)? pickImage,
     TResult? Function()? saveChanges,
   }) {
     return saveChanges?.call();
@@ -1559,13 +727,9 @@ class _$_SaveChanges implements _SaveChanges {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(User user)? initialize,
     TResult Function(String name)? nameOnChanged,
-    TResult Function(String bio)? bioOnChanged,
-    TResult Function(String web)? webOnChanged,
-    TResult Function(BuildContext context)? birthdateOnChanged,
-    TResult Function(int genderId)? genderOnChanged,
-    TResult Function(ImageSource source)? pickPhotoProfile,
-    TResult Function(ImageSource source)? pickPhotoHeader,
+    TResult Function(ImageSource source)? pickImage,
     TResult Function()? saveChanges,
     required TResult orElse(),
   }) {
@@ -1579,13 +743,9 @@ class _$_SaveChanges implements _SaveChanges {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Initialize value) initialize,
     required TResult Function(_NameOnChanged value) nameOnChanged,
-    required TResult Function(_BioOnChanged value) bioOnChanged,
-    required TResult Function(_WebOnChanged value) webOnChanged,
-    required TResult Function(_BirthdateOnChanged value) birthdateOnChanged,
-    required TResult Function(_GenderOnChanged value) genderOnChanged,
-    required TResult Function(_PickPhotoProfile value) pickPhotoProfile,
-    required TResult Function(_PickPhotoHeader value) pickPhotoHeader,
+    required TResult Function(_PickImage value) pickImage,
     required TResult Function(_SaveChanges value) saveChanges,
   }) {
     return saveChanges(this);
@@ -1595,13 +755,9 @@ class _$_SaveChanges implements _SaveChanges {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Initialize value)? initialize,
     TResult? Function(_NameOnChanged value)? nameOnChanged,
-    TResult? Function(_BioOnChanged value)? bioOnChanged,
-    TResult? Function(_WebOnChanged value)? webOnChanged,
-    TResult? Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult? Function(_GenderOnChanged value)? genderOnChanged,
-    TResult? Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult? Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult? Function(_PickImage value)? pickImage,
     TResult? Function(_SaveChanges value)? saveChanges,
   }) {
     return saveChanges?.call(this);
@@ -1611,13 +767,9 @@ class _$_SaveChanges implements _SaveChanges {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Initialize value)? initialize,
     TResult Function(_NameOnChanged value)? nameOnChanged,
-    TResult Function(_BioOnChanged value)? bioOnChanged,
-    TResult Function(_WebOnChanged value)? webOnChanged,
-    TResult Function(_BirthdateOnChanged value)? birthdateOnChanged,
-    TResult Function(_GenderOnChanged value)? genderOnChanged,
-    TResult Function(_PickPhotoProfile value)? pickPhotoProfile,
-    TResult Function(_PickPhotoHeader value)? pickPhotoHeader,
+    TResult Function(_PickImage value)? pickImage,
     TResult Function(_SaveChanges value)? saveChanges,
     required TResult orElse(),
   }) {
@@ -1634,14 +786,11 @@ abstract class _SaveChanges implements UserFormEvent {
 
 /// @nodoc
 mixin _$UserFormState {
-  RequestState get result => throw _privateConstructorUsedError;
+  RequestState get state => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
-  String get bio => throw _privateConstructorUsedError;
-  String get web => throw _privateConstructorUsedError;
-  String get birthdate => throw _privateConstructorUsedError;
-  int get gender => throw _privateConstructorUsedError;
-  File? get photoProfileFile => throw _privateConstructorUsedError;
-  File? get photoHeaderFile => throw _privateConstructorUsedError;
+  String get imageUrl => throw _privateConstructorUsedError;
+  File? get imageFile => throw _privateConstructorUsedError;
   bool get isSubmitting => throw _privateConstructorUsedError;
   bool get isShowErrorMessages => throw _privateConstructorUsedError;
 
@@ -1657,14 +806,11 @@ abstract class $UserFormStateCopyWith<$Res> {
       _$UserFormStateCopyWithImpl<$Res, UserFormState>;
   @useResult
   $Res call(
-      {RequestState result,
+      {RequestState state,
+      String message,
       String name,
-      String bio,
-      String web,
-      String birthdate,
-      int gender,
-      File? photoProfileFile,
-      File? photoHeaderFile,
+      String imageUrl,
+      File? imageFile,
       bool isSubmitting,
       bool isShowErrorMessages});
 }
@@ -1682,49 +828,34 @@ class _$UserFormStateCopyWithImpl<$Res, $Val extends UserFormState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? state = null,
+    Object? message = null,
     Object? name = null,
-    Object? bio = null,
-    Object? web = null,
-    Object? birthdate = null,
-    Object? gender = null,
-    Object? photoProfileFile = freezed,
-    Object? photoHeaderFile = freezed,
+    Object? imageUrl = null,
+    Object? imageFile = freezed,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
   }) {
     return _then(_value.copyWith(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      bio: null == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      web: null == web
-          ? _value.web
-          : web // ignore: cast_nullable_to_non_nullable
-              as String,
-      birthdate: null == birthdate
-          ? _value.birthdate
-          : birthdate // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as int,
-      photoProfileFile: freezed == photoProfileFile
-          ? _value.photoProfileFile
-          : photoProfileFile // ignore: cast_nullable_to_non_nullable
-              as File?,
-      photoHeaderFile: freezed == photoHeaderFile
-          ? _value.photoHeaderFile
-          : photoHeaderFile // ignore: cast_nullable_to_non_nullable
+      imageFile: freezed == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
               as File?,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -1747,14 +878,11 @@ abstract class _$$_UserFormStateCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {RequestState result,
+      {RequestState state,
+      String message,
       String name,
-      String bio,
-      String web,
-      String birthdate,
-      int gender,
-      File? photoProfileFile,
-      File? photoHeaderFile,
+      String imageUrl,
+      File? imageFile,
       bool isSubmitting,
       bool isShowErrorMessages});
 }
@@ -1770,49 +898,34 @@ class __$$_UserFormStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? result = null,
+    Object? state = null,
+    Object? message = null,
     Object? name = null,
-    Object? bio = null,
-    Object? web = null,
-    Object? birthdate = null,
-    Object? gender = null,
-    Object? photoProfileFile = freezed,
-    Object? photoHeaderFile = freezed,
+    Object? imageUrl = null,
+    Object? imageFile = freezed,
     Object? isSubmitting = null,
     Object? isShowErrorMessages = null,
   }) {
     return _then(_$_UserFormState(
-      result: null == result
-          ? _value.result
-          : result // ignore: cast_nullable_to_non_nullable
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
               as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
               as String,
-      bio: null == bio
-          ? _value.bio
-          : bio // ignore: cast_nullable_to_non_nullable
+      imageUrl: null == imageUrl
+          ? _value.imageUrl
+          : imageUrl // ignore: cast_nullable_to_non_nullable
               as String,
-      web: null == web
-          ? _value.web
-          : web // ignore: cast_nullable_to_non_nullable
-              as String,
-      birthdate: null == birthdate
-          ? _value.birthdate
-          : birthdate // ignore: cast_nullable_to_non_nullable
-              as String,
-      gender: null == gender
-          ? _value.gender
-          : gender // ignore: cast_nullable_to_non_nullable
-              as int,
-      photoProfileFile: freezed == photoProfileFile
-          ? _value.photoProfileFile
-          : photoProfileFile // ignore: cast_nullable_to_non_nullable
-              as File?,
-      photoHeaderFile: freezed == photoHeaderFile
-          ? _value.photoHeaderFile
-          : photoHeaderFile // ignore: cast_nullable_to_non_nullable
+      imageFile: freezed == imageFile
+          ? _value.imageFile
+          : imageFile // ignore: cast_nullable_to_non_nullable
               as File?,
       isSubmitting: null == isSubmitting
           ? _value.isSubmitting
@@ -1830,33 +943,24 @@ class __$$_UserFormStateCopyWithImpl<$Res>
 
 class _$_UserFormState implements _UserFormState {
   const _$_UserFormState(
-      {required this.result,
+      {required this.state,
+      required this.message,
       required this.name,
-      required this.bio,
-      required this.web,
-      required this.birthdate,
-      required this.gender,
-      required this.photoProfileFile,
-      required this.photoHeaderFile,
+      required this.imageUrl,
+      required this.imageFile,
       required this.isSubmitting,
       required this.isShowErrorMessages});
 
   @override
-  final RequestState result;
+  final RequestState state;
+  @override
+  final String message;
   @override
   final String name;
   @override
-  final String bio;
+  final String imageUrl;
   @override
-  final String web;
-  @override
-  final String birthdate;
-  @override
-  final int gender;
-  @override
-  final File? photoProfileFile;
-  @override
-  final File? photoHeaderFile;
+  final File? imageFile;
   @override
   final bool isSubmitting;
   @override
@@ -1864,7 +968,7 @@ class _$_UserFormState implements _UserFormState {
 
   @override
   String toString() {
-    return 'UserFormState(result: $result, name: $name, bio: $bio, web: $web, birthdate: $birthdate, gender: $gender, photoProfileFile: $photoProfileFile, photoHeaderFile: $photoHeaderFile, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
+    return 'UserFormState(state: $state, message: $message, name: $name, imageUrl: $imageUrl, imageFile: $imageFile, isSubmitting: $isSubmitting, isShowErrorMessages: $isShowErrorMessages)';
   }
 
   @override
@@ -1872,17 +976,13 @@ class _$_UserFormState implements _UserFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_UserFormState &&
-            (identical(other.result, result) || other.result == result) &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.message, message) || other.message == message) &&
             (identical(other.name, name) || other.name == name) &&
-            (identical(other.bio, bio) || other.bio == bio) &&
-            (identical(other.web, web) || other.web == web) &&
-            (identical(other.birthdate, birthdate) ||
-                other.birthdate == birthdate) &&
-            (identical(other.gender, gender) || other.gender == gender) &&
-            (identical(other.photoProfileFile, photoProfileFile) ||
-                other.photoProfileFile == photoProfileFile) &&
-            (identical(other.photoHeaderFile, photoHeaderFile) ||
-                other.photoHeaderFile == photoHeaderFile) &&
+            (identical(other.imageUrl, imageUrl) ||
+                other.imageUrl == imageUrl) &&
+            (identical(other.imageFile, imageFile) ||
+                other.imageFile == imageFile) &&
             (identical(other.isSubmitting, isSubmitting) ||
                 other.isSubmitting == isSubmitting) &&
             (identical(other.isShowErrorMessages, isShowErrorMessages) ||
@@ -1890,18 +990,8 @@ class _$_UserFormState implements _UserFormState {
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      result,
-      name,
-      bio,
-      web,
-      birthdate,
-      gender,
-      photoProfileFile,
-      photoHeaderFile,
-      isSubmitting,
-      isShowErrorMessages);
+  int get hashCode => Object.hash(runtimeType, state, message, name, imageUrl,
+      imageFile, isSubmitting, isShowErrorMessages);
 
   @JsonKey(ignore: true)
   @override
@@ -1912,33 +1002,24 @@ class _$_UserFormState implements _UserFormState {
 
 abstract class _UserFormState implements UserFormState {
   const factory _UserFormState(
-      {required final RequestState result,
+      {required final RequestState state,
+      required final String message,
       required final String name,
-      required final String bio,
-      required final String web,
-      required final String birthdate,
-      required final int gender,
-      required final File? photoProfileFile,
-      required final File? photoHeaderFile,
+      required final String imageUrl,
+      required final File? imageFile,
       required final bool isSubmitting,
       required final bool isShowErrorMessages}) = _$_UserFormState;
 
   @override
-  RequestState get result;
+  RequestState get state;
+  @override
+  String get message;
   @override
   String get name;
   @override
-  String get bio;
+  String get imageUrl;
   @override
-  String get web;
-  @override
-  String get birthdate;
-  @override
-  int get gender;
-  @override
-  File? get photoProfileFile;
-  @override
-  File? get photoHeaderFile;
+  File? get imageFile;
   @override
   bool get isSubmitting;
   @override

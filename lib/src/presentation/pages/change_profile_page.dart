@@ -5,9 +5,12 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:kumparan_clone/src/common/const.dart';
+import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
+import 'package:kumparan_clone/src/utilities/toast.dart';
 
 class ChangeProfilePage extends StatelessWidget {
   const ChangeProfilePage({super.key});
@@ -19,7 +22,19 @@ class ChangeProfilePage extends StatelessWidget {
 
     return Scaffold(
       appBar: _appBar(context),
-      body: BlocBuilder<UserFormBloc, UserFormState>(
+      body: BlocConsumer<UserFormBloc, UserFormState>(
+        listener: (context, state) {
+          if (state.state == RequestState.error &&
+              state.message == ExceptionMessage.internetNotConnected) {
+            showToast(msg: 'Terjadi kesalahan saat mengunggah');
+          } else if (state.state == RequestState.loaded) {
+            context
+                .read<UserWatcherBloc>()
+                .add(const UserWatcherEvent.fetchUser());
+            showToast(msg: 'Berhasil diperbarui');
+            Navigator.pop(context);
+          }
+        },
         builder: (context, state) {
           return SingleChildScrollView(
             child: Column(
@@ -32,14 +47,14 @@ class ChangeProfilePage extends StatelessWidget {
                     decoration: const BoxDecoration(
                       shape: BoxShape.circle,
                     ),
-                    child: (state.photoProfileFile == null)
-                        ? const CircleAvatar(
+                    child: (state.imageFile == null)
+                        ? CircleAvatar(
                             backgroundImage: CachedNetworkImageProvider(
-                              'https://i.pinimg.com/564x/2b/54/5a/2b545ae586764da77f5717d8406d0910.jpg',
+                              state.imageUrl,
                             ),
                           )
                         : CircleAvatar(
-                            backgroundImage: FileImage(state.photoProfileFile!),
+                            backgroundImage: FileImage(state.imageFile!),
                           ),
                   ),
                 ),
@@ -48,10 +63,7 @@ class ChangeProfilePage extends StatelessWidget {
                   width: 200,
                   height: 35,
                   onTap: () {
-                    _openUploadImageDialog(
-                      context,
-                      isHeader: false,
-                    );
+                    _openUploadImageDialog(context);
                   },
                   label: lang.upload_profile_photo,
                 ),
@@ -83,6 +95,7 @@ class ChangeProfilePage extends StatelessWidget {
                               .add(const UserFormEvent.saveChanges());
                         },
                         label: lang.save_changes,
+                        isLoading: (state.isSubmitting) ? true : false,
                       ),
                       const SizedBox(height: Const.space25),
                     ],
@@ -96,10 +109,7 @@ class ChangeProfilePage extends StatelessWidget {
     );
   }
 
-  Future<dynamic> _openUploadImageDialog(
-    BuildContext context, {
-    required bool isHeader,
-  }) {
+  Future<dynamic> _openUploadImageDialog(BuildContext context) {
     final theme = Theme.of(context);
     final lang = AppLocalizations.of(context)!;
 
@@ -134,19 +144,11 @@ class ChangeProfilePage extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    if (isHeader == true) {
-                      context.read<UserFormBloc>().add(
-                            const UserFormEvent.pickPhotoHeader(
-                              ImageSource.camera,
-                            ),
-                          );
-                    } else {
-                      context.read<UserFormBloc>().add(
-                            const UserFormEvent.pickPhotoProfile(
-                              ImageSource.camera,
-                            ),
-                          );
-                    }
+                    context.read<UserFormBloc>().add(
+                          const UserFormEvent.pickImage(
+                            ImageSource.camera,
+                          ),
+                        );
                   },
                   child: Text(
                     '${lang.take_photo}...',
@@ -156,19 +158,11 @@ class ChangeProfilePage extends StatelessWidget {
                 TextButton(
                   onPressed: () {
                     Navigator.pop(context);
-                    if (isHeader == true) {
-                      context.read<UserFormBloc>().add(
-                            const UserFormEvent.pickPhotoHeader(
-                              ImageSource.gallery,
-                            ),
-                          );
-                    } else {
-                      context.read<UserFormBloc>().add(
-                            const UserFormEvent.pickPhotoProfile(
-                              ImageSource.gallery,
-                            ),
-                          );
-                    }
+                    context.read<UserFormBloc>().add(
+                          const UserFormEvent.pickImage(
+                            ImageSource.gallery,
+                          ),
+                        );
                   },
                   child: Text(
                     '${lang.choose_from_library}...',

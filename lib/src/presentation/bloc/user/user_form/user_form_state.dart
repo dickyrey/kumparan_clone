@@ -3,27 +3,21 @@ part of 'user_form_bloc.dart';
 @freezed
 class UserFormState with _$UserFormState {
   const factory UserFormState({
-    required RequestState result,
+    required RequestState state,
+    required String message,
     required String name,
-    required String bio,
-    required String web,
-    required String birthdate,
-    required int gender,
-    required File? photoProfileFile,
-    required File? photoHeaderFile,
+    required String imageUrl,
+    required File? imageFile,
     required bool isSubmitting,
     required bool isShowErrorMessages,
   }) = _UserFormState;
 
   factory UserFormState.initial() => const UserFormState(
-        result: RequestState.empty,
+        state: RequestState.empty,
+        message: '',
         name: '',
-        bio: '',
-        web: '',
-        birthdate: '',
-        gender: 0,
-        photoProfileFile: null,
-        photoHeaderFile: null,
+        imageUrl: Const.photo,
+        imageFile: null,
         isSubmitting: false,
         isShowErrorMessages: false,
       );

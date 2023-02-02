@@ -14,9 +14,23 @@ class UserRepositoryImpl extends UserRepository {
   final UserDataSource dataSource;
 
   @override
-  Future<Either<Failure, void>> changeProfile() {
-    // TODO(dickyrey): implement changeProfile
-    throw UnimplementedError();
+  Future<Either<Failure, bool>> changeProfile({
+    required String name,
+    required File image,
+  }) async {
+    try {
+      final result = await dataSource.changeProfile(
+        name: name,
+        image: image,
+      );
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
   }
 
   @override

@@ -22,6 +22,7 @@ class Const {
   static const String signUpPath = '/api/signup';
   static const String signOutPath = '/api/signout';
   static const String profilePath = '/api/user/profile';
+  static const String userProfileUpdatePath = '/api/user/profile/update';
   static const String unusedPath = 'https://interpretasi.id/api/article/';
   static const String datetimePath = '/api/datetime';
   static const String photo = 'https://i.pinimg.com/564x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg';

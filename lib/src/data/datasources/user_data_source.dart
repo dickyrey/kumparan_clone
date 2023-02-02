@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:http/http.dart' as http;
 import 'package:kumparan_clone/src/common/const.dart';
@@ -9,7 +10,10 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 abstract class UserDataSource {
   Future<UserModel> getProfile();
-  Future<void> changeProfile();
+  Future<bool> changeProfile({
+    required String name,
+    required File image,
+  });
 }
 
 class UserDataSourceImpl extends UserDataSource {
@@ -17,9 +21,44 @@ class UserDataSourceImpl extends UserDataSource {
   final http.Client client;
 
   @override
-  Future<void> changeProfile() {
-    // TODO(dickyrey): implement changeProfile
-    throw UnimplementedError();
+  Future<bool> changeProfile({
+    required String name,
+    required File image,
+  }) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.userProfileUpdatePath,
+    );
+
+    final request = http.MultipartRequest(
+      'POST',
+      url,
+    );
+    request.fields['name'] = name;
+
+    final storeImage = await http.MultipartFile.fromPath(
+      'image',
+      image.path,
+    );
+
+    request.headers.addAll(header);
+    request.files.add(storeImage);
+    final response = await request.send();
+    print(response.stream.bytesToString());
+    
+    if (response.statusCode == 200) {
+      return true;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
   }
 
   @override

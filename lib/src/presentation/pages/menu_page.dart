@@ -8,6 +8,7 @@ import 'package:kumparan_clone/src/common/routes.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/auth/auth_watcher/auth_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/dialog_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
@@ -69,6 +70,9 @@ class MenuPage extends StatelessWidget {
                                 ),
                                 InkWell(
                                   onTap: () {
+                                    context.read<UserFormBloc>().add(
+                                          UserFormEvent.initialize(state.user),
+                                        );
                                     Navigator.pushNamed(
                                       context,
                                       CHANGE_PROFILE,
