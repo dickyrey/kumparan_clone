@@ -11,11 +11,11 @@ class UpdateUserProfile {
 
   Future<Either<Failure, bool>> execute({
     required String name,
-    required File image,
+    required File? imageFile,
   }) {
     return repository.changeProfile(
       name: name,
-      image: image,
+      imageFile: imageFile,
     );
   }
 }

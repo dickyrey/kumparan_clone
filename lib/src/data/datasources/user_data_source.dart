@@ -12,7 +12,7 @@ abstract class UserDataSource {
   Future<UserModel> getProfile();
   Future<bool> changeProfile({
     required String name,
-    required File image,
+    required File? imageFile,
   });
 }
 
@@ -23,7 +23,7 @@ class UserDataSourceImpl extends UserDataSource {
   @override
   Future<bool> changeProfile({
     required String name,
-    required File image,
+    required File? imageFile,
   }) async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Const.token);
@@ -44,13 +44,14 @@ class UserDataSourceImpl extends UserDataSource {
     );
     request.fields['name'] = name;
 
-    final storeImage = await http.MultipartFile.fromPath(
-      'photo',
-      image.path,
-    );
-
+    if (imageFile != null) {
+      final storeImage = await http.MultipartFile.fromPath(
+        'photo',
+        imageFile.path,
+      );
+      request.files.add(storeImage);
+    }
     request.headers.addAll(header);
-    request.files.add(storeImage);
     final response = await request.send();
     if (response.statusCode == 200) {
       return true;

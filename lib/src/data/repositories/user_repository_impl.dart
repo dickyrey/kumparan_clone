@@ -16,12 +16,12 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<Either<Failure, bool>> changeProfile({
     required String name,
-    required File image,
+    required File? imageFile,
   }) async {
     try {
       final result = await dataSource.changeProfile(
         name: name,
-        image: image,
+        imageFile: imageFile,
       );
       return Right(result);
     } on ServerException catch (e) {

@@ -63,7 +63,7 @@ class UserFormBloc extends Bloc<UserFormEvent, UserFormState> {
           );
           final result = await _update.execute(
             name: state.name,
-            image: state.imageFile!,
+            imageFile: state.imageFile,
           );
           result.fold(
             (f) => emit(
