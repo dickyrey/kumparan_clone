@@ -32,8 +32,7 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.myArticlePath,
-      queryParameters: {'status': 'banned'},
+      path: '/api/user/articles/banned',
     );
 
     final response = await client.get(url, headers: header);
@@ -58,8 +57,7 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.myArticlePath,
-      queryParameters: {'status': 'drafted'},
+      path: '/api/user/articles/drafted',
     );
 
     final response = await client.get(url, headers: header);
@@ -84,8 +82,7 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.myArticlePath,
-      queryParameters: {'status': 'moderated'},
+      path: '/api/user/articles/moderated',
     );
 
     final response = await client.get(url, headers: header);
@@ -110,8 +107,7 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.myArticlePath,
-      queryParameters: {'status': 'published'},
+      path: '/api/user/articles/published',
     );
 
     final response = await client.get(url, headers: header);
@@ -136,8 +132,7 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.myArticlePath,
-      queryParameters: {'status': 'rejected'},
+      path: '/api/user/articles/rejected',
     );
 
     final response = await client.get(url, headers: header);
@@ -167,7 +162,6 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
     );
 
     final response = await client.put(url, headers: header);
-    print(response.body);
     if (response.statusCode == 200) {
       return true;
     } else {
