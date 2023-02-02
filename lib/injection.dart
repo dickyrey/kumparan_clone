@@ -62,6 +62,7 @@ import 'package:kumparan_clone/src/domain/usecases/user_article/get_drafted_arti
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_moderated_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_published_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_rejected_article.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/history_article.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/delete_article_actor/delete_article_actor_bloc.dart';
@@ -89,6 +90,7 @@ import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/change_to_moderated_actor/change_to_moderated_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/read_history_watcher/read_history_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_banned_watcher/user_article_banned_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_drafted_watcher/user_article_drafted_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_moderated_watcher/user_article_moderated_watcher_bloc.dart';
@@ -375,6 +377,11 @@ void init() {
     () => getRejectedArticleUseCase,
   );
 
+  final readHistoryUseCase = ReadHistory(locator());
+  locator.registerLazySingleton(
+    () => readHistoryUseCase,
+  );
+
   //! Part of [UI Kit] usecases
 
   final getBoardingUseCase = GetBoardingList(locator());
@@ -572,31 +579,41 @@ void init() {
   locator.registerLazySingleton(
     () => changeToModeratedActorBloc,
   );
-  final userArticleBannedWatcherBloc = UserArticleBannedWatcherBloc(locator());
+  final readHistoryWatcherBloc = ReadHistoryWatcherBloc(locator());
+  locator.registerLazySingleton(
+    () => readHistoryWatcherBloc,
+  );
+  final userArticleBannedWatcherBloc = UserArticleBannedWatcherBloc(
+    locator(),
+  );
   locator.registerLazySingleton(
     () => userArticleBannedWatcherBloc,
   );
 
-  final userArticleDraftedWatcherBloc =
-      UserArticleDraftedWatcherBloc(locator());
+  final userArticleDraftedWatcherBloc = UserArticleDraftedWatcherBloc(
+    locator(),
+  );
   locator.registerLazySingleton(
     () => userArticleDraftedWatcherBloc,
   );
 
-  final userArticleModeratedWatcherBloc =
-      UserArticleModeratedWatcherBloc(locator());
+  final userArticleModeratedWatcherBloc = UserArticleModeratedWatcherBloc(
+    locator(),
+  );
   locator.registerLazySingleton(
     () => userArticleModeratedWatcherBloc,
   );
 
-  final userArticlePublishedWatcherBloc =
-      UserArticlePublishedWatcherBloc(locator());
+  final userArticlePublishedWatcherBloc = UserArticlePublishedWatcherBloc(
+    locator(),
+  );
   locator.registerLazySingleton(
     () => userArticlePublishedWatcherBloc,
   );
 
-  final userArticleRejectedWatcherBloc =
-      UserArticleRejectedWatcherBloc(locator());
+  final userArticleRejectedWatcherBloc = UserArticleRejectedWatcherBloc(
+    locator(),
+  );
   locator.registerLazySingleton(
     () => userArticleRejectedWatcherBloc,
   );

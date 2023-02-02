@@ -83,6 +83,20 @@ class UserArticleRepositoryImpl extends UserArticleRepository {
   }
 
   @override
+  Future<Either<Failure, List<Article>>> readHistory() async {
+    try {
+      final result = await dataSource.readHistory();
+      return Right(result.map((e) => e.toEntity()).toList());
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
+
+  @override
   Future<Either<Failure, bool>> changeToModerated(String id) async {
     try {
       final result = await dataSource.changeToModerated(id);
