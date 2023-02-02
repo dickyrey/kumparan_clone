@@ -45,7 +45,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath,
+      path: '/api/article/',
     );
 
     final response = await client.get(url, headers: header);
@@ -68,7 +68,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
+      path: '/api/article/$id',
     );
     final response = await client.get(url, headers: header);
     if (response.statusCode == 200) {
@@ -192,7 +192,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id,
+      path: '/api/article/$id',
     );
 
     final response = await client.delete(url, headers: header);

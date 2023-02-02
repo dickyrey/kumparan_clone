@@ -25,7 +25,7 @@ class LikeArticleDataSourceImpl extends LikeArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id + Const.likePath,
+      path: '/api/article/$id/like',
     );
     final response = await client.get(url, headers: header);
 
@@ -53,7 +53,7 @@ class LikeArticleDataSourceImpl extends LikeArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id + Const.likePath,
+      path: '/api/article/$id/like',
     );
 
     final response = await client.post(

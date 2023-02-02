@@ -24,7 +24,7 @@ class CategoryRemoteDataSourceImpl extends CategoryRemoteDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath,
+      path: '/api/article/',
       queryParameters: {'type': 'categories'},
     );
 

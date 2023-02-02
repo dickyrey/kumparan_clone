@@ -35,7 +35,7 @@ class UserDataSourceImpl extends UserDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.userProfileUpdatePath,
+      path: '/api/user/profile/update',
     );
 
     final request = http.MultipartRequest(
@@ -72,7 +72,7 @@ class UserDataSourceImpl extends UserDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.profilePath,
+      path: '/api/user/profile',
     );
 
     final response = await http.get(url, headers: header);

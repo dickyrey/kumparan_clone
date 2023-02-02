@@ -10,21 +10,7 @@ class Const {
   static const String token = 'access_token';
   static const String host = 'interpretasi.id';
   static const String scheme = 'https';
-  static const String googleSignInPath = '/api/signin/google';
-  static const String userVerificationPath = '/api/user/check';
-  static const String articlePath = '/api/article/';
-  static const String addPasswordPath = '/api/user/password/add';
-  static const String changePasswordPath = '/api/user/password/change';
-  static const String myArticlePath = '/api/user/articles';
-  static const String commentPath = '/comment';
-  static const String likePath = '/like';
-  static const String signInPath = '/api/signin';
-  static const String signUpPath = '/api/signup';
-  static const String signOutPath = '/api/signout';
-  static const String profilePath = '/api/user/profile';
-  static const String userProfileUpdatePath = '/api/user/profile/update';
   static const String unusedPath = 'https://interpretasi.id/api/article/';
-  static const String datetimePath = '/api/datetime';
   static const String photo = 'https://i.pinimg.com/564x/57/70/f0/5770f01a32c3c53e90ecda61483ccb08.jpg';
 }
 

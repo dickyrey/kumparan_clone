@@ -44,7 +44,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.userVerificationPath,
+      path: '/api/user/check',
     );
     final response = await client.get(url, headers: header);
     if (response.statusCode == 200) {
@@ -75,7 +75,7 @@ class AuthDataSourceImpl extends AuthDataSource {
       final url = Uri(
         scheme: Const.scheme,
         host: Const.host,
-        path: Const.googleSignInPath,
+        path: '/api/signin/google',
         queryParameters: {
           'email': user?.email,
           'displayName': user?.displayName,
@@ -132,7 +132,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.signInPath,
+      path: '/api/signin',
     );
 
     final response = await http.post(url, headers: headers, body: body);
@@ -162,7 +162,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.signUpPath,
+      path: '/api/signup',
     );
 
     final response = await http.post(url, body: body);
@@ -190,7 +190,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.signOutPath,
+      path: '/api/signout',
     );
 
     final response = await http.post(url, headers: header);
@@ -211,7 +211,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.datetimePath,
+      path: '/api/datetime',
     );
     final response = await client.get(url);
     if (response.statusCode == 200) {
@@ -237,7 +237,7 @@ class AuthDataSourceImpl extends AuthDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.userVerificationPath,
+      path: '/api/user/check',
     );
     final response = await client.get(url, headers: header);
     if (response.statusCode == 200) {

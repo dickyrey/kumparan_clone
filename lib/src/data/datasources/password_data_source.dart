@@ -31,7 +31,7 @@ class PasswordDataSourceImpl extends PasswordDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.addPasswordPath,
+      path: '/api/user/password/add',
     );
 
     final response = await client.post(
@@ -68,7 +68,7 @@ class PasswordDataSourceImpl extends PasswordDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.changePasswordPath,
+      path: '/api/user/password/change',
     );
 
     final response = await client.post(

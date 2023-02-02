@@ -31,7 +31,7 @@ class CommentArticleDataSourceImpl extends CommentArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: '${Const.articlePath}$id${Const.commentPath}/$userId',
+      path: '/api/article/$id/comment/$userId',
     );
 
     final response = await client.delete(url, headers: header);
@@ -55,7 +55,7 @@ class CommentArticleDataSourceImpl extends CommentArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id + Const.commentPath,
+      path: '/api/article/$id/comment',
     );
 
     final response = await client.get(url, headers: header);
@@ -85,7 +85,7 @@ class CommentArticleDataSourceImpl extends CommentArticleDataSource {
     final url = Uri(
       scheme: Const.scheme,
       host: Const.host,
-      path: Const.articlePath + id + Const.commentPath,
+      path: '/api/article/$id/comment',
     );
 
     final response = await client.post(url, headers: header, body: body);
