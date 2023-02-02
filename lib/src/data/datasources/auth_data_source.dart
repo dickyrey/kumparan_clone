@@ -58,6 +58,7 @@ class AuthDataSourceImpl extends AuthDataSource {
           status.isSetPassword == true) {
         return true;
       } else {
+        await prefs.remove(Const.token);
         return false;
       }
     } else {
