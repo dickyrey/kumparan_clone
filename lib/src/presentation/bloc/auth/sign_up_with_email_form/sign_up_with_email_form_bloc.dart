@@ -14,7 +14,6 @@ class SignUpWithEmailFormBloc
     on<SignUpWithEmailFormEvent>((event, emit) async {
       await event.map(
         initial: (_) {
-          print('INITITITIT');
           emit(SignUpWithEmailFormState.initial());
         },
         emailOnChanged: (event) {

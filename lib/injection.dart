@@ -9,8 +9,8 @@ import 'package:kumparan_clone/src/data/datasources/comment_article_data_source.
 import 'package:kumparan_clone/src/data/datasources/like_article_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/notice_remote_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/password_data_source.dart';
-import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
 import 'package:kumparan_clone/src/data/datasources/user_article_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/user_data_source.dart';
 import 'package:kumparan_clone/src/data/repositories/article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/auth_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/boarding_repository_impl.dart';
@@ -19,8 +19,8 @@ import 'package:kumparan_clone/src/data/repositories/comment_article_repository_
 import 'package:kumparan_clone/src/data/repositories/like_article_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/notice_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/password_repository_impl.dart';
-import 'package:kumparan_clone/src/data/repositories/profile_repository_impl.dart';
 import 'package:kumparan_clone/src/data/repositories/user_article_repository_impl.dart';
+import 'package:kumparan_clone/src/data/repositories/user_repository_impl.dart';
 import 'package:kumparan_clone/src/domain/repositories/article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/auth_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/boarding_repository.dart';
@@ -29,8 +29,8 @@ import 'package:kumparan_clone/src/domain/repositories/comment_article_repositor
 import 'package:kumparan_clone/src/domain/repositories/like_article_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/notice_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/password_repository.dart';
-import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
 import 'package:kumparan_clone/src/domain/repositories/user_article_repository.dart';
+import 'package:kumparan_clone/src/domain/repositories/user_repository.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/create_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/delete_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/article/get_article_detail.dart';
@@ -153,9 +153,9 @@ void init() {
     () => passwordDataSource,
   );
 
-  final profileDataSource = ProfileDataSourceImpl(locator());
-  locator.registerLazySingleton<ProfileDataSource>(
-    () => profileDataSource,
+  final userDataSource = UserDataSourceImpl(locator());
+  locator.registerLazySingleton<UserDataSource>(
+    () => userDataSource,
   );
 
   final userArticleDataSource = UserArticleDataSourceImpl(locator());
@@ -206,9 +206,9 @@ void init() {
     () => passwordRepository,
   );
 
-  final profileRepository = ProfileRepositoryImpl(locator());
-  locator.registerLazySingleton<ProfileRepository>(
-    () => profileRepository,
+  final userRepository = UserRepositoryImpl(locator());
+  locator.registerLazySingleton<UserRepository>(
+    () => userRepository,
   );
 
   final userArticleRepository = UserArticleRepositoryImpl(locator());

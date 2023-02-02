@@ -4,14 +4,14 @@ import 'package:dartz/dartz.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/exception.dart';
 import 'package:kumparan_clone/src/common/failure.dart';
-import 'package:kumparan_clone/src/data/datasources/profile_data_source.dart';
+import 'package:kumparan_clone/src/data/datasources/user_data_source.dart';
 import 'package:kumparan_clone/src/domain/entities/user.dart';
-import 'package:kumparan_clone/src/domain/repositories/profile_repository.dart';
+import 'package:kumparan_clone/src/domain/repositories/user_repository.dart';
 
-class ProfileRepositoryImpl extends ProfileRepository {
-  ProfileRepositoryImpl(this.dataSource);
+class UserRepositoryImpl extends UserRepository {
+  UserRepositoryImpl(this.dataSource);
 
-  final ProfileDataSource dataSource;
+  final UserDataSource dataSource;
 
   @override
   Future<Either<Failure, void>> changeProfile() {

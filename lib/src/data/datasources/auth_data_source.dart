@@ -65,7 +65,6 @@ class AuthDataSourceImpl extends AuthDataSource {
       );
 
       final response = await http.post(url);
-      print(response.body);
       if (response.statusCode == 200) {
         final accessToken = TokenModel.fromJson(
           json.decode(response.body) as Map<String, dynamic>,
@@ -221,8 +220,6 @@ class AuthDataSourceImpl extends AuthDataSource {
       path: Const.userVerificationPath,
     );
     final response = await client.get(url, headers: header);
-    print(response.statusCode);
-    print(response.body);
     if (response.statusCode == 200) {
       return VerificationStatusModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,

@@ -7,13 +7,13 @@ import 'package:kumparan_clone/src/data/models/user_model.dart';
 import 'package:kumparan_clone/src/data/models/user_response.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class ProfileDataSource {
+abstract class UserDataSource {
   Future<UserModel> getProfile();
   Future<void> changeProfile();
 }
 
-class ProfileDataSourceImpl extends ProfileDataSource {
-  ProfileDataSourceImpl(this.client);
+class UserDataSourceImpl extends UserDataSource {
+  UserDataSourceImpl(this.client);
   final http.Client client;
 
   @override

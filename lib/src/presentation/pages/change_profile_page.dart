@@ -35,7 +35,8 @@ class ChangeProfilePage extends StatelessWidget {
                     child: (state.photoProfileFile == null)
                         ? const CircleAvatar(
                             backgroundImage: CachedNetworkImageProvider(
-                                'https://i.pinimg.com/564x/2b/54/5a/2b545ae586764da77f5717d8406d0910.jpg'),
+                              'https://i.pinimg.com/564x/2b/54/5a/2b545ae586764da77f5717d8406d0910.jpg',
+                            ),
                           )
                         : CircleAvatar(
                             backgroundImage: FileImage(state.photoProfileFile!),

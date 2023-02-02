@@ -42,7 +42,6 @@ class SignInWithEmailFormBloc
           );
         },
         signInPressed: (_) async {
-          print(state.email+ 'email nya mana');
           emit(
             state.copyWith(
               state: RequestState.loading,
