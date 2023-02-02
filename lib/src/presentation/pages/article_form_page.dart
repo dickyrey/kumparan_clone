@@ -9,6 +9,7 @@ import 'package:kumparan_clone/src/common/colors.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/enums.dart';
 import 'package:kumparan_clone/src/domain/entities/checkbox_state.dart';
+import 'package:kumparan_clone/src/presentation/bloc/article/article_detail_watcher/article_detail_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/article/article_form/article_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
@@ -47,14 +48,28 @@ class _ArticleFormPageState extends State<ArticleFormPage> {
 
   @override
   Widget build(BuildContext context) {
+    final article = context.read<ArticleFormBloc>().state;
     return BlocListener<ArticleFormBloc, ArticleFormState>(
       listener: (context, state) {
         if (state.state == RequestState.error) {
           showToast(msg: 'Error while uploading article');
         } else if (state.state == RequestState.loaded) {
-          context.read<ArticleFormBloc>().add(const ArticleFormEvent.initial());
-          Navigator.pop(context);
-          showToast(msg: 'Success upload artikel');
+          if (widget.isEdit == true) {
+            context
+                .read<ArticleDetailWatcherBloc>()
+                .add(ArticleDetailWatcherEvent.fetchArticleDetail(article.articleId));
+            context
+                .read<ArticleFormBloc>()
+                .add(const ArticleFormEvent.initial());
+            showToast(msg: 'Article berhasil diubah');
+            Navigator.pop(context);
+          } else {
+            context
+                .read<ArticleFormBloc>()
+                .add(const ArticleFormEvent.initial());
+            showToast(msg: 'Success upload artikel');
+            Navigator.pop(context);
+          }
         }
       },
       child: Scaffold(

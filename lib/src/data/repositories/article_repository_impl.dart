@@ -71,7 +71,7 @@ class ArticleRepositoryImpl extends ArticleRepository {
     required String id,
     required String title,
     required String content,
-    required File image,
+    required File? imageFile,
     required List<String> categories,
   }) async {
     try {
@@ -79,7 +79,7 @@ class ArticleRepositoryImpl extends ArticleRepository {
         id: id,
         title: title,
         content: content,
-        image: image,
+        imageFile: imageFile,
         categories: categories,
       );
       return Right(result);

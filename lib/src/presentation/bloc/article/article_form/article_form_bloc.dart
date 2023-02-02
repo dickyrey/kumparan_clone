@@ -132,31 +132,29 @@ class ArticleFormBloc extends Bloc<ArticleFormEvent, ArticleFormState> {
           final selectedCategory =
               selected.map((e) => '"${e.category.id}"').toList();
 
-          if (state.imageFile != null) {
-            final result = await update.execute(
-              id: state.articleId,
-              title: state.title,
-              content: state.content,
-              image: state.imageFile!,
-              categories: selectedCategory,
-            );
+          final result = await update.execute(
+            id: state.articleId,
+            title: state.title,
+            content: state.content,
+            imageFile: state.imageFile,
+            categories: selectedCategory,
+          );
 
-            result.fold(
-              (f) => emit(
-                state.copyWith(
-                  state: RequestState.error,
-                  isSubmitting: false,
-                  message: f.message,
-                ),
+          result.fold(
+            (f) => emit(
+              state.copyWith(
+                state: RequestState.error,
+                isSubmitting: false,
+                message: f.message,
               ),
-              (_) => emit(
-                state.copyWith(
-                  state: RequestState.loaded,
-                  isSubmitting: true,
-                ),
+            ),
+            (_) => emit(
+              state.copyWith(
+                state: RequestState.loaded,
+                isSubmitting: true,
               ),
-            );
-          }
+            ),
+          );
         },
       );
     });

@@ -19,7 +19,7 @@ abstract class ArticleRepository {
     required String id,
     required String title,
     required String content,
-    required File image,
+    required File? imageFile,
     required List<String> categories,
   });
 }

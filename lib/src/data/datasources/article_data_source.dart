@@ -24,7 +24,7 @@ abstract class ArticleDataSource {
     required String id,
     required String title,
     required String content,
-    required File image,
+    required File? imageFile,
     required List<String> categories,
   });
 }
@@ -133,7 +133,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
     required String id,
     required String title,
     required String content,
-    required File image,
+    required File? imageFile,
     required List<String> categories,
   }) async {
     final prefs = await SharedPreferences.getInstance();
@@ -164,11 +164,13 @@ class ArticleDataSourceImpl extends ArticleDataSource {
         .toList()
         .toString();
 
+    if (imageFile != null) {
       final storeImage = await http.MultipartFile.fromPath(
         'image',
-        image.path,
+        imageFile.path,
       );
       request.files.add(storeImage);
+    }
 
     request.headers.addAll(header);
     final response = await request.send();
@@ -178,7 +180,7 @@ class ArticleDataSourceImpl extends ArticleDataSource {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }
   }
-  
+
   @override
   Future<bool> deleteArticle(String id) async {
     final prefs = await SharedPreferences.getInstance();

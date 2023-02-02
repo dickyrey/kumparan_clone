@@ -12,14 +12,14 @@ class UpdateArticle {
     required String id,
     required String title,
     required String content,
-    required File image,
+    required File? imageFile,
     required List<String> categories,
   }) {
     return repository.updateArticle(
       id: id,
       title: title,
       content: content,
-      image: image,
+      imageFile: imageFile,
       categories: categories,
     );
   }
