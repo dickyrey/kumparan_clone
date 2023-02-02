@@ -15,7 +15,7 @@ class Const {
   static const String articlePath = '/api/article/';
   static const String addPasswordPath = '/api/user/password/add';
   static const String changePasswordPath = '/api/user/password/change';
-  static const String myArticlePath = '/api/user/my-articles';
+  static const String myArticlePath = '/api/user/articles';
   static const String commentPath = '/comment';
   static const String likePath = '/like';
   static const String signInPath = '/api/signin';

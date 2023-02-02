@@ -101,7 +101,7 @@ class MenuPage extends StatelessWidget {
                 context.read<ArticleFormBloc>().add(
                       ArticleFormEvent.fetchCategoryList(category.categories),
                     );
-                Navigator.pushNamed(context, ARTICLE_FORM);
+                Navigator.pushNamed(context, ARTICLE_FORM, arguments: false);
               },
               margin: const EdgeInsets.symmetric(
                 horizontal: Const.margin,
