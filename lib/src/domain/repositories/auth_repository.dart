@@ -13,4 +13,5 @@ abstract class AuthRepository {
   Future<Either<Failure, bool>> signUpWithEmail(String email);
   Future<Either<Failure, List<String>>> getTimeZone();
   Future<Either<Failure, VerificationStatus>> checkUserVerification();
+  Future<Either<Failure, bool>> resendEmailVerification();
 }

@@ -20,6 +20,7 @@ abstract class AuthDataSource {
   Future<void> signOut();
   Future<List<String>> getTimeZone();
   Future<VerificationStatusModel> checkUserVerification();
+  Future<bool> resendEmailVerification();
 }
 
 class AuthDataSourceImpl extends AuthDataSource {
@@ -36,13 +37,31 @@ class AuthDataSourceImpl extends AuthDataSource {
     final isSignedIn = await googleSignIn.isSignedIn();
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString(Const.token);
-
-    if (isSignedIn && token != null) {
-      return true;
-    } else if (token != null) {
-      return true;
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: Const.userVerificationPath,
+    );
+    final response = await client.get(url, headers: header);
+    if (response.statusCode == 200) {
+      final status = VerificationStatusModel.fromJson(
+        json.decode(response.body) as Map<String, dynamic>,
+      );
+      if (isSignedIn && token != null) {
+        return true;
+      } else if (token != null &&
+          status.isEmailVerified == true &&
+          status.isSetPassword == true) {
+        return true;
+      } else {
+        return false;
+      }
     } else {
-      return false;
+      throw ServerException(ExceptionMessage.internetNotConnected);
     }
   }
 
@@ -224,6 +243,28 @@ class AuthDataSourceImpl extends AuthDataSource {
       return VerificationStatusModel.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
       );
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+
+  @override
+  Future<bool> resendEmailVerification() async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: '/api/signup/resend',
+    );
+
+    final response = await http.post(url, headers: header);
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

@@ -39,6 +39,7 @@ import 'package:kumparan_clone/src/domain/usecases/article/update_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_google_auth.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/check_user_verification.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/get_time_zone.dart';
+import 'package:kumparan_clone/src/domain/usecases/auth/resend_email_verification.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_email.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_in_with_google.dart';
 import 'package:kumparan_clone/src/domain/usecases/auth/sign_out_with_google.dart';
@@ -265,6 +266,11 @@ void init() {
     () => getTimeZoneUseCase,
   );
 
+  final resendEmailVerificationUseCase = ResendEmailVerification(locator());
+  locator.registerLazySingleton(
+    () => resendEmailVerificationUseCase,
+  );
+
   final signInWithGoogleUseCase = SignInWithGoogle(locator());
   locator.registerLazySingleton(
     () => signInWithGoogleUseCase,
@@ -425,7 +431,11 @@ void init() {
 
   //* Auth BLoC folder
   //*
-  final authWatcherBloc = AuthWatcherBloc(locator(), locator());
+  final authWatcherBloc = AuthWatcherBloc(
+    checkGoogleAuth: locator(),
+    checkUserVerif: locator(),
+    signOut: locator(),
+  );
   locator.registerLazySingleton(
     () => authWatcherBloc,
   );

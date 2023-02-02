@@ -253,7 +253,7 @@ showToast(msg: 'Pengguna tidak ditemukan');
                         text: TextSpan(
                           children: [
                             TextSpan(
-                              text: '//${lang.dont_have_an_account_yet} ',
+                              text: '${lang.dont_have_an_account_yet} ',
                               style: theme.textTheme.titleLarge,
                             ),
                             TextSpan(

@@ -52,7 +52,8 @@ class UserDataSourceImpl extends UserDataSource {
     request.headers.addAll(header);
     request.files.add(storeImage);
     final response = await request.send();
-    print(response.stream.bytesToString());
+    final respStr = await response.stream.bytesToString();
+    print(respStr);
     
     if (response.statusCode == 200) {
       return true;

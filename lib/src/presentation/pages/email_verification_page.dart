@@ -94,11 +94,11 @@ class _EmailVerificationPageState extends State<EmailVerificationPage>
                       return ElevatedButtonWidget(
                         onTap: () {
                           if (state.isTimeoutDone == true) {
-                            context.read<VerificationEmailFormBloc>().add(
-                                  VerificationEmailFormEvent.resendEmail(
-                                    email,
-                                  ),
-                                );
+                            // context.read<VerificationEmailFormBloc>().add(
+                            //       VerificationEmailFormEvent.resendEmail(
+                            //         email,
+                            //       ),
+                            // );
                             context.read<VerificationEmailFormBloc>().add(
                                   VerificationEmailFormEvent.startTimeOut(
                                     controllerCountdown,
@@ -109,6 +109,7 @@ class _EmailVerificationPageState extends State<EmailVerificationPage>
                         color: (state.isTimeoutDone == false)
                             ? theme.primaryColor.withOpacity(.5)
                             : theme.primaryColor,
+                        isLoading: (state.isSubmitting == true) ? true : false,
                         child: Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,

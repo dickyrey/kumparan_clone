@@ -472,6 +472,9 @@ abstract class _ResendEmail implements VerificationEmailFormEvent {
 
 /// @nodoc
 mixin _$VerificationEmailFormState {
+  RequestState get state => throw _privateConstructorUsedError;
+  String get message => throw _privateConstructorUsedError;
+  bool get isSubmitting => throw _privateConstructorUsedError;
   bool get isTimeoutDone => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -486,7 +489,11 @@ abstract class $VerificationEmailFormStateCopyWith<$Res> {
       _$VerificationEmailFormStateCopyWithImpl<$Res,
           VerificationEmailFormState>;
   @useResult
-  $Res call({bool isTimeoutDone});
+  $Res call(
+      {RequestState state,
+      String message,
+      bool isSubmitting,
+      bool isTimeoutDone});
 }
 
 /// @nodoc
@@ -503,9 +510,24 @@ class _$VerificationEmailFormStateCopyWithImpl<$Res,
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? state = null,
+    Object? message = null,
+    Object? isSubmitting = null,
     Object? isTimeoutDone = null,
   }) {
     return _then(_value.copyWith(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       isTimeoutDone: null == isTimeoutDone
           ? _value.isTimeoutDone
           : isTimeoutDone // ignore: cast_nullable_to_non_nullable
@@ -523,7 +545,11 @@ abstract class _$$_VerificationEmailFormStateCopyWith<$Res>
       __$$_VerificationEmailFormStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({bool isTimeoutDone});
+  $Res call(
+      {RequestState state,
+      String message,
+      bool isSubmitting,
+      bool isTimeoutDone});
 }
 
 /// @nodoc
@@ -539,9 +565,24 @@ class __$$_VerificationEmailFormStateCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? state = null,
+    Object? message = null,
+    Object? isSubmitting = null,
     Object? isTimeoutDone = null,
   }) {
     return _then(_$_VerificationEmailFormState(
+      state: null == state
+          ? _value.state
+          : state // ignore: cast_nullable_to_non_nullable
+              as RequestState,
+      message: null == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String,
+      isSubmitting: null == isSubmitting
+          ? _value.isSubmitting
+          : isSubmitting // ignore: cast_nullable_to_non_nullable
+              as bool,
       isTimeoutDone: null == isTimeoutDone
           ? _value.isTimeoutDone
           : isTimeoutDone // ignore: cast_nullable_to_non_nullable
@@ -553,14 +594,24 @@ class __$$_VerificationEmailFormStateCopyWithImpl<$Res>
 /// @nodoc
 
 class _$_VerificationEmailFormState implements _VerificationEmailFormState {
-  const _$_VerificationEmailFormState({required this.isTimeoutDone});
+  const _$_VerificationEmailFormState(
+      {required this.state,
+      required this.message,
+      required this.isSubmitting,
+      required this.isTimeoutDone});
 
+  @override
+  final RequestState state;
+  @override
+  final String message;
+  @override
+  final bool isSubmitting;
   @override
   final bool isTimeoutDone;
 
   @override
   String toString() {
-    return 'VerificationEmailFormState(isTimeoutDone: $isTimeoutDone)';
+    return 'VerificationEmailFormState(state: $state, message: $message, isSubmitting: $isSubmitting, isTimeoutDone: $isTimeoutDone)';
   }
 
   @override
@@ -568,12 +619,17 @@ class _$_VerificationEmailFormState implements _VerificationEmailFormState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_VerificationEmailFormState &&
+            (identical(other.state, state) || other.state == state) &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.isSubmitting, isSubmitting) ||
+                other.isSubmitting == isSubmitting) &&
             (identical(other.isTimeoutDone, isTimeoutDone) ||
                 other.isTimeoutDone == isTimeoutDone));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, isTimeoutDone);
+  int get hashCode =>
+      Object.hash(runtimeType, state, message, isSubmitting, isTimeoutDone);
 
   @JsonKey(ignore: true)
   @override
@@ -586,8 +642,17 @@ class _$_VerificationEmailFormState implements _VerificationEmailFormState {
 abstract class _VerificationEmailFormState
     implements VerificationEmailFormState {
   const factory _VerificationEmailFormState(
-      {required final bool isTimeoutDone}) = _$_VerificationEmailFormState;
+      {required final RequestState state,
+      required final String message,
+      required final bool isSubmitting,
+      required final bool isTimeoutDone}) = _$_VerificationEmailFormState;
 
+  @override
+  RequestState get state;
+  @override
+  String get message;
+  @override
+  bool get isSubmitting;
   @override
   bool get isTimeoutDone;
   @override

@@ -117,4 +117,18 @@ class AuthRepositoryImpl extends AuthRepository {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> resendEmailVerification() async {
+    try {
+      final result = await dataSource.resendEmailVerification();
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
 }
