@@ -13,6 +13,7 @@ abstract class UserArticleDataSource {
   Future<List<ArticleModel>> getMyModeratedArticle();
   Future<List<ArticleModel>> getMyPublishedArticle();
   Future<List<ArticleModel>> getMyRejectedArticle();
+  Future<bool> changeToModerated(String id);
 }
 
 class UserArticleDataSourceImpl extends UserArticleDataSource {
@@ -144,6 +145,31 @@ class UserArticleDataSourceImpl extends UserArticleDataSource {
       return ArticleResponse.fromJson(
         json.decode(response.body) as Map<String, dynamic>,
       ).articleList;
+    } else {
+      throw ServerException(ExceptionMessage.internetNotConnected);
+    }
+  }
+  
+  @override
+  Future<bool> changeToModerated(String id) async {
+    final prefs = await SharedPreferences.getInstance();
+    final token = prefs.getString(Const.token);
+    final header = {
+      'Authorization': 'Bearer $token',
+      'Accept': 'application/json',
+    };
+
+    final url = Uri(
+      scheme: Const.scheme,
+      host: Const.host,
+      path: '/api/article/$id',
+      queryParameters: {'status': 'moderated'},
+    );
+
+    final response = await client.put(url, headers: header);
+    print(response.body);
+    if (response.statusCode == 200) {
+      return true;
     } else {
       throw ServerException(ExceptionMessage.internetNotConnected);
     }

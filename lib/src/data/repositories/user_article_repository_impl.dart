@@ -81,4 +81,18 @@ class UserArticleRepositoryImpl extends UserArticleRepository {
       );
     }
   }
+
+  @override
+  Future<Either<Failure, bool>> changeToModerated(String id) async {
+    try {
+      final result = await dataSource.changeToModerated(id);
+      return Right(result);
+    } on ServerException catch (e) {
+      return Left(ServerFailure(e.message));
+    } on SocketException {
+      return const Left(
+        ConnectionFailure(ExceptionMessage.internetNotConnected),
+      );
+    }
+  }
 }

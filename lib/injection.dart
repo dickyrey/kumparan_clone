@@ -56,6 +56,7 @@ import 'package:kumparan_clone/src/domain/usecases/password/add_password.dart';
 import 'package:kumparan_clone/src/domain/usecases/password/change_password.dart';
 import 'package:kumparan_clone/src/domain/usecases/user/get_user_profile.dart';
 import 'package:kumparan_clone/src/domain/usecases/user/update_user_profile.dart';
+import 'package:kumparan_clone/src/domain/usecases/user_article/change_to_moderated.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_banned_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_drafted_article.dart';
 import 'package:kumparan_clone/src/domain/usecases/user_article/get_moderated_article.dart';
@@ -87,6 +88,7 @@ import 'package:kumparan_clone/src/presentation/bloc/search/search_province_form
 import 'package:kumparan_clone/src/presentation/bloc/time_zone_watcher/time_zone_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/change_to_moderated_actor/change_to_moderated_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_banned_watcher/user_article_banned_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_drafted_watcher/user_article_drafted_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_moderated_watcher/user_article_moderated_watcher_bloc.dart';
@@ -343,29 +345,34 @@ void init() {
 
   //* Filter by [User Article] folder
   //*
-  final getBannedArticle = GetBannedArticle(locator());
+  final changeToModeratedUseCase = ChangeToModerated(locator());
   locator.registerLazySingleton(
-    () => getBannedArticle,
+    () => changeToModeratedUseCase,
   );
 
-  final getDraftedArticle = GetDraftedArticle(locator());
+  final getBannedArticleUseCase = GetBannedArticle(locator());
   locator.registerLazySingleton(
-    () => getDraftedArticle,
+    () => getBannedArticleUseCase,
   );
 
-  final getModeratedArticle = GetModeratedArticle(locator());
+  final getDraftedArticleUseCase = GetDraftedArticle(locator());
   locator.registerLazySingleton(
-    () => getModeratedArticle,
+    () => getDraftedArticleUseCase,
   );
 
-  final getPublishedArticle = GetPublishedArticle(locator());
+  final getModeratedArticleUseCase = GetModeratedArticle(locator());
   locator.registerLazySingleton(
-    () => getPublishedArticle,
+    () => getModeratedArticleUseCase,
   );
 
-  final getRejectedArticle = GetRejectedArticle(locator());
+  final getPublishedArticleUseCase = GetPublishedArticle(locator());
   locator.registerLazySingleton(
-    () => getRejectedArticle,
+    () => getPublishedArticleUseCase,
+  );
+
+  final getRejectedArticleUseCase = GetRejectedArticle(locator());
+  locator.registerLazySingleton(
+    () => getRejectedArticleUseCase,
   );
 
   //! Part of [UI Kit] usecases
@@ -561,6 +568,10 @@ void init() {
 
   //* User Article BLoC folder
   //*
+  final changeToModeratedActorBloc = ChangeToModeratedActorBloc(locator());
+  locator.registerLazySingleton(
+    () => changeToModeratedActorBloc,
+  );
   final userArticleBannedWatcherBloc = UserArticleBannedWatcherBloc(locator());
   locator.registerLazySingleton(
     () => userArticleBannedWatcherBloc,

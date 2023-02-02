@@ -18,6 +18,8 @@ import 'package:kumparan_clone/src/presentation/bloc/category/category_watcher_b
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/article_comment_watcher/article_comment_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/delete_comment_actor/delete_comment_actor_bloc.dart';
 import 'package:kumparan_clone/src/presentation/bloc/comment_article/send_comment_actor/send_comment_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/change_to_moderated_actor/change_to_moderated_actor_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user_article/user_article_drafted_watcher/user_article_drafted_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/comment_card_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/dialog_widget.dart';
 import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.dart';
@@ -47,13 +49,40 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
     });
   }
 
+  Widget upload() {
+    final lang = AppLocalizations.of(context)!;
+    return FloatingActionButton(
+      onPressed: () {
+        key.currentState?.closeFABs();
+        showConfirmationDialog(
+          context,
+          title: 'Apakah Kamu yakin ingin terbitkan sekarang?',
+          primaryButtonLabel: lang.yes,
+          onPrimaryButtonTap: () {
+            context.read<ChangeToModeratedActorBloc>().add(
+                  ChangeToModeratedActorEvent.sendToModerated(
+                    widget.article.url,
+                  ),
+                );
+            Navigator.pop(context);
+          },
+        );
+      },
+      heroTag: 'Publish',
+      tooltip: 'Publish',
+      child: const Icon(
+        FeatherIcons.upload,
+        color: Colors.white,
+      ),
+    );
+  }
+
   Widget edit() {
-    final theme = Theme.of(context);
     return BlocBuilder<ArticleDetailWatcherBloc, ArticleDetailWatcherState>(
       builder: (context, state) {
         return state.maybeMap(
           orElse: () {
-            return SizedBox();
+            return const SizedBox();
           },
           loaded: (state) {
             return FloatingActionButton(
@@ -122,23 +151,40 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return BlocListener<DeleteArticleActorBloc, DeleteArticleActorState>(
-      listener: (context, state) {
-        state.maybeMap(
-          orElse: () {},
-          error: (_) {
-            showToast(msg: 'Gagal menghapus artikel');
-          },
-          success: (value) {
-            showToast(msg: 'Artikel dihapus');
-            Navigator.pushNamedAndRemoveUntil(
-              context,
-              MENU,
-              (route) => false,
+    return MultiBlocListener(
+      listeners: [
+        BlocListener<DeleteArticleActorBloc, DeleteArticleActorState>(
+          listener: (context, state) {
+            state.maybeMap(
+              orElse: () {},
+              error: (_) {
+                showToast(msg: 'Gagal menghapus artikel');
+              },
+              success: (value) {
+                context
+                    .read<UserArticleDraftedWatcherBloc>()
+                    .add(const UserArticleDraftedWatcherEvent.fetchArticle());
+                showToast(msg: 'Artikel dihapus');
+                Navigator.pop(context);
+              },
             );
           },
-        );
-      },
+        ),
+        BlocListener<ChangeToModeratedActorBloc, ChangeToModeratedActorState>(
+          listener: (context, state) {
+            state.maybeMap(
+              orElse: () {},
+              success: (_) {
+                showToast(msg: 'Artikel akan ditinjau');
+                context
+                    .read<UserArticleDraftedWatcherBloc>()
+                    .add(const UserArticleDraftedWatcherEvent.fetchArticle());
+                Navigator.pop(context);
+              },
+            );
+          },
+        ),
+      ],
       child: Scaffold(
         appBar: _appBar(context, article: widget.article),
         body: SingleChildScrollView(
@@ -191,6 +237,7 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
         ),
         floatingActionButton: AnimatedFloatingActionButton(
           fabButtons: <Widget>[
+            upload(),
             edit(),
             delete(),
           ],
@@ -216,52 +263,6 @@ class _PreviewArticlePageState extends State<PreviewArticlePage> {
           color: theme.iconTheme.color,
         ),
       ),
-      actions: [
-        BlocBuilder<ArticleDetailWatcherBloc, ArticleDetailWatcherState>(
-          builder: (context, state) {
-            return state.maybeMap(
-              orElse: () {
-                return const SizedBox();
-              },
-              loaded: (state) {
-                return Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                    0,
-                    Const.space8,
-                    Const.margin,
-                    Const.space8,
-                  ),
-                  child: ElevatedButtonWidget(
-                    onTap: () {
-                      final category =
-                          context.read<CategoryWatcherBloc>().state;
-                      context.read<ArticleFormBloc>().add(
-                            ArticleFormEvent.fetchCategoryList(
-                              category.categories,
-                            ),
-                          );
-
-                      context.read<ArticleFormBloc>().add(
-                            ArticleFormEvent.initialize(
-                              state.articleDetail,
-                            ),
-                          );
-                      Navigator.pushNamed(
-                        context,
-                        ARTICLE_FORM,
-                        arguments: true,
-                      );
-                    },
-                    label: 'Edit',
-                    width: 80,
-                    height: 30,
-                  ),
-                );
-              },
-            );
-          },
-        ),
-      ],
     );
   }
 }
