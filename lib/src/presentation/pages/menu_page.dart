@@ -75,7 +75,7 @@ class MenuPage extends StatelessWidget {
                                         );
                                     Navigator.pushNamed(
                                       context,
-                                      CHANGE_PROFILE,
+                                      PROFILE_FORM,
                                     );
                                   },
                                   child: Text(

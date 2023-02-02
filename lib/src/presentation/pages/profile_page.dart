@@ -82,7 +82,7 @@ class _ProfilePageState extends State<ProfilePage>
             const SizedBox(height: Const.space15),
             TextButton(
               onPressed: () {
-                Navigator.pushNamed(context, CHANGE_PROFILE);
+                Navigator.pushNamed(context, PROFILE_FORM);
               },
               child: Text(
                 lang.change_profile,

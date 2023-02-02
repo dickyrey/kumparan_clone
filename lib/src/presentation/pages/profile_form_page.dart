@@ -12,8 +12,22 @@ import 'package:kumparan_clone/src/presentation/widgets/elevated_button_widget.d
 import 'package:kumparan_clone/src/presentation/widgets/text_form_field_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
 
-class ChangeProfilePage extends StatelessWidget {
-  const ChangeProfilePage({super.key});
+class ProfileFormPage extends StatefulWidget {
+  const ProfileFormPage({super.key});
+
+  @override
+  State<ProfileFormPage> createState() => _ProfileFormPageState();
+}
+
+class _ProfileFormPageState extends State<ProfileFormPage> {
+  late TextEditingController _nameController = TextEditingController();
+  
+  @override
+  void initState() {
+    super.initState();
+    final state = context.read<UserFormBloc>().state;
+    _nameController = TextEditingController(text: state.name);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,6 +93,7 @@ class ChangeProfilePage extends StatelessWidget {
                       ),
                       const SizedBox(height: Const.space8),
                       TextFormFieldWidget(
+                        controller: _nameController,
                         hintText: lang.name,
                         maxLength: 60,
                         onChanged: (value) {

@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:kumparan_clone/src/common/const.dart';
 import 'package:kumparan_clone/src/common/routes.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_form/user_form_bloc.dart';
+import 'package:kumparan_clone/src/presentation/bloc/user/user_watcher/user_watcher_bloc.dart';
 import 'package:kumparan_clone/src/presentation/widgets/list_tile_widget.dart';
 import 'package:kumparan_clone/src/utilities/toast.dart';
 
@@ -18,11 +21,25 @@ class SettingsAndPrivacyPage extends StatelessWidget {
         child: Column(
           children: [
             const SizedBox(height: Const.space12),
-            ListTileWidget(
-              title: lang.personal_data,
-              icon: FeatherIcons.user,
-              onTap: () {
-                Navigator.pushNamed(context, CHANGE_PROFILE);
+            BlocBuilder<UserWatcherBloc, UserWatcherState>(
+              builder: (context, state) {
+                return state.maybeMap(
+                  orElse: () {
+                    return const SizedBox();
+                  },
+                  loaded: (state) {
+                    return ListTileWidget(
+                      title: lang.personal_data,
+                      icon: FeatherIcons.user,
+                      onTap: () {
+                        context
+                            .read<UserFormBloc>()
+                            .add(UserFormEvent.initialize(state.user));
+                        Navigator.pushNamed(context, PROFILE_FORM);
+                      },
+                    );
+                  },
+                );
               },
             ),
             ListTileWidget(

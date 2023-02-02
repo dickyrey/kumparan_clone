@@ -45,16 +45,13 @@ class UserDataSourceImpl extends UserDataSource {
     request.fields['name'] = name;
 
     final storeImage = await http.MultipartFile.fromPath(
-      'image',
+      'photo',
       image.path,
     );
 
     request.headers.addAll(header);
     request.files.add(storeImage);
     final response = await request.send();
-    final respStr = await response.stream.bytesToString();
-    print(respStr);
-    
     if (response.statusCode == 200) {
       return true;
     } else {
