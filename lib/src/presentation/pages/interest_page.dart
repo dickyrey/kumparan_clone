@@ -63,7 +63,8 @@ class _InterestPageState extends State<InterestPage> {
                       ),
                       ListView.separated(
                         itemCount: state.categories.length,
-                        padding: const EdgeInsets.symmetric(horizontal: Const.margin),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: Const.margin),
                         shrinkWrap: true,
                         physics: const ScrollPhysics(),
                         separatorBuilder: (context, index) {
@@ -75,7 +76,8 @@ class _InterestPageState extends State<InterestPage> {
                         itemBuilder: (context, index) {
                           final category = state.selectedCategory[index];
                           return Padding(
-                            padding: const EdgeInsets.only(bottom: Const.space8),
+                            padding:
+                                const EdgeInsets.only(bottom: Const.space8),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -130,6 +132,9 @@ class _InterestPageState extends State<InterestPage> {
                   final totalOfTrue = findTrueElement.length;
 
                   return ElevatedButtonWidget(
+                    color: totalOfTrue < 3
+                        ? theme.disabledColor
+                        : theme.primaryColor,
                     onTap: totalOfTrue < 3
                         ? null
                         : () {
